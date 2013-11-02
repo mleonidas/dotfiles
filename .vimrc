@@ -3,20 +3,23 @@
 autocmd! bufwritepost .vimrc source %
 " set syntax highlighting on
 syntax on
-
+" always show current position
+set ruler
 
 set background=dark
 set viminfo='20,\"500
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=2 shiftwidth=2 expandtab
 set nohlsearch
 set ignorecase smartcase
 autocmd FileType php set smartindent
 autocmd FileType javascript set smartindent
 autocmd FileType python set smartindent
 autocmd FileType c set smartindent noexpandtab
+autocmd FileType ruby set smartindent noexpandtab
 set encoding=utf8
 
-
+" set the leaderkey
+let mapleader=","
 " set navigation for splits
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -26,6 +29,19 @@ map <C-E> <C-W>=
 map <C-B> <C-W><bar>
 map <C-P> :set paste nonumber<Return>
 map <C-N> :set nopaste number<Return>
+
+
+
+"quick save
+noremap <Leader>s :update<CR>
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
 
@@ -62,8 +78,6 @@ set statusline+=%y      "filetype
 set statusline+=%h      "help file flag
 set statusline+=%m      "modified flag
 set statusline+=%r      "read only flag
-
-
 set statusline+=\ %=                        " align left
 set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
 set statusline+=\ Col:%c                    " current column
