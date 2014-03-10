@@ -29,7 +29,7 @@ map <C-E> <C-W>=
 map <C-B> <C-W><bar>
 map <C-P> :set paste nonumber<Return>
 map <C-N> :set nopaste number<Return>
-
+nnoremap <C-t>     :tabnew<CR>
 
 
 "quick save
@@ -86,8 +86,15 @@ set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
 set statusline+=\ Col:%c                    " current column
 set statusline+=\ Buf:%n                    " Buffer number
 set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
+"ctrl-p binings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 
+
+" easy tab navigation
+nnoremap <S-h> gT
+nnoremap <S-l> gt
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
