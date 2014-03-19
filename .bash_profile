@@ -3,11 +3,11 @@
 export PATH="/Users/mleone/anaconda/bin:$PATH"
 alias dev='ssh dev-mleone-755a0462.ewr01.tumblr.net'
 alias pp=ipython
+
 alias ll='ls -lrtG'
 alias ls='ls -G'
 # stupid 256 colors
-export TERM=xterm-256color
-
+#export TERM="xterm-256color"
 source ~/.git-prompt.sh
 #PS1="\[\e[0;36m\]\W\[\e[m\]\$(__git_ps1)\[\e[0;]\$ "
 PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W\[\033[00m\]$(__git_ps1)\$ '
@@ -102,14 +102,16 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 Space=" "
-User="\u@\h"
+User="\u"
+At="@"
+Hostname="\h"
 Arrow="->"
 
 
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
-export PS1=$IBlack$Time12h$Color_Off$Space$BIPurple$User$Color_off$Space$ICyan$PathShort$Color_Off'$(git branch &>/dev/null;\
+export PS1=$IBlack$Time12h$Color_Off$Space$BIBlue$User$Color_off$BIPurple$At$Color_Off$BIYellow$Hostname$Color_Off$Space$ICyan$PathShort$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
