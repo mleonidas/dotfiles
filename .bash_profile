@@ -3,9 +3,12 @@
 export PATH="/Users/mleone/anaconda/bin:$PATH"
 alias dev='ssh dev-mleone-755a0462.ewr01.tumblr.net'
 alias pp=ipython
-
+alias more=less
+alias grep='grep --color'
 alias ll='ls -lrtG'
 alias ls='ls -G'
+
+
 # stupid 256 colors
 #export TERM="xterm-256color"
 source ~/.git-prompt.sh
@@ -111,7 +114,7 @@ Arrow="->"
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
-export PS1=$IBlack$Time12h$Color_Off$Space$BIBlue$User$Color_off$BIPurple$At$Color_Off$BIYellow$Hostname$Color_Off$Space$ICyan$PathShort$Color_Off'$(git branch &>/dev/null;\
+export PS1=$IBlack$Time12h$Color_Off$Space$BIBlue$User$Color_off$BIRed$At$Color_Off$BIPurple$Hostname$Color_Off$Space$ICyan$PathShort$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
@@ -120,7 +123,7 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$NewLine$On_IPurple$Arrow$Color_Off$Space$Color_off'"; \
+  fi) '$Color_Off$NewLine$On_IPurple$Arrow$Color_Off$Space$Color_off'"; \
 else \
   # @2 - Prompt when not in GIT repo
   echo " '$NewLine$On_IPurple$Arrow$Color_Off$Space$Color_off'"; \
