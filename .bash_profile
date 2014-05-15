@@ -7,8 +7,9 @@ alias more=less
 alias grep='grep --color'
 alias ll='ls -lrtG'
 alias ls='ls -G'
-
-
+alias mothership='ssh dev6-mleone-os-8d038cfd.ewr01.tumblr.net'
+alias network='ssh dev6-mleone-os-c1-677c9c40.ewr01.tumblr.net'
+alias compute1='ssh dev6-mleone-os-c2-c130785f.ewr01.tumblr.net'
 # stupid 256 colors
 #export TERM="xterm-256color"
 source ~/.git-prompt.sh
@@ -114,7 +115,7 @@ Arrow="#"
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
-export PS1=$IBlack$Time12h$Color_Off$Space$BIBlue$User$Color_off$BIPurple$At$Color_Off$BIGreen$Hostname$Color_Off$Space$BIRed$PathShort$Color_Off'$(git branch &>/dev/null;\
+export PS1=$BIRed$Time12h$Color_Off$Space$BIBlack$User$Color_off$BIBlack$At$Color_Off$BIBlack$Hostname$Color_Off$Space$BIGreen$PathShort$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
