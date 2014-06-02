@@ -1,4 +1,3 @@
-
 # added by Anaconda 1.5.1 installer
 export PATH="/Users/mleone/anaconda/bin:$PATH"
 alias dev='ssh dev-mleone-755a0462.ewr01.tumblr.net'
@@ -7,9 +6,11 @@ alias more=less
 alias grep='grep --color'
 alias ll='ls -lrtG'
 alias ls='ls -G'
-alias mothership='ssh dev6-mleone-os-8d038cfd.ewr01.tumblr.net'
-alias network='ssh dev6-mleone-os-c1-677c9c40.ewr01.tumblr.net'
-alias compute1='ssh dev6-mleone-os-c2-c130785f.ewr01.tumblr.net'
+alias mothership='ssh openstack-8d038cfd.ewr01.tumblr.net'
+alias network='ssh openstack-c130785f.ewr01.tumblr.net  '
+alias compute1='ssh openstack-677c9c40.ewr01.tumblr.net'
+alias compute2='ssh openstack-68d91830.ewr01.tumblr.net'
+alias queue='ssh openstack-677c9c40.ewr01.tumblr.net'
 # stupid 256 colors
 #export TERM="xterm-256color"
 source ~/.git-prompt.sh
