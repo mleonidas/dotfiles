@@ -73,7 +73,7 @@ hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=bl
 hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 
 hi VertSplit        guifg=#202020     guibg=#202020     gui=NONE      ctermfg=darkgray    ctermbg=darkgray    cterm=NONE
-hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=white       ctermbg=darkgray    cterm=NONE
+hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=green       ctermbg=darkgray    cterm=NONE
 hi StatusLineNC     guifg=black       guibg=#202020     gui=NONE      ctermfg=blue        ctermbg=darkgray    cterm=NONE  
 
 hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
@@ -115,8 +115,8 @@ hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33
 hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Constant         guifg=#ff5f00     guibg=NONE        gui=NONE      ctermfg=161       ctermbg=NONE        cterm=NONE
 
-hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=30        ctermbg=NONE        cterm=NONE
-hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=209       ctermbg=NONE        cterm=NONE
+hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=33        ctermbg=NONE        cterm=NONE
+hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=202    ctermbg=NONE        cterm=NONE
 hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=33      ctermbg=NONE        cterm=NONE
 hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33   ctermbg=NONE        cterm=NONE
 
@@ -138,18 +138,27 @@ hi link StorageClass    Type
 hi link Structure       Type
 hi link Typedef         Type
 hi link Tag             Special
-hi link SpecialChar     Special
+hi link SpecialChar     Comment 
 hi link SpecialComment  Special
 hi link Debug           Special
-
+"
 
 " Special for Ruby
-hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE
-hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=brown          ctermbg=NONE      cterm=NONE
+hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=98          ctermbg=NONE      cterm=NONE
+hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=green          ctermbg=NONE      cterm=NONE
 hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
 hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
-hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE  "and break, etc
-"hi rubyGlobalVariable          guifg=#FFCCFF      guibg=NONE      gui=NONE      ctermfg=lightblue      ctermbg=NONE      cterm=NONE  "yield
+hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=33           ctermbg=NONE      cterm=NONE  "and break, etc
+hi rubyInstanceVariable        ctermfg=37
+hi rubyGlobalVariable          ctermfg=93
+hi rubyClassVariable           ctermfg=175
+hi rubyBoolean                 ctermfg=57
+hi rubyBeginEnd                ctermfg=155
+hi rubyException               ctermfg=196
+hi rubySharpBang               ctermfg=red
+hi rubyCurlyBlock              ctermfg=red
+hi rubyArrayDelimiter          ctermfg=red 
+hi rubyConstant                ctermfg=128
 hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
 "rubyInclude
 "rubySharpBang
@@ -167,10 +176,7 @@ hi link rubyModule            Keyword
 hi link rubyKeyword           Keyword 
 hi link rubyOperator          Operator
 hi link rubyIdentifier        Identifier
-hi link rubyInstanceVariable  Identifier
-hi link rubyGlobalVariable    Identifier
 hi link rubyClassVariable     String 
-hi link rubyConstant          Normal 
 
 
 " Special for Java
