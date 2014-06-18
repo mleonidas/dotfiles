@@ -1,26 +1,43 @@
+" -file setup
+:syntax on
+:set ignorecase
+:set number
+:set mouse=
+:set hlsearch
+:set background=dark
+:set incsearch
+:set encoding=utf-8
+:set fileencoding=utf-8
+:set fileformat=unix
 
+set t_Co=256
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
-" set syntax highlighting on
-syntax on
-" always show current position
-set ruler
 
-set background=dark
-set viminfo='20,\"500
-set tabstop=2 shiftwidth=2 expandtab
-set nohlsearch
-set ignorecase smartcase
-autocmd FileType php set smartindent
-autocmd FileType javascript set smartindent
-autocmd FileType python set smartindent
-autocmd FileType c set smartindent noexpandtab
-autocmd FileType ruby set smartindent noexpandtab
-set encoding=utf8
 
-" set the leaderkey
-let mapleader=","
-" set navigation for splits
+"set the colorscheme
+colo mleone_colo 
+"
+"kolor stuff
+"
+let g:kolor_italic=1                    " Enable italic. Default: 1
+let g:kolor_bold=1                      " Enable bold. Default: 1
+let g:kolor_underlined=0                " Enable underline. Default: 0
+let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+
+
+
+"colo kolor
+" tab stuff
+:set autoindent
+:set expandtab
+:set smarttab
+:set tabstop=2
+:set softtabstop=2
+:set shiftwidth=2
+
+
+"set navigation for splits
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map <C-H> <C-W>h
@@ -31,70 +48,42 @@ map <C-P> :set paste nonumber<Return>
 map <C-N> :set nopaste number<Return>
 nnoremap <C-t>     :tabnew<CR>
 
+" navigation (from http://statico.github.com/vim.html)
+" go up and down one row, not one line (useful for wrapped lines)
+:nmap j gj
+:nmap k gk
+" tab next/prev with shift h and shift l
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+" jump between last opened buffer with Ctrl+E (:b# and :e# do same thing)
+:nmap <C-e> :e#<CR>
 
-"quick save
-noremap <Leader>s :update<CR>
-noremap <Leader>e :quit<CR>
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.rb :call DeleteTrailingWS()
-autocmd BufWrite *.pp :call DeleteTrailingWS()
-autocmd BufWrite *.sh :call DeleteTrailingWS()
+" title setting
+autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 
+" assorted automatic syntax loading. filetype -> syntax
+au BufRead *.md set filetype=markdown
+au BufRead *.scala set filetype=scala
+au BufRead *.pp set filetype=puppet
+au BufRead *.rb set filetype=ruby
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
+let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+if &term == "screen"
+  set t_ts=k
+  set t_fs=\
+endif
+if &term == "screen" || &term == "xterm" || &term == "xterm-color" || &term == "xterm-256color"
+  set title
+endif
 
-
-set wmw=0
-set wmh=0
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.*/
-highlight TrailingSpace ctermbg=red ctermfg=white guibg=#592929
-au InsertEnter * match TrailingSpace /\s\+\%#\@<!$/
-au InsertLeave * match TrailingSpace /\s\+$/
-set laststatus=2
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
-  elseif a:mode == 'r'
-    hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
-  else
-    hi statusline guibg=DarkRed ctermfg=1 guifg=Black ctermbg=0
-  endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
-
-" default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
-
-" Formats the statusline
-set statusline=%f                           " file name
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%y      "filetype
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=\ %=                        " align left
-set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
-set statusline+=\ Col:%c                    " current column
-set statusline+=\ Buf:%n                    " Buffer number
-set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
-"ctrl-p binings
+" ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 
-
-" easy tab navigation
-nnoremap <S-h> gT
-nnoremap <S-l> gt
 execute pathogen#infect()
-syntax on
 filetype plugin indent on
+

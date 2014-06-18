@@ -11,17 +11,23 @@ if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 
+. ~/.git-completion.bash
 # add in history searching
 
 set -o vi
+export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:~/.rvm/bin
 
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 alias vi=vim
 #alias ls='ls --color=auto'
+alias ops='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
 alias lös=ls
 alias exit='clear; exit'
 alias ll='ls -la'
 alias la='ls -la'
 alias lr='ls -laR'
+alias ls='ls -G'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=always '
 alias less='less -R '
@@ -47,7 +53,8 @@ alias gits="git status"
 alias gitb="git branch"
 alias gitf="git fetch"
 alias gitp="git pull"
-
+alias mothership='ssh -A openstack-controller.ewr01.tumblr.net'
+alias ssh='ssh -A'
 export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:~/.rvm/bin
 export MANPATH=$MANPATH:~/lang/share/man:~/lang/usr/local/scala/man
 export VISUAL='vim'
