@@ -158,7 +158,7 @@ hi rubyException               ctermfg=196
 hi rubySharpBang               ctermfg=red
 hi rubyCurlyBlock              ctermfg=red
 hi rubyArrayDelimiter          ctermfg=red 
-hi rubyConstant                ctermfg=128
+hi rubyConstant                ctermfg=98
 hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
 "rubyInclude
 "rubySharpBang
@@ -178,7 +178,10 @@ hi link rubyOperator          Operator
 hi link rubyIdentifier        Identifier
 hi link rubyClassVariable     String 
 
-
+" special for puppet
+hi puppetDefName              ctermfg=203
+hi puppetString               ctermfg=97
+hi puppetBoolean              ctermfg=green
 " Special for Java
 " hi link javaClassDecl    Type
 hi link javaScopeDecl         Identifier 
