@@ -21,6 +21,8 @@ export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/s
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 alias vi=vim
 #alias ls='ls --color=auto'
+# ops box vm
+alias ops-mleone='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
 alias ops='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
 alias lös=ls
 alias exit='clear; exit'
