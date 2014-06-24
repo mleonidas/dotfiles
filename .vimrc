@@ -13,7 +13,9 @@
 set t_Co=256
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
-
+"ctrl-p
+let g:ctrlp_map = '<c-m>'
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set the colorscheme
 colo mleone_colo 
