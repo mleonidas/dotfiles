@@ -29,12 +29,3 @@ rescue LoadError
   collins = collins[:collins] if collins.key? :collins
   c = Collins::Client.new(collins)
 end
-
-
-
-
-
-command 'clear' do
-  system 'clear'
-end
-
