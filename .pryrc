@@ -1,7 +1,7 @@
 # turn color on
+Pry.editor = 'vim'
 Pry.config.color = true
-Pry.config.theme = "solarized"
-
+Pry.config.theme = 'solarized'
 # custom prompt to show ruby version, useful with RVM
 Pry.prompt = [proc { |obj, nest_level, _| "#{RUBY_VERSION} (#{obj}):#{nest_level} > " }, \
 proc { |obj, nest_level, _| "#{RUBY_VERSION} (#{obj}):#{nest_level} * " }]
@@ -28,4 +28,20 @@ rescue LoadError
   collins = YAML.load_file(options[:collins_config_file]).reduce({}){|memo,(k,v)|memo[k.to_sym] = v; memo    }
   collins = collins[:collins] if collins.key? :collins
   c = Collins::Client.new(collins)
+end
+
+
+
+# just for fun
+
+class Array
+  def self.toy(n=10, &block)
+    block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
+  end
+end
+
+class Hash
+  def self.toy(n=10)
+    Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
+  end
 end
