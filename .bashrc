@@ -27,7 +27,11 @@ alias exit='clear; exit'
 alias ll='ls -la'
 alias la='ls -la'
 alias lr='ls -laR'
-alias ls='ls -G'
+if [[ `uname` = 'Darwin' ]]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color'
+fi
 alias grep='grep --color=auto'
 alias egrep='egrep --color=always '
 alias less='less -R '
