@@ -103,35 +103,37 @@ if version >= 700 " Vim 7.x specific colors
   hi Search         guifg=NONE        guibg=#2F2F00     gui=underline ctermfg=NONE        ctermbg=NONE	      cterm=underline
 endif
 
+" colors to variables
+
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
-hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=33        ctermbg=NONE        cterm=NONE
-hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=33        ctermbg=NONE        cterm=NONE
-hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33      ctermbg=NONE        cterm=NONE  " if else end
+hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=25        ctermbg=NONE          cterm=NONE
+hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=yellow        ctermbg=NONE      cterm=NONE
+hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33      ctermbg=NONE            cterm=NONE  
 
 hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
-hi Constant         guifg=#ff5f00     guibg=NONE        gui=NONE      ctermfg=161       ctermbg=NONE        cterm=NONE
+hi Constant         guifg=#ff5f00     guibg=NONE        gui=NONE      ctermfg=161       ctermbg=NONE          cterm=NONE
 
-hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=33        ctermbg=NONE        cterm=NONE
-hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=202    ctermbg=NONE        cterm=NONE
-hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=33      ctermbg=NONE        cterm=NONE
-hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33   ctermbg=NONE        cterm=NONE
+hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=33          ctermbg=NONE        cterm=NONE
+hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=204      ctermbg=NONE           cterm=NONE
+hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=135         ctermbg=NONE        cterm=NONE
+hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33     ctermbg=NONE             cterm=NONE
 
-hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
-hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=yellow        ctermbg=NONE        cterm=NONE
-hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=33       ctermbg=NONE        cterm=NONE
+hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE       cterm=NONE
+hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE       cterm=NONE
+hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=33          ctermbg=NONE       cterm=NONE
 
 hi link Character       Constant
-hi link Boolean         Operator 
+hi link Boolean         Keyword 
 hi link Float           Number
 hi link Repeat          Statement
 hi link Label           Statement
 hi link Exception       Statement
 hi link Include         PreProc
-hi link Define          PreProc
+hi link Define          Statement 
 hi link Macro           PreProc
 hi link PreCondit       PreProc
 hi link StorageClass    Type
@@ -141,25 +143,31 @@ hi link Tag             Special
 hi link SpecialChar     Comment 
 hi link SpecialComment  Special
 hi link Debug           Special
-"
+hi link RubyOperator    Operator
+hi link rubyClass             Keyword 
+hi link rubyModule            PreProc 
+hi link rubyKeyword           Keyword 
+hi link rubyOperator          Operator
+hi link rubyIdentifier        Identifier
+hi link rubyClassVariable     Keyword 
 
-" Special for Ruby
+
 hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=98          ctermbg=NONE      cterm=NONE
 hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=green          ctermbg=NONE      cterm=NONE
 hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
 hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
 hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=33           ctermbg=NONE      cterm=NONE  "and break, etc
-hi rubyInstanceVariable        ctermfg=37
-hi rubyGlobalVariable          ctermfg=93
-hi rubyClassVariable           ctermfg=175
-hi rubyBoolean                 ctermfg=57
-hi rubyBeginEnd                ctermfg=155
-hi rubyException               ctermfg=196
-hi rubySharpBang               ctermfg=red
-hi rubyCurlyBlock              ctermfg=red
-hi rubyArrayDelimiter          ctermfg=red 
-hi rubyConstant                ctermfg=98
-hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
+"hi rubyInstanceVariable        ctermfg=37
+"hi rubyGlobalVariable          ctermfg=93
+"hi rubyClassVariable           ctermfg=175
+"hi rubyBoolean                 ctermfg=57
+"hi rubyBeginEnd                ctermfg=155
+"hi rubyException               ctermfg=196
+"hi rubySharpBang               ctermfg=red
+"hi rubyCurlyBlock              ctermfg=red
+"hi rubyArrayDelimiter          ctermfg=red 
+"hi rubyConstant                ctermfg=98
+"hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
 "rubyInclude
 "rubySharpBang
 "rubyAccess
@@ -171,19 +179,14 @@ hi rubyStringDelimiter         guifg=#336633      guibg=NONE      gui=NONE      
 "hi link rubyArrayDelimiter    Special  " [ , , ]
 "rubyCurlyBlock  { , , }
 
-hi link rubyClass             Keyword 
-hi link rubyModule            Keyword 
-hi link rubyKeyword           Keyword 
-hi link rubyOperator          Operator
-hi link rubyIdentifier        Identifier
-hi link rubyClassVariable     String 
-
 " special for puppet
 hi puppetDefName              ctermfg=203
 hi puppetString               ctermfg=97
 hi puppetBoolean              ctermfg=green
-" Special for Java
-" hi link javaClassDecl    Type
+
+
+
+"special for java not that i would write java in vim :/
 hi link javaScopeDecl         Identifier 
 hi link javaCommentTitle      javaDocSeeTag 
 hi link javaDocTags           javaDocSeeTag 
