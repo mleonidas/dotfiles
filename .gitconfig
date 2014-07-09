@@ -1,14 +1,6 @@
 [user]
 	name = Mike Leone
     email = mleone@advance.net
-[core]
-    repositoryformatversion = 0
-    filemode = true
-    bare = false
-    logallrefupdates = true
-    fsyncobjectfiles = true
-    ignoreStat = true
-    preloadindex = true
 [color]
 	ui = true
 
