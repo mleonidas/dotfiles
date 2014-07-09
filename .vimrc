@@ -27,6 +27,11 @@ let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
+" quick save
+let mapleader = ","
+noremap <Leader>s :update<CR>
+
+
 
 
 "colo kolor
@@ -84,8 +89,10 @@ endif
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-
-
+noremap <Leader>n :lnext <CR>
+noremap <Leader>p :lprev <CR>
+"syntastic
+let g:syntastic_always_populate_loc_list = 1
 execute pathogen#infect()
 filetype plugin indent on
 
