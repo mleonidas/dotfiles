@@ -89,11 +89,11 @@ random_color(){
     r=$((0x${h%% *} ** 2))
   fi
   # seems to give a better distribution if 125 is repeated
-  color_codes=(160 125 136 166 160 125 61 33 37 64)
+  color_codes=(125 136 166 160 125 61 33 37 64)
   i=$(($r % ${#color_codes[@]}))
   echo -n "$(tput setaf ${color_codes[$i]})"
 }
-
+IBlack="\[\033[0;90m\]"
 #colors for solarized scheme
 tput sgr0 # reset colors
 if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
@@ -136,7 +136,7 @@ RESET=$(tput sgr0)
 
 # dont forget, when echoing colors, wrap non-printing chars in \[\] so bash doesnt count them to the line length
 host_color="$(random_color $HOSTNAME)"
-export PS1='\[${RESET}${BASE02}\][\[${BLUE}\]\t\[${BASE02}\]] [\[${RED}\]\u\[${BASE01}\]@\[${host_color}\]\h\[${BASE02}\]] \[${BASE00}\]($(for r in ${PIPESTATUS[*]} ; do [ $r -eq 0 ] && echo -n "\[$BASE01\] $r" || echo -n " \[${RED}\]${r}\[${RESET}\]" ; done)\[${BASE00}\] ) \[${ORANGE}\]\w$(is_git_repo && echo -n " \[${GREEN}\]$(git_branch)\[${RESET}\]" && is_git_dirty && echo -n "\[${RED}\]*\[${RESET}\]")\n\[${BASE00}\]-> \[$(random_color)\]\$ \[$RESET\]'
+export PS1='\[${RESET}${BASE02}\][\[${BASE0BASE01}\]\t\[${BASE02}\]] [\[${RED}\]\u\[${BASE01}\]@\[${host_color}\]\h\[${BASE02}\]] \[${BASE00}\]($(for r in ${PIPESTATUS[*]} ; do [ $r -eq 0 ] && echo -n "\[$BASE01\] $r" || echo -n " \[${RED}\]${r}\[${RESET}\]" ; done)\[${BASE00}\] ) \[${ORANGE}\]\w$(is_git_repo && echo -n " \[${GREEN}\]$(git_branch)\[${RESET}\]" && is_git_dirty && echo -n "\[${RED}\]*\[${RESET}\]")\n\[${BASE00}\]-> \[$(random_color)\]\$ \[$RESET\]'
 if [[ `uname` == "Darwin" ]]; then
   export LSCOLORS=exfxcxdxcxegedabagacad
 else

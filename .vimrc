@@ -85,7 +85,11 @@ endif
 if &term == "screen" || &term == "xterm" || &term == "xterm-color" || &term == "xterm-256color"
   set title
 endif
-
+" Go syntax stuff
+au FileType go nmap <Leader>i <Plug>(go-info)
+let g:go_disable_autoinstall = 1
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
