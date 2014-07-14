@@ -73,7 +73,7 @@ hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=bl
 hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 
 hi VertSplit        guifg=#202020     guibg=#202020     gui=NONE      ctermfg=darkgray    ctermbg=darkgray    cterm=NONE
-hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=green       ctermbg=darkgray    cterm=NONE
+hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=48       ctermbg=darkgray    cterm=NONE
 hi StatusLineNC     guifg=black       guibg=#202020     gui=NONE      ctermfg=blue        ctermbg=darkgray    cterm=NONE  
 
 hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
@@ -107,11 +107,11 @@ endif
 
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=48       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=25        ctermbg=NONE          cterm=NONE
-hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=yellow        ctermbg=NONE      cterm=NONE
+hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=220        ctermbg=NONE      cterm=NONE
 hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33      ctermbg=NONE            cterm=NONE  
 
 hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
@@ -123,7 +123,7 @@ hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=13
 hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33     ctermbg=NONE             cterm=NONE
 
 hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE       cterm=NONE
-hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE       cterm=NONE
+hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=220      ctermbg=NONE       cterm=NONE
 hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=33          ctermbg=NONE       cterm=NONE
 
 hi link Character       Constant

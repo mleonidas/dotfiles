@@ -784,7 +784,7 @@ exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
 "}}}
 " ruby highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
+exe "hi! rubyDefine"     . s:fmt_bold  .s:fg_green   .s:bg_none
 "rubyInclude
 "rubySharpBang
 "rubyAccess
