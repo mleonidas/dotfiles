@@ -31,3 +31,6 @@
 [submodule "vim/bundle/neosnippet.vim"]
 	path = vim/bundle/neosnippet.vim
 	url = https://github.com/Shougo/neosnippet.vim.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline

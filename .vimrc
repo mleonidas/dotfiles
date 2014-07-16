@@ -18,7 +18,7 @@ let g:ctrlp_map = '<c-m>'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set the colorscheme
-colo solarized 
+colo molokai 
 "
 "kolor stuff
 "
@@ -76,7 +76,6 @@ au BufRead *.rb set filetype=ruby
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
 let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 if &term == "screen"
   set t_ts=k
@@ -85,18 +84,25 @@ endif
 if &term == "screen" || &term == "xterm" || &term == "xterm-color" || &term == "xterm-256color"
   set title
 endif
+
+" start Airline
+set laststatus=2
+let g:airline_theme='badwolf'
 " Go syntax stuff
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
+
+
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
+
+
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
 execute pathogen#infect()
 filetype plugin indent on
+
 
