@@ -147,7 +147,7 @@ hi link rubyClass             Preproc
 hi link rubyModule            PreProc 
 hi link rubyKeyword           Keyword 
 hi link rubyOperator          Operator
-hi link rubyIdentifier        Identifier
+hi link rubyIdentifier        Operator 
 hi link rubyClassVariable     Keyword 
 hi link rubyControl           Operator
 hi link rubyConstant          Constant 
