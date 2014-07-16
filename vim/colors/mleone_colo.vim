@@ -107,7 +107,7 @@ endif
 
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=47       ctermbg=NONE        cterm=NONE
+hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=227       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=141     ctermbg=NONE        cterm=NONE
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=197        ctermbg=NONE          cterm=NONE
 hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=33        ctermbg=NONE      cterm=NONE
@@ -117,7 +117,7 @@ hi Constant         guifg=#ff5f00     guibg=NONE        gui=NONE      ctermfg=17
 hi Operator                                                           ctermfg=197
 hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=208          ctermbg=NONE        cterm=NONE
 hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=204      ctermbg=NONE           cterm=NONE
-hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=135         ctermbg=NONE        cterm=NONE
+hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=197         ctermbg=NONE        cterm=NONE
 hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33     ctermbg=NONE             cterm=NONE
 hi Function                                                           ctermfg=154
 hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE       cterm=NONE
@@ -142,6 +142,7 @@ hi link SpecialChar     Comment
 hi link SpecialComment  Special
 hi link Debug           Special
 hi link RubyOperator    Operator
+hi link RubySymbol            Identifier 
 hi link rubyClass             Preproc 
 hi link rubyModule            PreProc 
 hi link rubyKeyword           Keyword 
@@ -149,7 +150,7 @@ hi link rubyOperator          Operator
 hi link rubyIdentifier        Identifier
 hi link rubyClassVariable     Keyword 
 hi link rubyControl           Operator
-hi link rubyConstant          Function 
+hi link rubyConstant          Constant 
 "hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=98          ctermbg=NONE      cterm=NONE
 "hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=green          ctermbg=NONE      cterm=NONE
 "hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
