@@ -18,7 +18,7 @@ let g:ctrlp_map = '<c-m>'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set the colorscheme
-colo molokai 
+colo mleone_colo 
 "
 "kolor stuff
 "
