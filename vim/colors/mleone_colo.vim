@@ -178,8 +178,8 @@ hi link rubyConstant          Constant
 "rubyCurlyBlock  { , , }
 
 " special for puppet
-hi puppetDefName              ctermfg=203
-hi puppetString               ctermfg=97
+hi puppetDefName              ctermfg=191
+hi puppetString               ctermfg=82
 hi puppetBoolean              ctermfg=green
 
 
