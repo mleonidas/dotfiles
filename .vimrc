@@ -92,7 +92,7 @@ let g:airline_theme='badwolf'
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
 
-
+let g:rehash256 = 1
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
