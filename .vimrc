@@ -18,13 +18,16 @@ let g:ctrlp_map = '<c-m>'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set the colorscheme
-colo solarized 
 " quick save
 let mapleader = ","
 noremap <Leader>s :update<CR>
-
-
-
+"soloarized shit
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termtrans =  1
+let g:solarized_termcolors=256
+let g:solarized_termcolors = &t_Co
+colo solarized
 
 "colo kolor
 " tab stuff
@@ -80,6 +83,9 @@ endif
 " start Airline
 set laststatus=2
 let g:airline_theme='badwolf'
+
+
+
 " Go syntax stuff
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
