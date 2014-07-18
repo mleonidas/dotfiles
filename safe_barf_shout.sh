@@ -8,3 +8,4 @@ if [[ $? != 0 ]]; then
   echo "what the fuck meng"
 fi
 
+var="modified"

@@ -18,7 +18,7 @@ let g:ctrlp_map = '<c-m>'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set the colorscheme
-colo mleone_colo 
+colo solarized 
 " quick save
 let mapleader = ","
 noremap <Leader>s :update<CR>
