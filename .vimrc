@@ -10,7 +10,7 @@
 :set fileencoding=utf-8
 :set fileformat=unix
 
-set t_Co=256
+"set t_Co=256
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
 "ctrl-p
@@ -27,8 +27,10 @@ let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
-colo solarized
 
+hi Normal ctermbg=White ctermfg=Black guifg=Black guibg=White
+colo mleone_colo 
+let rehash256 =1
 "colo kolor
 " tab stuff
 :set autoindent
