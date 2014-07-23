@@ -73,7 +73,7 @@ hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=bl
 hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 
 hi VertSplit        guifg=#202020     guibg=#202020     gui=NONE      ctermfg=darkgray    ctermbg=darkgray    cterm=NONE
-hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=48       ctermbg=darkgray    cterm=NONE
+hi StatusLine       guifg=#CCCCCC     guibg=#202020     gui=italic    ctermfg=green       ctermbg=darkgray    cterm=NONE
 hi StatusLineNC     guifg=black       guibg=#202020     gui=NONE      ctermfg=blue        ctermbg=darkgray    cterm=NONE  
 
 hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
@@ -107,25 +107,27 @@ endif
 
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=227       ctermbg=NONE        cterm=NONE
-hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=141     ctermbg=NONE        cterm=NONE
-hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=197        ctermbg=NONE          cterm=NONE
-hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=33        ctermbg=NONE      cterm=NONE
-hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=197      ctermbg=NONE            cterm=NONE  
-hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
-hi Constant         guifg=#ff5f00     guibg=NONE        gui=NONE      ctermfg=171    ctermbg=NONE          cterm=NONE
-hi Operator                                                           ctermfg=197
-hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=208          ctermbg=NONE        cterm=NONE
-hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=204      ctermbg=NONE           cterm=NONE
-hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=197         ctermbg=NONE        cterm=NONE
-hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33     ctermbg=NONE             cterm=NONE
-hi Function                                                           ctermfg=154
-hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE       cterm=NONE
-hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=220      ctermbg=NONE       cterm=NONE
-hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=197          ctermbg=NONE       cterm=NONE
-hi Boolean                                                            ctermfg=141
-hi Character                                                          ctermfg=222
+hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
+hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=25        ctermbg=NONE          cterm=NONE
+hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=yellow        ctermbg=NONE      cterm=NONE
+hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33      ctermbg=NONE            cterm=NONE  
+
+hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
+hi Constant         guifg=#ff5f00     guibg=NONE        gui=NONE      ctermfg=161       ctermbg=NONE          cterm=NONE
+
+hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=33          ctermbg=NONE        cterm=NONE
+hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=204      ctermbg=NONE           cterm=NONE
+hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=135         ctermbg=NONE        cterm=NONE
+hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=33     ctermbg=NONE             cterm=NONE
+
+hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE       cterm=NONE
+hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE       cterm=NONE
+hi Operator         guifg=white       guibg=NONE        gui=NONE      ctermfg=33          ctermbg=NONE       cterm=NONE
+
+hi link Character       Constant
+hi link Boolean         Keyword 
 hi link Float           Number
 hi link Repeat          Statement
 hi link Label           Statement
@@ -142,19 +144,19 @@ hi link SpecialChar     Comment
 hi link SpecialComment  Special
 hi link Debug           Special
 hi link RubyOperator    Operator
-hi link RubySymbol            Identifier 
-hi link rubyClass             Preproc 
+hi link rubyClass             Keyword 
 hi link rubyModule            PreProc 
 hi link rubyKeyword           Keyword 
 hi link rubyOperator          Operator
-hi link rubyIdentifier        Operator 
+hi link rubyIdentifier        Identifier
 hi link rubyClassVariable     Keyword 
-hi link rubyControl           Operator
-hi link rubyConstant          Constant 
-"hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=98          ctermbg=NONE      cterm=NONE
-"hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=green          ctermbg=NONE      cterm=NONE
-"hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
-"hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
+
+
+hi rubyRegexp                  guifg=#B18A3D      guibg=NONE      gui=NONE      ctermfg=98          ctermbg=NONE      cterm=NONE
+hi rubyRegexpDelimiter         guifg=#FF8000      guibg=NONE      gui=NONE      ctermfg=green          ctermbg=NONE      cterm=NONE
+hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      ctermfg=cyan           ctermbg=NONE      cterm=NONE
+hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
+hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=33           ctermbg=NONE      cterm=NONE  "and break, etc
 "hi rubyInstanceVariable        ctermfg=37
 "hi rubyGlobalVariable          ctermfg=93
 "hi rubyClassVariable           ctermfg=175
@@ -178,8 +180,8 @@ hi link rubyConstant          Constant
 "rubyCurlyBlock  { , , }
 
 " special for puppet
-hi puppetDefName              ctermfg=191
-hi puppetString               ctermfg=82
+hi puppetDefName              ctermfg=203
+hi puppetString               ctermfg=97
 hi puppetBoolean              ctermfg=green
 
 
