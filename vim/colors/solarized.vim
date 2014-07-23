@@ -311,7 +311,7 @@ elseif g:solarized_termcolors == 256
     let s:yellow      = "136"
     let s:orange      = "166"
     let s:red         = "124"
-    let s:magenta     = "125"
+    let s:magenta     = "198"
     let s:violet      = "61"
     let s:blue        = "33"
     let s:cyan        = "37"
