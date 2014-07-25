@@ -16,7 +16,7 @@ autocmd! bufwritepost .vimrc source %
 "ctrl-p
 let g:ctrlp_map = '<c-m>'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
+let g:rehash256 = 1
 "set the colorscheme
 " quick save
 let mapleader = ","
@@ -27,8 +27,8 @@ let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
+colo solarized
 
-colo molokai 
 
 "colo kolor
 " tab stuff
@@ -103,5 +103,4 @@ noremap <Leader>p :lprev <CR>
 let g:syntastic_always_populate_loc_list = 1
 execute pathogen#infect()
 filetype plugin indent on
-
 
