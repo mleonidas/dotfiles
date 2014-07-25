@@ -28,7 +28,7 @@ let g:solarized_termtrans =  1
 let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
 
-colo solarized 
+colo molokai 
 
 "colo kolor
 " tab stuff
