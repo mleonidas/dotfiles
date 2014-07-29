@@ -1,14 +1,14 @@
 " -file setup
-:syntax on
-:set ignorecase
-:set number
-:set mouse=
-:set hlsearch
-:set background=dark
-:set incsearch
-:set encoding=utf-8
-:set fileencoding=utf-8
-:set fileformat=unix
+syntax on
+set ignorecase
+set number
+set mouse=
+set hlsearch
+set background=dark
+set incsearch
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformat=unix
 
 set t_Co=256
 " Auto reload conf
@@ -32,12 +32,12 @@ colo solarized
 
 "colo kolor
 " tab stuff
-:set autoindent
-:set expandtab
-:set smarttab
-:set tabstop=2
-:set softtabstop=2
-:set shiftwidth=2
+set autoindent
+set expandtab
+set smarttab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 
 "set navigation for splits
@@ -58,6 +58,7 @@ nnoremap <C-t>     :tabnew<CR>
 " tab next/prev with shift h and shift l
 nnoremap <S-h> gT
 nnoremap <S-l> gt
+
 " jump between last opened buffer with Ctrl+E (:b# and :e# do same thing)
 :nmap <C-e> :e#<CR>
 
