@@ -5,8 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="steeef"
-#ZSH_THEME="pygmalion"
+ZSH_THEME="pygmalion"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -83,6 +82,19 @@ function print_colors() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+haste(){
+  url="http://hastebin.com"
+  d=`$@`
+  [ $? != 0 ] && return 1
+  r="$(curl -s -d "$d" "$url/documents")"
+  # if all cool, generate a link from the json response
+  #[ $? = 0 ] && echo "$r"|awk -F'\\W+' "{print \"$url/\"\$3}"  # apparently awk on OSX is too crufty to support regex in -F
+  [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
+}
+
+
+
 export LSCOLORS=exfxcxdxcxegedabagacad
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source  "$HOME/.rvm/scripts/rvm"
 alias ops-mleone='ssh -A ops-mleone-b888b0c8.ewr01.tumblr.net'
