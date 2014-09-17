@@ -10,27 +10,25 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileformat=unix
 
-set t_Co=256
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
-"ctrl-p
-let g:ctrlp_map = '<c-m>'
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:rehash256 = 1
-"set the colorscheme
+
 " quick save
 let mapleader = ","
 noremap <Leader>s :update<CR>
+
+
 "soloarized shit
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
-colo  flatcolor 
+
+" colorscheme
+colo molokai 
 
 
-"colo kolor
 " tab stuff
 set autoindent
 set expandtab
@@ -55,6 +53,7 @@ nnoremap <C-t>     :tabnew<CR>
 " go up and down one row, not one line (useful for wrapped lines)
 :nmap j gj
 :nmap k gk
+
 " tab next/prev with shift h and shift l
 nnoremap <S-h> gT
 nnoremap <S-l> gt
@@ -94,14 +93,15 @@ let g:airline#extensions#tabline#enabled = 1
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
 
-let g:rehash256 = 1
+
+
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
-" 80 character line
-"
+
+
 if exists('+colorcolumn')
   set colorcolumn=80
 else

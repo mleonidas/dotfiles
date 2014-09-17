@@ -96,7 +96,7 @@ else
 
   let s:text = s:clouds
   if g:flatcolor_bluebg == 1
-    let s:text_bg = ['#2c3e50', 8]
+    let s:text_bg = ['black', 8]
     let s:cursorline = ['#34495e', 0]
   else
     let s:text_bg = ['#1C1C1C', 8]
