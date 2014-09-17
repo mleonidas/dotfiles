@@ -85,7 +85,7 @@ function print_colors() {
 
 haste(){
   url="http://hastebin.com"
-  d=`$@`
+  d=` cat $@`
   [ $? != 0 ] && return 1
   r="$(curl -s -d "$d" "$url/documents")"
   # if all cool, generate a link from the json response
@@ -93,7 +93,8 @@ haste(){
   [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
 }
 
-
+export puppet1="puppet-51542d13.ewr01.tumblr.net"
+export puppet2="puppet-c30366d7.ewr01.tumblr.net"
 
 export LSCOLORS=exfxcxdxcxegedabagacad
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source  "$HOME/.rvm/scripts/rvm"

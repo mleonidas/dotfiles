@@ -170,8 +170,8 @@ if &t_Co > 255
    hi Function        ctermfg=118
    hi Identifier      ctermfg=208               cterm=none
    hi Ignore          ctermfg=244 ctermbg=232
-   hi IncSearch       ctermfg=193 ctermbg=161
-   hi RubyPreProc     ctermfg=33
+   hi IncSearch       ctermfg=193 ctermbg=16
+
    hi keyword         ctermfg=161               cterm=bold
    hi Label           ctermfg=229               cterm=none
    hi Macro           ctermfg=193
@@ -233,14 +233,14 @@ if &t_Co > 255
    hi SpecialKey      ctermfg=59
 
    if exists("g:rehash256") && g:rehash256 == 1
-       hi Normal       ctermfg=253 ctermbg=232
+       hi Normal       ctermfg=252 ctermbg=234
        hi CursorLine               ctermbg=236   cterm=none
        hi CursorLineNr ctermfg=208               cterm=none
 
        hi Boolean         ctermfg=141
        hi Character       ctermfg=222
        hi Number          ctermfg=141
-       hi String          ctermfg=green
+       hi String          ctermfg=222
        hi Conditional     ctermfg=197               cterm=bold
        hi Constant        ctermfg=141               cterm=bold
 
@@ -270,9 +270,6 @@ if &t_Co > 255
        hi SpecialKey      ctermfg=239
    endif
 end
-
-" puppet stuff
-hi puppetString ctermbg=green
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
