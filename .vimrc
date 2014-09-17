@@ -27,7 +27,7 @@ let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
-colo solarized 
+colo molokai 
 
 
 "colo kolor
@@ -100,7 +100,13 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
-
+" 80 character line
+"
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
+endif
 
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
