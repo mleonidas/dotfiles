@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/mleone/.vim'
 let g:netrw_dirhist_2='/Users/mleone'
 let g:netrw_dirhist_3='/Users/mleone/.vim'
 let g:netrw_dirhist_4='/Users/mleone/hardware_specs'
 let g:netrw_dirhist_5='/Users/mleone/.rvm/gems/ruby-1.9.3-p545/gems/puppet-lint-0.3.2/lib/puppet-lint/lexer'
+let g:netrw_dirhist_6='/home/mleone/.vim'
+let g:netrw_dirhist_7='/home/mleone/repos/dotfiles-mike/vim/colors'
+let g:netrw_dirhist_8='/home/mleone/.vim'

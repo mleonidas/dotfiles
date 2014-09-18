@@ -784,7 +784,8 @@ exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
 "}}}
 " ruby highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! rubyDefine"     . s:fmt_bold  .s:fg_green   .s:bg_none
+exe "hi! rubyDefine"     . s:fmt_bold  .s:fg_red   .s:bg_none
+exe "hi! rubyKeyword" .s:fmt_bold .s:fg_red
 "rubyInclude
 "rubySharpBang
 "rubyAccess
@@ -795,7 +796,9 @@ exe "hi! rubyDefine"     . s:fmt_bold  .s:fg_green   .s:bg_none
 "rubyRepeatModifier
 "hi! link rubyArrayDelimiter    Special  " [ , , ]
 "rubyCurlyBlock  { , , }
-
+exe "hi! rubyClass"     . s:fmt_bold  .s:fg_magenta
+exe "hi! rubyModule"    . s:fmt_bold  .s:fg_violet
+exe "hi! rubyInstanceVariable" .s:fmt_bold .s:fg_violet
 "hi! link rubyClass             Keyword
 "hi! link rubyModule            Keyword
 "hi! link rubyKeyword           Keyword

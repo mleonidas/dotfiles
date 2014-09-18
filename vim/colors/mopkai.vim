@@ -129,9 +129,9 @@ else
     " color terminal
     " :help hi-normal-cterm
     if get(g:, 'mopkai_is_not_set_normal_ctermbg', 0)
-        hi Normal          ctermfg=253
+        hi Normal          ctermfg=253 ctermbg=black
     else
-        hi Normal          ctermfg=253 ctermbg=233
+        hi Normal          ctermfg=253 ctermbg=black
     endif
 
     hi Comment         ctermfg=103

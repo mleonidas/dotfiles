@@ -17,7 +17,7 @@ autocmd! bufwritepost .vimrc source %
 let mapleader = ","
 noremap <Leader>s :update<CR>
 
-
+set t_Co=256
 "soloarized shit
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -26,7 +26,7 @@ let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
 
 " colorscheme
-colo molokai 
+colo solarized 
 
 
 " tab stuff
