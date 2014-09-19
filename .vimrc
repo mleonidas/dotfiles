@@ -29,6 +29,10 @@ let g:solarized_termcolors = &t_Co
 colo solarized
 
 
+"number sutff
+"
+set relativenumber
+
 " tab stuff
 set autoindent
 set expandtab
