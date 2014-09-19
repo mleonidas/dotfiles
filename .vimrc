@@ -26,7 +26,7 @@ set t_Co=256
 let g:solarized_termcolors = &t_Co
 
 " colorscheme
-colo solarized 
+colo solarized
 
 
 " tab stuff
@@ -69,14 +69,21 @@ au BufRead *.md set filetype=markdown
 au BufRead *.scala set filetype=scala
 au BufRead *.pp set filetype=puppet
 au BufRead *.rb set filetype=ruby
+
+
+
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
+
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
 let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+
 if &term == "screen"
   set t_ts=k
   set t_fs=\
 endif
+
 if &term == "screen" || &term == "xterm" || &term == "xterm-color" || &term == "xterm-256color"
   set title
 endif
