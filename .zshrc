@@ -83,7 +83,6 @@ export LSCOLORS=exfxcxdxcxegedabagacad
 
 
 # setup some useful aliases for work
-alias ssh=color-ssh
 alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net'
 alias puppet1='ssh puppet-51542d13.ewr01.tumblr.net'
 alias pp='cd ~/repos/tumblr/operations/pdeploy/'
@@ -136,6 +135,5 @@ haste(){
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
 }
 
-  compdef _ssh color-ssh=ssh
 
 
