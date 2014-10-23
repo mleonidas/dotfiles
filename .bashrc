@@ -23,6 +23,7 @@ export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/s
 alias vi=vim
 #alias ls='ls --color=auto'
 # ops box vm
+alias gss='git status -sb'
 alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net' 
 alias ops='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
 alias lös=ls
@@ -48,6 +49,8 @@ alias '....'='cd ../..'
 alias .='source'
 alias isomount='sudo mount -t iso9660 -o loop'
 #alias perlshell='perl -wn -e ' print "perl> " ; eval($_);'''
+alias pp='cd ~/repos/tumblr/operations/pdeploy'
+alias pup='cd ~/repos/tumblr/puppet/'
 alias ssh='ssh -q'
 alias scp='scp -q'
 alias p4sync="p4 sync ~/p4_work/unix/...#head"
