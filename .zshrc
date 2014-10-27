@@ -83,7 +83,7 @@ export LSCOLORS=exfxcxdxcxegedabagacad
 
 
 # setup some useful aliases for work
-alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net'
+alias ops-mleone='ssh ops-mleone-c705845c.ewr01.tumblr.net'
 alias puppet1='ssh puppet-51542d13.ewr01.tumblr.net'
 alias pp='cd ~/repos/tumblr/operations/pdeploy/'
 alias puppet2='ssh puppet-c30366d7.ewr01.tumblr.net'

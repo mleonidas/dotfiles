@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/mleone/repos/tumblr/operations/pdeploy'
+let g:netrw_dirhist_2='/Users/mleone/repos/personal/prov-dash/views'
+let g:netrw_dirhist_3='/Users/mleone/repos/personal/prov-dash/controllers'
+let g:netrw_dirhist_4='/Users/mleone/repos/personal/prov-dash/views'
