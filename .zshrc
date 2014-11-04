@@ -125,7 +125,7 @@ function print_colors() {
 }
 
 # quick upload to hastebin
-
+alias gitc='git commit -m'
 alias gitp='git push'
 alias gita='git add .'
 haste(){
