@@ -125,6 +125,9 @@ function print_colors() {
 }
 
 # quick upload to hastebin
+
+alias gitp='git push'
+alias gita='git add .'
 haste(){
   url="http://hastebin.com"
   d=` cat $@`
