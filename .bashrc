@@ -31,6 +31,8 @@ alias exit='clear; exit'
 alias ll='ls -la'
 alias la='ls -la'
 alias lr='ls -laR'
+alias puppet1='puppet-51542d13.ewr01.tumblr.net'
+alias puppet2='puppet-c30366d7.ewr01.tumblr.net'
 if [[ `uname` = 'Darwin' ]]; then
   alias ls='ls -G'
 else
@@ -169,4 +171,7 @@ extract () {
 		echo "'$1' is not a valid archive type"
 	fi
 }
+
+# set dircolors 
+#eval `dircolors ~/dircolors/dircolors-solarized/dircolors.ansi-dark`
 

@@ -229,7 +229,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "solarized"
+let colors_name = "real-solarized"
 
 "}}}
 " GUI & CSApprox hexadecimal palettes"{{{
@@ -280,7 +280,6 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
     let s:blue        = "#0087ff"
     let s:cyan        = "#00afaf"
     let s:green       = "#5f8700"
-    let s:purple      = "128"
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:vmode       = "cterm"
     let s:base03      = "8"
@@ -291,34 +290,32 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:base1       = "14"
     let s:base2       = "7"
     let s:base3       = "15"
-    let s:yellow      = "11"
+    let s:yellow      = "3"
     let s:orange      = "9"
-    let s:red         = "39"
+    let s:red         = "1"
     let s:magenta     = "5"
     let s:violet      = "13"
     let s:blue        = "4"
     let s:cyan        = "6"
     let s:green       = "2"
-    let s:purple      = "128"
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234"
     let s:base02      = "235"
     let s:base01      = "239"
     let s:base00      = "240"
-    let s:base0       = "250"
-    let s:base1       = "128"
+    let s:base0       = "244"
+    let s:base1       = "245"
     let s:base2       = "187"
     let s:base3       = "230"
-    let s:yellow      = "226"
-    let s:orange      = "208"
+    let s:yellow      = "136"
+    let s:orange      = "166"
     let s:red         = "124"
-    let s:magenta     = "198"
+    let s:magenta     = "125"
     let s:violet      = "61"
     let s:blue        = "33"
     let s:cyan        = "37"
-    let s:green       = "46"
-    let s:purple      = "128"
+    let s:green       = "64"
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -348,7 +345,7 @@ else
     let s:base3       = "White"         " 7*
     let s:yellow      = "DarkYellow"    " 3
     let s:orange      = "LightRed"      " 1*
-    let s:red         = "LightYellow"       " 1
+    let s:red         = "DarkRed"       " 1
     let s:magenta     = "DarkMagenta"   " 5
     let s:violet      = "LightMagenta"  " 5*
     let s:blue        = "DarkBlue"      " 4
@@ -371,11 +368,11 @@ endif
 "}}}
 " Background value based on termtrans setting "{{{
 " ---------------------------------------------------------------------
-"if (has("gui_running") || g:solarized_termtrans == 0)
-"    let s:back        = s:base03
-"else
-    let s:back        = "NONE"
-"endif
+if (has("gui_running") || g:solarized_termtrans == 0)
+    let s:back        = s:base03
+else
+    let s:back        = "NONE" 
+endif
 "}}}
 " Alternate light scheme "{{{
 " ---------------------------------------------------------------------
@@ -455,7 +452,7 @@ exe "let s:bg_magenta   = ' ".s:vmode."bg=".s:magenta."'"
 exe "let s:bg_violet    = ' ".s:vmode."bg=".s:violet ."'"
 exe "let s:bg_blue      = ' ".s:vmode."bg=".s:blue   ."'"
 exe "let s:bg_cyan      = ' ".s:vmode."bg=".s:cyan   ."'"
-exe "let s:fg_purple    = ' ".s:vmode."bg=".s:purple ."'"
+
 exe "let s:fg_none      = ' ".s:vmode."fg=".s:none   ."'"
 exe "let s:fg_back      = ' ".s:vmode."fg=".s:back   ."'"
 exe "let s:fg_base03    = ' ".s:vmode."fg=".s:base03 ."'"
@@ -539,12 +536,12 @@ endif
 " note that link syntax to avoid duplicate configuration doesn't work with the
 " exe compiled formats
 
-exe "hi! Normal"         .s:fmt_none   .s:fg_base0 .s:bg_back
+exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_none
 
-exe "hi! Comment"        .s:fmt_ital   .s:fg_base1 .s:bg_none
+exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
 "       *Comment         any comment
-exe "hi! String"         .s:fmt_none   .s:fg_cyan     .s:bg_none
-exe "hi! Constant"       .s:fmt_none   .s:fg_magenta   .s:bg_none
+
+exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
 "       *Constant        any constant
 "        String          a string constant: "this is a string"
 "        Character       a character constant: 'c', '\n'
@@ -621,7 +618,7 @@ exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
 exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! LineNr"         .s:fmt_none   .s:fg_green .s:bg_base02
+exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
     exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
@@ -787,8 +784,7 @@ exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
 "}}}
 " ruby highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! rubyDefine"     . s:fmt_bold  .s:fg_base01  .s:bg_none
-exe "hi! rubyKeyword" .s:fmt_bold .s:fg_red
+exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
 "rubyInclude
 "rubySharpBang
 "rubyAccess
@@ -799,9 +795,7 @@ exe "hi! rubyKeyword" .s:fmt_bold .s:fg_red
 "rubyRepeatModifier
 "hi! link rubyArrayDelimiter    Special  " [ , , ]
 "rubyCurlyBlock  { , , }
-exe "hi! rubyClass"     . s:fmt_bold  .s:fg_magenta
-exe "hi! rubyModule"    . s:fmt_bold  .s:fg_violet
-exe "hi! rubyInstanceVariable" .s:fmt_bold .s:fg_violet
+
 "hi! link rubyClass             Keyword
 "hi! link rubyModule            Keyword
 "hi! link rubyKeyword           Keyword
