@@ -35,8 +35,8 @@ alias 1-full move screenOriginX;screenOriginY screenSizeX;screenSizeY 1
 # oneDisplayLayout - Places iTerm in the left half and Firefox in the right half.
 layout oneDisplayLayout 'iTerm':MAIN_FIRST ${lefthalf}
 layout oneDisplayLayout 'Google Chrome':MAIN_FIRST ${righthalf}
-layout oneDisplayLayout 'Safari':REPEAT ${bottomright}
-
+layout oneDisplayLayout 'Safari':MAIN_FIRST ${bottomright}
+layout oneDisplayLayout 'Finder':REPEAT ${bottomleft}
 
 
 # Location - Sets the window to the specified location.
@@ -66,3 +66,10 @@ bind l:ctrl layout oneDisplayLayout
 # window hints
 #
 bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN
+
+
+
+# some focus bindings
+#
+bind b:alt focus 'Google Chrome'
+bind t:alt focus 'iTerm'
