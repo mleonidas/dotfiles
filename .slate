@@ -23,9 +23,8 @@ alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
 alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
 alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
 alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
-
-
-
+alias leftmost move screenOriginX;screenOriginY screenSizeX*0.6;screenSizeY
+alias rightmost move screenOriginX+screenSizeX*0.4;screenOriginY  screenSizeX*0.6;screenSizeY
 # Layout's directive - layout name 'app name':OPTIONS operations
 
 # Creates the aliases needed for this example
@@ -33,8 +32,8 @@ alias 0-full move screenOriginX;screenOriginY screenSizeX;screenSizeY 0
 alias 1-full move screenOriginX;screenOriginY screenSizeX;screenSizeY 1
 
 # oneDisplayLayout - Places iTerm in the left half and Firefox in the right half.
-layout oneDisplayLayout 'iTerm':MAIN_FIRST ${lefthalf}
-layout oneDisplayLayout 'Google Chrome':MAIN_FIRST ${righthalf}
+layout oneDisplayLayout 'iTerm':MAIN_FIRST ${leftmost}
+layout oneDisplayLayout 'Google Chrome':MAIN_FIRST ${rightmost}
 layout oneDisplayLayout 'Safari':MAIN_FIRST ${bottomright}
 layout oneDisplayLayout 'Finder':REPEAT ${bottomleft}
 
@@ -51,12 +50,14 @@ bind y:shift;cmd ${topleft}
 bind l:shift;cmd ${righthalf}
 bind .:shift;cmd ${bottomright}
 bind p:shift;cmd ${topright}
- 
+bind pad0:shift;cmd ${leftmost}
 # Resize - Resizes the window in the specified direction
 bind l:alt resize +1% +0
+bind h:alt resize -1% +0
 
 # Nudge - Nudges the window in the specified direction
 bind l:shift;alt nudge +1% +0
+bind e:shift;alt nudge -1% +0
 
 # Focus - Brings the focus to the window in the specified position
 bind l:shift;ctrl focus right
@@ -64,12 +65,10 @@ bind l:shift;ctrl focus right
 bind l:ctrl layout oneDisplayLayout
 
 # window hints
-#
+
 bind e:cmd hint ASDFGHJKLQWERTYUIOPCVBN
 
-
-
 # some focus bindings
-#
+
 bind b:alt focus 'Google Chrome'
 bind t:alt focus 'iTerm'
