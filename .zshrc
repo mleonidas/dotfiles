@@ -90,7 +90,7 @@ alias puppet2='ssh puppet-c30366d7.ewr01.tumblr.net'
 alias ploy='cd /home/mleone/repos/tumblr/operations/pdeploy'
 alias pup='cd /home/mleone/repos/tumblr/puppet/'
 alias docker-dev='ssh -A ops-mleone-b2b93a6e.ewr01.tumblr.net'
-
+alias gitpp='git pull --prune --all'
 # setup some useful vars for puppet at work
 export puppet1="puppet-51542d13.ewr01.tumblr.net"
 export puppet2="puppet-c30366d7.ewr01.tumblr.net"
