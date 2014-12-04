@@ -141,7 +141,7 @@ RESET=$(tput sgr0)
 
 # dont forget, when echoing colors, wrap non-printing chars in \[\] so bash doesnt count them to the line length
 #$host_color="$(random_color $HOSTNAME)"
-  export PS1='\[${RESET}${BASE02}\][\[${BASE0BASE01}\]\t\[${BASE02}\]] [\[${YELLOW}\]\u\[${CYAN}\]@\[${MAGENTA}\]\h\[${BASE02}\]] \[${BASE00}\]($(for r in ${PIPESTATUS[*]} ; do [ $r -eq 0 ] && echo -n "\[$BASE01\] $r" || echo -n " \[${RED}\]${r}\[${RESET}\]" ; done)\[${BASE00}\] ) \[${CYAN}\]\w$(is_git_repo && echo -n " \[${GREEN}\]$(git_branch)\[${RESET}\]" && is_git_dirty && echo -n "\[${RED}\]*\[${RESET}\]")\n\[${BASE00}\]-> \[$RED\]\$ \[$RESET\]'
+  export PS1='\[${RESET}${BASE02}\][\[${BASE0BASE01}\]\t\[${BASE02}\]] [\[${YELLOW}\]\u\[${CYAN}\]@\[${MAGENTA}\]\h\[${BASE02}\]] \[${BASE00}\]($(for r in ${PIPESTATUS[*]} ; do [ $r -eq 0 ] && echo -n "\[$BASE01\] $r" || echo -n " \[${RED}\]${r}\[${RESET}\]" ; done)\[${BASE00}\] ) \[${CYAN}\]|:\w$(is_git_repo && echo -n " \[${GREEN}\]$(git_branch)\[${RESET}\]" && is_git_dirty && echo -n "\[${RED}\]*\[${RESET}\]")\n\[${BASE00}\]-> \[$RED\]\$ \[$RESET\]'
 if [[ `uname` == "Darwin" ]]; then
   export LSCOLORS=exfxcxdxcxegedabagacad
 else
