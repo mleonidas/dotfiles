@@ -25,8 +25,8 @@ rescue LoadError
   options = {
   :collins_config_file => '/var/db/collins.yaml'
   }
-  collins = YAML.load_file(options[:collins_config_file]).reduce({}){|memo,(k,v)|memo[k.to_sym] = v; memo    }
-  collins = collins[:collins] if collins.key? :collins
+  config = YAML.load_file(options[:collins_config_file]).reduce({}){|memo,(k,v)|memo[k.to_sym] = v; memo    }
+  config = config[:collins] if config.key? :collins
   c = Collins::Client.new(collins)
 end
 

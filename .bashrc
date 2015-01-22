@@ -175,3 +175,5 @@ extract () {
 # set dircolors 
 #eval `dircolors ~/dircolors/dircolors-solarized/dircolors.ansi-dark`
 
+mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
+mock_sl () { mock -r SL-${1}-x86_64 $2 ;}

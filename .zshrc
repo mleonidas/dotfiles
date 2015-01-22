@@ -83,6 +83,7 @@ export LSCOLORS=exfxcxdxcxegedabagacad
 
 
 # setup some useful aliases for work
+alias ssh='ssh -A'
 alias ops-mleone='ssh ops-mleone-1ffb2ce9.ewr01.tumblr.net'
 alias puppet1='ssh puppet-51542d13.ewr01.tumblr.net'
 alias pp='cd ~/repos/tumblr/operations/pdeploy/'
@@ -138,5 +139,18 @@ haste(){
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
 }
 
+# Predictable SSH authentication socket location.
+fixssh() {
+  for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+    if (tmux show-environment | grep "^${key}" > /dev/null); then
+      value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+      export ${key}="${value}"
+    fi
+  done
+}
 
 
+
+
+mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
+mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
