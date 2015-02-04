@@ -26,8 +26,7 @@ set t_Co=256
 let g:solarized_termcolors = &t_Co
 
 " colorscheme
-"colo mrkn256 
-colo solarized 
+colo solarized
 
 
 "number sutff
