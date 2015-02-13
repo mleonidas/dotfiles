@@ -72,7 +72,9 @@ autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]
 au BufRead *.md set filetype=markdown
 au BufRead *.scala set filetype=scala
 au BufRead *.pp set filetype=puppet
-au BufRead *.rb set filetype=ruby
+au BufRead *.rb set filetype=ruby autoindent smarttab tabstop=2 softtabstop=2 shiftwidth=2
+au BufRead *.go set filetype=go autoindent smarttab tabstop=4 softtabstop=4 shiftwidth=4
+au BufRead *.sh set filetype=go autoindent smarttab tabstop=4 softtabstop=4 shiftwidth=4
 au BufRead *.haml set filetype=haml
 
 

@@ -1,6 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/mleone/repos/tumblr/operations/pdeploy'
 let g:netrw_dirhist_2='/Users/mleone/repos/personal/prov-dash/views'
 let g:netrw_dirhist_3='/Users/mleone/repos/personal/prov-dash/controllers'
 let g:netrw_dirhist_4='/Users/mleone/repos/personal/prov-dash/views'
+let g:netrw_dirhist_5='/Users/mleone/repos/tumblr/operations/pdeploy/lib/pdeploy/cli'
+let g:netrw_dirhist_6='/Users/mleone/.rvm/gems/ruby-1.9.3-p545/gems/puppet-3.6.2/lib/puppet/provider'
+let g:netrw_dirhist_7='/Users/mleone/repos/tumblr/collins-cli/bin'
+let g:netrw_dirhist_8='/Users/mleone/go/collins/collins'
