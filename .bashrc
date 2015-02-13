@@ -16,7 +16,7 @@ fi
 
 set -o vi
 export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:~/.rvm/bin:/opt/scala-2.11.1/bin/:/opt/activator-1.2.3-minimal:/opt/play-2.0/
-
+export TERM=xterm-256color
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -94,7 +94,7 @@ random_color(){
     r=$((0x${h%% *} ** 2))
   fi
   # seems to give a better distribution if 125 is repeated
-  color_codes=(125 136 166 160 125 61 33 37 64)
+  #color_codes=(125 136 166 160 125 61 33 37 64)
   i=$(($r % ${#color_codes[@]}))
   echo -n "$(tput setaf ${color_codes[$i]})"
 }
@@ -140,8 +140,8 @@ BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
 # dont forget, when echoing colors, wrap non-printing chars in \[\] so bash doesnt count them to the line length
-host_color="$(random_color $HOSTNAME)"
-export PS1='\[${RESET}${BASE02}\][\[${BASE0BASE01}\]\t\[${BASE02}\]] [\[${RED}\]\u\[${BASE01}\]@\[${host_color}\]\h\[${BASE02}\]] \[${BASE00}\]($(for r in ${PIPESTATUS[*]} ; do [ $r -eq 0 ] && echo -n "\[$BASE01\] $r" || echo -n " \[${RED}\]${r}\[${RESET}\]" ; done)\[${BASE00}\] ) \[${ORANGE}\]\w$(is_git_repo && echo -n " \[${GREEN}\]$(git_branch)\[${RESET}\]" && is_git_dirty && echo -n "\[${RED}\]*\[${RESET}\]")\n\[${BASE00}\]-> \[$(random_color)\]\$ \[$RESET\]'
+#$host_color="$(random_color $HOSTNAME)"
+  export PS1='\[${RESET}${BASE02}\][\[${BASE0BASE01}\]\t\[${BASE02}\]] [\[${YELLOW}\]\u\[${CYAN}\]@\[${MAGENTA}\]\h\[${BASE02}\]] \[${BASE00}\]($(for r in ${PIPESTATUS[*]} ; do [ $r -eq 0 ] && echo -n "\[$BASE01\] $r" || echo -n " \[${RED}\]${r}\[${RESET}\]" ; done)\[${BASE00}\] ) \[${CYAN}\]|:\w$(is_git_repo && echo -n " \[${GREEN}\]$(git_branch)\[${RESET}\]" && is_git_dirty && echo -n "\[${RED}\]*\[${RESET}\]")\n\[${BASE00}\]-> \[$RED\]\$ \[$RESET\]'
 if [[ `uname` == "Darwin" ]]; then
   export LSCOLORS=exfxcxdxcxegedabagacad
 else
@@ -175,3 +175,5 @@ extract () {
 # set dircolors 
 #eval `dircolors ~/dircolors/dircolors-solarized/dircolors.ansi-dark`
 
+mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
+mock_sl () { mock -r SL-${1}-x86_64 $2 ;}

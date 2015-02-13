@@ -319,6 +319,8 @@ elseif g:solarized_termcolors == 256
     let s:cyan        = "37"
     let s:green       = "46"
     let s:purple      = "128"
+    let s:redred      = "197"
+    let s:greengreen  = "47"
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -357,7 +359,7 @@ else
 
 endif
 "}}}
-" Formatting options and null values for passthrough effect "{{{
+" Formattijng options and null values for passthrough effect "{{{
 " ---------------------------------------------------------------------
     let s:none            = "NONE"
     let s:none            = "NONE"
@@ -474,6 +476,8 @@ exe "let s:fg_magenta   = ' ".s:vmode."fg=".s:magenta."'"
 exe "let s:fg_violet    = ' ".s:vmode."fg=".s:violet ."'"
 exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue   ."'"
 exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
+exe "let s:fg_greengreen      = ' ".s:vmode."fg=".s:greengreen   ."'"
+exe "let s:fg_redred      = ' ".s:vmode."fg=".s:redred   ."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
 exe "let s:fmt_bold     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
@@ -543,7 +547,7 @@ exe "hi! Normal"         .s:fmt_none   .s:fg_base0 .s:bg_back
 
 exe "hi! Comment"        .s:fmt_ital   .s:fg_base1 .s:bg_none
 "       *Comment         any comment
-exe "hi! String"         .s:fmt_none   .s:fg_cyan     .s:bg_none
+exe "hi! String"         .s:fmt_none   .s:fg_greengreen     .s:bg_none
 exe "hi! Constant"       .s:fmt_none   .s:fg_magenta   .s:bg_none
 "       *Constant        any constant
 "        String          a string constant: "this is a string"
@@ -556,7 +560,7 @@ exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
-exe "hi! Statement"      .s:fmt_none   .s:fg_green  .s:bg_none
+exe "hi! Statement"      .s:fmt_none   .s:fg_green .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
 "        Repeat          for, do, while, etc.
@@ -565,7 +569,7 @@ exe "hi! Statement"      .s:fmt_none   .s:fg_green  .s:bg_none
 "        Keyword         any other keyword
 "        Exception       try, catch, throw
 
-exe "hi! PreProc"        .s:fmt_none   .s:fg_orange .s:bg_none
+exe "hi! PreProc"        .s:fmt_none   .s:fg_blue .s:bg_none
 "       *PreProc         generic Preprocessor
 "        Include         preprocessor #include
 "        Define          preprocessor #define
@@ -795,7 +799,7 @@ exe "hi! rubyKeyword" .s:fmt_bold .s:fg_red
 "rubyPredefinedVariable
 "rubyBoolean
 "rubyClassVariable
-"rubyBeginEnd
+exe "hi! rubyBeginEnd" .s:fmt_bold s:fg_red
 "rubyRepeatModifier
 "hi! link rubyArrayDelimiter    Special  " [ , , ]
 "rubyCurlyBlock  { , , }
