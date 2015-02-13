@@ -547,7 +547,7 @@ exe "hi! Normal"         .s:fmt_none   .s:fg_base0 .s:bg_back
 
 exe "hi! Comment"        .s:fmt_ital   .s:fg_base1 .s:bg_none
 "       *Comment         any comment
-exe "hi! String"         .s:fmt_none   .s:fg_greengreen     .s:bg_none
+exe "hi! String"         .s:fmt_none   .s:fg_green     .s:bg_none
 exe "hi! Constant"       .s:fmt_none   .s:fg_magenta   .s:bg_none
 "       *Constant        any constant
 "        String          a string constant: "this is a string"
@@ -560,7 +560,7 @@ exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
-exe "hi! Statement"      .s:fmt_none   .s:fg_green .s:bg_none
+exe "hi! Statement"      .s:fmt_none   .s:fg_orange .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
 "        Repeat          for, do, while, etc.
@@ -800,6 +800,7 @@ exe "hi! rubyKeyword" .s:fmt_bold .s:fg_red
 "rubyBoolean
 "rubyClassVariable
 exe "hi! rubyBeginEnd" .s:fmt_bold s:fg_red
+exe "hi! rubyBoolean" .s:fmt_bold s:fg_orange
 "rubyRepeatModifier
 "hi! link rubyArrayDelimiter    Special  " [ , , ]
 "rubyCurlyBlock  { , , }

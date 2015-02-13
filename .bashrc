@@ -17,7 +17,7 @@ fi
 set -o vi
 export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:~/.rvm/bin:/opt/scala-2.11.1/bin/:/opt/activator-1.2.3-minimal:/opt/play-2.0/
 export TERM=xterm-256color
-
+export PATH=$PATH:/usr/local/go/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 alias vi=vim
