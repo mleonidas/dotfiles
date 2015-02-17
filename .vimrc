@@ -26,7 +26,7 @@ set t_Co=256
 let g:solarized_termcolors = &t_Co
 
 " colorscheme
-colo solarized
+colo solarized 
 
 
 "number sutff
@@ -71,11 +71,15 @@ autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]
 " assorted automatic syntax loading. filetype -> syntax
 au BufRead *.md set filetype=markdown
 au BufRead *.scala set filetype=scala
-au BufRead *.pp set filetype=puppet
-au BufRead *.rb set filetype=ruby autoindent smarttab tabstop=2 softtabstop=2 shiftwidth=2
-au BufRead *.go set filetype=go autoindent smarttab tabstop=4 softtabstop=4 shiftwidth=4
-au BufRead *.sh set filetype=go autoindent smarttab tabstop=4 softtabstop=4 shiftwidth=4
+au BufRead *.pp set filetype=puppet 
+au BufRead *.rb set filetype=ruby 
+au BufRead *.go set filetype=go 
+au BufRead *.sh set filetype=sh
 au BufRead *.haml set filetype=haml
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
+autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
+autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
+autocmd Filetype go setlocal ts=4 sts=4 sw=4 autoindent 
 
 
 
