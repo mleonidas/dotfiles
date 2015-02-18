@@ -141,6 +141,8 @@ haste(){
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
 }
 
+
+alias pptesting='ssh 172.16.124.206'
 # Predictable SSH authentication socket location.
 fixssh() {
   for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
@@ -153,6 +155,6 @@ fixssh() {
 
 
 
-
+source ~/zsh-syntax-highlighting.zsh
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
