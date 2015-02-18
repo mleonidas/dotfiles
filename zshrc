@@ -155,6 +155,6 @@ fixssh() {
 
 
 
-source ~/zsh-syntax-highlighting.zsh
+source ~/.zsh-syntax-highlighting.zsh
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}

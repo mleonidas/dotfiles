@@ -1,26 +1,48 @@
+" -file setup
+syntax on
+set ignorecase
+set number
+set mouse=
+set hlsearch
+set background=dark
+set incsearch
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformat=unix
 
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
-" set syntax highlighting on
-syntax on
-" always show current position
-set ruler
 
-set background=dark
-set viminfo='20,\"500
-set tabstop=2 shiftwidth=2 expandtab
-set nohlsearch
-set ignorecase smartcase
-autocmd FileType php set smartindent
-autocmd FileType javascript set smartindent
-autocmd FileType python set smartindent
-autocmd FileType c set smartindent noexpandtab
-autocmd FileType ruby set smartindent noexpandtab
-set encoding=utf8
+" quick save
+let mapleader = ","
+noremap <Leader>s :update<CR>
 
-" set the leaderkey
-let mapleader=","
-" set navigation for splits
+set t_Co=256
+"soloarized shit
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"let g:solarized_termtrans =  1
+"let g:solarized_termcolors=256
+let g:solarized_termcolors = &t_Co
+
+" colorscheme
+colo solarized 
+
+
+"number sutff
+"
+set relativenumber
+
+" tab stuff
+set autoindent
+set expandtab
+set smarttab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+
+"set navigation for splits
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map <C-H> <C-W>h
@@ -31,70 +53,81 @@ map <C-P> :set paste nonumber<Return>
 map <C-N> :set nopaste number<Return>
 nnoremap <C-t>     :tabnew<CR>
 
+" navigation (from http://statico.github.com/vim.html)
+" go up and down one row, not one line (useful for wrapped lines)
+:nmap j gj
+:nmap k gk
 
-"quick save
-noremap <Leader>s :update<CR>
-noremap <Leader>e :quit<CR>
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.rb :call DeleteTrailingWS()
-autocmd BufWrite *.pp :call DeleteTrailingWS()
-autocmd BufWrite *.sh :call DeleteTrailingWS()
-
-
-
-
-set wmw=0
-set wmh=0
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.*/
-highlight TrailingSpace ctermbg=red ctermfg=white guibg=#592929
-au InsertEnter * match TrailingSpace /\s\+\%#\@<!$/
-au InsertLeave * match TrailingSpace /\s\+$/
-set laststatus=2
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
-  elseif a:mode == 'r'
-    hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
-  else
-    hi statusline guibg=DarkRed ctermfg=1 guifg=Black ctermbg=0
-  endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
-
-" default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
-
-" Formats the statusline
-set statusline=%f                           " file name
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%y      "filetype
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=\ %=                        " align left
-set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
-set statusline+=\ Col:%c                    " current column
-set statusline+=\ Buf:%n                    " Buffer number
-set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
-"ctrl-p binings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-
-
-" easy tab navigation
+" tab next/prev with shift h and shift l
 nnoremap <S-h> gT
 nnoremap <S-l> gt
+
+" jump between last opened buffer with Ctrl+E (:b# and :e# do same thing)
+:nmap <C-e> :e#<CR>
+
+" title setting
+autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+
+" assorted automatic syntax loading. filetype -> syntax
+au BufRead *.md set filetype=markdown
+au BufRead *.scala set filetype=scala
+au BufRead *.pp set filetype=puppet 
+au BufRead *.rb set filetype=ruby 
+au BufRead *.go set filetype=go 
+au BufRead *.sh set filetype=sh
+au BufRead *.haml set filetype=haml
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
+autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
+autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
+autocmd Filetype go setlocal ts=4 sts=4 sw=4 autoindent 
+
+
+
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+
+if &term == "screen"
+  set t_ts=k
+  set t_fs=\
+endif
+
+if &term == "screen" || &term == "xterm" || &term == "xterm-color" || &term == "xterm-256color"
+  set title
+endif
+
+" start Airline
+set laststatus=2
+let g:airline_theme='badwolf'
+let g:airline#extensions#tabline#enabled = 1
+
+
+
+
+" Go syntax stuff
+au FileType go nmap <Leader>i <Plug>(go-info)
+let g:go_disable_autoinstall = 1
+
+
+
+" ctrl-p mappings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+noremap <Leader>n :lnext <CR>
+noremap <Leader>p :lprev <CR>
+
+
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
+endif
+
+"syntastic
+let g:syntastic_always_populate_loc_list = 1
 execute pathogen#infect()
-syntax on
 filetype plugin indent on
+
