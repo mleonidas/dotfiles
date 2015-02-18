@@ -124,13 +124,19 @@ color-ssh() {
 }
 # in case you wanted to print the 256 color scheme
 function print_colors() {
-  for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 }
 
-# quick upload to hastebin
 alias gitc='git commit -m'
 alias gitp='git push'
 alias gita='git add .'
+
+
+hiss() {
+  histor_c=`history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head`
+  echo $histor_c
+}
+
 haste(){
   url="http://hastebin.com"
   d=` cat $@`
@@ -139,22 +145,22 @@ haste(){
   if all cool, generate a link from the json response
     #[ $? = 0 ] && echo "$r"|awk -F'\\W+' "{print \"$url/\"\$3}"  # apparently awk on OSX is too crufty to support regex in -F
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
-}
+  }
 
 
-alias pptesting='ssh 172.16.124.206'
-# Predictable SSH authentication socket location.
-fixssh() {
-  for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
-    if (tmux show-environment | grep "^${key}" > /dev/null); then
-      value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
-      export ${key}="${value}"
-    fi
-  done
-}
+  alias pptesting='ssh 172.16.124.206'
+  # Predictable SSH authentication socket location.
+  fixssh() {
+    for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+      if (tmux show-environment | grep "^${key}" > /dev/null); then
+        value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+        export ${key}="${value}"
+      fi
+    done
+  }
 
 
 
-source ~/.zsh-syntax-highlighting.zsh
-mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
-mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
+  source ~/.zsh-syntax-highlighting.zsh
+  mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
+  mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
