@@ -109,8 +109,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Go syntax stuff
 au FileType go nmap <Leader>i <Plug>(go-info)
-let g:go_disable_autoinstall = 1
-
+let g:go_fmt_command = "goimports"
 
 
 " ctrl-p mappings
@@ -126,8 +125,6 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
 "
-"go stuff
-let g:go_fmt_command = "goimports"
 
 "syntastic
 let g:syntastic_always_populate_loc_list = 1

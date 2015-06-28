@@ -185,6 +185,8 @@ fixssh() {
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 
-export GOPATH=/usr/local/go
+export GOPATH=/home/mleone/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH:$GOROOT
 
 
