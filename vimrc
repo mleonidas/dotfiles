@@ -125,6 +125,9 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
+"
+"go stuff
+let g:go_fmt_command = "goimports"
 
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
