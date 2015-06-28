@@ -109,8 +109,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Go syntax stuff
 au FileType go nmap <Leader>i <Plug>(go-info)
-let g:go_fmt_command = "goimports"
-
+let g:go_disable_autoinstall = 1
+"let g:go_fmt_command = "goimports"
 
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
