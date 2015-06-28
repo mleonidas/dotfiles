@@ -174,6 +174,17 @@ extract () {
 
 # set dircolors 
 #eval `dircolors ~/dircolors/dircolors-solarized/dircolors.ansi-dark`
-
+fixssh() {
+    for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+      if (tmux show-environment | grep "^${key}" > /dev/null); then
+        value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+        export ${key}="${value}"
+      fi
+    done
+  }
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
+
+export GOPATH=/usr/local/go
+
+
