@@ -16,7 +16,6 @@ fi
 
 set -o vi
 export PATH=$PATH:~/bin:~/local/bin:~/lang/bin:~/lang/usr/local/scala/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:~/.rvm/bin:/opt/scala-2.11.1/bin/:/opt/activator-1.2.3-minimal:/opt/play-2.0/
-export TERM=xterm-256color
 export PATH=$PATH:/usr/local/go/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -27,6 +26,7 @@ alias gss='git status -sb'
 alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net' 
 alias ops='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
 alias lös=ls
+alias more=less
 alias exit='clear; exit'
 alias ll='ls -la'
 alias la='ls -la'
@@ -184,8 +184,8 @@ fixssh() {
   }
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
-
-export GOPATH=/home/mleone/go
+export TERM='screen-256color'
+export GOPATH=/home/mleone/go-workspace
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH:$GOROOT
 

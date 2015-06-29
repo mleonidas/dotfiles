@@ -1,7 +1,7 @@
 " -file setup
 syntax on
 set ignorecase
-set number
+set relativenumber
 set mouse=
 set hlsearch
 set background=dark
@@ -9,6 +9,8 @@ set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformat=unix
+execute pathogen#infect()
+filetype plugin indent on
 
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
@@ -26,12 +28,8 @@ set t_Co=256
 let g:solarized_termcolors = &t_Co
 
 " colorscheme
-colo solarized 
-
-
-"number sutff
-"
-set relativenumber
+colo molokai
+" molokai settings
 
 " tab stuff
 set autoindent
@@ -128,6 +126,4 @@ endif
 
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
-execute pathogen#infect()
-filetype plugin indent on
 
