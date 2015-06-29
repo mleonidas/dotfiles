@@ -54,7 +54,6 @@ alias isomount='sudo mount -t iso9660 -o loop'
 alias pp='cd ~/repos/tumblr/operations/pdeploy'
 alias pup='cd ~/repos/tumblr/puppet/'
 alias ssh='ssh -q'
-alias scp='scp -q'
 alias p4sync="p4 sync ~/p4_work/unix/...#head"
 alias mmlsq='sudo mmlsquota --block-size=auto -j'
 alias mmrepq='sudo mmrepquota --block-size=auto -j'

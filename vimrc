@@ -27,9 +27,9 @@ set t_Co=256
 "let g:solarized_termcolors=256
 let g:solarized_termcolors = &t_Co
 
-" colorscheme
+let g:rehash256 = 1
 colo molokai
-" molokai settings
+
 
 " tab stuff
 set autoindent
