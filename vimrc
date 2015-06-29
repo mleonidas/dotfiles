@@ -19,14 +19,21 @@ autocmd! bufwritepost .vimrc source %
 let mapleader = ","
 noremap <Leader>s :update<CR>
 
+" becuase you know have to make sure you're using that 256
 set t_Co=256
-"soloarized shit
+
+
+
+"soloarized shit -- not using it right now back to molokai
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "let g:solarized_termtrans =  1
 "let g:solarized_termcolors=256
-let g:solarized_termcolors = &t_Co
+"let g:solarized_termcolors = &t_Co
 
+
+
+"set molokai to use 256 colour
 let g:rehash256 = 1
 colo molokai
 
@@ -88,6 +95,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 
+" i forget why I need this
 if &term == "screen"
   set t_ts=k
   set t_fs=\
@@ -108,7 +116,8 @@ let g:airline#extensions#tabline#enabled = 1
 " Go syntax stuff
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
-"let g:go_fmt_command = "goimports"
+
+
 
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
