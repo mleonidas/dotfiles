@@ -262,7 +262,7 @@ if &t_Co > 255
        hi Tag             ctermfg=197
        hi Title           ctermfg=203
        hi Visual                      ctermbg=237
-       hi Comment         ctermfg=127
+       hi Comment         ctermfg=242
        hi LineNr          ctermfg=239 ctermbg=235
        hi NonText         ctermfg=239
        hi SpecialKey      ctermfg=239
