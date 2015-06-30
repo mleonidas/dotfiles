@@ -240,7 +240,7 @@ if &t_Co > 255
        hi Boolean         ctermfg=141
        hi Character       ctermfg=222
        hi Number          ctermfg=141
-       hi String          ctermfg=210
+       hi String          ctermfg=33
        hi Conditional     ctermfg=197               cterm=bold
        hi Constant        ctermfg=141               cterm=bold
 
