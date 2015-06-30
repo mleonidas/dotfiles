@@ -261,7 +261,7 @@ if &t_Co > 255
        hi Statement       ctermfg=197               cterm=bold
        hi Tag             ctermfg=197
        hi Title           ctermfg=203
-       hi Visual                      ctermbg=232
+       hi Visual                      ctermbg=237
        hi Comment         ctermfg=127
        hi LineNr          ctermfg=239 ctermbg=235
        hi NonText         ctermfg=239
