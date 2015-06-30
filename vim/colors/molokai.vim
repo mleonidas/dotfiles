@@ -266,6 +266,7 @@ if &t_Co > 255
        hi LineNr          ctermfg=239 ctermbg=235
        hi NonText         ctermfg=239
        hi SpecialKey      ctermfg=239
+       hi Todo            ctermfg=161 
    endif
 end
 
