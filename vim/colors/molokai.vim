@@ -236,15 +236,14 @@ if &t_Co > 255
        hi Normal          ctermbg=232
        hi CursorLine      ctermbg=238  cterm=none
        hi CursorLineNr    ctermfg=208               cterm=none
-       hi Search          ctermfg=darkgrey ctermbg=blue
-
+       hi Cursor          ctermfg=163 ctermbg=233
        hi Boolean         ctermfg=141
        hi Character       ctermfg=222
        hi Number          ctermfg=141
        hi String          ctermfg=33
        hi Conditional     ctermfg=197               cterm=bold
        hi Constant        ctermfg=141               cterm=bold
-       hi Search          ctermfg=253 ctermbg=blue
+       hi Search          ctermbg=blue
 
        hi DiffDelete      ctermfg=125 ctermbg=233
 
