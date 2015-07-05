@@ -31,8 +31,8 @@ alias exit='clear; exit'
 alias ll='ls -la'
 alias la='ls -la'
 alias lr='ls -laR'
-alias puppet1='puppet-51542d13.ewr01.tumblr.net'
-alias puppet2='puppet-c30366d7.ewr01.tumblr.net'
+alias gitpp='git pull --prune --all'
+alias gitph='git push origin HEAD'
 if [[ `uname` = 'Darwin' ]]; then
   alias ls='ls -G'
 else
