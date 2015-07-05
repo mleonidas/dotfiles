@@ -184,7 +184,11 @@ fixssh() {
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 export TERM='screen-256color'
-export GOPATH=/Users/mleone/go-workspace
+if [[ `uname` = "Darwin" ]]; then
+    export GOPATH=/Users/mleone/go-workspace
+else
+    export GOPATH=/home/mleone/go-workspace
+fi
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH:$GOROOT
 
