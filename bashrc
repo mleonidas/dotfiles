@@ -201,7 +201,11 @@ export PATH=$PATH:$GOPATH:$GOROOT
 
 # pip bullshit i fucking hate python
 
-alias pip='/usr/bin/pip'
+if [[ `uname` == "Darwin" ]]; then
+    alias pip='/usr/local/bin/pip'
+else
+    alias pip='/usr/bin/pip'
+fi
 
 # ssh agent config
 
