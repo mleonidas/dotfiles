@@ -199,6 +199,10 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH:$GOROOT
 
 
+# pip bullshit i fucking hate python
+
+alias pip='/usr/bin/pip'
+
 # ssh agent config
 
 
