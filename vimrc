@@ -11,6 +11,13 @@ set fileencoding=utf-8
 set fileformat=unix
 execute pathogen#infect()
 filetype plugin indent on
+" tab stuff
+set autoindent
+set expandtab
+set smarttab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
@@ -22,8 +29,6 @@ noremap <Leader>s :update<CR>
 " becuase you know have to make sure you're using that 256
 set t_Co=256
 
-
-
 "soloarized shit -- not using it right now back to molokai
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
@@ -31,21 +36,9 @@ set t_Co=256
 "let g:solarized_termcolors=256
 "let g:solarized_termcolors = &t_Co
 
-
-
 "set molokai to use 256 colour
 let g:rehash256 = 1
 colo molokai
-
-
-" tab stuff
-set autoindent
-set expandtab
-set smarttab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-
 
 "set navigation for splits
 map <C-J> <C-W>j<C-W>_
@@ -54,7 +47,7 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 map <C-E> <C-W>=
 map <C-B> <C-W><bar>
-map <C-P> :set paste nonumber<Return>
+map <C-G> :set paste nonumber<Return>
 map <C-N> :set nopaste number<Return>
 nnoremap <C-t>     :tabnew<CR>
 
@@ -109,7 +102,7 @@ endif
 set laststatus=2
 let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled = 1
-
+let g:airline_powerline_fonts = 1
 
 
 
