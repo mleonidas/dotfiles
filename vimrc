@@ -47,8 +47,8 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 map <C-E> <C-W>=
 map <C-B> <C-W><bar>
-map <C-G> :set paste nonumber<Return>
-map <C-N> :set nopaste number<Return>
+map <C-G> :set paste norelativenumber <Return>
+map <C-N> :set nopaste relativenumber<Return>
 nnoremap <C-t>     :tabnew<CR>
 
 " navigation (from http://statico.github.com/vim.html)
