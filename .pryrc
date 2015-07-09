@@ -16,20 +16,20 @@ Pry.config.ls.private_method_color = :bright_black
 require 'interactive_editor'
 
 # setup collins biznatch
-begin
-  require 'collins_auth'
-  require 'etc'
-  c = Collins::Authenticator.setup_client
-rescue LoadError
-  require 'collins_client'
-  options = {
-  :collins_config_file => '/var/db/collins.yaml'
-  }
-  config = YAML.load_file(options[:collins_config_file]).reduce({}){|memo,(k,v)|memo[k.to_sym] = v; memo    }
-  config = config[:collins] if config.key? :collins
-  c = Collins::Client.new(collins)
-end
-
+#begin
+#  require 'collins_auth'
+#  require 'etc'
+#  c = Collins::Authenticator.setup_client
+#rescue LoadError
+#  require 'collins_client'
+#  options = {
+#  :collins_config_file => '/var/db/collins.yaml'
+#  }
+#  config = YAML.load_file(options[:collins_config_file]).reduce({}){|memo,(k,v)|memo[k.to_sym] = v; memo    }
+#  config = config[:collins] if config.key? :collins
+#  c = Collins::Client.new(collins)
+#end
+#
 
 
 # just for fun
