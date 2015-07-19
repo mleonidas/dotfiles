@@ -196,7 +196,7 @@ else
     export GOPATH=/home/mleone/go-workspace
 fi
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOPATH:$GOROOT
+export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin
 
 
 # pip bullshit i fucking hate python
