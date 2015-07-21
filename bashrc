@@ -192,8 +192,10 @@ export TERM='screen-256color'
 # setup my go workspace
 if [[ `uname` = "Darwin" ]]; then
     export GOPATH=/Users/mleone/go-workspace
+    alias gowork="cd $GOPATH/src/github.com/mleone896"
 else
     export GOPATH=/home/mleone/go-workspace
+    alias gowork="cd $GOPATH/src/github.com/mleone896"
 fi
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin
