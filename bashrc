@@ -209,5 +209,21 @@ fi
 
 # ssh agent config
 
+# for centos 7 machines using nmap ncat
+nc7() {
+    nc $1 $2 < /dev/null>/dev/null 
+    if [[ $? == 0 ]]; then
+        echo "succeded port is open $2"
+    else
+        echo "failure port $2 is not open"
+    fi
+
+}
+
+
+
+
+
+
 
 
