@@ -12,7 +12,7 @@ path_to_repo="${1}"
 
 
 setup_symlinks(){
-    for i in tmux.conf zshrc bashrc git-completion.bash git-prompt.sh vimrc gitconfig vim oh-my-zsh
+    for i in tmux.conf zshrc bashrc git-completion.bash git-prompt.sh vimrc gitconfig vim oh-my-zsh inputrc
     do
         [[ -f "$HOME/.${i}" ]] || [[ -L  "$HOME/.${i}" ]] && rm -rf $HOME/.${i}
         echo "about to link ${path_to_repo}/${i} to $HOME/.${i}"
