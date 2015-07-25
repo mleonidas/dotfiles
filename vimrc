@@ -9,8 +9,6 @@ set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformat=unix
-execute pathogen#infect()
-filetype plugin indent on
 " tab stuff
 set autoindent
 set expandtab
@@ -19,6 +17,23 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+" auto start nerdTree when vim starts
+autocmd vimenter * NERDTree
+" This starts up nerdtree if no file specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" remap a nerdtree toggel
+map <C-d> :NERDTreeToggle<CR>
+" close nerdtree if its the only tab left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+execute pathogen#infect()
+
+
+
+
+filetype plugin indent on
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
 
@@ -119,11 +134,11 @@ noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
 let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
 
-function BrightHighlightOn()
+function! BrightHighlightOn()
   hi CursorLine guibg=darkred
 endfunction
 
-function BrightHighlightOff()
+function! BrightHighlightOff()
   hi CursorLine guibg=#191919
 endfunction
 
@@ -133,7 +148,6 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
 "
-
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
 
