@@ -19,9 +19,6 @@ set shiftwidth=2
 
 " auto start nerdTree when vim starts
 autocmd vimenter * NERDTree
-" This starts up nerdtree if no file specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " remap a nerdtree toggel
 map <C-d> :NERDTreeToggle<CR>
 " close nerdtree if its the only tab left
