@@ -67,3 +67,6 @@
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/bundle/tmuxline.vim.git"]
+	path = vim/bundle/tmuxline.vim.git
+	url = https://github.com/edkolev/tmuxline.vim.git
