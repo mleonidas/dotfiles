@@ -122,7 +122,7 @@ let g:airline_powerline_fonts = 1
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
 
-"
+" tmuxvimline
 
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'
