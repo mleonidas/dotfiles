@@ -25,6 +25,7 @@ alias vi=vim
 alias gss='git status -sb'
 alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net' 
 alias ops='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
+alias sha="git log | head -1"
 alias lös=ls
 alias more=less
 alias exit='clear; exit'
