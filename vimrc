@@ -18,7 +18,7 @@ set softtabstop=2
 set shiftwidth=2
 
 " auto start nerdTree when vim starts
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 " remap a nerdtree toggel
 map <C-d> :NERDTreeToggle<CR>
 " close nerdtree if its the only tab left
