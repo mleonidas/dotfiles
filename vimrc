@@ -36,8 +36,10 @@ autocmd! bufwritepost .vimrc source %
 
 " quick save
 let mapleader = ","
-noremap <Leader>s :update<CR>
+noremap <Leader>s :w<CR>
 noremap <Leader>q :quit<CR>
+" for go stuff
+au Filetype go nnoremap <leader>r :GoRun %<CR>
 
 " becuase you know have to make sure you're using that 256
 set t_Co=256
