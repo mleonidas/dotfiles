@@ -224,7 +224,7 @@ nc7() {
 }
 
 
-
+alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
 
 
 
