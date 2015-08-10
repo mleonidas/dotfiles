@@ -37,6 +37,7 @@ autocmd! bufwritepost .vimrc source %
 " quick save
 let mapleader = ","
 noremap <Leader>s :update<CR>
+noremap <Leader>q :quit<CR>
 
 " becuase you know have to make sure you're using that 256
 set t_Co=256
