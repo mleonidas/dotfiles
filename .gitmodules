@@ -73,3 +73,6 @@
 [submodule "vim/bundle/supertab.git"]
 	path = vim/bundle/supertab.git
 	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/buffersweeper.vim"]
+	path = vim/bundle/buffersweeper.vim
+	url = https://github.com/monokrome/buffersweeper.vim.git
