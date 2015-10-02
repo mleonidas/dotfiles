@@ -1,5 +1,5 @@
 " -file setup
-syntax on
+syntax on 
 set ignorecase
 set relativenumber
 set mouse=
