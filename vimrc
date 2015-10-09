@@ -45,15 +45,16 @@ au Filetype go nnoremap <leader>r :GoRun %<CR>
 set t_Co=256
 
 "soloarized shit -- not using it right now back to molokai
-"let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
-"let g:solarized_termtrans =  1
-"let g:solarized_termcolors=256
-"let g:solarized_termcolors = &t_Co
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termtrans =  1
+let g:solarized_termcolors=256
+let g:solarized_termcolors = &t_Co
 
 "set molokai to use 256 colour
 let g:rehash256 = 1
-colo molokai
+"colo molokai
+colo solarized 
 
 "set navigation for splits
 map <C-J> <C-W>j<C-W>_
