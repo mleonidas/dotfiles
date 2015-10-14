@@ -51,6 +51,10 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export HISTFILESIZE=500000
+export HISTIGNORE="&:[ ]*:exit"
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -84,17 +88,9 @@ export LSCOLORS=exfxcxdxcxegedabagacad
 
 # setup some useful aliases for work
 alias ssh='ssh -A'
-alias ops-mleone='ssh ops-mleone-1ffb2ce9.ewr01.tumblr.net'
-alias puppet1='ssh puppet-51542d13.ewr01.tumblr.net'
-alias pp='cd ~/repos/tumblr/operations/pdeploy/'
-alias puppet2='ssh puppet-c30366d7.ewr01.tumblr.net'
-alias ploy='cd /home/mleone/repos/tumblr/operations/pdeploy'
-alias pup='cd ~/repos/tumblr/puppet/'
-alias docker-dev='ssh -A ops-mleone-b2b93a6e.ewr01.tumblr.net'
+alias pup='cd ~/repos/getnomi/puppet/modules'
 alias gitpp='git pull --prune --all'
 # setup some useful vars for puppet at work
-export puppet1="puppet-51542d13.ewr01.tumblr.net"
-export puppet2="puppet-c30366d7.ewr01.tumblr.net"
 export GOPATH=/usr/local/go/bin/
 export GREP_COLOR=33
 
@@ -130,8 +126,9 @@ for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 alias gitc='git commit -m'
 alias gitp='git push'
 alias gita='git add .'
+alias gitph='git push origin HEAD'
 
-
+alias sha="git log | head -1"
 hiss() {
   histor_c=`history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head`
   echo $histor_c
@@ -145,22 +142,26 @@ haste(){
   if all cool, generate a link from the json response
     #[ $? = 0 ] && echo "$r"|awk -F'\\W+' "{print \"$url/\"\$3}"  # apparently awk on OSX is too crufty to support regex in -F
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
-  }
+}
 
 
-  alias pptesting='ssh 172.16.124.206'
-  # Predictable SSH authentication socket location.
-  fixssh() {
-    for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
-      if (tmux show-environment | grep "^${key}" > /dev/null); then
-        value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
-        export ${key}="${value}"
-      fi
-    done
-  }
+# Predictable SSH authentication socket location.
+fixssh() {
+  for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+    if (tmux show-environment | grep "^${key}" > /dev/null); then
+      value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+      export ${key}="${value}"
+    fi
+  done
+}
 
 
 
-  source ~/.zsh-syntax-highlighting.zsh
-  mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
-  mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
+source ~/.zsh-syntax-highlighting.zsh
+mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
+mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
+
+# mco shortcut to deploy hiera
+alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
+
+
