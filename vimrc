@@ -48,8 +48,8 @@ set t_Co=256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
-let g:solarized_termcolors=256
-let g:solarized_termcolors = &t_Co
+let g:solarized_termcolors=16
+"let g:solarized_termcolors = &t_Co
 
 "set molokai to use 256 colour
 let g:rehash256 = 1
