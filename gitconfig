@@ -26,3 +26,5 @@
   wip = commit -m "{WIP}"
 
 
+[core]
+	editor = vim

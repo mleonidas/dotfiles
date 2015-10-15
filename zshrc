@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="pygmalion"
 # set vi mode
- bindkey -v
+bindkey -v
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -55,6 +55,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export HISTFILESIZE=500000
 export HISTIGNORE="&:[ ]*:exit"
+export EDITOR=vim
 
 
 # export MANPATH="/usr/local/man:$MANPATH"
