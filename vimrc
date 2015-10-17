@@ -1,5 +1,40 @@
+"{{{ vundle setup
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+
+" " alternatively, pass a path where Vundle should install plugins
+"
+" " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surrond'
+Plugin 'tpope/vim-bundler'
+Plugin 'scrooloose/syntastic'
+Plugin 'kein/ctrlp.vim.git'
+Plugin 'airblade/vim-gitgutter.git'
+Plugin 'ekalinin/Dockerfile.vim.git'
+Plugin 'tpopt/vim-haml.git'
+Plugin 'godlygeek/tabular.git'
+Plugin 'fatih/vim-go.git'
+Plugin 'cespare/vim-toml.git'
+Plugin 'ervandew/supertab.git'
+Plygin 'rodjek/vim-puppet.git'
+'
+"
+"---}}}
+
+
+
 " -file setup
-syntax on 
+syntax on
 set ignorecase
 set relativenumber
 set mouse=
