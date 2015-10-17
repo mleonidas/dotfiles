@@ -1,34 +1,33 @@
 #!/usr/bin/env bash
+
+
 # script to setup my dotfiles 
 shout() { echo "$0: $*" >&2; }
 barf() { shout "$*"; exit 111; }
 try() { "$@" || barf "cannot $*"; }
 
+# vars
+path_to_repo="/home/mleone/repos/personal/dotfiles"
 
-
-path_to_repo="${1}"
-
-
-
-
+# link all my dotfiles
 setup_symlinks(){
-    for i in tmux.conf zshrc bashrc git-completion.bash git-prompt.sh vimrc gitconfig vim oh-my-zsh inputrc
-    do
-        [[ -f "$HOME/.${i}" ]] || [[ -L  "$HOME/.${i}" ]] && rm -rf $HOME/.${i}
-        echo "about to link ${path_to_repo}/${i} to $HOME/.${i}"
-        try ln -s ${path_to_repo}/${i} ${HOME}/.${i} # setup dotfiles from repo
-    done
+    for i in tmux.conf zshrc bashrc git-completion.bash git-prompt.sh vimrc \
+        gitconfig inputrc vim_bundles
+do
+    [[ -f "$HOME/.${i}" ]] || [[ -L  "$HOME/.${i}" ]] && rm -rf $HOME/.${i}
+    echo "about to link ${path_to_repo}/${i} to $HOME/.${i}"
+    try ln -s ${path_to_repo}/${i} ${HOME}/.${i} # setup dotfiles from repo
+done
 } #close symlink creation
 
 
-init_submodules() {
-    try cd $path_to_repo
-    try git submodule init && try git submodule update
-}
 
 main() {
+    if [[ ! -L ${HOME}/.oh-my-zsh ]]; then
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # install oh-my-zsh
+    fi
+
     setup_symlinks
-    init_submodules
 }
 
 
