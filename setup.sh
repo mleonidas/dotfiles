@@ -9,8 +9,20 @@ try() { "$@" || barf "cannot $*"; }
 # vars
 path_to_repo="/home/mleone/repos/personal/dotfiles"
 
+
+# make sure vundle is installed
+
+install_vundle()
+{
+    if [[ -d "${HOME}/.vim/bundle/Vundle.vim" ]]; then
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    fi
+
+}
+
 # link all my dotfiles
-setup_symlinks(){
+setup_symlinks()
+{
     for i in tmux.conf zshrc bashrc git-completion.bash git-prompt.sh vimrc \
         gitconfig inputrc vim_bundles
 do
@@ -22,7 +34,8 @@ done
 
 
 
-main() {
+main() 
+{
     if [[ ! -L ${HOME}/.oh-my-zsh ]]; then
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # install oh-my-zsh
     fi
