@@ -1,39 +1,6 @@
-"{{{ vundle setup
-set nocompatible              " be iMproved, required
-filetype off                  " required
+source ~/.vim_bundles
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-
-" " alternatively, pass a path where Vundle should install plugins
-"
-" " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surrond'
-Plugin 'tpope/vim-bundler'
-Plugin 'scrooloose/syntastic'
-Plugin 'kein/ctrlp.vim.git'
-Plugin 'airblade/vim-gitgutter.git'
-Plugin 'ekalinin/Dockerfile.vim.git'
-Plugin 'tpopt/vim-haml.git'
-Plugin 'godlygeek/tabular.git'
-Plugin 'fatih/vim-go.git'
-Plugin 'cespare/vim-toml.git'
-Plugin 'ervandew/supertab.git'
-Plygin 'rodjek/vim-puppet.git'
-'
-"
-"---}}}
-
-
-
-" -file setup
+" file setup
 syntax on
 set ignorecase
 set relativenumber
@@ -52,20 +19,16 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-" auto start nerdTree when vim starts
-"autocmd vimenter * NERDTree
-" remap a nerdtree toggel
-map <C-d> :NERDTreeToggle<CR>
+
+
+
+
 " close nerdtree if its the only tab left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
-execute pathogen#infect()
-
-
-
-
 filetype plugin indent on
+
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
 
@@ -170,6 +133,7 @@ let g:ctrlp_cmd = 'CtrlP'
 noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
 let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
+
 
 function! BrightHighlightOn()
   hi CursorLine guibg=darkred
