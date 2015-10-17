@@ -1,6 +1,6 @@
 source ~/.vim_bundles
 
-" file setup
+filetype plugin indent on
 syntax on
 set ignorecase
 set relativenumber
@@ -11,23 +11,12 @@ set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformat=unix
-" tab stuff
 set autoindent
 set expandtab
 set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
-
-
-
-
-" close nerdtree if its the only tab left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-
-filetype plugin indent on
 
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
@@ -120,12 +109,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 
-
-" Go syntax stuff
+" Go syntax 
 au FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_disable_autoinstall = 1
 
-" tmuxvimline
 
 " ctrl-p mappings
 let g:ctrlp_map = '<c-p>'

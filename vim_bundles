@@ -29,4 +29,3 @@ Plugin 'rodjek/vim-puppet.git'
 Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
-
