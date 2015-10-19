@@ -27,5 +27,7 @@ Plugin 'cespare/vim-toml.git'
 Plugin 'ervandew/supertab.git'
 Plugin 'rodjek/vim-puppet.git'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomtom/tcomment_vim'
+
 
 call vundle#end()
