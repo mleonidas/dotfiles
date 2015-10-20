@@ -12,8 +12,13 @@ Pry.config.ls.public_method_color = :green
 Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
-# Plugins
+
+
+# Polugins
 require 'interactive_editor'
+
+
+
 
 # setup collins biznatch
 #begin

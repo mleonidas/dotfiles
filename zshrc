@@ -167,4 +167,16 @@ mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 # mco shortcut to deploy hiera
 alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
 
+# GOLANG vars
+export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
+# setup my go workspace
+if [[ `uname` = "Darwin" ]]; then
+    export GOPATH=/Users/mleone/go-workspace
+    alias gowork="cd $GOPATH/src/github.com/mleone896"
+else
+    export GOPATH=/home/mleone/go-workspace
+    alias gowork="cd $GOPATH/src/github.com/mleone896"
+fi
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin
 

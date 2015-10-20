@@ -44,8 +44,8 @@ let g:rehash256 = 1
 colo solarized 
 
 "set navigation for splits
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
+map <C-J> <C-W>j
+map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
 map <C-E> <C-W>=
@@ -53,6 +53,12 @@ map <C-B> <C-W><bar>
 map <C-G> :set paste norelativenumber <Return>
 map <C-N> :set nopaste relativenumber<Return>
 nnoremap <C-t>     :tabnew<CR>
+nnoremap g<CR> :Dispatch<CR>
+
+augroup Ruby
+  autocmd!
+  autocmd FileType Ruby let b:dispatch='rspec %'
+augroup END
 
 " navigation (from http://statico.github.com/vim.html)
 " go up and down one row, not one line (useful for wrapped lines)
@@ -81,7 +87,7 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
 autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
 autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
 autocmd Filetype go setlocal ts=4 sts=4 sw=4 autoindent 
-
+autocmd BufNewFile,BufRead *_foo.rb set syntax=rspec
 
 
 " highlight trailing whitespace
@@ -121,6 +127,16 @@ noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
 let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
 
+let g:projectionist_heuristics = {
+      \    "manifests/*.pp": {
+      \     "type": "spec",
+      \     "alternate": "spec/*/{}.rb"
+      \   },
+      \    "spec/*_spec.rb": {
+      \     "type": "spec",
+      \     "alternate": "spec/defines/{}.rb"
+      \   }
+      \ } 
 
 function! BrightHighlightOn()
   hi CursorLine guibg=darkred
