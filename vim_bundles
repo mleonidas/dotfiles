@@ -34,6 +34,7 @@ Plugin 'rodjek/vim-puppet.git'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'keith/rspec.vim'
+Plugin 'ngmy/vim-rubocop'
 
 call vundle#end()
 
