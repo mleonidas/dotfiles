@@ -166,6 +166,7 @@ no <UP> ddkP
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_go_go_build_args = "-o /dev/null"
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -182,3 +183,9 @@ au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_disable_autoinstall = 1
