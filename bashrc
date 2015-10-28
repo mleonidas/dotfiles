@@ -23,7 +23,7 @@ alias vi=vim
 #alias ls='ls --color=auto'
 # ops box vm
 alias gss='git status -sb'
-alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net' 
+alias ops-mleone='ssh ops-mleone-b888b0c8.ewr01.tumblr.net'
 alias ops='ssh ops-mleone-a45815ac.ewr01.tumblr.net'
 alias sha="git log | head -1"
 alias lös=ls
@@ -172,7 +172,7 @@ extract () {
 	fi
 }
 
-# set dircolors 
+# set dircolors
 #eval `dircolors ~/dircolors/dircolors-solarized/dircolors.ansi-dark`
 fixssh() {
     for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
@@ -214,7 +214,7 @@ fi
 
 # for centos 7 machines using nmap ncat
 nc7() {
-    nc $1 $2 < /dev/null>/dev/null 
+    nc $1 $2 < /dev/null>/dev/null
     if [[ $? == 0 ]]; then
         echo "succeded port is open $2"
     else
@@ -225,8 +225,3 @@ nc7() {
 
 
 alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
-
-
-
-
-

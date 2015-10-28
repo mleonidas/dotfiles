@@ -178,5 +178,4 @@ else
     alias gowork="cd $GOPATH/src/github.com/mleone896"
 fi
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin
-
+export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin:$HOME/go-workspace/bin
