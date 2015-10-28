@@ -27,11 +27,7 @@ colo solarized
 let mapleader = ","
 noremap <Leader>s :w<CR>
 noremap <Leader>q :quit<CR>
-" for go stuff
-au Filetype go nnoremap <leader>r :GoRun %<CR>
 
-" becuase you know have to make sure you're using that 256
-set t_Co=256
 
 "soloarized shit -- not using it right now back to molokai
 let g:solarized_visibility = "high"
@@ -75,8 +71,6 @@ nnoremap <S-l> gt
 " jump between last opened buffer with Ctrl+E (:b# and :e# do same thing)
 :nmap <C-e> :e#<CR>
 
-" title setting
-"autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 
 " assorted automatic syntax loading. filetype -> syntax
 au BufRead *.md set filetype=markdown
@@ -167,6 +161,9 @@ imap <Leader>" ""<ESC>i
 imap <Leader>( ()<ESC>i
 imap <Leader>[ []<ESC>i
 imap <Leader>{ {}<ESC>i
+
+no <DOWN> ddp
+no <UP> ddkP
 
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
