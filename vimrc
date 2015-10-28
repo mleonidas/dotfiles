@@ -80,6 +80,7 @@ au BufRead *.rb set filetype=ruby
 au BufRead *.go set filetype=go 
 au BufRead *.sh set filetype=sh
 au BufRead *.haml set filetype=haml
+
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
 autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
 autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
@@ -100,10 +101,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-
-" Go syntax 
-au FileType go nmap <Leader>i <Plug>(go-info)
-let g:go_disable_autoinstall = 1
 
 
 " ctrl-p mappings
@@ -176,3 +173,12 @@ let g:syntastic_check_on_wq = 0
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+" Go syntax 
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+let g:go_fmt_command = "goimports"

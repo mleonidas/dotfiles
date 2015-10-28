@@ -93,8 +93,7 @@ export LSCOLORS=exfxcxdxcxegedabagacad
 alias ssh='ssh -A'
 alias pup='cd ~/repos/getnomi/puppet/modules'
 alias gitpp='git pull --prune --all'
-# setup some useful vars for puppet at work
-export GOPATH=/usr/local/go/bin/
+
 export GREP_COLOR=33
 
 
@@ -142,7 +141,6 @@ haste(){
   d=` cat $@`
   [ $? != 0 ] && return 1
   r="$(curl -s -d "$d" "$url/documents")"
-  if all cool, generate a link from the json response
     #[ $? = 0 ] && echo "$r"|awk -F'\\W+' "{print \"$url/\"\$3}"  # apparently awk on OSX is too crufty to support regex in -F
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
 }
