@@ -9,6 +9,7 @@ call vundle#begin()
 " " alternatively, pass a path where Vundle should install plugins
 "
 " " let Vundle manage Vundle, required
+Plugin 'matchit.zip'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-ruby/vim-ruby'

@@ -21,6 +21,8 @@ set shiftwidth=2
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
 
+colo solarized
+
 " quick save
 let mapleader = ","
 noremap <Leader>s :w<CR>
@@ -36,12 +38,7 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
-"let g:solarized_termcolors = &t_Co
 
-"set molokai to use 256 colour
-let g:rehash256 = 1
-"colo molokai
-colo solarized 
 
 "set navigation for splits
 map <C-J> <C-W>j
@@ -50,15 +47,21 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 map <C-E> <C-W>=
 map <C-B> <C-W><bar>
+
+" Paste shortcuts
 map <C-G> :set paste norelativenumber <Return>
 map <C-N> :set nopaste relativenumber<Return>
-nnoremap <C-t>     :tabnew<CR>
-nnoremap g<CR> :Dispatch<CR>
 
+" quickly open a new tab
+nnoremap <C-t>     :tabnew<CR>
+
+" run tests !!
+nnoremap g<CR> :Dispatch<CR>
 augroup Ruby
   autocmd!
   autocmd FileType Ruby let b:dispatch='rspec %'
 augroup END
+
 
 " navigation (from http://statico.github.com/vim.html)
 " go up and down one row, not one line (useful for wrapped lines)
@@ -73,7 +76,7 @@ nnoremap <S-l> gt
 :nmap <C-e> :e#<CR>
 
 " title setting
-autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+"autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 
 " assorted automatic syntax loading. filetype -> syntax
 au BufRead *.md set filetype=markdown
@@ -92,24 +95,13 @@ autocmd BufNewFile,BufRead *_foo.rb set syntax=rspec
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
-
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
-let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
 
-" i forget why I need this
-if &term == "screen"
-  set t_ts=k
-  set t_fs=\
-endif
-
-if &term == "screen" || &term == "xterm" || &term == "xterm-color" || &term == "xterm-256color"
-  set title
-endif
 
 " start Airline
 set laststatus=2
-let g:airline_theme='badwolf'
+let g:airline_theme='tomorrow'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -127,6 +119,7 @@ noremap <Leader>n :lnext <CR>
 noremap <Leader>p :lprev <CR>
 let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
 
+" Projectionist
 let g:projectionist_heuristics = {
       \    "manifests/*.pp": {
       \     "type": "spec",
@@ -136,7 +129,15 @@ let g:projectionist_heuristics = {
       \     "type": "spec",
       \     "alternate": "spec/defines/{}.rb"
       \   }
-      \ } 
+      \ }
+
+
+" highlight the current line
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 function! BrightHighlightOn()
   hi CursorLine guibg=darkred
@@ -146,12 +147,29 @@ function! BrightHighlightOff()
   hi CursorLine guibg=#191919
 endfunction
 
+" set the 80 coloumn line
 if exists('+colorcolumn')
   set colorcolumn=80
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
-"
+
+" center after motion
+nmap G Gzz
+nmap n nzz
+nmap N Nzz
+nmap } }zz
+nmap { {zz
+
+" quick pairs
+imap <Leader>' ''<ESC>i
+imap <Leader>" ""<ESC>i
+imap <Leader>( ()<ESC>i
+imap <Leader>[ []<ESC>i
+imap <Leader>{ {}<ESC>i
+
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
-
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
