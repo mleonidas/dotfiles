@@ -189,3 +189,21 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_disable_autoinstall = 1
+
+" YouCompleteMe
+let g:ycm_semantic_triggers =  {
+        \   'c' : ['->', '.'],
+        \   'objc' : ['->', '.'],
+        \   'ocaml' : ['.', '#'],
+        \   'cpp,objcpp' : ['->', '.', '::'],
+        \   'perl' : ['->'],
+        \   'php' : ['->', '::'],
+        \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+        \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
+        \   'ruby' : ['.', '::'],
+        \   'lua' : ['.', ':'],
+        \   'erlang' : [':'],
+        \   'clojure' : []
+        \ }
+        " \   'clojure' : ['(', '.', '/', '[']
+        "
