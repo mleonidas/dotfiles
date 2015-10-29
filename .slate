@@ -62,7 +62,6 @@ bind e:shift;alt nudge -1% +0
 # Focus - Brings the focus to the window in the specified position
 bind l:shift;ctrl focus right
 
-bind l:ctrl layout oneDisplayLayout
 
 # window hints
 
