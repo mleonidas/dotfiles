@@ -25,8 +25,6 @@ colo solarized
 
 " quick save
 let mapleader = ","
-noremap <Leader>s :w<CR>
-noremap <Leader>q :quit<CR>
 
 
 "soloarized shit -- not using it right now back to molokai
@@ -165,10 +163,16 @@ no <UP> ddkP
 
 "syntastic
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_go_build_args = "-o /dev/null"
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+" quicksave
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
+" quitck quit
+nnoremap <leader>q :q<cr>
+
 
 " SnipMate
 let g:snipMate = {}
@@ -207,3 +211,9 @@ let g:ycm_semantic_triggers =  {
         \ }
         " \   'clojure' : ['(', '.', '/', '[']
         "
+
+
+" ruby completions
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
