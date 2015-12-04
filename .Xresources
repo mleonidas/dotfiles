@@ -17,8 +17,10 @@ URxvt*termName: rxvt
 
 URxvt.depth:                32
 URxvt.geometry:             90x30
-URxvt.transparent:          false
-URxvt.fading:               0
+URxvt.transparent:          false 
+URxvt.fading: 10 
+URxvt.fadeColor: [0]#073642
+
 ! URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
 URxvt.loginShell:           true
@@ -31,8 +33,8 @@ URxvt.allow_bold:           false
 /* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
 /* URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true */
 
-URxvt*font:                  xft:DejaVu Sans Mono for Powerline-11
-Urxvt*boldfont:              xft:DejaVu Sans Mono for Powerline-11
+URxvt*font:                  xft:Meslo LG S DZ for Powerline-9
+Urxvt*boldfont:              xft:Meslo LG S DZ for Powerline-9
 
 
 ! Fix font space
@@ -46,6 +48,8 @@ URxvt.scrollBar:            false
 URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          firefox
+URxvt*tintColor: white
+URxvt*shading: 100
 
 ! Cursor
 URxvt.cursorBlink:          true
@@ -59,7 +63,8 @@ URxvt.pointerBlank:         true
 
 *background: #002b36
 *foreground: #657b83
-!!*fading: 40
+
+*fading: 40
 *fadeColor: #002b36
 *cursorColor: #93a1a1
 *pointerColorBackground: #586e75
