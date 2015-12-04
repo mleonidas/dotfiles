@@ -11,7 +11,7 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
