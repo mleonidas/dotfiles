@@ -6,5 +6,5 @@
 if [ -s ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
 fi
-
+xhost local:root
 exec i3
