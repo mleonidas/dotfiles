@@ -51,7 +51,6 @@ URxvt.scrollTtyKeypress:True
 
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          firefox
 URxvt*tintColor: white
@@ -124,8 +123,9 @@ URxvt.secondaryWheel:   1
 
 
 !! copy paste
-URxvt*clipboard.copycmd:    xclip -i -selection clipboard
-URxvt*clipboard.pastecmd:   xclip -o -selection clipboard
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard,matcher
 
 !! clickable urls
 URxvt.url-select.underline: true
