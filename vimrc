@@ -27,12 +27,12 @@ colo solarized
 let mapleader = ","
 
 " Term colors
-set t_Co=16
+set t_Co=256
 "soloarized shit -- not using it right now back to molokai
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
-let g:solarized_termcolors=16
+let g:solarized_termcolors=256
 
 
 "set navigation for splits

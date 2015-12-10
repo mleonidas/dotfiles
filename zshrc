@@ -156,9 +156,10 @@ fixssh() {
   done
 }
 
+if [[ -f $HOME/.dockerfunc ]]; then
+  source ~/.dockerfunc
+fi
 
-
-source ~/.zsh-syntax-highlighting.zsh
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 
@@ -177,3 +178,8 @@ else
 fi
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin:$HOME/go-workspace/bin
+
+source /home/mleone/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+alsi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

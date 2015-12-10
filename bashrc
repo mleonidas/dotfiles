@@ -223,3 +223,5 @@ nc7() {
 
 
 alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
