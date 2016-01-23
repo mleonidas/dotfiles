@@ -1,0 +1,50 @@
+call plug#begin('~/.config/.nvim/plugged')
+
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+
+
+" " alternatively, pass a path where Vundle should install Plugs
+"
+" " let Vundle manage Vundle, required
+
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neocomplcache.vim'
+Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'cespare/vim-toml'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-go'
+Plug 'garbas/vim-snipmate'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'keith/rspec.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'matchit.zip'
+Plug 'ngmy/vim-rubocop'
+Plug 'rodjek/vim-puppet'
+Plug 'scrooloose/syntastic'
+Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'Shougo/neocomplete.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-ruby/vim-ruby'
+call plug#end()
+
+" vim: se ft=vim:
