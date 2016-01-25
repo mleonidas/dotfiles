@@ -164,7 +164,7 @@ mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 
 # mco shortcut to deploy hiera
 alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
-
+alias vim="nvim"
 # GOLANG vars
 export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
 # setup my go workspace
@@ -177,3 +177,5 @@ else
 fi
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH:$GOROOT:$GOPATH/bin:$HOME/go-workspace/bin
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+

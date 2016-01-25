@@ -18,8 +18,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-" Auto reload conf
-autocmd! bufwritepost .vimrc source %
 
 colo solarized
 
@@ -160,25 +158,10 @@ nmap N Nzz
 nmap } }zz
 nmap { {zz
 
-" quick pairs
-imap <Leader>' ''<ESC>i
-imap <Leader>" ""<ESC>i
-imap <Leader>( ()<ESC>i
-imap <Leader>[ []<ESC>i
-imap <Leader>{ {}<ESC>i
-
 no <DOWN> ddp
 no <UP> ddkP
 
-"syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_go_go_build_args = "-o /dev/null"
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"autocmd! BufWritePost * Neomake
 
 " quicksave
 nnoremap <leader>s :w<cr>
