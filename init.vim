@@ -161,7 +161,7 @@ nmap { {zz
 no <DOWN> ddp
 no <UP> ddkP
 
-"autocmd! BufWritePost * Neomake
+autocmd! BufWritePost * Neomake
 
 " quicksave
 nnoremap <leader>s :w<cr>
