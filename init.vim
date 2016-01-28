@@ -19,7 +19,7 @@ set softtabstop=2
 set shiftwidth=2
 
 
-colo solarized
+colo solarized 
 
 " quick save
 let mapleader = ","
@@ -160,9 +160,19 @@ nmap { {zz
 
 no <DOWN> ddp
 no <UP> ddkP
-
+" Neomake Config
 autocmd! BufWritePost * Neomake
-
+""" define error symbols in gutter
+" " let g:neomake_warning_sign = {
+"   \ 'text': '✹',
+"   \ 'texthl': 'WarningMsg',
+"   \ }
+"
+" let g:neomake_error_sign = {
+"   \ 'text': '✖',
+"   \ 'texthl': 'ErrorMsg',
+"   \ }
+"
 " quicksave
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
