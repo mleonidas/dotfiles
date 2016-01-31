@@ -3,7 +3,7 @@ source ~/.nvim_bundles
 filetype plugin indent on
 syntax on
 set ignorecase
-set relativenumber
+set relativenumber number 
 set mouse=
 set hlsearch
 set background=dark
@@ -17,9 +17,8 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set t_Co=256
 
-
-colo solarized 
 
 " quick save
 let mapleader = ","
@@ -30,7 +29,14 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
+colo solarized
 
+set cursorline
+
+" change the split size to be more like tmux
+"
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
 
 "set navigation for splits
 map <C-J> <C-W>j
@@ -60,7 +66,7 @@ nnoremap <C-t>     :tabnew<CR>
 nnoremap g<CR> :Dispatch<CR>
 augroup Ruby
   autocmd!
-  autocmd FileType Ruby let b:dispatch='rspec %'
+  autocmd FileType Ruby let b:dispatch='bundle exec rake rspec %'
 augroup END
 
 
@@ -101,10 +107,40 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 " start Airline
 set laststatus=2
-let g:airline_theme='tomorrow'
+"let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1 
 let g:airline#extensions#tabline#fnamemod = ':t'
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
 
 
 
@@ -128,21 +164,6 @@ let g:projectionist_heuristics = {
       \   }
       \ }
 
-
-" highlight the current line
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
-
-function! BrightHighlightOn()
-  hi CursorLine guibg=darkred
-endfunction
-
-function! BrightHighlightOff()
-  hi CursorLine guibg=#191919
-endfunction
 
 " set the 80 coloumn line
 if exists('+colorcolumn')
@@ -269,4 +290,5 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+let g:molokai_original = 1
 
