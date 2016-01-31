@@ -55,7 +55,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export HISTFILESIZE=500000
 export HISTIGNORE="&:[ ]*:exit"
-export EDITOR=vim
+export EDITOR="/usr/local/bin/nvim"
 
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -67,7 +67,7 @@ export EDITOR=vim
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='/usr/local/bin/mvim'
 # fi
 
 # Compilation flags
@@ -164,7 +164,7 @@ mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 
 # mco shortcut to deploy hiera
 alias dhiera="mco shell run 'cd /etc/hiera; git pull' -F nodeclass=puppetmaster"
-alias vim="nvim"
+alias vim="/usr/local/bin/nvim"
 # GOLANG vars
 export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
 # setup my go workspace

@@ -29,7 +29,7 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
-colo solarized
+colo solarized 
 
 set cursorline
 
@@ -39,12 +39,15 @@ set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
 
 "set navigation for splits
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 map <C-E> <C-W>=
 map <C-B> <C-W><bar>
+
+
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
@@ -291,4 +294,16 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 let g:molokai_original = 1
+
+
+" re-size split mappings
+"
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" open splits 
+set splitbelow
+set splitright
+
+
 

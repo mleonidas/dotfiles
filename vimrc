@@ -21,13 +21,13 @@ set shiftwidth=2
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
 
-colo solarized
+colo molokai 
 
 " quick save
 let mapleader = ","
 
 " Term colors
-set t_Co=16
+"set t_Co=16
 "soloarized shit -- not using it right now back to molokai
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
