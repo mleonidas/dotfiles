@@ -42,7 +42,10 @@ hi VertSplit ctermbg=black guibg=black ctermfg=161
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" iterm2 things ctrl-h is BS
+if has('nvim')
+     nnoremap <BS> <C-W>h
+endif
 
 map <C-E> <C-W>=
 map <C-B> <C-W><bar>
