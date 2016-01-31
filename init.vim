@@ -36,7 +36,7 @@ set cursorline
 " change the split size to be more like tmux
 "
 set fillchars+=vert:│
-hi VertSplit ctermbg=NONE guibg=NONE
+hi VertSplit ctermbg=black guibg=black ctermfg=161
 
 "set navigation for splits
 nnoremap <C-J> <C-W><C-J>
@@ -75,8 +75,8 @@ augroup END
 
 " navigation (from http://statico.github.com/vim.html)
 " go up and down one row, not one line (useful for wrapped lines)
-:nmap j gj
-:nmap k gk
+:nnoremap j gj
+:nnoremap k gk
 
 " tab next/prev with shift h and shift l
 nnoremap <S-h> gT
