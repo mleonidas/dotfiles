@@ -28,8 +28,8 @@ let mapleader = ","
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
-let g:solarized_termcolors=16
-colo solarized
+let g:solarized_termcolors=256
+colo solarized 
 
 set cursorline
 
@@ -62,7 +62,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " Paste shortcuts
-map <C-G> :set paste norelativenumber <Return>
+map <C-G> :set paste norelativenumber nonumber <Return>
 map <C-N> :set nopaste relativenumber<Return>
 
 " quickly open a new tab
@@ -114,7 +114,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " start Airline
 set laststatus=2
 "let g:airline_theme='badwolf'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1 
 let g:airline#extensions#tabline#fnamemod = ':t'
 " air-line
@@ -304,6 +304,11 @@ let g:molokai_original = 1
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
+
+" switch from horizontal to vertical
+nnoremap <leader>sh  <C-w>H  <cr>
+" switch from vertical to horizontal
+nnoremap <leader>sv  <C-w>K  <cr>
 " open splits 
 set splitbelow
 set splitright
