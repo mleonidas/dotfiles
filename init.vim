@@ -21,7 +21,6 @@ set t_Co=256
 
 
 " quick save
-let mapleader = ","
 
 
 "soloarized shit -- not using it right now back to molokai
@@ -29,7 +28,8 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=256
-colo solarized 
+colo  solarized
+
 
 set cursorline
 
@@ -150,13 +150,6 @@ let g:airline_symbols.linenr = ''
 
 
 
-" ctrl-p mappings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-noremap <Leader>n :lnext <CR>
-noremap <Leader>p :lprev <CR>
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_buffer_func = { 'enter': 'BrightHighlightOn', 'exit':  'BrightHighlightOff', }
 
 " Projectionist
 let g:projectionist_heuristics = {
@@ -187,24 +180,7 @@ nmap { {zz
 
 no <DOWN> ddp
 no <UP> ddkP
-" Neomake Config
-autocmd! BufWritePost * Neomake
-""" define error symbols in gutter
-" " let g:neomake_warning_sign = {
-"   \ 'text': '✹',
-"   \ 'texthl': 'WarningMsg',
-"   \ }
-"
-" let g:neomake_error_sign = {
-"   \ 'text': '✖',
-"   \ 'texthl': 'ErrorMsg',
-"   \ }
-"
-" quicksave
-nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
-" quitck quit
-nnoremap <leader>q :q<cr>
+
 
 
 " SnipMate
@@ -212,13 +188,6 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
-" Go syntax 
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 
 let g:go_fmt_command = "goimports"
@@ -299,12 +268,41 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:molokai_original = 1
 
 
-" re-size split mappings
-"
+
+" Leader Command Section
+let mapleader = ","
+
+
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 
+" Go syntax 
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+
+
+" Tabularize frequent matches
+map <Leader>cu :Tabularize /\|<CR>
+map <Leader>ce :Tabularize /=<CR>
+map <Leader>cp :Tabularize /=><CR>
+
+
+" quick buffer movement
+noremap <Leader>n :bnext <CR>
+noremap <Leader>p :bprev <CR>
+nnoremap <Leader>ll :ls <CR>
+
+" quicksave
+nnoremap <leader>s :w<cr>
+inoremap <leader>s <C-c>:w<cr>
+" quitck quit
+nnoremap <leader>q :q<cr>
 " switch from horizontal to vertical
 nnoremap <leader>sh  <C-w>H  <cr>
 " switch from vertical to horizontal
@@ -312,6 +310,45 @@ nnoremap <leader>sv  <C-w>K  <cr>
 " open splits 
 set splitbelow
 set splitright
+" Go syntax 
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
+
+" make ctrlp use ag way faster
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
+
+
+" Neomake Config
+autocmd! BufWritePost * Neomake
+
+
+
+" function to merge tabs it's actually kinda useful
+"
+function! MergeTabs()
+  if tabpagenr() == 1
+    return
+  endif
+  let bufferName = bufname("%")
+  if tabpagenr("$") == tabpagenr()
+    close!
+  else
+    close!
+    tabprev
+  endif
+  split
+  execute "buffer " . bufferName
+endfunction
+
+nmap <C-W>u :call MergeTabs()<CR>
+
+
+nnoremap <leader>z :FZF <cr>
 
 
