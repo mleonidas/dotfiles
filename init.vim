@@ -23,7 +23,7 @@ set t_Co=256
 " quick save
 
 
-"soloarized shit -- not using it right now back to molokai
+" solarized config for iterm2
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
@@ -42,6 +42,8 @@ hi VertSplit ctermbg=black guibg=black ctermfg=161
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
+
+
 " iterm2 things ctrl-h is BS
 if has('nvim')
      nnoremap <BS> <C-W>h
@@ -49,6 +51,11 @@ endif
 
 map <C-E> <C-W>=
 map <C-B> <C-W><bar>
+
+
+" open splits 
+set splitbelow
+set splitright
 
 
 tnoremap <Esc> <C-\><C-n>
@@ -301,15 +308,15 @@ nnoremap <Leader>ll :ls <CR>
 " quicksave
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
+nnoremap <leader>qq :q! <cr>
 " quitck quit
 nnoremap <leader>q :q<cr>
 " switch from horizontal to vertical
 nnoremap <leader>sh  <C-w>H  <cr>
 " switch from vertical to horizontal
 nnoremap <leader>sv  <C-w>K  <cr>
-" open splits 
-set splitbelow
-set splitright
+
+
 " Go syntax 
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
