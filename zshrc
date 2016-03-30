@@ -25,6 +25,7 @@ bindkey -v
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
+
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
 
@@ -44,8 +45,123 @@ bindkey -v
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git ruby brew go)
 
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export HISTFILESIZE=500000
+export HISTIGNORE="&:[ ]*:exit"
+export EDITOR="/usr/local/bin/nvim"
+
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='/usr/local/bin/mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+
+
+
+
+
+
+export LSCOLORS=exfxcxdxcxegedabagacad
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+
+
+# aws is annoying
+reset_aws() {
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SESSION_TOKEN
+}
+
+#+setup some useful aliases for work
+alias ssh='ssh -A'
+alias pup='cd ~/repos/getnomi/puppet/modules'
+alias gitpp='git pull --prune --all'
+
+export GREP_COLOR=33
+
+
+
+
+# this is strictly for iterm2 to set the tab colors
+tab-color() {
+  echo -ne "\033]6;1;bg;red;brightness;$1\a"
+  echo -ne "\033]6;1;bg;green;brightness;$2\a"
+  echo -ne "\033]6;1;bg;blue;brightness;$3\a"
+}
+tab-reset() {
+  echo -ne "\033]6;1;bg;*;default\a"
+}
+
+color-ssh() {
+  if [[ -n "$ITERM_SESSION_ID" ]]; then
+    trap "tab-reset" INT EXIT
+    if [[ "$*" =~ "production|ec2-.*compute-1" ]]; then
+      tab-color 255 0 0
+    else
+      tab-color 0 255 0
+    fi
+  fi
+  ssh $*
+}
+# in case you wanted to print the 256 color scheme
+function print_colors() {
+for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+}
+
+alias gitc='git commit -m'
+alias gitp='git push'
+alias gita='git add .'
+alias gitph='git push origin HEAD'
+
+alias sha="git log | head -1"
+hiss() {
+  histor_c=`history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head`
+  echo $histor_c
+}
+
+haste(){
+  url="http://hastebin.com"
+  d=` cat $@`
+  [ $? != 0 ] && return 1
+  r="$(curl -s -d "$d" "$url/documents")"
+    #[ $? = 0 ] && echo "$r"|awk -F'\\W+' "{print \"$url/\"\$3}"  # apparently awk on OSX is too crufty to support regex in -F
+    [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
+}
+
+
+# Predictable SSH authentication socket location.
 fixssh() {
   for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
     if (tmux show-environment | grep "^${key}" > /dev/null); then
@@ -55,64 +171,45 @@ fixssh() {
   done
 }
 
-# aws is annoying
-reset_aws() {
-  unset AWS_SECRET_ACCESS_KEY
-  unset AWS_ACCESS_KEY_ID
-  unset AWS_SESSION_TOKEN
-}
 
-resolve() {
-  host $1 | awk '{print $4}' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
-}
-
-
+# get that shell colors
 source ~/Documents/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-# some mock shortcuts
+# mock macros
 mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
 mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 
-
-# because neovim is the ish 
+# cause vim is surpassed by neovim
 alias vim="/usr/local/bin/nvim"
 
 
-
+# do the golang dance
+export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
 
 # setup my go workspace
 if [[ `uname` = "Darwin" ]]; then
     export GOPATH=/Users/mleone/go:/Users/mleone/Documents/repos/sre/go
     alias gowork="cd $GOPATH/src/github.com/mleone896"
 else
-    export GOPATH=/home/mleone/go
+    export GOPATH=/home/mleone/.go
     alias gowork="cd $GOPATH/src/github.com/mleone896"
 fi
+
+
+
+# get free on osx
+if [[ `uname` == "Darwin" ]]; then
+  alias free="top -l 1 -s 0 | awk ' /Processes/ || /PhysMem/ || /Load Avg/{print}'"
+fi
+
+export TERM='screen-256color'
 export GOROOT=/usr/local/go
 export PATH=$PATH:/usr/local/terraform:$GOPATH:$GOROOT:/usr/local/somewhere/arcanist/bin/
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+export OSCAR_CONFIG=~/Documents/repos/sre/terraform/oscar.yml
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
-
-export TERM='screen-256color'
-
-
-# memory report on a mac since free isn't available
-if [[ `uname` = "Darwin" ]] ;then
-  alias free="top -l 1 -s 0 | awk ' /Processes/ || /PhysMem/ || /Load Avg/{print}'" 
-fi
-
-
-# ls colors
-zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-# Oscar account switching config
-export PATH=”$HOME/bin:$PATH”
-export OSCAR_CONFIG=~/Documents/repos/sre/terraform/oscar.yml
-source ~/.ansible_exports
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
