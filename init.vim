@@ -17,17 +17,16 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set t_Co=256
+set t_Co==16
 
 
-" quick save
 
 
 " solarized config for iterm2
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
-let g:solarized_termcolors=256
+let g:solarized_termcolors=16
 colo  solarized
 
 
@@ -38,12 +37,14 @@ set cursorline
 set fillchars+=vert:│
 hi VertSplit ctermbg=black guibg=black ctermfg=161
 
-"set navigation for splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
+" "set navigation for splits
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+"
 
-
+" make Y behave like other capitols
+nnoremap Y y$
 " iterm2 things ctrl-h is BS
 if has('nvim')
      nnoremap <BS> <C-W>h
@@ -105,6 +106,8 @@ au BufRead *.go set filetype=go
 au BufRead *.sh set filetype=sh
 au BufRead *.haml set filetype=haml
 
+
+
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
 autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
 autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
@@ -120,7 +123,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 " start Airline
 set laststatus=2
-"let g:airline_theme='badwolf'
+let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1 
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -316,6 +319,12 @@ nnoremap <leader>sh  <C-w>H  <cr>
 " switch from vertical to horizontal
 nnoremap <leader>sv  <C-w>K  <cr>
 
+" suppert for ansible isn't in neomake as of yet this is a hack
+
+nnoremap <leader>al :!ansible-lint % <cr>
+
+" quickly open up my vimrc
+nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
 " Go syntax 
 au FileType go nmap <Leader>i <Plug>(go-info)
@@ -324,6 +333,7 @@ au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>gr <Plug>(go-run-split)
 
 
 " make ctrlp use ag way faster

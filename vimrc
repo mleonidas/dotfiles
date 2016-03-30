@@ -6,7 +6,7 @@ set ignorecase
 set relativenumber
 set mouse=
 set hlsearch
-set background=dark
+set background=light
 set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
@@ -21,7 +21,7 @@ set shiftwidth=2
 " Auto reload conf
 autocmd! bufwritepost .vimrc source %
 
-colo molokai 
+colo solarized 
 
 " quick save
 let mapleader = ","
@@ -95,7 +95,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 
 " start Airline
 set laststatus=2
-let g:airline_theme='tomorrow'
+let g:airline_theme='solarzied-light
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':t'

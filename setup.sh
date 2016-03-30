@@ -7,7 +7,7 @@ barf() { shout "$*"; exit 111; }
 try() { "$@" || barf "cannot $*"; }
 
 # vars
-path_to_repo="${HOME}/repos/personal/dotfiles"
+path_to_repo="${HOME}/Documents/repos/dotfiles"
 
 
 # make sure vundle is installed

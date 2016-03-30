@@ -13,6 +13,8 @@ filetype off                  " required
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tomasr/molokai'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'kchmck/vim-coffee-script'
 Plug 'hashivim/vim-terraform'
 Plug 'ctrlpvim/ctrlp.vim'
