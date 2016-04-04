@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion"
+ZSH_THEME="saltybit"
 # set vi mode
 bindkey -v
 # Uncomment the following line to use case-sensitive completion.
@@ -108,7 +108,7 @@ reset_aws() {
 alias ssh='ssh -A'
 alias pup='cd ~/repos/getnomi/puppet/modules'
 alias gitpp='git pull --prune --all'
-
+alias vi='/usr/local/bin/nvim'
 export GREP_COLOR=33
 
 
