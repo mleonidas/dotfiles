@@ -35,8 +35,8 @@ Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'keith/rspec.vim'
 Plug 'matchit.zip'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'rodjek/vim-puppet'
 Plug 'tomtom/tcomment_vim'

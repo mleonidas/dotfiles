@@ -8,6 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="saltybit"
 # set vi mode
 bindkey -v
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -46,7 +47,7 @@ bindkey -v
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby brew go vi-mode)
+plugins=(git ruby brew go golang vi-mode history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -140,6 +141,11 @@ function print_colors() {
 for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 }
 
+
+# dns lookups made easy
+resolve () {
+  host $1 | awk '{ print $4  }' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
+} 
 alias gitc='git commit -m'
 alias gitp='git push'
 alias gita='git add .'
@@ -189,10 +195,10 @@ export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
 
 # setup my go workspace
 if [[ `uname` = "Darwin" ]]; then
-    export GOPATH=/Users/mleone/go:/Users/mleone/Documents/repos/sre/go
+    export GOPATH="/Users/mleone/go:/Users/mleone/Documents/repos/sre/go"
     alias gowork="cd $GOPATH/src/github.com/mleone896"
 else
-    export GOPATH=/home/mleone/.go
+    export GOPATH="/Users/mleone/go"
     alias gowork="cd $GOPATH/src/github.com/mleone896"
 fi
 
@@ -212,4 +218,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export OSCAR_CONFIG=~/Documents/repos/sre/terraform/oscar.yml
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
+
 
