@@ -1,0 +1,57 @@
+# aws is annoying and you need a way to reset their variables
+reset_aws() {
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SESSION_TOKEN
+}
+
+
+# in case you wanted to print the 256 color scheme
+print_colors() {
+    for code in {0..255}; 
+        do echo -e "\e[38;05;${code}m $code: Test"; 
+    done
+}
+
+hiss() {
+  histor_c=`history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head`
+  echo $histor_c
+}
+
+
+haste(){
+  url="http://hastebin.com"
+  d=` cat $@`
+  [ $? != 0 ] && return 1
+  r="$(curl -s -d "$d" "$url/documents")"
+    #[ $? = 0 ] && echo "$r"|awk -F'\\W+' "{print \"$url/\"\$3}"  # apparently awk on OSX is too crufty to support regex in -F
+    [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
+}
+
+
+# Predictable SSH authentication socket location.
+fixssh() {
+  for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+    if (tmux show-environment | grep "^${key}" > /dev/null); then
+      value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+      export ${key}="${value}"
+    fi
+  done
+}
+
+# dns lookups made easy
+resolve () {
+  host $1 | awk '{ print $4  }' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
+}
+
+
+# mock macros
+mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
+mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
+
+
+
+
+
+
+# vim: ft=sh

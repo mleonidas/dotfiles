@@ -1,10 +1,14 @@
-#!/bin/bash 
-# run Xprofile
+#!/bin/bash
+
 [ -f ~/.Xprofile ] && . ~/.Xprofile
 
 
-if [ -s ~/.Xmodmap ]; then
-    xmodmap ~/.Xmodmap
+
+if [ -f ~/.Xmodmap ]; then
+  xmodmap ~/.Xmodmap
 fi
+
 xhost local:root
+
+eval $(ssh-agent)
 exec i3

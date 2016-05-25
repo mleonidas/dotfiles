@@ -1,0 +1,151 @@
+DOCKER_REPO_PREFIX="jess"
+
+#
+# Helper Functions
+#
+dcleanup(){
+	docker rm $(docker ps -aq 2>/dev/null) 2>/dev/null
+	docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
+
+
+del_stopped(){
+	local name=$1
+	local state=$(docker inspect --format "{{.State.Running}}" $name 2>/dev/null)
+
+	if [[ "$state" == "false" ]]; then
+		docker rm $name
+	fi
+}
+relies_on(){
+	local containers=$@
+
+	for container in $containers; do
+		local state=$(docker inspect --format "{{.State.Running}}" $container 2>/dev/null)
+
+		if [[ "$state" == "false" ]] || [[ "$state" == "" ]]; then
+			echo "$container is not running, starting it for you."
+			$container
+		fi
+	done
+}
+
+
+
+slack(){
+  del_stopped slack
+	sudo docker run -d \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=unix$DISPLAY \
+		--device /dev/snd \
+		--device /dev/dri \
+		--device /dev/video0 \
+		--group-add audio \
+		--group-add video \
+		-v /home/mleone//.slack:/root/.config/Slack \
+		--name slack \
+		jess/slack
+}
+
+
+vlc(){
+	del_stopped vlc
+	relies_on pulseaudio
+
+	docker run -d \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=unix$DISPLAY \
+		-e GDK_SCALE \
+		-e GDK_DPI_SCALE \
+		-e QT_DEVICE_PIXEL_RATIO \
+		--link pulseaudio:pulseaudio \
+		-e PULSE_SERVER=pulseaudio \
+		--group-add audio \
+		--group-add video \
+		-v $HOME/Torrents:/home/vlc/Torrents \
+		--device /dev/dri \
+		--name vlc \
+		${DOCKER_REPO_PREFIX}/vlc
+}
+
+pulseaudio(){
+	del_stopped pulseaudio
+
+	docker run -d \
+		-v /etc/localtime:/etc/localtime:ro \
+		--device /dev/snd \
+		-p 4713:4713 \
+		--restart always \
+		--group-add audio \
+		--name pulseaudio \
+		${DOCKER_REPO_PREFIX}/pulseaudio
+}
+
+
+hollywood(){
+	docker run --rm -it \
+		--name hollywood \
+		${DOCKER_REPO_PREFIX}/hollywood
+}
+htop(){
+	docker run --rm -it \
+		--pid host \
+		--net none \
+		--name htop \
+		${DOCKER_REPO_PREFIX}/htop
+}
+http(){
+	docker run -t --rm \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		--log-driver none \
+		${DOCKER_REPO_PREFIX}/httpie "$@"
+}
+
+chrome(){
+	# add flags for proxy if passed
+	local proxy=
+	local map=
+	local args=$@
+	if [[ "$1" == "tor" ]]; then
+		relies_on torproxy
+
+		map="MAP * ~NOTFOUND , EXCLUDE torproxy"
+		proxy="socks5://torproxy:9050"
+		args="https://check.torproject.org/api/ip ${@:2}"
+	fi
+
+	del_stopped chrome
+
+	# one day remove /etc/hosts bind mount when effing
+	# overlay support inotify, such bullshit
+	sudo docker run -d \
+		--memory 3gb \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=unix$DISPLAY \
+		-v $HOME/Downloads:/root/Downloads \
+		-v $HOME/Pictures:/root/Pictures \
+		-v $HOME/Torrents:/root/Torrents \
+		-v $HOME/.chrome:/data \
+		-v /dev/shm:/dev/shm \
+		-v /etc/hosts:/etc/hosts \
+		--security-opt seccomp:/etc/docker/seccomp/chrome.json \
+		--device /dev/snd \
+		--device /dev/dri \
+		--device /dev/video0 \
+		--device /dev/bus/usb \
+		--group-add audio \
+		--group-add video \
+		--name chrome \
+		${DOCKER_REPO_PREFIX}/chrome --user-data-dir=/data \
+		--proxy-server="$proxy" \
+		--host-resolver-rules="$map" $args
+
+}
+
+
+
+# vim: ft=sh
