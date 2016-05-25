@@ -1,4 +1,4 @@
-.PHONY: all dotfiles plugins
+.PHONY: all dotfiles plugins i3
 
 all: dotfiles etc plugins
 
@@ -16,4 +16,7 @@ plugins:
 
    $(shell sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)")
 
+
+i3:
+	ln -sfn $(CURDIR)/i3 /home/mleone/.config/i3;
 
