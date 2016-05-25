@@ -89,7 +89,7 @@ alias sha="git log | head -1"
 
 
 # get that shell colors
-source ~/repos/personal/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 
