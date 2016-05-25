@@ -1,4 +1,5 @@
 dotfiles store
 ============
 
-tmux, vim
+make
+
