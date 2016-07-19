@@ -18,6 +18,17 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set t_Co==16
+"set t_Co=256
+
+
+set background=dark
+
+" filetype indentation specific
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
+autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
+autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
+autocmd Filetype go setlocal ts=4 sts=4 sw=4 autoindent 
+autocmd BufNewFile,BufRead *_foo.rb set syntax=rspec
 
 
 
@@ -27,7 +38,7 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
-colo  solarized
+colo solarized
 
 
 set cursorline
@@ -37,12 +48,6 @@ set cursorline
 set fillchars+=vert:│
 hi VertSplit ctermbg=black guibg=black ctermfg=161
 
-" "set navigation for splits
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-"
-
 " make Y behave like other capitols
 nnoremap Y y$
 " iterm2 things ctrl-h is BS
@@ -50,24 +55,9 @@ if has('nvim')
      nnoremap <BS> <C-W>h
 endif
 
-map <C-E> <C-W>=
-map <C-B> <C-W><bar>
-
-
 " open splits 
 set splitbelow
 set splitright
-
-
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
 
 " Paste shortcuts
 map <C-G> :set paste norelativenumber nonumber <Return>
@@ -90,9 +80,6 @@ augroup END
 :nnoremap k gk
 
 " tab next/prev with shift h and shift l
-nnoremap <S-h> gT
-nnoremap <S-l> gt
-
 " jump between last opened buffer with Ctrl+E (:b# and :e# do same thing)
 :nmap <C-e> :e#<CR>
 
@@ -106,19 +93,9 @@ au BufRead *.go set filetype=go
 au BufRead *.sh set filetype=sh
 au BufRead *.haml set filetype=haml
 
-
-
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
-autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
-autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
-autocmd Filetype go setlocal ts=4 sts=4 sw=4 autoindent 
-autocmd BufNewFile,BufRead *_foo.rb set syntax=rspec
-
-
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
 
 
 " start Airline
@@ -202,6 +179,7 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
+let g:go_highlight_interfaces = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
@@ -285,16 +263,7 @@ let mapleader = ","
 
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-
-
-" Go syntax 
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
+nnoremap <Leader>rr :!ruby % <CR>
 
 
 " Tabularize frequent matches
@@ -345,9 +314,7 @@ let g:ctrlp_use_caching = 0
 autocmd! BufWritePost * Neomake
 
 
-
 " function to merge tabs it's actually kinda useful
-"
 function! MergeTabs()
   if tabpagenr() == 1
     return
@@ -363,9 +330,10 @@ function! MergeTabs()
   execute "buffer " . bufferName
 endfunction
 
-nmap <C-W>u :call MergeTabs()<CR>
+nmap <leader>mt :call MergeTabs()<CR>
 
 
-nnoremap <leader>z :FZF <cr>
+hi link yamlDirective Function 
+hi link yamlDocumentHeader Function 
 
-
+nnoremap <leader>t :CtrlPTag<cr>

@@ -5,9 +5,11 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="saltybit"
+#ZSH_THEME="saltybit"
+ZSH_THEME="pygmalion"
 # set vi mode
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -105,11 +107,28 @@ reset_aws() {
   unset AWS_SESSION_TOKEN
 }
 
+gogo() {
+  gopath=$(find ${GOPATH} -iname $1 | head -1)
+  cd $gopath
+}
+
+rere(){
+  repo_path=$(find ${HOME}/Documents/Repos/enigma -iname ${1} |head -1)
+  cd ${repo_path}
+}
+
 #+setup some useful aliases for work
 alias ssh='ssh -A'
+alias more='less'
+alias gw='cd ~/.go/src/github.com/'
 alias pup='cd ~/repos/getnomi/puppet/modules'
 alias gitpp='git pull --prune --all'
 alias vi='/usr/local/bin/nvim'
+alias ans="cd $HOME/Documents/repos/enigma/ansible"
+alias repos="cd $HOME/Documents/repos"
+alias pk="cd $HOME/.go/src/code.ingest.enigma"
+alias enigma="cd $HOME/Documents/repos/enigma"
+alias packages="cd $HOME/Documents/repos/enigma/packages"
 export GREP_COLOR=33
 
 
@@ -145,7 +164,7 @@ for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 # dns lookups made easy
 resolve () {
   host $1 | awk '{ print $4  }' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
-} 
+}
 alias gitc='git commit -m'
 alias gitp='git push'
 alias gita='git add .'
@@ -195,7 +214,7 @@ export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
 
 # setup my go workspace
 if [[ `uname` = "Darwin" ]]; then
-    export GOPATH="/Users/mleone/go:/Users/mleone/Documents/repos/sre/go"
+    export GOPATH="/Users/mleone/.go"
     alias gowork="cd $GOPATH/src/github.com/mleone896"
 else
     export GOPATH="/Users/mleone/go"
@@ -211,13 +230,14 @@ fi
 
 export TERM='screen-256color'
 export GOROOT=/usr/local/go
-export PATH=$PATH:/usr/local/terraform:$GOPATH:$GOROOT:/usr/local/somewhere/arcanist/bin/
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export OSCAR_CONFIG=~/Documents/repos/sre/terraform/oscar.yml
+export PATH=$PATH:/usr/local/terraform:$GOPATH:$GOROOT
+export PATH="$PATH:$HOME/.rvm/bin:$GOPATH/bin" # Add RVM to PATH for scripting
+export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+# docker machine alias
+alias dm=docker-machine
 
 
+alias bsdnetstat='echo sockstat -4 -l'
 
