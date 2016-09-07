@@ -1,5 +1,5 @@
 # Config's directive: config name value
- 
+
 # Default to the current screen if the screen the reference does not exist.
 config defaultToCurrentScreen true
 # The base value for nudge percent calculation
@@ -25,6 +25,8 @@ alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
 alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
 alias leftmost move screenOriginX;screenOriginY screenSizeX*0.6;screenSizeY
 alias rightmost move screenOriginX+screenSizeX*0.4;screenOriginY  screenSizeX*0.6;screenSizeY
+alias bigCenter move screenOriginX+screenSizeX/12;screenOriginY+screenSizeY/12 10*screenSizeX/12;10*screenSizeY/12
+
 # Layout's directive - layout name 'app name':OPTIONS operations
 
 # Creates the aliases needed for this example
@@ -49,7 +51,6 @@ bind b:shift;cmd ${bottomleft}
 bind y:shift;cmd ${topleft}
 bind l:shift;cmd ${righthalf}
 bind .:shift;cmd ${bottomright}
-bind p:shift;cmd ${topright}
 bind pad0:shift;cmd ${leftmost}
 # Resize - Resizes the window in the specified direction
 bind l:alt resize +1% +0
