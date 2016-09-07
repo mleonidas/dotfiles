@@ -5,8 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="saltybit"
- ZSH_THEME="pygmalion"
+ZSH_THEME="pygmalion"
 # set vi mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -61,41 +60,12 @@ export HISTIGNORE="&:[ ]*:exit"
 export EDITOR="/usr/local/bin/nvim"
 
 
-# export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='/usr/local/bin/mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-
-
-
-
-
-
+# change default grep color
+export GREP_COLOR=33
 export LSCOLORS=exfxcxdxcxegedabagacad
+
+# rvm 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
@@ -129,53 +99,22 @@ alias repos="cd $HOME/Documents/repos"
 alias pk="cd $HOME/.go/src/code.ingest.enigma"
 alias enigma="cd $HOME/Documents/repos/enigma"
 alias packages="cd $HOME/Documents/repos/enigma/packages"
-export GREP_COLOR=33
 
 
 
-
-# this is strictly for iterm2 to set the tab colors
-tab-color() {
-  echo -ne "\033]6;1;bg;red;brightness;$1\a"
-  echo -ne "\033]6;1;bg;green;brightness;$2\a"
-  echo -ne "\033]6;1;bg;blue;brightness;$3\a"
-}
-tab-reset() {
-  echo -ne "\033]6;1;bg;*;default\a"
-}
-
-color-ssh() {
-  if [[ -n "$ITERM_SESSION_ID" ]]; then
-    trap "tab-reset" INT EXIT
-    if [[ "$*" =~ "production|ec2-.*compute-1" ]]; then
-      tab-color 255 0 0
-    else
-      tab-color 0 255 0
-    fi
-  fi
-  ssh $*
-}
 # in case you wanted to print the 256 color scheme
 function print_colors() {
-for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+    for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 }
 
 
-# dns lookups made easy
-resolve () {
-  host $1 | awk '{ print $4  }' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
-}
 alias gitc='git commit -m'
 alias gitp='git push'
 alias gita='git add .'
 alias gitph='git push origin HEAD'
-
 alias sha="git log | head -1"
-hiss() {
-  histor_c=`history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head`
-  echo $histor_c
-}
 
+# upload something to hastebin.com
 haste(){
   url="http://hastebin.com"
   d=` cat $@`
@@ -185,25 +124,12 @@ haste(){
     [ $? = 0 ] && echo "$r"|perl -ne "/\W+\w+\W+(\w+)\W+/ and print \"$url/\$1\n\";"
 }
 
-
-# Predictable SSH authentication socket location.
-fixssh() {
-  for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
-    if (tmux show-environment | grep "^${key}" > /dev/null); then
-      value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
-      export ${key}="${value}"
-    fi
-  done
+# this is great when DNS is setup properly
+resolve () {
+  host $1 | awk '{ print $4  }' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
 }
-
-
 # get that shell colors
 source ~/Documents/repos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# mock macros
-mock_centos () { mock -r centos-${1}-x86_64 $2 ;}
-mock_sl () { mock -r SL-${1}-x86_64 $2 ;}
 
 # cause vim is surpassed by neovim
 alias vim="/usr/local/bin/nvim"
