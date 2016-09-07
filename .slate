@@ -51,7 +51,6 @@ bind b:shift;cmd ${bottomleft}
 bind y:shift;cmd ${topleft}
 bind l:shift;cmd ${righthalf}
 bind .:shift;cmd ${bottomright}
-bind p:shift;cmd ${topright}
 bind pad0:shift;cmd ${leftmost}
 # Resize - Resizes the window in the specified direction
 bind l:alt resize +1% +0

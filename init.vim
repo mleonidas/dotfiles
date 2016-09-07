@@ -17,8 +17,7 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set t_Co==16
-"set t_Co=256
+set t_Co=256
 
 
 set background=dark
@@ -38,7 +37,11 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
+
+"let g:onedark_termcolors=24
+
 colo solarized
+
 
 
 set cursorline
@@ -61,7 +64,7 @@ set splitright
 
 " Paste shortcuts
 map <C-G> :set paste norelativenumber nonumber <Return>
-map <C-N> :set nopaste relativenumber<Return>
+map <C-N> :set nopaste relativenumber number<Return>
 
 " quickly open a new tab
 nnoremap <C-t>     :tabnew<CR>
@@ -83,7 +86,6 @@ augroup END
 " jump between last opened buffer with Ctrl+E (:b# and :e# do same thing)
 :nmap <C-e> :e#<CR>
 
-
 " assorted automatic syntax loading. filetype -> syntax
 au BufRead *.md set filetype=markdown
 au BufRead *.scala set filetype=scala
@@ -101,7 +103,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " start Airline
 set laststatus=2
 let g:airline_theme='dark'
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1 
 let g:airline_powerline_fonts = 1 
 let g:airline#extensions#tabline#fnamemod = ':t'
 " air-line
@@ -171,18 +173,30 @@ no <UP> ddkP
 
 
 " SnipMate
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 
 
 
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_interfaces = 1
+let g:go_highlight_types = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_disable_autoinstall = 1
 
@@ -303,6 +317,7 @@ au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>gr <Plug>(go-run-split)
+au FileType go nmap <Leader> gt <Plug>(go-test)
 
 
 " make ctrlp use ag way faster
@@ -311,7 +326,22 @@ let g:ctrlp_use_caching = 0
 
 
 " Neomake Config
+highlight NeomakeErrorMsg ctermfg=227 ctermbg=237
+let g:neomake_warning_sign={'text': '⚠', 'texthl': 'NeomakeErrorMsg'}
+
+let g:neomake_go_gobuild_maker = {
+    \ 'exe': 'sh',
+    \ 'args': ['-c', 'go build -o ' . neomake#utils#DevNull() . ' ./\$0', '%:h'],
+    \ 'errorformat':
+        \ '%W%f:%l: warning: %m,' .
+        \ '%E%f:%l:%c:%m,' .
+        \ '%E%f:%l:%m,' .
+        \ '%C%\s%\+%m,' .
+        \ '%-G#%.%#'
+    \ }
+
 autocmd! BufWritePost * Neomake
+
 
 
 " function to merge tabs it's actually kinda useful
@@ -335,5 +365,9 @@ nmap <leader>mt :call MergeTabs()<CR>
 
 hi link yamlDirective Function 
 hi link yamlDocumentHeader Function 
+"hi link goMethod Underlined
+
+
 
 nnoremap <leader>t :CtrlPTag<cr>
+

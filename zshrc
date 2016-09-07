@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="saltybit"
-ZSH_THEME="pygmalion"
+ ZSH_THEME="pygmalion"
 # set vi mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -108,7 +108,7 @@ reset_aws() {
 }
 
 gogo() {
-  gopath=$(find ${GOPATH} -iname $1 | head -1)
+  gopath=$(find ${GOPATH}/src/ -iname $1 | head -1)
   cd $gopath
 }
 
