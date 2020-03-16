@@ -16,6 +16,7 @@ export GREP_COLOR=33
 export TERM='xterm-256color'
 export PATH="$HOME/.bin:$PATH"
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
+export LSCOLORS=exfxcxdxcxegedabagacad
 
 
 # autojump
