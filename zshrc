@@ -38,7 +38,6 @@ fi
 
 # set vi mode
 bindkey -v
-bindkey '^R' history-incremental-search-backward
 
 # set pure colors
 zstyle :prompt:pure:path color blue
