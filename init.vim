@@ -3,13 +3,14 @@ source ~/.nvim_bundles
 filetype plugin indent on
 syntax on
 set ignorecase
-set relativenumber number 
+set relativenumber number
 set mouse=
 set hlsearch
 set background=dark
 set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
+
 set fileformat=unix
 set autoindent
 set expandtab
@@ -17,19 +18,12 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
+
 set t_Co=256
 
-
-set background=dark
-
-" filetype indentation specific
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 autoindent
-autocmd Filetype puppet  setlocal ts=2 sts=2 sw=2 autoindent 
-autocmd Filetype sh setlocal ts=4 sts=4 sw=4 autoindent 
-autocmd Filetype go setlocal ts=4 sts=4 sw=4 autoindent 
-autocmd BufNewFile,BufRead *_foo.rb set syntax=rspec
-
-
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 
 " solarized config for iterm2
@@ -38,11 +32,13 @@ let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
 
-"let g:onedark_termcolors=24
-
+"neodark
 colo solarized
 
+"colo neodark
 
+
+let g:neodark#background = '#1f2f37'
 
 set cursorline
 
@@ -58,7 +54,7 @@ if has('nvim')
      nnoremap <BS> <C-W>h
 endif
 
-" open splits 
+" open splits
 set splitbelow
 set splitright
 
@@ -66,8 +62,17 @@ set splitright
 map <C-G> :set paste norelativenumber nonumber <Return>
 map <C-N> :set nopaste relativenumber number<Return>
 
-" quickly open a new tab
-nnoremap <C-t>     :tabnew<CR>
+
+
+" " termcolors
+" if (empty($TMUX))
+"   if (has("nvim"))
+"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"   endif
+"   if (has("termguicolors"))
+"     set termguicolors
+"   endif
+" endif
 
 " run tests !!
 nnoremap g<CR> :Dispatch<CR>
@@ -89,11 +94,12 @@ augroup END
 " assorted automatic syntax loading. filetype -> syntax
 au BufRead *.md set filetype=markdown
 au BufRead *.scala set filetype=scala
-au BufRead *.pp set filetype=puppet 
-au BufRead *.rb set filetype=ruby 
-au BufRead *.go set filetype=go 
+au BufRead *.pp set filetype=puppet
+au BufRead *.rb set filetype=ruby
+au BufRead *.go set filetype=go
 au BufRead *.sh set filetype=sh
 au BufRead *.haml set filetype=haml
+au BufRead *.vault set filetype=yaml
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -103,8 +109,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " start Airline
 set laststatus=2
 let g:airline_theme='dark'
-let g:airline#extensions#tabline#enabled = 1 
-let g:airline_powerline_fonts = 1 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " air-line
 let g:airline_powerline_fonts = 1
@@ -142,10 +148,6 @@ let g:airline_symbols.linenr = ''
 
 " Projectionist
 let g:projectionist_heuristics = {
-      \    "manifests/*.pp": {
-      \     "type": "spec",
-      \     "alternate": "spec/*/{}.rb"
-      \   },
       \    "spec/*_spec.rb": {
       \     "type": "spec",
       \     "alternate": "spec/defines/{}.rb"
@@ -173,13 +175,10 @@ no <UP> ddkP
 
 
 " SnipMate
-
-
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 
 
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -187,12 +186,12 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 
 
-
+" Go plugin settings
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_types = 1
-let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_fields = 1
@@ -202,7 +201,7 @@ let g:go_disable_autoinstall = 1
 
 
 " ruby completions
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
@@ -274,6 +273,8 @@ let g:molokai_original = 1
 " Leader Command Section
 let mapleader = ","
 
+" Remove all whitespace
+noremap <Leader>rw :%s/\s\+//g <CR>
 
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
@@ -309,7 +310,7 @@ nnoremap <leader>al :!ansible-lint % <cr>
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
-" Go syntax 
+" Go syntax
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
@@ -319,30 +320,27 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>gr <Plug>(go-run-split)
 au FileType go nmap <Leader> gt <Plug>(go-test)
 
-
-" make ctrlp use ag way faster
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-let g:ctrlp_use_caching = 0
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 
 " Neomake Config
 highlight NeomakeErrorMsg ctermfg=227 ctermbg=237
 let g:neomake_warning_sign={'text': '⚠', 'texthl': 'NeomakeErrorMsg'}
 
-let g:neomake_go_gobuild_maker = {
-    \ 'exe': 'sh',
-    \ 'args': ['-c', 'go build -o ' . neomake#utils#DevNull() . ' ./\$0', '%:h'],
-    \ 'errorformat':
-        \ '%W%f:%l: warning: %m,' .
-        \ '%E%f:%l:%c:%m,' .
-        \ '%E%f:%l:%m,' .
-        \ '%C%\s%\+%m,' .
-        \ '%-G#%.%#'
-    \ }
 
 autocmd! BufWritePost * Neomake
 
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
 
+nmap <leader>ps :call TrimWhitespace()<CR>
 
 " function to merge tabs it's actually kinda useful
 function! MergeTabs()
@@ -363,11 +361,52 @@ endfunction
 nmap <leader>mt :call MergeTabs()<CR>
 
 
-hi link yamlDirective Function 
-hi link yamlDocumentHeader Function 
+hi link yamlDirective Function
+hi link yamlDocumentHeader Function
 "hi link goMethod Underlined
+"
 
 
+let g:sql_type_default = 'pgsql'
+
+" terraform vim config
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+
+" rust settings
+let g:rustfmt_autosave = 1
+set hidden
+let g:racer_cmd = "/Users/mleone/.cargo/bin/racer"
+
+
+
+
+
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
+
+
+
+
+
+
+
+set tags=./.tags;,./tags;
+nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
+
+map <Leader>rrt :call RunCurrentSpecFile()<CR>
+map <Leader>rra :call RunAllSpecs()<CR>
+
+
+" Crystal configs
+let g:crystal_auto_format = 1
 
 nnoremap <leader>t :CtrlPTag<cr>
 
