@@ -1,9 +1,8 @@
 if [ -z $HISTFILE ]; then
     HISTFILE=$HOME/.zsh_history
 fi
-HISTSIZE=100000
-SAVEHIST=100000
-HISTCONTROL=ignoredups
+HISTSIZE=500000
+SAVEHIST=500000
 
 setopt append_history
 setopt extended_history

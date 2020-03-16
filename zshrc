@@ -1,15 +1,10 @@
+# load prompt
 autoload -U promptinit; promptinit
 prompt pure
-
-# set vi mode
-bindkey -v
-bindkey '^R' history-incremental-search-backward
 
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
-export HISTFILESIZE=500000
-export HISTIGNORE="&:[ ]*:exit"
 export EDITOR="/usr/local/bin/nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
@@ -40,6 +35,10 @@ if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
 fi
 
+
+# set vi mode
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # set pure colors
 zstyle :prompt:pure:path color blue
