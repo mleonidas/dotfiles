@@ -36,10 +36,6 @@ source $DOTFILES_PATH/.zsh/async.zsh
 source $DOTFILES_PATH/.zsh/aliases.zsh
 
 
-
-# Make vim-like behaviour
-bindkey -e
-
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
 fi
