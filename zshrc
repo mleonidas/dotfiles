@@ -39,11 +39,8 @@ fi
 # set vi mode
 bindkey -v
 
-# set pure colors
-zstyle :prompt:pure:path color blue
 
 . /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit

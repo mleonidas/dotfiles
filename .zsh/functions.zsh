@@ -15,10 +15,6 @@ function resolve() {
   host $1 | awk '{ print $4  }' | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -v 'in' | xargs -I {} dig +short -x {}
 }
 
-function ezsh() {
-  vim ~/.zshrc
-}
-
 function szsh() {
-  source ~/.zshrc
+  exec zsh
 }
