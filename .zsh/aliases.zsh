@@ -15,6 +15,8 @@ alias gita='git add .'
 alias gitph='git push origin HEAD'
 alias sha="git log | head -1"
 
+alias glo="git log --pretty=oneline --abbrev-commit"
+
 # quick edit
 alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
 

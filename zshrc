@@ -9,10 +9,13 @@ export EDITOR="/usr/local/bin/nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
 export TERM='xterm-256color'
-export PATH="$HOME/.bin:$PATH"
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 export LSCOLORS=exfxcxdxcxegedabagacad
+export GOPATH="$HOME/.go"
+export PATH="$HOME/.bin:$PATH:$GOPATH/bin"
 
+
+alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
@@ -37,7 +40,7 @@ fi
 
 
 # set vi mode
-bindkey -v
+bindkey -e
 
 
 . /usr/local/opt/asdf/asdf.sh
