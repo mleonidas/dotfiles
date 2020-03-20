@@ -18,3 +18,11 @@ function resolve() {
 function szsh() {
   exec zsh
 }
+
+function dockerpsrm() {
+  docker rm -f $(docker ps -a |awk '/Exit/ { print $1 }')
+}
+
+function imagerm() {
+  docker image prune
+}
