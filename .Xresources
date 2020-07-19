@@ -7,7 +7,7 @@ Xft.antialias:              false
 Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
-URxvt*termName: rxvt
+URxvt.termName: rxvt-256color
 !-------------------------------------------------------------------------------
 ! URxvt settings
 ! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
@@ -30,15 +30,12 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           false
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-/* URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true */
-
-URxvt*font:                  xft:Meslo LG S DZ for Powerline-9
-Urxvt*boldfont:              xft:Meslo LG S DZ for Powerline-9
+URxvt*font:                  xft:MesloLGS NF:pixelsize=16:minspace=False, xft:DejaVu Sans:pixelsize=18
+Urxvt*boldfont:              xft:MesloLGS NF 
 
 
 ! Fix font space
-URxvt*letterSpace: -1
+URxvt*letterSpace: 0 
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt

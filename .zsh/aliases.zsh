@@ -1,8 +1,7 @@
 # common aliases
 alias ssh='ssh -A'
 alias more='less'
-alias vi='/usr/local/bin/nvim'
-alias vim="/usr/local/bin/nvim"
+alias vim="/usr/bin/nvim"
 alias dm=docker-machine
 alias grep='grep --color'
 
@@ -27,6 +26,7 @@ alias ff='find . -type f -name'
 
 
 # ls 
+alias ls='ls --color'
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable

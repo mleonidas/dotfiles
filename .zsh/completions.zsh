@@ -2,7 +2,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle :compinstall filename '/Users/chasmo/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 
 autoload -Uz compinit
