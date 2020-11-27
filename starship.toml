@@ -1,0 +1,77 @@
+format = """\
+  $kubernetes\
+  $python\
+  $line_break\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status \
+  $cmd_duration\
+  $line_break\
+  $character\
+  """
+
+[aws]
+format = '[$symbol$profile(\($region\))]($style) '
+disabled = true
+style = "#af8700"
+symbol = "🅰 "
+
+[cmd_duration]
+disabled = true
+min_time = 500
+format = "underwent [$duration](bold yellow)"
+
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"
+
+[terraform]
+format = "[$version$workspace]($style) "
+disabled = true
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+disabled = true
+style = "#1c1c1c"
+cherry_pick = "[🍒 PICKING](red)"
+progress_divider = " of "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style))'
+modified = "*"
+style = "#d70000"
+
+[git_branch]
+style = "#585858"
+format = "[$symbol$branch]($style)"
+
+[character]
+error_symbol = "[✖](red) "
+
+[directory]
+truncation_length = 8
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+truncation_symbol = ".../"
+style = "blue"
+
+[python]
+format = '[${symbol}${pyenv_prefix}${version}(\($virtualenv\))]($style) '
+style = "green"
+symbol = ""
+
+[username]
+style_user = "dimmed blue"
+show_always = false
+
+[kubernetes]
+format = '[\[$context\($namespace\)\]]($style) '
+style = "cyan"
+disabled = false
+
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+
+[time]
+disabled = true
