@@ -1,7 +1,7 @@
 # common aliases
 alias ssh='ssh -A'
 alias more='less'
-alias vim="/usr/bin/nvim"
+alias vim="/usr/local/bin/nvim"
 alias dm=docker-machine
 alias grep='grep --color'
 
@@ -16,17 +16,22 @@ alias sha="git log | head -1"
 
 alias glo="git log --pretty=oneline --abbrev-commit"
 
+# kubernetes
+alias k='kubectl'
+
 # quick edit
 alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
 
 
 # find
-alias fd='find . -type d -name'
 alias ff='find . -type f -name'
+## alias python='/usr/local/bin/python3'
+## alias pip='/usr/local/bin/pip3'
+
 
 
 # ls 
-alias ls='ls --color'
+alias ls='ls -G'
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable

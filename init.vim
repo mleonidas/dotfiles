@@ -1,7 +1,17 @@
 source ~/.nvim_bundles
 
-filetype plugin indent on
 syntax on
+filetype plugin indent on
+
+augroup myfiletypes
+  " Clear old autocmds in group
+  autocmd!
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+augroup END
+" ================
+
+
 set ignorecase
 set relativenumber number
 set mouse=
@@ -10,15 +20,16 @@ set background=dark
 set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
-
-set fileformat=unix
+set et
+set sw=2
+set wmh=0
 set autoindent
-set expandtab
 set smarttab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-
+set gdefault
+set history=500
+set smarttab
+set backupdir=~/.tmp
+set directory=~/.tmp
 
 set t_Co=256
 
@@ -35,20 +46,15 @@ let g:solarized_termcolors=16
 "neodark
 colo solarized
 
-"colo neodark
-
-
-let g:neodark#background = '#1f2f37'
-
 set cursorline
 
 " change the split size to be more like tmux
-"
 set fillchars+=vert:│
 hi VertSplit ctermbg=black guibg=black ctermfg=161
 
 " make Y behave like other capitols
 nnoremap Y y$
+
 " iterm2 things ctrl-h is BS
 if has('nvim')
      nnoremap <BS> <C-W>h
@@ -61,18 +67,6 @@ set splitright
 " Paste shortcuts
 map <C-G> :set paste norelativenumber nonumber <Return>
 map <C-N> :set nopaste relativenumber number<Return>
-
-
-
-" " termcolors
-" if (empty($TMUX))
-"   if (has("nvim"))
-"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"   endif
-"   if (has("termguicolors"))
-"     set termguicolors
-"   endif
-" endif
 
 " run tests !!
 nnoremap g<CR> :Dispatch<CR>
@@ -172,26 +166,25 @@ nmap { {zz
 no <DOWN> ddp
 no <UP> ddkP
 
-
-
 " SnipMate
 let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-
 
 " Go plugin settings
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 0
 let g:go_highlight_function_calls = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_types = 1
+let g:go_highlight_variable_declarations = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_fields = 1
@@ -199,13 +192,10 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_disable_autoinstall = 1
 
-
 " ruby completions
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-
-
 
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
@@ -246,16 +236,12 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:neocomplcache_min_syntax_length = 3 " 3 chars before pops up
 let g:neocomplcache_enable_auto_select = 0
 
-
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-
 
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -268,8 +254,6 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 let g:molokai_original = 1
 
-
-
 " Leader Command Section
 let mapleader = ","
 
@@ -280,12 +264,13 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <Leader>rr :!ruby % <CR>
 
-
 " Tabularize frequent matches
 map <Leader>cu :Tabularize /\|<CR>
 map <Leader>ce :Tabularize /=<CR>
 map <Leader>cp :Tabularize /=><CR>
 
+"Git
+map <Leader>gs :Gstatus<CR>
 
 " quick buffer movement
 noremap <Leader>n :bnext <CR>
@@ -326,11 +311,21 @@ if executable('rg')
   let g:ctrlp_use_caching = 0
 endif
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_working_path_mode = 'ra'
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " Neomake Config
 highlight NeomakeErrorMsg ctermfg=227 ctermbg=237
 let g:neomake_warning_sign={'text': '⚠', 'texthl': 'NeomakeErrorMsg'}
-
 
 autocmd! BufWritePost * Neomake
 
@@ -360,12 +355,8 @@ endfunction
 
 nmap <leader>mt :call MergeTabs()<CR>
 
-
 hi link yamlDirective Function
 hi link yamlDocumentHeader Function
-"hi link goMethod Underlined
-"
-
 
 let g:sql_type_default = 'pgsql'
 
@@ -379,10 +370,6 @@ let g:rustfmt_autosave = 1
 set hidden
 let g:racer_cmd = "/Users/mleone/.cargo/bin/racer"
 
-
-
-
-
 augroup Racer
     autocmd!
     autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
@@ -391,22 +378,9 @@ augroup Racer
     autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
     autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
 augroup END
-
-
-
-
-
-
-
 set tags=./.tags;,./tags;
 nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
+nnoremap <leader>sp :Rg<Space>
 
 map <Leader>rrt :call RunCurrentSpecFile()<CR>
 map <Leader>rra :call RunAllSpecs()<CR>
-
-
-" Crystal configs
-let g:crystal_auto_format = 1
-
-nnoremap <leader>t :CtrlPTag<cr>
-
