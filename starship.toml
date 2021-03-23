@@ -1,6 +1,7 @@
 format = """\
   $kubernetes\
   $python\
+  $terraform\
   $line_break\
   $directory\
   $git_branch\
@@ -29,7 +30,7 @@ us-east-1 = "va"
 
 [terraform]
 format = "[$version$workspace]($style) "
-disabled = true
+disabled = false
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '

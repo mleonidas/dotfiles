@@ -1,13 +1,11 @@
 source ~/.nvim_bundles
-
-syntax on
 filetype plugin indent on
-
 augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+  autocmd BufRead,BufNewFile *.pipeline set ft=Jenkinsfile
 augroup END
 " ================
 
@@ -25,13 +23,19 @@ set sw=2
 set wmh=0
 set autoindent
 set smarttab
+" set termguicolors
 set gdefault
 set history=500
 set smarttab
 set backupdir=~/.tmp
 set directory=~/.tmp
+" setlocal spell spelllang=en_us
+" set complete+=kspell
 
-set t_Co=256
+
+
+
+" set t_Co=256
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -97,16 +101,16 @@ au BufRead *.vault set filetype=yaml
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
+highlight clear SignColumn
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
 
 
 " start Airline
 set laststatus=2
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-" air-line
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -263,6 +267,8 @@ noremap <Leader>rw :%s/\s\+//g <CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <Leader>rr :!ruby % <CR>
+nnoremap <Leader>ff :CtrlP <CR>
+nnoremap <Leader>gb :Gblame <CR>
 
 " Tabularize frequent matches
 map <Leader>cu :Tabularize /\|<CR>
@@ -364,7 +370,6 @@ let g:sql_type_default = 'pgsql'
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
-
 " rust settings
 let g:rustfmt_autosave = 1
 set hidden
@@ -384,3 +389,18 @@ nnoremap <leader>sp :Rg<Space>
 
 map <Leader>rrt :call RunCurrentSpecFile()<CR>
 map <Leader>rra :call RunAllSpecs()<CR>
+
+
+
+
+let g:ale_linters = {
+      \   'python': ['flake8', 'pylint'],
+      \   'ruby': ['standardrb', 'rubocop'],
+      \   'javascript': ['eslint'],
+      \}
+
+
+let g:ale_fixers = {
+      \    'python': ['yapf'],
+      \}
+let g:ale_fix_on_save = 1

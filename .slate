@@ -14,7 +14,7 @@ config windowHintsSpread true
  # Alias' directive: alias name value
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
-alias leftthird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY
+alias leftthird move screenOriginX;screenOriginY screenSizeX/1.5;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
 alias middlethird move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
 alias tophalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
@@ -45,13 +45,14 @@ bind f:shift;cmd ${full}
 bind k:shift;cmd ${tophalf}
 bind j:shift;cmd ${bottomhalf}
 bind h:shift;cmd ${lefthalf}
-bind h:shift;alt;cmd ${leftthird}
+bind ;:shift;cmd ${leftthird}
 bind i:shift;alt;cmd ${middlethird}
 bind b:shift;cmd ${bottomleft}
 bind y:shift;cmd ${topleft}
 bind l:shift;cmd ${righthalf}
 bind .:shift;cmd ${bottomright}
 bind pad0:shift;cmd ${leftmost}
+
 # Resize - Resizes the window in the specified direction
 bind l:alt resize +1% +0
 bind h:alt resize -1% +0
