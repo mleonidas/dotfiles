@@ -25,11 +25,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gioele/vim-autoswap'
-Plug 'benekastah/neomake'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'chase/vim-ansible-yaml'
-Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neocomplcache.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'cespare/vim-toml'
@@ -59,11 +56,13 @@ Plug 'racer-rust/vim-racer'
 Plug 'chr4/nginx.vim'
 Plug 'dense-analysis/ale'
 Plug 'idanarye/vim-merginal'
-Plug 'vim-python/python-syntax'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug  'klen/python-mode'
 Plug 'towolf/vim-helm'
 Plug 'google/vim-maktaba'
-Plug 'bazelbuild/vim-bazel'
+Plug 'karoliskoncevicius/vim-sendtowindow'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
 " Plug 'Coornail/vim-go-conceal', {'for': 'go'}
 
 "Plug 'tpope/vim-rails'

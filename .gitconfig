@@ -1,13 +1,17 @@
 [user]
-	name = Mike Leone
-  email = mleone896@gmail.com 
+  name = Mike Leone
+  email = michael.leone@bluecore.com
+
 [color]
-	ui = true
+  ui = true
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
 
 [alias]
-	lgr = log --oneline --decorate --tags --parents --graph
-	br = branch
-	co = checkout
+  lgr = log --oneline --decorate --tags --parents --graph
+  br = branch
+  co = checkout
   lgf = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
   ci = commit
   fl = log -u
@@ -24,8 +28,8 @@
   sa = stash apply
   ss = stash save
   wip = commit -m "{WIP}"
-	create-pull-request = !sh -c 'stash pull-request $0 $@'
+  create-pull-request = !sh -c 'stash pull-request $0 $@'
 
 
 [core]
-	editor = nvim 
+  editor = nvim

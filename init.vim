@@ -1,14 +1,5 @@
 source ~/.nvim_bundles
 filetype plugin indent on
-augroup myfiletypes
-  " Clear old autocmds in group
-  autocmd!
-  " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-  autocmd BufRead,BufNewFile *.pipeline set ft=Jenkinsfile
-augroup END
-" ================
-
 
 set ignorecase
 set relativenumber number
@@ -19,27 +10,23 @@ set incsearch
 set encoding=utf-8
 set fileencoding=utf-8
 set et
-set sw=2
-set wmh=0
 set autoindent
 set smarttab
-" set termguicolors
 set gdefault
 set history=500
 set smarttab
 set backupdir=~/.tmp
 set directory=~/.tmp
-" setlocal spell spelllang=en_us
-" set complete+=kspell
+set cursorline
 
 
-
-
-" set t_Co=256
+set t_Co=256
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
+" fix the terminal
+tnoremap <Esc> <C-\><C-n>
 
 " solarized config for iterm2
 let g:solarized_visibility = "high"
@@ -47,13 +34,13 @@ let g:solarized_contrast = "high"
 let g:solarized_termtrans =  1
 let g:solarized_termcolors=16
 
-"neodark
+
 colo solarized
 
-set cursorline
 
 " change the split size to be more like tmux
 set fillchars+=vert:│
+
 hi VertSplit ctermbg=black guibg=black ctermfg=161
 
 " make Y behave like other capitols
@@ -71,13 +58,6 @@ set splitright
 " Paste shortcuts
 map <C-G> :set paste norelativenumber nonumber <Return>
 map <C-N> :set nopaste relativenumber number<Return>
-
-" run tests !!
-nnoremap g<CR> :Dispatch<CR>
-augroup Ruby
-  autocmd!
-  autocmd FileType Ruby let b:dispatch='bundle exec rake rspec %'
-augroup END
 
 
 " navigation (from http://statico.github.com/vim.html)
@@ -268,7 +248,7 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <Leader>rr :!ruby % <CR>
 nnoremap <Leader>ff :CtrlP <CR>
-nnoremap <Leader>gb :Gblame <CR>
+nnoremap <Leader>gb :Git blame<CR>
 
 " Tabularize frequent matches
 map <Leader>cu :Tabularize /\|<CR>
@@ -294,7 +274,6 @@ nnoremap <leader>sh  <C-w>H  <cr>
 " switch from vertical to horizontal
 nnoremap <leader>sv  <C-w>K  <cr>
 
-" suppert for ansible isn't in neomake as of yet this is a hack
 
 nnoremap <leader>al :!ansible-lint % <cr>
 
@@ -329,11 +308,6 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" Neomake Config
-highlight NeomakeErrorMsg ctermfg=227 ctermbg=237
-let g:neomake_warning_sign={'text': '⚠', 'texthl': 'NeomakeErrorMsg'}
-
-autocmd! BufWritePost * Neomake
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -364,6 +338,8 @@ nmap <leader>mt :call MergeTabs()<CR>
 hi link yamlDirective Function
 hi link yamlDocumentHeader Function
 
+" hi link goVarDefs Underlined
+
 let g:sql_type_default = 'pgsql'
 
 " terraform vim config
@@ -391,16 +367,62 @@ map <Leader>rrt :call RunCurrentSpecFile()<CR>
 map <Leader>rra :call RunAllSpecs()<CR>
 
 
+" set popup menu colors
+hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 
+"resize splits
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+
+" coc maps
+nmap <silent> gd <Plug>(coc-definition)
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+
+
+
+let g:ale_disable_lsp = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_linters = {
       \   'python': ['flake8', 'pylint'],
+      \   'go': ['revive'],
       \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint'],
       \}
 
-
 let g:ale_fixers = {
-      \    'python': ['yapf'],
-      \}
+    \    '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \    'javascript': ['eslint', 'prettier'],
+    \    'python': ['black']
+    \}
+
+
+
 let g:ale_fix_on_save = 1
