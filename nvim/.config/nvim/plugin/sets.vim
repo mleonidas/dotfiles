@@ -1,6 +1,7 @@
 set ignorecase
 set relativenumber number
 set mouse=
+set termguicolors
 set hlsearch
 set background=dark
 set incsearch
@@ -20,6 +21,7 @@ set directory=~/.tmp
 set noswapfile
 set nobackup
 set cursorline
+set t_Co=256
 
 set tags=./.tags;,./tags;
 " change the split size to be more like tmux

@@ -8,7 +8,6 @@ set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
-set t_Co=256
 set completeopt=menu,menuone,noselect
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -16,6 +15,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 call plug#begin('~/.config/.nvim/plugged')
 set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 Plug 'AndrewRadev/splitjoin.vim'
@@ -44,7 +44,7 @@ Plug 'gioele/vim-autoswap'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'chase/vim-ansible-yaml'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
@@ -97,13 +97,13 @@ let mapleader = " "
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
 
-" solarized config for iterm2
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-let g:solarized_termtrans =  1
-let g:solarized_termcolors=16
+syntax on
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
 
-colo solarized
+
+colo solarized8
 
 hi VertSplit ctermbg=black guibg=black ctermfg=161
 
