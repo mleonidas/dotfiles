@@ -286,6 +286,4 @@ hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 
 
 " lsp config
-lua require("lsp_config")
-lua require("lsp_config_completion")
-lua require("statusline")
+lua require("mleonidas")
