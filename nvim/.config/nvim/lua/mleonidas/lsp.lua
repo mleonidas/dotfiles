@@ -2,7 +2,19 @@ local nvim_lsp = require('lspconfig')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-require'lspconfig'.gopls.setup{}
+require'lspconfig'.gopls.setup(config({
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}))
+
+require'lspconfig'.yamlls.setup(config())
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
