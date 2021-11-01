@@ -16,6 +16,8 @@ export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 export PATH="$HOME/.bin:$PATH"
 
 
+# load sensitive data
+source ~/.private_env
 
 alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
 
