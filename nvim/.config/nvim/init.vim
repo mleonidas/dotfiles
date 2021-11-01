@@ -1,4 +1,3 @@
-source ~/.nvim_bundles
 filetype plugin indent on
 
 
@@ -19,21 +18,28 @@ call plug#begin('~/.config/.nvim/plugged')
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'AndrewRadev/splitjoin.vim'
+
 Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'google/vim-jsonnet'
+
 Plug 'lifepillar/pgsql.vim'
+
 Plug 'jvirtanen/vim-hcl'
+
 Plug 'Glench/Vim-Jinja2-Syntax'
+
 Plug 'rust-lang/rust.vim'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-airline/vim-airline'
+
+" status bar
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'ryanoasis/vim-devicons'
-Plug 'kchmck/vim-coffee-script'
+
 Plug 'hashivim/vim-hashicorp-tools'
+
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gioele/vim-autoswap'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'chase/vim-ansible-yaml'
@@ -55,7 +61,9 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-ruby/vim-ruby'
+" fuzzy finding
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'derekwyatt/vim-scala'
@@ -80,6 +88,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 call plug#end()
+
+nnoremap <SPACE> <Nop>
 
 " Leader Command Section
 let mapleader = " "
@@ -137,7 +147,6 @@ noremap <Leader>rw :%s/\s\+//g <CR>
 
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <Leader>rr :!ruby % <CR>
 nnoremap <Leader>ff :CtrlP <CR>
 nnoremap <Leader>gb :Git blame<CR>
 
@@ -279,3 +288,4 @@ hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 " lsp config
 lua require("lsp_config")
 lua require("lsp_config_completion")
+lua require("statusline")
