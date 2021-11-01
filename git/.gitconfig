@@ -6,7 +6,7 @@
   ui = true
 
 [url "git@github.com:"]
-  insteadOf = https://github.com/
+	insteadOf = https://github.com/
 
 [alias]
   lgr = log --oneline --decorate --tags --parents --graph
