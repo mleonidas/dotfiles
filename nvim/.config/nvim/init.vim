@@ -90,7 +90,6 @@ Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 nnoremap <SPACE> <Nop>
-
 " Leader Command Section
 let mapleader = " "
 
@@ -164,7 +163,6 @@ nnoremap <Leader>bp :bprev <CR>
 nnoremap <Leader>ll :ls <CR>
 " quicksave
 nnoremap <leader>s :w<cr>
-inoremap <leader>s <C-c>:w<cr>
 nnoremap <leader>qq :q! <cr>
 " quitck quit
 nnoremap <leader>q :q<cr>
