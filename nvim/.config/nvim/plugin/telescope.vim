@@ -1,6 +1,6 @@
 
 lua << EOF
-require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules", ".git"}}}
+require('telescope').setup{}
 EOF
 
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({hidden=true, previewer=false})<cr>

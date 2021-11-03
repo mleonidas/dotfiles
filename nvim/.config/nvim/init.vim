@@ -1,5 +1,7 @@
 filetype plugin indent on
 
+syntax on
+
 
 set wildignore+=*.pyc
 set wildignore+=*_build/*
@@ -10,8 +12,6 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 set completeopt=menu,menuone,noselect
 
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 call plug#begin('~/.config/.nvim/plugged')
 set nocompatible              " be iMproved, required
@@ -84,6 +84,8 @@ Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mbbill/undotree'
+Plug 'folke/lsp-colors.nvim'
+Plug 'folke/trouble.nvim'
 
 " nvim autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -103,14 +105,6 @@ let mapleader = " "
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
-
-syntax on
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
-
-
-colo solarized8
 
 
 " make Y behave like other capitols
@@ -231,6 +225,7 @@ endfunction
 
 
 let g:sql_type_default = 'pgsql'
+
 
 augroup Mleonidas
     autocmd!
