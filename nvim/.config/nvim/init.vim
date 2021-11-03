@@ -65,6 +65,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+" vim marks on steroids
+Plug 'ThePrimeagen/harpoon'
+
+
 " fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
