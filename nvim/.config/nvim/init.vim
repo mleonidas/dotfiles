@@ -22,32 +22,35 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+
+
+" language plugins
 Plug 'google/vim-jsonnet'
-
 Plug 'lifepillar/pgsql.vim'
-
 Plug 'jvirtanen/vim-hcl'
-
+Plug 'hashivim/vim-hashicorp-tools'
 Plug 'Glench/Vim-Jinja2-Syntax'
-
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-go'
+Plug 'derekwyatt/vim-scala'
+Plug 'chase/vim-ansible-yaml'
+Plug 'earthly/earthly.vim', { 'branch': 'main' }
+Plug  'klen/python-mode'
+Plug 'racer-rust/vim-racer'
+Plug 'towolf/vim-helm'
+Plug 'chr4/nginx.vim'
 
 " status bar
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'ryanoasis/vim-devicons'
 
-Plug 'hashivim/vim-hashicorp-tools'
 
-Plug 'earthly/earthly.vim', { 'branch': 'main' }
-Plug 'gioele/vim-autoswap'
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'chase/vim-ansible-yaml'
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-solarized8'
-Plug 'cespare/vim-toml'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
@@ -61,26 +64,24 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
 " fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'derekwyatt/vim-scala'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'majutsushi/tagbar'
 Plug 'elorest/vim-slang'
-Plug 'racer-rust/vim-racer'
-Plug 'chr4/nginx.vim'
 Plug 'dense-analysis/ale'
 Plug 'idanarye/vim-merginal'
-Plug  'klen/python-mode'
-Plug 'towolf/vim-helm'
 Plug 'google/vim-maktaba'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mbbill/undotree'
+
+" nvim autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -88,6 +89,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 nnoremap <SPACE> <Nop>
