@@ -51,6 +51,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-solarized8'
+
+" Plug 'morhetz/gruvbox'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
@@ -200,12 +202,24 @@ nnoremap <leader>al :!ansible-lint % <cr>
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
+nnoremap <leader>gm :call SynStack()<CR>
+
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
 
+
+
+function! SynStack ()
+    for i1 in synstack(line("."), col("."))
+        let i2 = synIDtrans(i1)
+        let n1 = synIDattr(i1, "name")
+        let n2 = synIDattr(i2, "name")
+        echo n1 "->" n2
+    endfor
+endfunction
 
 " function to merge tabs it's actually kinda useful
 function! MergeTabs()
