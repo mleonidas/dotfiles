@@ -11,3 +11,5 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
 
 nnoremap <leader>gb :lua require('telescope.builtin').git_branches()<CR>
+
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>

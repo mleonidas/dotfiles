@@ -80,6 +80,7 @@ Plug 'google/vim-maktaba'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
+Plug 'mbbill/undotree'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -104,7 +105,6 @@ let g:solarized_termtrans = 1
 
 colo solarized8
 
-hi VertSplit ctermbg=black guibg=black ctermfg=161
 
 " make Y behave like other capitols
 nnoremap Y y$
@@ -122,6 +122,8 @@ set splitright
 nnoremap <C-G> :set paste norelativenumber nonumber <Return>
 nnoremap <C-N> :set nopaste relativenumber number<Return>
 
+" merge tabs
+nnoremap <leader>mt :call MergeTabs()<CR>
 
 " navigation (from http://statico.github.com/vim.html)
 " go up and down one row, not one line (useful for wrapped lines)
@@ -134,8 +136,6 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
 nnoremap { {zz
-
-
 
 nnoremap <DOWN> ddp
 nnoremap <UP> ddkP
@@ -161,20 +161,35 @@ nnoremap <Leader>bn :bnext <CR>
 nnoremap <Leader>bp :bprev <CR>
 
 nnoremap <Leader>ll :ls <CR>
+
 " quicksave
 nnoremap <leader>s :w<cr>
 nnoremap <leader>qq :q! <cr>
+
 " quitck quit
 nnoremap <leader>q :q<cr>
+
 " switch from horizontal to vertical
 nnoremap <leader>sh  <C-w>H  <cr>
+
 " switch from vertical to horizontal
 nnoremap <leader>sv  <C-w>K  <cr>
+
 "files
 nnoremap <leader>sp :Rg<Space>
+
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" quickfix and location list mappings
+nnoremap <C-k> :cnext<CR>zz
+nnoremap <C-j> :cprev<CR>zz
+nnoremap <leader>k :lnext<CR>zz
+nnoremap <leader>j :lprev<CR>zz
+
+" delete all trailing whitespace
+nnoremap <leader>ps :call TrimWhitespace()<CR>
 
 "Tags
 nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
@@ -184,33 +199,12 @@ nnoremap <leader>al :!ansible-lint % <cr>
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
-
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-let g:ctrlp_working_path_mode = 'ra'
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
 
-nmap <leader>ps :call TrimWhitespace()<CR>
 
 " function to merge tabs it's actually kinda useful
 function! MergeTabs()
@@ -228,32 +222,8 @@ function! MergeTabs()
   execute "buffer " . bufferName
 endfunction
 
-nmap <leader>mt :call MergeTabs()<CR>
-
-hi link yamlDirective Function
-hi link yamlDocumentHeader Function
-
-" hi link goVarDefs Underlined
 
 let g:sql_type_default = 'pgsql'
-
-" terraform vim config
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-
-" rust settings
-let g:rustfmt_autosave = 1
-set hidden
-let g:racer_cmd = "/Users/mleone/.cargo/bin/racer"
-
-augroup Racer
-    autocmd!
-    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
-    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
-    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
-    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
-    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
-augroup END
 
 augroup Mleonidas
     autocmd!
@@ -263,24 +233,12 @@ augroup Mleonidas
 augroup END
 
 
-
-map <Leader>rrt :call RunCurrentSpecFile()<CR>
-map <Leader>rra :call RunAllSpecs()<CR>
-
-" highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-highlight clear SignColumn
-
 " set the 80 coloumn line
 if exists('+colorcolumn')
   set colorcolumn=80
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
-
-" set popup menu colors
-hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
-hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 
 
 " lsp config

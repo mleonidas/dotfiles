@@ -12,12 +12,16 @@ set autoindent
 set smarttab
 set gdefault
 set history=500
+set updatetime=50
+set hidden
 set smarttab
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set backupdir=~/.tmp
 set smartindent
 set directory=~/.tmp
+set undodir=~/.vim/undodir
+set undofile
 set noswapfile
 set nobackup
 set cursorline
