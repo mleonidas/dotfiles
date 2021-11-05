@@ -20,7 +20,8 @@ hi link yamlDocumentHeader Function
 
 set background=dark
 
-colo solarized8
+colo gruvbox
+" colo solarized8
 
 " autocmd vimenter * ++nested colorscheme solarized8
 
