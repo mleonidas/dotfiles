@@ -26,7 +26,7 @@ set noswapfile
 set nobackup
 set cursorline
 set t_Co=256
-
 set tags=./.tags;,./tags;
+
 " change the split size to be more like tmux
 set fillchars+=vert:│

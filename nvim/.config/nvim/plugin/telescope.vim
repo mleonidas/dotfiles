@@ -12,4 +12,4 @@ nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
 
 nnoremap <leader>gb :lua require('telescope.builtin').git_branches()<CR>
 
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files({previewer=false})<CR>

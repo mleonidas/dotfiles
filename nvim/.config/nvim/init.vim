@@ -166,19 +166,6 @@ nnoremap <Leader>bp :bprev <CR>
 
 nnoremap <Leader>ll :ls <CR>
 
-" quicksave
-nnoremap <leader>s :w<cr>
-nnoremap <leader>qq :q! <cr>
-
-" quitck quit
-nnoremap <leader>q :q<cr>
-
-" switch from horizontal to vertical
-nnoremap <leader>sh  <C-w>H  <cr>
-
-" switch from vertical to horizontal
-nnoremap <leader>sv  <C-w>K  <cr>
-
 "files
 nnoremap <leader>sp :Rg<Space>
 
@@ -198,8 +185,6 @@ nnoremap <leader>ps :call TrimWhitespace()<CR>
 "Tags
 nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
 
-nnoremap <leader>al :!ansible-lint % <cr>
-
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
@@ -210,7 +195,6 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
-
 
 
 function! SynStack ()
@@ -256,6 +240,9 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
+
+
+" lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 
 " lsp config

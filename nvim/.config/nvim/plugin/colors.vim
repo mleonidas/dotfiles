@@ -14,6 +14,10 @@ highlight clear SignColumn
 hi link yamlDirective Function
 hi link yamlDocumentHeader Function
 
+hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=green
+
+highlight Normal guibg=none
+
 " " set popup menu colors
 " hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
 " hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
