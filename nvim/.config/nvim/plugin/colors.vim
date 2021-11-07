@@ -1,29 +1,26 @@
 
-hi VertSplit ctermbg=black guibg=black ctermfg=161
-
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
 
 " yaml
+set background=dark
+
+" colo gruvbox
+colo solarized8
+
+hi VertSplit ctermbg=black guibg=black ctermfg=161
 hi link yamlDirective Function
 hi link yamlDocumentHeader Function
 
-set background=dark
-
-colo gruvbox
-" colo solarized8
-
-" autocmd vimenter * ++nested colorscheme solarized8
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
 
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 let g:solarized_visibility="high"
-
 
 lua << EOF
 require("lsp-colors").setup({
