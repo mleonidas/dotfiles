@@ -14,10 +14,6 @@ set completeopt=menu,menuone,noselect
 
 
 call plug#begin('~/.config/.nvim/plugged')
-set nocompatible              " be iMproved, required
-
-filetype off                  " required
-
 Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -78,6 +74,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'google/vim-maktaba'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
@@ -226,6 +223,12 @@ augroup Mleonidas
     autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
     autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
     autocmd BufWritePre *.go lua goimports(1000)
+augroup END
+
+
+augroup Earhtly
+    autocmd!
+    au FileType Earthfile hi! link earthFileKeyword Underlined 
 augroup END
 
 

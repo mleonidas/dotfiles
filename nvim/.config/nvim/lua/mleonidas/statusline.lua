@@ -7,10 +7,11 @@ gl.short_line_list = {'defx', 'packager', 'vista'}
 
 -- Colors
 local colors = {
-  bg = '#3c3836', -- gruvbox backgroun
-  -- bg = '#002b36', -- solarized8 background
+  -- bg = '#3c3836', -- gruvbox background
+  bg = '#002b36', -- solarized8 background
   fg = '#f8f8f2',
-  section_bg = '#38393f',
+  -- section_bg = '#38393f',
+  section_bg = '#002b36',
   yellow = '#f1fa8c',
   cyan = '#8be9fd',
   green = '#50fa7b',
