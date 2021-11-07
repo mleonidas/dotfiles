@@ -14,11 +14,10 @@ set completeopt=menu,menuone,noselect
 
 
 call plug#begin('~/.config/.nvim/plugged')
+
 Plug 'AndrewRadev/splitjoin.vim'
-
 Plug 'christoomey/vim-tmux-navigator'
-
-
+Plug 'tmux-plugins/vim-tmux'
 
 " language plugins
 Plug 'google/vim-jsonnet'
@@ -55,6 +54,8 @@ Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
+
+" obligatory tpope plugins
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -71,9 +72,11 @@ Plug 'ThePrimeagen/harpoon'
 " fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+# snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'tmux-plugins/vim-tmux'
+
 Plug 'google/vim-maktaba'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'
@@ -237,9 +240,7 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
 
-
 " lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
-
 
 " lsp config
 lua require("mleonidas")
