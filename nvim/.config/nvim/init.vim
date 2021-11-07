@@ -221,8 +221,6 @@ let g:sql_type_default = 'pgsql'
 augroup Mleonidas
     autocmd!
     autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-    autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
-    autocmd BufWritePre *.go lua goimports(1000)
 augroup END
 
 
