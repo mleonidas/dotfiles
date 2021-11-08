@@ -28,6 +28,7 @@ augroup Golang
     au FileType go nmap <Leader>dt <Plug>(go-def-tab)
     au FileType go nmap <Leader>gr <Plug>(go-run-split)
     au FileType go nmap <Leader>gt <Plug>(go-test)
+    au FileType GOTERM set nonumber norelativenumber 
 
     " change the default red to violet
     au FileType go hi! link goVarDefs Underlined
