@@ -87,20 +87,15 @@ gls.left[4] = {
     highlight = {colors.red, colors.bg}
   }
 }
-gls.left[5] = {
+
+gls.right[5] = {
   GitBranch = {
-    provider = function()
-      local vcs = require('galaxyline.provider_vcs')
-      local branch_name = vcs.get_git_branch()
-      if (string.len(branch_name) > 28) then
-        return string.sub(branch_name, 1, 25) .. "..."
-      end
-      return branch_name .. " "
-    end,
+    provider = 'GitBranch',
     condition = condition.check_git_workspace,
-    highlight = {colors.fg, colors.bg}
+    highlight = {colors.violet,colors.bg,'bold'},
   }
 }
+
 gls.left[6] = {
   DiffAdd = {
     provider = 'DiffAdd',
