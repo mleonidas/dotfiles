@@ -21,7 +21,7 @@ require'lspconfig'.gopls.setup(config({
 }))
 
 require'lspconfig'.yamlls.setup(config())
-
+require'lspconfig'.pyright.setup{}
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
