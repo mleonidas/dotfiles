@@ -162,7 +162,7 @@ nnoremap <Leader>bp :bprev <CR>
 nnoremap <Leader>ll :ls <CR>
 
 "files
-nnoremap <leader>sp :Rg<Space>
+nnoremap <leader>ps :Rg<Space>
 
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>

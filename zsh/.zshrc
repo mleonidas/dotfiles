@@ -1,6 +1,6 @@
 # load prompt
 autoload -U promptinit; promptinit
-eval "$(starship init zsh)"
+
 
 
 # User configuration
@@ -78,3 +78,4 @@ if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ml
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/mleone/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/path.zsh.inc'; fi
 eval "$(asdf exec direnv hook bash)"
+eval "$(starship init zsh)"
