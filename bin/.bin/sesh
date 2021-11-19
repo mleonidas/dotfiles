@@ -1,7 +1,12 @@
-#!/usr/bin/env bash
-REPO_PATH="$HOME/Documents/repos"
+#!/usr/bin/env zsh 
 
-selected=$(find $REPO_PATH/work $REPO_PATH/personal -mindepth 1 -maxdepth 1 -type d| fzf)
+REPO_PATH="${HOME}/Documents/repos"
+
+
+
+export selected=$(find $REPO_PATH/work ~/ $REPO_PATH/personal -mindepth 1 -maxdepth 1 -type d|fzf --reverse)
+
+echo $selected
 
 if [[ -z $selected ]]; then
     exit 0
@@ -11,6 +16,7 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    echo "made it in if"
     tmux new-session -s $selected_name -c $selected
     exit 0
 fi
