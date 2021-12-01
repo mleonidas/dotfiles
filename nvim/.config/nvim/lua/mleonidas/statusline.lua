@@ -80,46 +80,46 @@ gls.left[3] = {
     separator_highlight = {colors.section_bg, colors.bg}
   }
 }
-gls.left[4] = {
-  GitIcon = {
-    provider = function() return '  ' end,
-    condition = condition.check_git_workspace,
-    highlight = {colors.red, colors.bg}
-  }
-}
-
-gls.right[5] = {
-  GitBranch = {
-    provider = 'GitBranch',
-    condition = condition.check_git_workspace,
-    highlight = {colors.violet,colors.bg,'bold'},
-  }
-}
-
-gls.left[6] = {
-  DiffAdd = {
-    provider = 'DiffAdd',
-    condition = condition.check_git_workspace,
-    icon = ' ',
-    highlight = {colors.green, colors.bg}
-  }
-}
-gls.left[7] = {
-  DiffModified = {
-    provider = 'DiffModified',
-    condition = condition.check_git_workspace,
-    icon = ' ',
-    highlight = {colors.orange, colors.bg}
-  }
-}
-gls.left[8] = {
-  DiffRemove = {
-    provider = 'DiffRemove',
-    condition = condition.check_git_workspace,
-    icon = ' ',
-    highlight = {colors.red, colors.bg}
-  }
-}
+-- gls.left[4] = {
+--   GitIcon = {
+--     provider = function() return '  ' end,
+--     condition = condition.check_git_workspace,
+--     highlight = {colors.red, colors.bg}
+--   }
+-- }
+--
+-- gls.right[5] = {
+--   GitBranch = {
+--     provider = 'GitBranch',
+--     condition = condition.check_git_workspace,
+--     highlight = {colors.violet,colors.bg,'bold'},
+--   }
+-- }
+--
+-- gls.left[6] = {
+--   DiffAdd = {
+--     provider = 'DiffAdd',
+--     condition = condition.check_git_workspace,
+--     icon = ' ',
+--     highlight = {colors.green, colors.bg}
+--   }
+-- }
+-- gls.left[7] = {
+--   DiffModified = {
+--     provider = 'DiffModified',
+--     condition = condition.check_git_workspace,
+--     icon = ' ',
+--     highlight = {colors.orange, colors.bg}
+--   }
+-- }
+-- gls.left[8] = {
+--   DiffRemove = {
+--     provider = 'DiffRemove',
+--     condition = condition.check_git_workspace,
+--     icon = ' ',
+--     highlight = {colors.red, colors.bg}
+--   }
+-- }
 gls.left[9] = {
   LeftEnd = {
     provider = function() return ' ' end,

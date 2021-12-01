@@ -30,7 +30,6 @@ Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
-Plug 'chase/vim-ansible-yaml'
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
 Plug  'klen/python-mode'
 Plug 'racer-rust/vim-racer'
@@ -154,6 +153,8 @@ nnoremap <Leader>cp :Tabularize /=><CR>
 "Git
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gb :Git blame<CR>
+nnoremap <Leader>gc :Git commit<CR>
+
 
 " quick buffer movement
 nnoremap <Leader>bn :bnext <CR>
@@ -175,7 +176,7 @@ nnoremap <leader>k :lnext<CR>zz
 nnoremap <leader>j :lprev<CR>zz
 
 " delete all trailing whitespace
-nnoremap <leader>ps :call TrimWhitespace()<CR>
+nnoremap <leader>cs :call TrimWhitespace()<CR>
 
 "Tags
 nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
@@ -229,7 +230,7 @@ augroup END
 
 augroup Earhtly
     autocmd!
-    au FileType Earthfile hi! link earthFileKeyword Underlined 
+    au FileType Earthfile hi! link earthFileKeyword Underlined
 augroup END
 
 
