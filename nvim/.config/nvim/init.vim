@@ -2,7 +2,6 @@ filetype plugin indent on
 
 syntax on
 
-
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
@@ -11,7 +10,6 @@ set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 set completeopt=menu,menuone,noselect
-
 
 call plug#begin('~/.config/.nvim/plugged')
 
