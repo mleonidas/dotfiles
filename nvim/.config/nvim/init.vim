@@ -94,15 +94,16 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
 nnoremap <SPACE> <Nop>
+
 " Leader Command Section
 let mapleader = " "
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
-
 
 " make Y behave like other capitols
 nnoremap Y y$
@@ -138,7 +139,6 @@ nnoremap { {zz
 nnoremap <DOWN> ddp
 nnoremap <UP> ddkP
 
-
 " Remove all whitespace
 noremap <Leader>rw :%s/\s\+//g <CR>
 
@@ -150,12 +150,11 @@ nnoremap <Leader>cu :Tabularize /\|<CR>
 nnoremap <Leader>ce :Tabularize /=<CR>
 nnoremap <Leader>cp :Tabularize /=><CR>
 
-"Git
+" Git
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gb :Git blame<CR>
 nnoremap <Leader>gc :Git commit<CR>
 nnoremap <Leader>gp :Git push<CR>
-
 
 " quick buffer movement
 nnoremap <Leader>bn :bnext <CR>
@@ -193,7 +192,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-
 function! SynStack ()
     for i1 in synstack(line("."), col("."))
         let i2 = synIDtrans(i1)
@@ -219,9 +217,7 @@ function! MergeTabs()
   execute "buffer " . bufferName
 endfunction
 
-
 let g:sql_type_default = 'pgsql'
-
 
 augroup Mleonidas
     autocmd!
@@ -234,7 +230,6 @@ augroup Earhtly
     au FileType Earthfile hi! link earthFileKeyword Underlined
 augroup END
 
-
 " set the 80 coloumn line
 if exists('+colorcolumn')
   set colorcolumn=80
@@ -243,7 +238,6 @@ else
 endif
 
 " lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
-"
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "python",
@@ -253,7 +247,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-
 
 " lsp config
 lua require("mleonidas")
