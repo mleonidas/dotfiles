@@ -150,7 +150,7 @@ nnoremap <Leader>cp :Tabularize /=><CR>
 
 " Git
 nnoremap <Leader>gs :Git<CR>
-nnoremap <Leader>gb :Git blame<CR>
+nnoremap <Leader>gB :Git blame<CR>
 nnoremap <Leader>gc :Git commit<CR>
 nnoremap <Leader>gp :Git push<CR>
 
