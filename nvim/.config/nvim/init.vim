@@ -62,6 +62,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+Plug 'f-person/git-blame.nvim'
+
 " vim marks on steroids
 Plug 'ThePrimeagen/harpoon'
 
@@ -150,7 +152,7 @@ nnoremap <Leader>cp :Tabularize /=><CR>
 
 " Git
 nnoremap <Leader>gs :Git<CR>
-nnoremap <Leader>gB :Git blame<CR>
+nnoremap <Leader>gB :GitBlameToggle<CR>
 nnoremap <Leader>gc :Git commit<CR>
 nnoremap <Leader>gp :Git push<CR>
 
@@ -245,6 +247,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+let g:gitblame_enabled = 0
 
 " lsp config
 lua require("mleonidas")
