@@ -10,7 +10,8 @@ set background=dark
 " colo gruvbox
 colo solarized8
 
-hi VertSplit ctermbg=black guibg=black ctermfg=161
+hi VertSplit ctermbg=NONE guibg=NONE
+
 hi link yamlDirective Function
 hi link yamlDocumentHeader Function
 
