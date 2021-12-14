@@ -144,6 +144,7 @@ noremap <Leader>rw :%s/\s\+//g <CR>
 
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <Leader>rp :resize 100<CR>
 
 " Tabularize frequent matches
 nnoremap <Leader>cu :Tabularize /\|<CR>
@@ -155,6 +156,7 @@ nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gB :GitBlameToggle<CR>
 nnoremap <Leader>gc :Git commit<CR>
 nnoremap <Leader>gp :Git push<CR>
+nnoremap <Leader>gl :Git log<CR>
 
 " quick buffer movement
 nnoremap <Leader>bn :bnext <CR>
