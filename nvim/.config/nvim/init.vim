@@ -113,10 +113,6 @@ if has('nvim')
      nnoremap <BS> <C-W>h
 endif
 
-" open splits
-set splitbelow
-set splitright
-
 " Paste shortcuts
 nnoremap <C-G> :set paste norelativenumber nonumber <Return>
 nnoremap <C-N> :set nopaste relativenumber number<Return>

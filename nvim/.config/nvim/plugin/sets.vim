@@ -31,3 +31,8 @@ set tags=./.tags;,./tags;
 
 " change the split size to be more like tmux
 set fillchars+=vert:│
+
+" open splits
+set splitbelow
+set splitright
+
