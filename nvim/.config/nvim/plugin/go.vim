@@ -15,7 +15,10 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_disable_autoinstall = 1
 let g:go_term_enabled = 1
+let g:go_term_reuse = 1
 let g:go_term_mode = "split"
+let g:go_term_height = 20
+let g:go_metalinter_command = "golangci-lint"
 
 augroup Golang
     autocmd!
