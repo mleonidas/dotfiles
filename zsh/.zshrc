@@ -48,6 +48,7 @@ bindkey -e
 
 bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit
+bindkey -s "^L" 'sesh^M' 
 
 
 export PYENV_ROOT="$HOME/.pyenv"
