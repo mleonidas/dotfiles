@@ -67,7 +67,6 @@ complete -F __start_kubectl k
 # asdf
 #
 source $HOME/.asdf/asdf.sh
-source <(plz --completion_script)
 
 fpath=(${ASDF_DIR}/completions ~/.zsh/completion $fpath)
 # initialise completions with ZSH's compinit
