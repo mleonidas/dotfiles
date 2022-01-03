@@ -18,8 +18,22 @@ alias ls='exa --icons'
 
 alias glo="git log --pretty=oneline --abbrev-commit"
 
-# kubernetes
-alias k='kubectl'
+
+
+# lazy load kubectl completions, this is slow AF if 
+# done the way the documentation tells you to do 
+# shell startup time takes over a second
+#
+function kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        source <(command kubectl completion zsh)
+    fi
+
+    command kubectl "$@"
+}
+
+# alias shortcut to lazy loaded function
+alias k=kubectl
 
 # quick edit
 alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
@@ -34,6 +48,7 @@ alias ff='find . -type f -name'
 
 # ls 
 # commenting this out while testing out exa as an ls replacement
+alias ll='ls -l'
 
 # alias ls='ls -G'
 # alias l='ls -lFh'     #size,show type,human readable
