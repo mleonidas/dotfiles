@@ -12,7 +12,7 @@ export GREP_COLOR=33
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
-# export LSCOLORS=exfxcxdxcxegedabagacad
+export LS_COLORS=$(vivid generate solarized-dark)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
@@ -29,6 +29,10 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 source $DOTFILES_PATH/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $DOTFILES_PATH/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES_PATH/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# alias dircolors='gdircolors'
+
+# source $DOTFILES_PATH/.zsh/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh
 source $DOTFILES_PATH/.zsh/history.zsh
 source $DOTFILES_PATH/.zsh/functions.zsh
 source $DOTFILES_PATH/.zsh/async.zsh

@@ -76,6 +76,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
+" markdown
+Plug 'ellisonleao/glow.nvim'
+
 Plug 'google/vim-maktaba'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'

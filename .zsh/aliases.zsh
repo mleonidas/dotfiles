@@ -14,7 +14,6 @@ alias gita='git add .'
 alias gitph='git push origin HEAD'
 alias sha="git log | head -1"
 
-alias ls='exa --icons'
 
 alias glo="git log --pretty=oneline --abbrev-commit"
 
@@ -47,19 +46,16 @@ alias ff='find . -type f -name'
 
 
 # ls 
-# commenting this out while testing out exa as an ls replacement
-alias ll='ls -l'
-
-# alias ls='ls -G'
-# alias l='ls -lFh'     #size,show type,human readable
-# alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-# alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-# alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-# alias ll='ls -l'      #long list
-# alias ldot='ls -ld .*'
-# alias lS='ls -1FSsh'
-# alias lart='ls -1Fcart'
-# alias lrt='ls -1Fcrt'
+alias ls='lsd'
+alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ll='ls -l'      #long list
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+alias lart='ls -1Fcart'
+alias lrt='ls -1Fcrt'
 
 # get free on osx
 if [[ `uname` == "Darwin" ]]; then

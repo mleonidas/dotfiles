@@ -21,6 +21,14 @@ local colors = {
   red = '#ff5555'
 }
 
+local buffer_not_empty = function()
+  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+    return true
+  end
+  return false
+end
+
+
 -- Local helper functions
 local mode_color = function()
   local mode_colors = {
@@ -80,30 +88,30 @@ gls.left[3] = {
     separator_highlight = {colors.section_bg, colors.bg}
   }
 }
--- gls.left[4] = {
---   GitIcon = {
---     provider = function() return '  ' end,
---     condition = condition.check_git_workspace,
---     highlight = {colors.red, colors.bg}
---   }
--- }
+gls.left[4] = {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = buffer_not_empty, 
+    highlight = {colors.red, colors.bg}
+  }
+}
+
+gls.right[5] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+}
 --
--- gls.right[5] = {
---   GitBranch = {
---     provider = 'GitBranch',
---     condition = condition.check_git_workspace,
---     highlight = {colors.violet,colors.bg,'bold'},
---   }
--- }
---
--- gls.left[6] = {
---   DiffAdd = {
---     provider = 'DiffAdd',
---     condition = condition.check_git_workspace,
---     icon = ' ',
---     highlight = {colors.green, colors.bg}
---   }
--- }
+gls.left[6] = {
+  DiffAdd = {
+    provider = 'DiffAdd',
+    condition = buffer_not_empty, 
+    icon = ' ',
+    highlight = {colors.green, colors.bg}
+  }
+}
 -- gls.left[7] = {
 --   DiffModified = {
 --     provider = 'DiffModified',
