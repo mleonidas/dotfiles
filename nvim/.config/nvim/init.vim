@@ -52,6 +52,9 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
 
+" http nvim plugin
+Plug 'NTBBloodbath/rest.nvim'
+
 " obligatory tpope plugins
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
@@ -242,13 +245,39 @@ endif
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "python",
+  ensure_installed = "python", "json", "http",
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" , "go"},  -- list of language that will be disabled
   },
 }
 EOF
+
+lua << EOF
+require("rest-nvim").setup({
+      -- Open request results in a horizontal split
+      result_split_horizontal = false,
+      -- Skip SSL verification, useful for unknown certificates
+      skip_ssl_verification = false,
+      -- Highlight request on run
+      highlight = {
+        enabled = true,
+        timeout = 150,
+      },
+      result = {
+        -- toggle showing URL, HTTP info, headers at top the of result window
+        show_url = true,
+        show_http_info = true,
+        show_headers = true,
+      },
+      -- Jump to request line on run
+      jump_to_request = false,
+      env_file = '.env',
+      custom_dynamic_variables = {},
+      yank_dry_run = true,
+    })
+EOF
+
 
 let g:gitblame_enabled = 0
 
