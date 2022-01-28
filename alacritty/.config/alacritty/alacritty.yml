@@ -1,0 +1,111 @@
+env:
+  # TERM env customization.
+  #
+  # If this property is not set, alacritty will set it to xterm-256color.
+  #
+  # Note that some xterm terminfo databases don't declare support for italics.
+  # You can verify this by checking for the presence of `smso` and `sitm` in
+  # `infocmp xterm-256color`.
+  TERM: alacritty 
+
+font:
+  normal:
+    family: MesloLGMDZ Nerd Font Mono #should be "Menlo" or something on macOS.
+    style: Regular
+
+  bold:
+    family: MesloLGMDZ Nerd Font Mono # should be "Menlo" or something on macOS.
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: MesloLGMDZ Nerd Font Mono # should be "Menlo" or something on macOS.
+    style: Italic
+
+  thin_strokes: true
+  antialias: lcd # Can have values like lcd, lcdv, gray, and none
+  hinting: true
+
+  # Point size of the font
+  size: 13.5
+
+# Colors (Solarized Dark)
+
+colors:
+  # Default colors
+  primary:
+    background: '0x002b36'
+    foreground: '0x839496'
+
+  # Normal colors
+  normal:
+    black:   '0x073642'
+    red:     '0xdc322f'
+    green:   '0x859900'
+    yellow:  '0xb58900'
+    blue:    '0x268bd2'
+    magenta: '0xd33682'
+    cyan:    '0x2aa198'
+    white:   '0xeee8d5'
+
+  # Bright colors
+  bright:
+    black:   '0x002b36'
+    red:     '0xcb4b16'
+    green:   '0x586e75'
+    yellow:  '0x657b83'
+    blue:    '0x839496'
+    magenta: '0x6c71c4'
+    cyan:    '0x93a1a1'
+    white:   '0xfdf6e3'
+
+
+key_bindings:
+  - { key: Space,  mods: Control,       mode: Vi, action: ScrollToBottom          }
+  - { key: Space,  mods: Control,                 action: ToggleViMode            }
+  - { key: I,                           mode: Vi, action: ScrollToBottom          }
+  - { key: I,                           mode: Vi, action: ToggleViMode            }
+  - { key: C,      mods: Control,       mode: Vi, action: ScrollToBottom          }
+  - { key: C,      mods: Control,       mode: Vi, action: ToggleViMode            }
+  - { key: Escape,                      mode: Vi, action: ClearSelection          }
+  - { key: Y,      mods: Control,       mode: Vi, action: ScrollLineUp            }
+  - { key: E,      mods: Control,       mode: Vi, action: ScrollLineDown          }
+  - { key: G,                           mode: Vi, action: ScrollToTop             }
+  - { key: G,      mods: Shift,         mode: Vi, action: ScrollToBottom          }
+  - { key: B,      mods: Control,       mode: Vi, action: ScrollPageUp            }
+  - { key: F,      mods: Control,       mode: Vi, action: ScrollPageDown          }
+  - { key: U,      mods: Control,       mode: Vi, action: ScrollHalfPageUp        }
+  - { key: D,      mods: Control,       mode: Vi, action: ScrollHalfPageDown      }
+  - { key: Y,                           mode: Vi, action: Copy                    }
+  - { key: Y,                           mode: Vi, action: ClearSelection          }
+  - { key: V,                           mode: Vi, action: ToggleNormalSelection   }
+  - { key: V,      mods: Shift,         mode: Vi, action: ToggleLineSelection     }
+  - { key: V,      mods: Control,       mode: Vi, action: ToggleBlockSelection    }
+  - { key: V,      mods: Alt,           mode: Vi, action: ToggleSemanticSelection }
+  - { key: Return,                      mode: Vi, action: Open                    }
+  - { key: K,                           mode: Vi, action: Up                      }
+  - { key: J,                           mode: Vi, action: Down                    }
+  - { key: H,                           mode: Vi, action: Left                    }
+  - { key: L,                           mode: Vi, action: Right                   }
+  - { key: Up,                          mode: Vi, action: Up                      }
+  - { key: Down,                        mode: Vi, action: Down                    }
+  - { key: Left,                        mode: Vi, action: Left                    }
+  - { key: Right,                       mode: Vi, action: Right                   }
+  - { key: Key0,                        mode: Vi, action: First                   }
+  - { key: Key4,            mode: Vi, action: Last                    }
+  - { key: Key6,   mods: Shift,         mode: Vi, action: FirstOccupied           }
+  - { key: H,      mods: Shift,         mode: Vi, action: High                    }
+  - { key: M,      mods: Shift,         mode: Vi, action: Middle                  }
+  - { key: L,      mods: Shift,         mode: Vi, action: Low                     }
+  - { key: B,                           mode: Vi, action: SemanticLeft            }
+  - { key: W,                           mode: Vi, action: SemanticRight           }
+  - { key: E,                           mode: Vi, action: SemanticRightEnd        }
+  - { key: B,      mods: Shift,         mode: Vi, action: WordLeft                }
+  - { key: W,      mods: Shift,         mode: Vi, action: WordRight               }
+  - { key: E,      mods: Shift,         mode: Vi, action: WordRightEnd            }
+  - { key: Key5,   mods: Shift,         mode: Vi, action: Bracket                 }
+  - { key: Slash,                       mode: Vi, action: SearchForward           }
+  - { key: Slash,  mods: Shift,         mode: Vi, action: SearchBackward          }
+  - { key: N,                           mode: Vi, action: SearchNext              }
+  - { key: N,      mods: Shift,         mode: Vi, action: SearchPrevious          }
+
