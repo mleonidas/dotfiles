@@ -2,6 +2,7 @@ local vim = vim
 local gl = require('galaxyline')
 local condition = require("galaxyline.condition")
 
+
 local gls = gl.section
 gl.short_line_list = {'defx', 'packager', 'vista'}
 
@@ -75,7 +76,7 @@ gls.left[2] = {
   FileIcon = {
     provider = 'FileIcon',
     highlight = {
-      require('galaxyline.provider_fileinfo').get_file_icon_color,
+      require('galaxyline.providers.fileinfo').get_file_icon_color,
       colors.section_bg
     }
   }

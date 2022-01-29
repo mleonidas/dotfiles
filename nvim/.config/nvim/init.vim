@@ -29,13 +29,12 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
-Plug  'klen/python-mode'
 Plug 'racer-rust/vim-racer'
 Plug 'towolf/vim-helm'
 Plug 'chr4/nginx.vim'
 
 " status bar
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'ryanoasis/vim-devicons'
 
