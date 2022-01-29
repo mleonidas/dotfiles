@@ -1,25 +1,10 @@
-.PHONY: dotfiles plugins i3
+.PHONY: install plugins uninstall
 
 plugins:
-	 $(shell curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
+	 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
 
-   $(shell sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)")
+install:
+	bin/.bin/stow-config install
 
-
-zsh:
-	stow zsh
-
-nvim:
-	stow nvim
-
-starship:
-	stow starship
-
-stow: zsh nvim starship tmux
-
-tmux:
-	stow tmux
-
-clean:
-	stow -D starship nvim zsh
+uninstall:
+	bin/.bin/stow-config remove

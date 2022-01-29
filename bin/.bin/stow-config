@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dirs="starship hammerspoon bin tmux nvim alacritty"
+dirs="starship hammerspoon bin tmux nvim alacritty git k9s"
  
 stow:install() {
   for dir in $dirs; do
@@ -19,4 +19,3 @@ if [[ "${1}" == "remove" ]]; then
 else
     stow:install
 fi
-

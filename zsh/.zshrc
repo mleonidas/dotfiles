@@ -65,15 +65,15 @@ source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 fpath=(${ASDF_DIR}/completions ~/.zsh/completion $fpath)
 
-if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/completion.zsh.inc'; fi
-# The next line enables shell command completion for gcloud.
+
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/mleone/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/path.zsh.inc'; fi
 
-eval "$(asdf exec direnv hook bash)"
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/completion.zsh.inc'; fi
 
 eval "$(starship init zsh)"
 
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
