@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+dirs="starship hammerspoon bin tmux nvim alacritty"
+ 
+stow:install() {
+  for dir in $dirs; do
+      stow $dir 
+  done
+}
+
+stow:remove() {
+  for dir in $dirs; do
+      stow -D $dir
+  done
+}
+
+if [[ "${1}" == "remove" ]]; then
+    stow:remove
+else
+    stow:install
+fi
+
