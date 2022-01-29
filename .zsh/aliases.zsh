@@ -1,7 +1,7 @@
 # common aliases
 alias ssh='ssh -A'
 alias more='less'
-alias vim="/usr/local/bin/nvim"
+alias vim="nvim"
 alias dm=docker-machine
 alias grep='grep --color'
 

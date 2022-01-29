@@ -2,10 +2,13 @@
 autoload -U promptinit; promptinit
 
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.emacs.d/bin:~/.please/bin
-export EDITOR="/usr/local/bin/nvim"
+export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
 # export TERM='xterm-256color'
@@ -21,7 +24,7 @@ source ~/.private_env
 alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
 
 # autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # load plugins
 export DOTFILES_PATH="$HOME/.dotfiles"
@@ -58,7 +61,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # asdf
-source $HOME/.asdf/asdf.sh
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 fpath=(${ASDF_DIR}/completions ~/.zsh/completion $fpath)
 
@@ -67,6 +70,7 @@ if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ml
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/mleone/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/path.zsh.inc'; fi
+
 eval "$(asdf exec direnv hook bash)"
 
 eval "$(starship init zsh)"
