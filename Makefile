@@ -1,7 +1,10 @@
-.PHONY: install plugins uninstall
+.PHONY: install plugins uninstall homebrew
+
+homebrew:
+	./setup/install_homebrew.sh
 
 plugins:
-	 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
+	./setup/install_vimplug.sh
 
 install:
 	bin/.bin/stow-config install
