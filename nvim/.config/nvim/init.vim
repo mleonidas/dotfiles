@@ -27,6 +27,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
+Plug 'sbdchd/neoformat'
+
 Plug 'derekwyatt/vim-scala'
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
 Plug 'racer-rust/vim-racer'

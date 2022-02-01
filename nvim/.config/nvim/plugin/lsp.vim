@@ -21,6 +21,7 @@ nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.ut
 nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>vll :call LspLocationList()<CR>
 
+
 " let g:compe = {}
 " let g:compe.enabled = v:true
 " let g:compe.autocomplete = v:true
