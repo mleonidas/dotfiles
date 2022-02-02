@@ -55,7 +55,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'NTBBloodbath/rest.nvim'
 
 " refactoring tool
-" Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'ThePrimeagen/refactoring.nvim'
 
 " obligatory tpope plugins
 Plug 'tpope/vim-vinegar'
@@ -232,10 +232,10 @@ endif
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "python", "json", "http",
+ensure_installed = {"python", "json", "http", "go"},
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust", "go"},  -- list of language that will be disabled
+    disable = { "c", "rust"},  -- list of language that will be disabled
   },
 }
 EOF

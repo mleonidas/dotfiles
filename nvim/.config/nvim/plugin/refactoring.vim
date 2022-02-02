@@ -1,3 +1,6 @@
-" :lua require('refactoring').setup({})
-" :lua vim.api.nvim_set_keymap("v", "<Leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+lua require('refactoring').setup({})
+lua require("telescope").load_extension("refactoring")
+
+
+vnoremap <silent> <leader>tre :lua require('telescope').extensions.refactoring.refactors()<CR> 
 
