@@ -152,13 +152,6 @@ nnoremap <Leader>cu :Tabularize /\|<CR>
 nnoremap <Leader>ce :Tabularize /=<CR>
 nnoremap <Leader>cp :Tabularize /=><CR>
 
-" Git
-nnoremap <Leader>gs :Git<CR>
-nnoremap <Leader>gB :GitBlameToggle<CR>
-nnoremap <Leader>gc :Git commit<CR>
-nnoremap <Leader>gp :Git push<CR>
-nnoremap <Leader>gl :Git log<CR>
-
 " quick buffer movement
 nnoremap <Leader>bn :bnext <CR>
 nnoremap <Leader>bp :bprev <CR>
@@ -179,7 +172,7 @@ nnoremap <leader>k :lnext<CR>zz
 nnoremap <leader>j :lprev<CR>zz
 
 " delete all trailing whitespace
-nnoremap <leader>cs :call TrimWhitespace()<CR>
+nnoremap <leader>dts :call TrimWhitespace()<CR>
 
 "Tags
 nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
