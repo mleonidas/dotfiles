@@ -220,12 +220,6 @@ augroup Mleonidas
     autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 augroup END
 
-
-augroup Earhtly
-    autocmd!
-    au FileType Earthfile hi! link earthFileKeyword Underlined
-augroup END
-
 " set the 80 coloumn line
 if exists('+colorcolumn')
   set colorcolumn=80
