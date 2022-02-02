@@ -69,7 +69,6 @@ Plug 'f-person/git-blame.nvim'
 " vim marks on steroids
 Plug 'ThePrimeagen/harpoon'
 
-
 " fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'

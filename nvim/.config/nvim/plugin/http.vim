@@ -7,7 +7,7 @@
 "
 augroup RestHttp 
     autocmd!
-    au FileType http nmap <Leader>rnn <Plug>RestNvim :lua require('rest-nvim').run()<CR>
+    au FileType http nmap <Leader>rnc <Plug>RestNvim :lua require('rest-nvim').run()<CR>
 augroup END
 
 
