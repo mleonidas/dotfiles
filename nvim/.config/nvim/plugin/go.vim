@@ -43,8 +43,4 @@ augroup Golang
     au FileType go hi! link goParamName Underlined
     " au FileType go hi! link goParamType Type
 
-    " for when we get rid of vim-go
-    " autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
-    " autocmd BufWritePre *.go lua goimports(1000)
-
 augroup END
