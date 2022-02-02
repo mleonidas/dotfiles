@@ -1,9 +1,6 @@
 local nvim_lsp = require('lspconfig')
-
-local sumneko_binary_path = vim.fn.exepath("lua-language-server")
-local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/2.6.3/libexec/bin/"
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local function config(_config)
@@ -27,6 +24,9 @@ require'lspconfig'.gopls.setup(config({
 -- require'lspconfig'.yamlls.setup(config())
 require'lspconfig'.pyright.setup{}
 
+-- setup some bs for lua language server on osx
+local sumneko_binary_path = vim.fn.exepath("lua-language-server")
+local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/2.6.3/libexec/bin/"
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
