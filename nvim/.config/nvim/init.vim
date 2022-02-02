@@ -54,6 +54,9 @@ Plug 'tomtom/tlib_vim'
 " http nvim plugin
 Plug 'NTBBloodbath/rest.nvim'
 
+" refactoring tool
+" Plug 'ThePrimeagen/refactoring.nvim'
+
 " obligatory tpope plugins
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
@@ -227,15 +230,12 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
 
-" lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
-"
-
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "python", "json", "http",
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" , "go"},  -- list of language that will be disabled
+    disable = { "c", "rust", "go"},  -- list of language that will be disabled
   },
 }
 EOF

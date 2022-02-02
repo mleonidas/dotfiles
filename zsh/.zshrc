@@ -7,7 +7,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
+# export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
