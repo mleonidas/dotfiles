@@ -26,21 +26,16 @@ augroup Golang
     "
     autocmd BufWritePost *.go lua vim.lsp.buf.formatting()
     autocmd BufWritePost *.go lua goimports(1000) 
-    au FileType go nmap <Leader>gi <Plug>(go-info)
-    au FileType go nmap <Leader>gd <Plug>(go-doc)
-    au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-    au FileType go nmap <Leader>ds <Plug>(go-def-split)
-    au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-    au FileType go nmap <Leader>dt <Plug>(go-def-tab)
     au FileType go nmap <Leader>gr <Plug>(go-run-split)
     au FileType go nmap <Leader>gt <Plug>(go-test)
     au FileType GOTERM set nonumber norelativenumber 
 
     " change the default red to violet
     au FileType go hi! link goVarDefs Underlined
+
     " make nil magenta
     au FileType go hi! link goPredefinedIdentifiers Todo
     au FileType go hi! link goParamName Underlined
-    " au FileType go hi! link goParamType Type
+    au FileType go hi! link goParamType Type
 
 augroup END
