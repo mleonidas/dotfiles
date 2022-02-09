@@ -12,13 +12,13 @@ local lspkind = require('lspkind')
 cmp.setup({
     formatting = {
         format = lspkind.cmp_format {
-        mode = 'symbol',
-        menu = {
-          buffer = "[buf]",
-          nvim_lsp = "[LSP]",
-          nvim_lua = "[api]",
-          path = "[path]",
-          luasnip = "[snip]",
+          with_text = true,
+          menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[api]",
+            path = "[path]",
+            luasnip = "[snip]",
         },
       },
     },
@@ -70,3 +70,12 @@ cmp.setup({
       { name = 'cmdline' }
     })
   })
+
+
+
+
+-- local Group = require("colorbuddy.group").Group
+-- local g = require("colorbuddy.group").groups
+-- -- local s = require("colorbuddy.style").styles
+--
+-- Group.new("CmpItemAbbr", g.Comment)
