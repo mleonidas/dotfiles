@@ -1,4 +1,5 @@
 local cmp = require'cmp'
+local lspkind = require('lspkind')
 
 -- local source_mapping = {
 -- 	buffer = "[Buffer]",
@@ -9,6 +10,24 @@ local cmp = require'cmp'
 -- }
 
 cmp.setup({
+    formatting = {
+        format = lspkind.cmp_format {
+        mode = 'symbol',
+        menu = {
+          buffer = "[buf]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[api]",
+          path = "[path]",
+          luasnip = "[snip]",
+        },
+      },
+    },
+
+    experimental = {
+        native_menu = false,
+        ghost_text = false,
+    },
+
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -30,6 +49,7 @@ cmp.setup({
     sources = cmp.config.sources({
       { name = 'nvim_lsp', keyword_length = 4 },
       { name = 'luasnip' }, -- For luasnip users.
+      { name = 'treesitter' },
     }, {
       { name = 'buffer', keyword_length = 5 },
     })

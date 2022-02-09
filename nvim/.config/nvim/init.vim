@@ -99,6 +99,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'onsails/lspkind-nvim'
+" Plug 'tjdevries/colorbuddy.nvim'
 
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -175,7 +177,7 @@ nnoremap <leader>k :lnext<CR>zz
 nnoremap <leader>j :lprev<CR>zz
 
 " delete all trailing whitespace
-nnoremap <leader>dts :call TrimWhitespace()<CR>
+nnoremap <leader>trs :call TrimWhitespace()<CR>
 
 "Tags
 nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
@@ -232,10 +234,10 @@ endif
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "json", "http", "go"},
+ensure_installed = {"python", "json", "http"},
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust"},  -- list of language that will be disabled
+    disable = { "c", "rust", "go"},  -- list of language that will be disabled
   },
 }
 EOF
