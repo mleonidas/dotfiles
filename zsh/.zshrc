@@ -2,9 +2,9 @@
 autoload -U promptinit; promptinit
 
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-
+if [[ $(uname) == "Darwin" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # User configuration
 # export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
@@ -62,9 +62,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # asdf
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
+source $HOME/.asdf/asdf.sh
 
-fpath=(${ASDF_DIR}/completions ~/.zsh/completion $fpath)
+fpath=(${ASDF_DIR}/completions $fpath)
 
 
 # initialise completions with ZSH's compinit
