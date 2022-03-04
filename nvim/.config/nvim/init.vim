@@ -204,6 +204,10 @@ nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
 nnoremap <leader>gm :call SynStack()<CR>
 
+" use 256 colors in terminal
+if !has("gui_running")
+    set t_Co=256
+endif
 
 " let g:solarized_termcolors=256
 " let g:solarized_termtrans = 1
