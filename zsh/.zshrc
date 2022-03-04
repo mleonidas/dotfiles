@@ -2,9 +2,8 @@
 autoload -U promptinit; promptinit
 
 
-if [[ $(uname) == "Darwin" ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+[[ $(uname) = "darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 
 # User configuration
 # export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
@@ -12,7 +11,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
-# export TERM='xterm-256color'
+export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
@@ -25,7 +24,13 @@ source ~/.private_env
 alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
 
 # autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if [[ $(uname) = "darwin" ]]; then 
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+else
+	[[ -s /home/mleone/.autojump/etc/profile.d/autojump.sh ]] && source /home/mleone/.autojump/etc/profile.d/autojump.sh
+	autoload -U compinit && compinit -u
+fi
 
 # load plugins
 export DOTFILES_PATH="$HOME/.dotfiles"
@@ -63,6 +68,7 @@ fi
 
 # asdf
 source $HOME/.asdf/asdf.sh
+
 
 fpath=(${ASDF_DIR}/completions $fpath)
 
