@@ -24,6 +24,9 @@ require'lspconfig'.gopls.setup(config({
 -- require'lspconfig'.yamlls.setup(config())
 require'lspconfig'.pyright.setup{}
 
+
+
+
 -- setup some bs for lua language server on osx
 local sumneko_binary_path = vim.fn.exepath("lua-language-server")
 local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/2.6.3/libexec/bin/"
@@ -91,6 +94,20 @@ local on_attach = function(client, bufnr)
   end
 
 end
+
+require'lspconfig'.solargraph.setup{
+    settings = {
+        solargraph = {
+            commandPath = '/Users/mleone/.asdf/shims/solargraph',
+            diagnostics = true,
+            completion = true,
+        }
+    },
+    flags = {
+        debounce_text_changes = 150,
+    },
+    on_attach = on_attach,
+}
 
 nvim_lsp.gopls.setup{
 	cmd = {'gopls'},

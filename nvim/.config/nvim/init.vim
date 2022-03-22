@@ -131,7 +131,7 @@ lua require("mleonidas")
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "json", "http"},
+ensure_installed = {"python", "json", "http", "ruby"},
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust", "go"},  -- list of language that will be disabled
