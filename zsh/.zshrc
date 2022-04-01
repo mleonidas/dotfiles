@@ -2,12 +2,12 @@
 autoload -U promptinit; promptinit
 
 
-[[ $(uname) = "darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ $(uname) = "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # User configuration
 # export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
@@ -24,13 +24,7 @@ source ~/.private_env
 alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
 
 # autojump
-if [[ $(uname) = "darwin" ]]; then 
-  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
-else
-	[[ -s /home/mleone/.autojump/etc/profile.d/autojump.sh ]] && source /home/mleone/.autojump/etc/profile.d/autojump.sh
-	autoload -U compinit && compinit -u
-fi
+[[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]] && source ${HOME}/.autojump/etc/profile.d/autojump.sh
 
 # load plugins
 export DOTFILES_PATH="$HOME/.dotfiles"
@@ -59,22 +53,16 @@ bindkey '^Q' push-line-or-edit
 bindkey -s "^L" 'sesh^M' 
 
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-
 # asdf
-source $HOME/.asdf/asdf.sh
-
+. $HOME/.asdf/asdf.sh
 
 fpath=(${ASDF_DIR}/completions $fpath)
 
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist

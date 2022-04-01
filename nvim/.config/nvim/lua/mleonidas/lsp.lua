@@ -21,8 +21,6 @@ require'lspconfig'.gopls.setup(config({
     },
 }))
 
--- require'lspconfig'.yamlls.setup(config())
-require'lspconfig'.pyright.setup{}
 
 
 
@@ -57,8 +55,13 @@ require("lspconfig").sumneko_lua.setup(config({
 	},
 }))
 
-
-
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -94,6 +97,17 @@ local on_attach = function(client, bufnr)
   end
 
 end
+
+
+require'lspconfig'.yamlls.setup{}
+
+require'lspconfig'.pyright.setup{
+    on_attach = on_attach,
+}
+
+require'lspconfig'.terraformls.setup{}
+
+
 
 require'lspconfig'.solargraph.setup{
     settings = {
