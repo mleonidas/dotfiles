@@ -294,6 +294,9 @@ let g:gitblame_enabled = 0
 
 augroup Mleonidas
     autocmd!
+    au FileType * hi ExtraWhitespace ctermbg=red guibg=red
     autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
     au FileType * hi link CmpItemKind Function 
 augroup END
+
+
