@@ -165,8 +165,6 @@ nnoremap <UP> ddkP
 " Remove all whitespace
 noremap <Leader>rw :%s/\s\+//g <CR>
 
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <Leader>rp :resize 100<CR>
 
 " Tabularize frequent matches
@@ -178,30 +176,21 @@ nnoremap <Leader>cp :Tabularize /=><CR>
 nnoremap <Leader>bn :bnext <CR>
 nnoremap <Leader>bp :bprev <CR>
 
-nnoremap <Leader>ll :ls <CR>
-
 "files
 nnoremap <leader>ps :Rg<Space>
 
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
 
-" quickfix and location list mappings
-nnoremap <C-k> :cnext<CR>zz
-nnoremap <C-j> :cprev<CR>zz
-nnoremap <leader>k :lnext<CR>zz
-nnoremap <leader>j :lprev<CR>zz
 
 " delete all trailing whitespace
-nnoremap <leader>trs :call TrimWhitespace()<CR>
-
-"Tags
-nnoremap <leader>rt :silent ! ctags -R  --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) <cr>
+nnoremap <leader>rt :call TrimWhitespace()<CR>
 
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
+" show syntax symbols
 nnoremap <leader>gm :call SynStack()<CR>
 
 " use 256 colors in terminal
