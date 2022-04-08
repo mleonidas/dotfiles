@@ -23,9 +23,9 @@ let g:go_metalinter_command = "golangci-lint"
 augroup Golang
     autocmd!
     " Go syntax
-    "
-    autocmd BufWritePost *.go lua vim.lsp.buf.formatting()
-    autocmd BufWritePost *.go lua goimports(1000) 
+    autocmd BufWritePre *.go :silent lua vim.lsp.buf.formatting_sync(nil, 3000)
+    autocmd BufWritePre *.go :silent lua org_imports(1000) 
+
     au FileType go nmap <Leader>gr <Plug>(go-run-split)
     au FileType go nmap <Leader>gt <Plug>(go-test)
     au FileType GOTERM set nonumber norelativenumber 
