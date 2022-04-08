@@ -45,6 +45,9 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-solarized8'
 
+" some git things NOTE: vim-fugitive is a git plugin listed in tpopes section
+Plug 'pwntester/octo.nvim'
+Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
