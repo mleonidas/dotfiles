@@ -23,6 +23,10 @@ function dockerpsrm() {
   docker rm -f $(docker ps -a |awk '/Exit/ { print $1 }')
 }
 
+function dockerimagerm() {
+  docker rmi $(docker images -f "dangling=true" -q)
+}
+
 function imagerm() {
   docker image prune
 }

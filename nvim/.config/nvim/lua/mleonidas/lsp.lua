@@ -96,8 +96,8 @@ local on_attach = function(client, bufnr)
 
 end
 
--- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+-- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 
 require'lspconfig'.yamlls.setup{}

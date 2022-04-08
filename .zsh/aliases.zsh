@@ -15,6 +15,7 @@ alias gss='git status -s'
 alias gita='git add .'
 alias gitph='git push origin HEAD'
 alias sha="git log | head -1"
+alias dc='docker-compose'
 
 
 alias glo="git log --pretty=oneline --abbrev-commit"

@@ -9,3 +9,6 @@ nnoremap <leader>bb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>gb :lua require('telescope.builtin').git_branches()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files({previewer=false})<CR>
+
+nnoremap <leader>gm :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
