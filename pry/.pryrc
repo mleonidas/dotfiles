@@ -1,3 +1,9 @@
+Pry.color = true
+Pry.config.theme = 'solarzied'
+
+Pry.config.history_save
+Pry.config.history_file = "~/.pry_history"
+
 # == Pry-Nav - Using pry as a debugger ==
 Pry.commands.alias_command 'c', 'continue' rescue nil
 Pry.commands.alias_command 's', 'step' rescue nil
@@ -5,64 +11,41 @@ Pry.commands.alias_command 'n', 'next' rescue nil
 Pry.commands.alias_command 'w', 'whereami' rescue nil
 Pry.commands.alias_command '.clr', '.clear' rescue nil
 
+Pry.config.commands.alias_command "h", "hist -T 20", desc: "Last 20 commands"
+Pry.config.commands.alias_command "hg", "hist -T 20 -G", desc: "Up to 20 commands matching expression"
+Pry.config.commands.alias_command "hG", "hist -G", desc: "Commands matching expression ever used"
+Pry.config.commands.alias_command "hr", "hist -r", desc: "hist -r <command number> to run a command"
 
-Pry.color = true
-Pry.config.pager = false if ENV["INSIDE_EMACS"]
-Pry.config.correct_indent = false if ENV["INSIDE_EMACS"]
-Pry.config.theme = 'solarzied'
-
-Pry.config.history_ignorelist = [
-  /proc { |expr, line|  require 'ostruct';  old_wp = defined?(Bond) && Bond.started? && Bond.agent.weapon;*/
-]
-
-
-
-def formatted_env
-  case Rails.env
-  when 'production'
-    bold_upcased_env = Pry::Helpers::Text.bold(Rails.env.upcase)
-    Pry::Helpers::Text.red(bold_upcased_env)
-  when 'staging'
-    Pry::Helpers::Text.yellow(Rails.env)
-  when 'development'
-    Pry::Helpers::Text.green(Rails.env)
-  else
-    Rails.env
+begin
+  require 'awesome_print'
+  AwesomePrint.pry!
+rescue LoadError => err
+  begin
+    puts "no awesome_print :( #{err}"
+    puts "trying amazing_print"
+    require 'amazing_print'
+    AmazingPrint.pry!
+  rescue LoadError => err2
+    puts "no awesome_print :( #{err2}"
   end
 end
 
-def ruby_version
-  Pry::Helpers::Text.green(RUBY_VERSION)
+Pry::Prompt.add(
+  :ipython,
+  'IPython-like prompt', [':', '...:']
+) do |_context, _nesting, pry_instance, sep|
+  sep == ':' ? Pry::Helpers::Text.green("In [#{pry_instance.input_ring.count}]: ") : '   ...: '
 end
 
-def app_name
-  Pry::Helpers::Text.magenta(File.basename(Rails.root))
+Pry.config.prompt = Pry::Prompt[:ipython]
+
+
+
+def a_array
+  (1..6).to_a
 end
 
-def old_prompt_rails
-  [
-    ->(_obj, _nest_level, _) { "#{app_name} #{formatted_env} #{_obj}: " }
-  ]
+def a_hash
+  { hello: "world", free: "of charge" }
 end
-
-def new_prompt_rails
-  Pry::Prompt.new(
-    "custom",
-    "my custom prompt",
-    [
-      ->(_obj, _nest_level, _) { "#{app_name} #{formatted_env} #{_obj}: " },
-      ->(*) { "  " }
-    ])
-end
-
-if defined?(Rails.root)
-  Pry.config.prompt = Pry::VERSION.to_i >= 13 ? new_prompt_rails : old_prompt_rails
-else
-  Pry.config.prompt = Pry::Prompt.new(
-    "custom",
-    "my custom prompt",
-    [
-      ->(_obj, _nest_level, _) { "#{ruby_version} #{_obj}: " },
-      ->(*) { "  " }
-    ])
-end
+# vi: ft=ruby

@@ -64,6 +64,11 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
+      vim.diagnostic.disable()
+  end
+
+
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
@@ -100,7 +105,9 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 
-require'lspconfig'.yamlls.setup{}
+require'lspconfig'.yamlls.setup{
+    on_attach = on_attach,
+}
 
 require'lspconfig'.pyright.setup{
     on_attach = on_attach,

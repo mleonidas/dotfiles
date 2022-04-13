@@ -27,7 +27,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 
 Plug 'derekwyatt/vim-scala'
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
@@ -40,14 +40,13 @@ Plug 'NTBBloodbath/galaxyline.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'ryanoasis/vim-devicons'
 
-
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'airblade/vim-gitgutter'
 Plug 'lifepillar/vim-solarized8'
 
 " some git things NOTE: vim-fugitive is a git plugin listed in tpopes section
 Plug 'pwntester/octo.nvim'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
@@ -195,6 +194,7 @@ nnoremap <leader>rt :call TrimWhitespace()<CR>
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
+
 " show syntax symbols
 nnoremap <leader>gm :call SynStack()<CR>
 
@@ -245,6 +245,7 @@ function! MergeTabs()
     tabprev
   endif
   split
+
   execute "buffer " . bufferName
 endfunction
 
@@ -291,6 +292,7 @@ augroup Mleonidas
     au FileType * hi ExtraWhitespace ctermbg=red guibg=red
     autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
     au FileType * hi link CmpItemKind Function 
+    au FileType *.env setlocal commentstring=#\ %s
 augroup END
 
 
