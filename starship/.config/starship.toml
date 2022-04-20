@@ -1,4 +1,4 @@
-add_newline = true 
+add_newline = true
 format = """\
   $kubernetes\
   $python\
@@ -14,6 +14,8 @@ format = """\
   $character\
   """
 
+
+command_timeout = 1000
 
 [gcloud]
 format = "[$symbol$active]($style) "
