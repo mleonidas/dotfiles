@@ -101,11 +101,11 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
+
 " Plug 'tjdevries/colorbuddy.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
-
-
+" Treesitter setups
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
