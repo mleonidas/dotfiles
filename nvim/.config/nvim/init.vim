@@ -17,6 +17,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
+Plug 'jjo/vim-cue'
+
 " language plugins
 Plug 'google/vim-jsonnet'
 Plug 'lifepillar/pgsql.vim'
@@ -165,9 +167,6 @@ nnoremap { {zz
 
 nnoremap <DOWN> ddp
 nnoremap <UP> ddkP
-
-" Remove all whitespace
-noremap <Leader>rw :%s/\s\+//g <CR>
 
 nnoremap <Leader>rp :resize 100<CR>
 
