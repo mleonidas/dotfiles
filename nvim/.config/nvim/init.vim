@@ -28,7 +28,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 " Plug 'sbdchd/neoformat'
 
 Plug 'derekwyatt/vim-scala'
@@ -43,7 +43,8 @@ Plug 'kyazdani42/nvim-web-devicons' " lua
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'lifepillar/vim-solarized8'
+Plug 'ishan9299/nvim-solarized-lua'
 
 " some git things NOTE: vim-fugitive is a git plugin listed in tpopes section
 Plug 'pwntester/octo.nvim'
@@ -110,6 +111,8 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
 
 call plug#end()
 
@@ -119,7 +122,7 @@ let mapleader = " "
 
 set background=dark
 " colo gruvbox
-colo solarized8
+colo solarized 
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
@@ -137,12 +140,20 @@ lua require("mleonidas")
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "json", "http", "ruby"},
+ensure_installed = {"python", "json", "http", "ruby", "graphql", "go"},
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust", "go"},  -- list of language that will be disabled
+    disable = { "c", "rust"},  -- list of language that will be disabled
   },
 }
+
+require"nvim-treesitter.highlight".set_custom_captures {
+  -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+  ["keyword.function"] = "Statement",
+  ["parameter"] = "Underlined",
+  -- ["variable"] = "Underlined",
+}
+
 EOF
 
 
@@ -259,6 +270,28 @@ else
 endif
 
 lua << EOF
+
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
+
 require("rest-nvim").setup({
       -- Open request results in a horizontal split
       result_split_horizontal = false,
