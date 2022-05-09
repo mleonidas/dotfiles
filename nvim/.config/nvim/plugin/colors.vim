@@ -3,6 +3,7 @@ hi! link bashTSConstant Function
 
 " golang overrides
 hi! link goTSNamespace Normal
+hi! link goTSInclude Keyword 
 
 " ruby
 hi! link rubyTSSymbol Todo
