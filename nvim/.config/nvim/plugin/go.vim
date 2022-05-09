@@ -29,19 +29,6 @@ augroup Golang
     au FileType go nmap <Leader>gr <Plug>(go-run-split)
     au FileType go nmap <Leader>gt <Plug>(go-test)
     au FileType GOTERM set nonumber norelativenumber 
-
-    " " change the default red to violet
-    " au FileType go hi! link goVarDefs Underlined
-    "
-    " " make nil magenta
-    " au FileType go hi! link goPredefinedIdentifiers Todo
-    " au FileType go hi! link goParamName Underlined
-    " au FileType go hi! link goParamType Type
-    "
-    " au FileType go hi! link goTSKeywordFunction Function
-    " au FIleType go hi! link TSKeywordFunction Function
-    " au FileType go hi! link TSInclude Keyword
-
 augroup END
 
 

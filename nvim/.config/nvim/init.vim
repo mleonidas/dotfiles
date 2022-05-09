@@ -151,6 +151,8 @@ require"nvim-treesitter.highlight".set_custom_captures {
   -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
   ["keyword.function"] = "Statement",
   ["parameter"] = "Underlined",
+  ["punctuation.bracket"] = "Normal",
+
   -- ["variable"] = "Underlined",
 }
 
