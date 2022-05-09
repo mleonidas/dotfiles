@@ -24,16 +24,10 @@ Plug 'google/vim-jsonnet'
 Plug 'lifepillar/pgsql.vim'
 Plug 'jvirtanen/vim-hcl'
 Plug 'hashivim/vim-hashicorp-tools'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
-" Plug 'fatih/vim-go'
-" Plug 'sbdchd/neoformat'
 
-Plug 'derekwyatt/vim-scala'
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
-Plug 'racer-rust/vim-racer'
 Plug 'towolf/vim-helm'
 Plug 'chr4/nginx.vim'
 
