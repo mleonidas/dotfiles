@@ -1,6 +1,14 @@
 " bash overrides for treesitter syntax highlighting
 hi! link bashTSConstant Function
 
+" golang overrides
+hi! link goTSNamespace Normal
+
+" ruby
+hi! link rubyTSSymbol Todo
+
+
+
 lua << EOF
 require("lsp-colors").setup({
   Error = "#db4b4b",
