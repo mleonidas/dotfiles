@@ -121,8 +121,8 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 
 set background=dark
-" colo gruvbox
-colo solarized 
+
+colo solarized
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
@@ -137,27 +137,6 @@ endif
 
 
 lua require("mleonidas")
-
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "json", "http", "ruby", "graphql", "go", "bash"},
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust"},  -- list of language that will be disabled
-  },
-}
-
-require"nvim-treesitter.highlight".set_custom_captures {
-  -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-  ["keyword.function"] = "Statement",
-  ["parameter"] = "Underlined",
-  ["punctuation.bracket"] = "Normal",
-
-  -- ["variable"] = "Underlined",
-}
-
-EOF
-
 
 " Paste shortcuts
 nnoremap <C-G> :set paste norelativenumber nonumber <Return>
@@ -215,20 +194,6 @@ if !has("gui_running")
     set t_Co=256
 endif
 
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans = 1
-" let g:solarized_visibility="high"
-
-lua << EOF
-require("lsp-colors").setup({
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#0db9d7",
-  Hint = "#10B981"
-})
-EOF
-
-
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -270,54 +235,6 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
-
-lua << EOF
-
-require "nvim-treesitter.configs".setup {
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
-    },
-  }
-}
-
-require("rest-nvim").setup({
-      -- Open request results in a horizontal split
-      result_split_horizontal = false,
-      -- Skip SSL verification, useful for unknown certificates
-      skip_ssl_verification = false,
-      -- Highlight request on run
-      highlight = {
-        enabled = true,
-        timeout = 150,
-      },
-      result = {
-        -- toggle showing URL, HTTP info, headers at top the of result window
-        show_url = true,
-        show_http_info = true,
-        show_headers = true,
-      },
-      -- Jump to request line on run
-      jump_to_request = false,
-      env_file = '.env',
-      custom_dynamic_variables = {},
-      yank_dry_run = true,
-    })
-EOF
-
 
 let g:gitblame_enabled = 0
 
