@@ -168,3 +168,6 @@ function org_imports(wait_ms)
         end
     end
 end
+
+
+require("luasnip.loaders.from_vscode").lazy_load()

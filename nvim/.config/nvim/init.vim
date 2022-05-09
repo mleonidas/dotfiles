@@ -51,7 +51,6 @@ Plug 'pwntester/octo.nvim'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'godlygeek/tabular'
-Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
@@ -81,10 +80,6 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-
 " markdown
 Plug 'ellisonleao/glow.nvim'
 
@@ -103,6 +98,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
 " Plug 'tjdevries/colorbuddy.nvim'
