@@ -16,13 +16,16 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-vim.diagnostic.config({
+local signconfig = {
     virtual_text = false,
     signs = true,
     underline = true,
-    update_in_insert = false,
-    severity_sort = false,
-})
+    update_in_insert = true,
+    severity_sort = true,
+}
+
+vim.diagnostic.config(signconfig)
+
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -100,17 +103,6 @@ require 'lspconfig'.solargraph.setup {
     on_attach = on_attach,
 }
 
-require 'lspconfig'.gopls.setup(config({
-    cmd = { "gopls", "serve" },
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}))
 
 require("lspconfig").sumneko_lua.setup(config({
     cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
@@ -135,6 +127,18 @@ require("lspconfig").sumneko_lua.setup(config({
     on_attach = on_attach,
 }))
 
+
+require 'lspconfig'.gopls.setup(config({
+    cmd = { "gopls", "serve" },
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}))
 
 
 nvim_lsp.gopls.setup {

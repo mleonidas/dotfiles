@@ -1,6 +1,7 @@
 add_newline = true
 format = """\
   $kubernetes\
+  $aws\
   $python\
   $terraform\
   $line_break\
@@ -23,18 +24,21 @@ style = "bold yellow"
 
 [aws]
 format = '[$symbol$profile(\($region\))]($style) '
-disabled = true
+disabled = false
 style = "#af8700"
 symbol = "🅰 "
+
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"
+us-east-2 = "oh"
+us-west-1 = "ca"
+us-west-2 = "or"
 
 [cmd_duration]
 disabled = true
 min_time = 500
 format = "underwent [$duration](bold yellow)"
-
-[aws.region_aliases]
-ap-southeast-2 = "au"
-us-east-1 = "va"
 
 [terraform]
 format = "[$version$workspace]($style) "
@@ -75,12 +79,12 @@ style_user = "dimmed blue"
 show_always = false
 
 [kubernetes]
-format = '[\[$context\($namespace\)\]]($style) '
+format = '[\[$context[\($namespace\)](bold purple)\]]($style) '
 style = "cyan"
 disabled = false
 
 [kubernetes.context_aliases]
-"dev.local.cluster.k8s" = "dev"
+".*arn:aws:eks:(?P<region>\\w+-\\w+-\\d):(?P<account>\\d+):cluster/(?P<cluster_name>\\w+-\\w+).*" = "$region:$account:$cluster_name"
 
 [time]
 disabled = true

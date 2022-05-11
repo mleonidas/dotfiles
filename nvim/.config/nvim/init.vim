@@ -44,6 +44,9 @@ Plug 'ishan9299/nvim-solarized-lua'
 Plug 'pwntester/octo.nvim'
 Plug 'airblade/vim-gitgutter'
 
+" Go plugin
+Plug 'ray-x/go.nvim'
+
 Plug 'godlygeek/tabular'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tomtom/tcomment_vim'
@@ -73,6 +76,7 @@ Plug 'ThePrimeagen/harpoon'
 " fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-live-grep-raw.nvim'
 
 " markdown
 Plug 'ellisonleao/glow.nvim'
@@ -81,6 +85,7 @@ Plug 'google/vim-maktaba'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
+'
 Plug 'mbbill/undotree'
 Plug 'folke/lsp-colors.nvim'
 Plug 'folke/trouble.nvim'
@@ -162,7 +167,7 @@ nnoremap <Leader>bn :bnext <CR>
 nnoremap <Leader>bp :bprev <CR>
 
 "files
-nnoremap <leader>ps :Rg<Space>
+" nnoremap <leader>ps :Rg<Space>
 
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
