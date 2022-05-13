@@ -7,7 +7,7 @@ autoload -U promptinit; promptinit
 
 # User configuration
 # export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin
+export PATH=/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
@@ -79,3 +79,4 @@ if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ml
 
 eval "$(starship init zsh)"
 
+. <(hof completion zsh)

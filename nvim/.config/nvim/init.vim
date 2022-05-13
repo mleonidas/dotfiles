@@ -108,6 +108,10 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
+" Dap setups
+Plug 'sebdah/vim-delve'
+
+
 
 call plug#end()
 
@@ -172,6 +176,11 @@ nnoremap <Leader>bp :bprev <CR>
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winheight(0) * 2/3)<CR>
+
+
+" resive vertical
 
 
 " delete all trailing whitespace
