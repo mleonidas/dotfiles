@@ -13,3 +13,6 @@ nnoremap <C-p> :lua require('telescope.builtin').git_files({previewer=false})<CR
 
 nnoremap <leader>gm :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+
+nnoremap <leader>ctt :TodoTelescope<CR>
+nnoremap <leader>xt :TodoTrouble<CR>

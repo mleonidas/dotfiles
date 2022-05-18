@@ -110,6 +110,15 @@ Plug 'nvim-treesitter/playground'
 
 " Dap setups
 Plug 'sebdah/vim-delve'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'leoluz/nvim-dap-go'
+Plug 'nvim-telescope/telescope-dap.nvim'
+
+" hopefully this is useful
+Plug 'folke/todo-comments.nvim'
+
+
 
 
 
@@ -184,7 +193,7 @@ nnoremap <silent> <Leader>> :exe "vertical resize " . (winheight(0) * 2/3)<CR>
 
 
 " delete all trailing whitespace
-nnoremap <leader>rt :call TrimWhitespace()<CR>
+nnoremap <leader>ps :call TrimWhitespace()<CR>
 
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
@@ -241,6 +250,10 @@ else
 endif
 
 let g:gitblame_enabled = 0
+
+lua <<EOF
+require("todo-comments").setup{}
+EOF
 
 augroup Mleonidas
     autocmd!
