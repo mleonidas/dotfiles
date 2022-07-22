@@ -18,12 +18,14 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
 Plug 'jjo/vim-cue'
+Plug 'LnL7/vim-nix'
+
 
 " language plugins
 Plug 'google/vim-jsonnet'
 Plug 'lifepillar/pgsql.vim'
-Plug 'jvirtanen/vim-hcl'
-Plug 'hashivim/vim-hashicorp-tools'
+" Plug 'jvirtanen/vim-hcl'
+" Plug 'hashivim/vim-hashicorp-tools'
 Plug 'cespare/vim-toml'
 Plug 'ekalinin/Dockerfile.vim'
 
@@ -40,9 +42,14 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'lifepillar/vim-solarized8'
 Plug 'ishan9299/nvim-solarized-lua'
 
-" some git things NOTE: vim-fugitive is a git plugin listed in tpopes section
+" some git things TODO: vim-fugitive is a git plugin listed in tpopes section
 Plug 'pwntester/octo.nvim'
 Plug 'airblade/vim-gitgutter'
+
+
+"typescript 
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
 " Go plugin
 Plug 'ray-x/go.nvim'
@@ -76,7 +83,7 @@ Plug 'ThePrimeagen/harpoon'
 " fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-live-grep-raw.nvim'
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 
 " markdown
 Plug 'ellisonleao/glow.nvim'
@@ -252,7 +259,9 @@ endif
 let g:gitblame_enabled = 0
 
 lua <<EOF
-require("todo-comments").setup{}
+require("todo-comments").setup{
+  signs = false,
+}
 EOF
 
 augroup Mleonidas

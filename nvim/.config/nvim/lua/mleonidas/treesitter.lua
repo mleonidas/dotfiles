@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "json", "http", "ruby", "graphql", "go", "bash", "comment"},
+ensure_installed = {"python", "json", "http", "ruby", "graphql", "go", "bash", "comment", "proto", "hcl"},
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust"},  -- list of language that will be disabled
