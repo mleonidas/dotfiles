@@ -4,7 +4,7 @@ homebrew:
 	./setup/install_homebrew.sh
 
 plugins:
-	./setup/install_vimplug.sh
+	./setup/install_packer.sh
 
 install:
 	bin/.bin/stow-config install

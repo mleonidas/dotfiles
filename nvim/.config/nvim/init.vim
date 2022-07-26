@@ -11,125 +11,6 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 set completeopt=menu,menuone,noselect
 
-call plug#begin('~/.config/.nvim/plugged')
-
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux'
-
-Plug 'jjo/vim-cue'
-Plug 'LnL7/vim-nix'
-
-
-" language plugins
-Plug 'google/vim-jsonnet'
-Plug 'lifepillar/pgsql.vim'
-" Plug 'jvirtanen/vim-hcl'
-" Plug 'hashivim/vim-hashicorp-tools'
-Plug 'cespare/vim-toml'
-Plug 'ekalinin/Dockerfile.vim'
-
-Plug 'earthly/earthly.vim', { 'branch': 'main' }
-Plug 'towolf/vim-helm'
-Plug 'chr4/nginx.vim'
-
-" status bar
-Plug 'NTBBloodbath/galaxyline.nvim'
-Plug 'kyazdani42/nvim-web-devicons' " lua
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'lifepillar/vim-solarized8'
-Plug 'ishan9299/nvim-solarized-lua'
-
-" some git things TODO: vim-fugitive is a git plugin listed in tpopes section
-Plug 'pwntester/octo.nvim'
-Plug 'airblade/vim-gitgutter'
-
-
-"typescript 
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-
-" Go plugin
-Plug 'ray-x/go.nvim'
-
-Plug 'godlygeek/tabular'
-Plug 'jremmen/vim-ripgrep'
-Plug 'tomtom/tcomment_vim'
-Plug 'tomtom/tlib_vim'
-
-" http nvim plugin
-Plug 'NTBBloodbath/rest.nvim'
-
-" refactoring tool
-Plug 'ThePrimeagen/refactoring.nvim'
-
-" obligatory tpope plugins
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-
-Plug 'f-person/git-blame.nvim'
-
-" vim marks on steroids
-Plug 'ThePrimeagen/harpoon'
-
-" fuzzy finding
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-live-grep-args.nvim'
-
-" markdown
-Plug 'ellisonleao/glow.nvim'
-
-Plug 'google/vim-maktaba'
-Plug 'karoliskoncevicius/vim-sendtowindow'
-Plug 'neovim/nvim-lsp'
-Plug 'neovim/nvim-lspconfig'
-'
-Plug 'mbbill/undotree'
-Plug 'folke/lsp-colors.nvim'
-Plug 'folke/trouble.nvim'
-
-" nvim autocomplete
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'onsails/lspkind-nvim'
-
-" Plug 'tjdevries/colorbuddy.nvim'
-Plug 'ThePrimeagen/git-worktree.nvim'
-
-" Treesitter setups
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-
-" Dap setups
-Plug 'sebdah/vim-delve'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'leoluz/nvim-dap-go'
-Plug 'nvim-telescope/telescope-dap.nvim'
-
-" hopefully this is useful
-Plug 'folke/todo-comments.nvim'
-
-
-
-
-
-call plug#end()
 
 nnoremap <SPACE> <Nop>
 " Leader Command Section
@@ -138,6 +19,7 @@ let mapleader = " "
 set background=dark
 
 colo solarized
+" colo tokyonight 
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
