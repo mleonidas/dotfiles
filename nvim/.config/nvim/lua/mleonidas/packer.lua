@@ -103,8 +103,6 @@ return require("packer").startup(function(use)
     use("theHamsta/nvim-dap-virtual-text")
 
     use("sebdah/vim-delve")
-    use("mfussenegger/nvim-dap")
-    use("rcarriga/nvim-dap-ui")
     use("leoluz/nvim-dap-go")
     use("folke/todo-comments.nvim")
 
