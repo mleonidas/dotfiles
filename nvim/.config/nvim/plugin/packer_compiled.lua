@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
   },
+  neogit = {
+    loaded = true,
+    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -223,11 +228,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-solarized-lua"] = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/nvim-solarized-lua",
-    url = "https://github.com/ishan9299/nvim-solarized-lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -278,6 +278,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/rest.nvim",
     url = "https://github.com/NTBBloodbath/rest.nvim"
+  },
+  ["solarized.nvim"] = {
+    loaded = true,
+    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/solarized.nvim",
+    url = "https://github.com/mleonidas/solarized.nvim"
   },
   ["splitjoin.vim"] = {
     loaded = true,
@@ -363,11 +368,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-endwise",
     url = "https://github.com/tpope/vim-endwise"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-helm"] = {
     loaded = true,
