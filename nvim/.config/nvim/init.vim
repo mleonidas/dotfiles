@@ -11,15 +11,14 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 set completeopt=menu,menuone,noselect
 
-
 nnoremap <SPACE> <Nop>
+
 " Leader Command Section
 let mapleader = " "
 
 set background=dark
 
 colo solarized
-" colo tokyonight 
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
@@ -31,7 +30,6 @@ nnoremap Y y$
 if has('nvim')
      nnoremap <BS> <C-W>h
 endif
-
 
 lua require("mleonidas")
 
@@ -68,25 +66,17 @@ nnoremap <Leader>cp :Tabularize /=><CR>
 nnoremap <Leader>bn :bnext <CR>
 nnoremap <Leader>bp :bprev <CR>
 
-"files
-" nnoremap <leader>ps :Rg<Space>
-
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winheight(0) * 2/3)<CR>
 
-
-" resive vertical
-
-
 " delete all trailing whitespace
 nnoremap <leader>ps :call TrimWhitespace()<CR>
 
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
-
 
 " show syntax symbols
 nnoremap <leader>gm :call SynStack()<CR>
@@ -128,17 +118,12 @@ function! MergeTabs()
   execute "buffer " . bufferName
 endfunction
 
-let g:sql_type_default = 'pgsql'
-
-
 " set the 80 coloumn line
 if exists('+colorcolumn')
   set colorcolumn=80
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
-
-let g:gitblame_enabled = 0
 
 augroup Mleonidas
     autocmd!
@@ -149,3 +134,5 @@ augroup Mleonidas
 augroup END
 
 
+let g:sql_type_default = 'pgsql'
+let g:gitblame_enabled = 0
