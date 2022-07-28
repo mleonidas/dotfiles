@@ -7,3 +7,6 @@ require("mleonidas/treesitter")
 require("mleonidas/rest")
 require("mleonidas/go")
 require("mleonidas/debugger")
+require("mleonidas/vgit")
+require("mleonidas/todo_comments")
+

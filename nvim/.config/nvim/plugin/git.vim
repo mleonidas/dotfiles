@@ -8,6 +8,5 @@ nnoremap <Leader>gl :Git log<CR>
 nnoremap <Leader>gf :diffget//2<CR>
 nnoremap <Leader>gj :diffget//3<CR>
 
-
 " Octo bindings
 nnoremap <Leader>gopr :Octo pr list<CR>

@@ -2,9 +2,6 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
 
-    -- Simple plugins can be specified as strings
-    use("TimUntersberger/neogit")
-
     -- rest client
     use("NTBBloodbath/rest.nvim")
 
@@ -39,7 +36,10 @@ return require("packer").startup(function(use)
     use("ishan9299/nvim-solarized-lua")
 
     use("pwntester/octo.nvim")
-    use("airblade/vim-gitgutter")
+
+    -- use("airblade/vim-gitgutter")
+    use { 'lewis6991/gitsigns.nvim' }
+    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
     -- tpope plugins
     use("tpope/vim-vinegar")

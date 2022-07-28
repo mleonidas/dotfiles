@@ -140,12 +140,6 @@ endif
 
 let g:gitblame_enabled = 0
 
-lua <<EOF
-require("todo-comments").setup{
-  signs = false,
-}
-EOF
-
 augroup Mleonidas
     autocmd!
     au FileType * hi ExtraWhitespace ctermbg=red guibg=red
