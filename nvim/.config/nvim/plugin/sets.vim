@@ -24,6 +24,7 @@ set directory=~/.tmp
 set undodir=~/.vim/undodir
 set undofile
 set noswapfile
+set laststatus=3
 set nobackup
 set cursorline
 set t_Co=256
