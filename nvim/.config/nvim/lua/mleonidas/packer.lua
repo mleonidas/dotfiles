@@ -33,15 +33,12 @@ return require("packer").startup(function(use)
     use("kyazdani42/nvim-web-devicons")
     use("ryanoasis/vim-devicons")
     use("MarcWeber/vim-addon-mw-utils")
-    -- use("ishan9299/nvim-solarized-lua")
     use('mleonidas/solarized.nvim')
-
 
     use("pwntester/octo.nvim")
 
     use { 'lewis6991/gitsigns.nvim' }
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-    -- use("tpope/vim-fugitive")
 
     -- tpope plugins
     use("tpope/vim-vinegar")
