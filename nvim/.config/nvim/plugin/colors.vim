@@ -1,15 +1,5 @@
-" bash overrides for treesitter syntax highlighting
-hi! link bashTSConstant Function
-
-" golang overrides
-" hi! link goTSNamespace Normal
-" hi! link goTSInclude Keyword 
-" hi! link goTSConstant Function 
-
 " ruby
-hi! link rubyTSSymbol Todo
-
-
+" hi! link rubyTSSymbol Todo
 
 lua << EOF
 require("lsp-colors").setup({

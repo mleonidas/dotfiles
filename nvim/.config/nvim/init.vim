@@ -15,9 +15,7 @@ nnoremap <SPACE> <Nop>
 
 " Leader Command Section
 let mapleader = " "
-
 set background=dark
-
 colo solarized
 
 " fix the terminal
