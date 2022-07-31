@@ -5,6 +5,9 @@ return require("packer").startup(function(use)
     -- rest client
     use("NTBBloodbath/rest.nvim")
 
+    -- show hex colors
+    use("chrisbra/Colorizer")
+
     -- TJ created lodash of neovim
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
@@ -67,7 +70,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/nvim-cmp")
     use("folke/trouble.nvim")
 
-    use("tzachar/cmp-tabnine", { run = "./install.sh" })
+    -- use("tzachar/cmp-tabnine", { run = "./install.sh" })
 
     use("onsails/lspkind-nvim")
     use("nvim-lua/lsp_extensions.nvim")
