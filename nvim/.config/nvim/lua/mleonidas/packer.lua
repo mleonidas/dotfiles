@@ -8,6 +8,9 @@ return require("packer").startup(function(use)
     -- show hex colors
     use("chrisbra/Colorizer")
 
+    -- better whitespace ? TODO(mleonidas): rewrite in lua
+    use("ntpeters/vim-better-whitespace")
+
     -- TJ created lodash of neovim
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")

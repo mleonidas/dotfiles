@@ -125,11 +125,11 @@ endif
 
 augroup Mleonidas
     autocmd!
-    au FileType * hi ExtraWhitespace ctermbg=red guibg=red
-    autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-    au FileType * hi link CmpItemKind Function 
     au FileType *.env setlocal commentstring=#\ %s
 augroup END
+
+let g:better_whitespace_filetypes_blacklist=['neogitstatus', 'NeogitCommitMessage', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive']
+
 
 
 let g:sql_type_default = 'pgsql'

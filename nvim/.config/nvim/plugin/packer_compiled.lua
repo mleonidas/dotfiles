@@ -344,6 +344,11 @@ _G.packer_plugins = {
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-addon-mw-utils",
     url = "https://github.com/MarcWeber/vim-addon-mw-utils"
   },
+  ["vim-better-whitespace"] = {
+    loaded = true,
+    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
+    url = "https://github.com/ntpeters/vim-better-whitespace"
+  },
   ["vim-cue"] = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-cue",
