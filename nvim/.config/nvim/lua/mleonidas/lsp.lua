@@ -81,7 +81,17 @@ require 'lspconfig'.pyright.setup {
     on_attach = on_attach,
 }
 
-require 'lspconfig'.terraformls.setup {}
+require 'lspconfig'.terraformls.setup({
+    on_attach = on_attach,
+    flags = { debounce_text_changes = 150 },
+    capabilities = capabilities,
+})
+
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = vim.lsp.buf.formatting_sync,
+})
+
 
 require 'lspconfig'.graphql.setup {
     on_attach = on_attach,
