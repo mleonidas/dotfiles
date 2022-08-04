@@ -17,6 +17,7 @@ alias gitph='git push origin HEAD'
 alias sha="git log | head -1"
 alias dc='docker-compose'
 
+alias k9s='XDG_CONFIG_HOME=~/.config k9s'
 
 alias glo="git log --pretty=oneline --abbrev-commit"
 
