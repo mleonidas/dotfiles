@@ -359,11 +359,6 @@ _G.packer_plugins = {
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-delve",
     url = "https://github.com/sebdah/vim-delve"
   },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
-  },
   ["vim-dispatch"] = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-dispatch",
