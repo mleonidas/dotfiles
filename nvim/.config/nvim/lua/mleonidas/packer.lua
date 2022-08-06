@@ -74,7 +74,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/nvim-cmp")
     use("folke/trouble.nvim")
 
-    -- use("tzachar/cmp-tabnine", { run = "./install.sh" })
+    use("tzachar/cmp-tabnine", {run='./install.sh', requires = 'hrsh7th/nvim-cmp'})
 
     use("onsails/lspkind-nvim")
     use("nvim-lua/lsp_extensions.nvim")
