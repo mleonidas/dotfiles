@@ -40,6 +40,7 @@ return require("packer").startup(function(use)
     use("ryanoasis/vim-devicons")
     use("MarcWeber/vim-addon-mw-utils")
     use('mleonidas/solarized.nvim')
+    -- use('ishan9299/nvim-solarized-lua')
 
     use("pwntester/octo.nvim")
 
