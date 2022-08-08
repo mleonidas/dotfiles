@@ -37,9 +37,10 @@ return require("packer").startup(function(use)
     use("earthly/earthly.vim")
     use("towolf/vim-helm")
     use("kyazdani42/nvim-web-devicons")
-    use("ryanoasis/vim-devicons")
+    -- use("ryanoasis/vim-devicons")
     use("MarcWeber/vim-addon-mw-utils")
     use('mleonidas/solarized.nvim')
+    -- use('ishan9299/nvim-solarized-lua')
 
     use("pwntester/octo.nvim")
 
@@ -73,7 +74,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/nvim-cmp")
     use("folke/trouble.nvim")
 
-    -- use("tzachar/cmp-tabnine", { run = "./install.sh" })
+    use("tzachar/cmp-tabnine", {run='./install.sh', requires = 'hrsh7th/nvim-cmp'})
 
     use("onsails/lspkind-nvim")
     use("nvim-lua/lsp_extensions.nvim")

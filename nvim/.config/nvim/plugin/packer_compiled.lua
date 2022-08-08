@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-tabnine"] = {
+    loaded = true,
+    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -358,11 +363,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-delve",
     url = "https://github.com/sebdah/vim-delve"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
   },
   ["vim-dispatch"] = {
     loaded = true,

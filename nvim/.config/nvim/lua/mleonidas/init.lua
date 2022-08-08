@@ -10,4 +10,4 @@ require("mleonidas/debugger")
 require("mleonidas/vgit")
 require("mleonidas/todo_comments")
 require("mleonidas/neogit")
-
+require("mleonidas/solarized")
