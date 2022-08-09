@@ -8,7 +8,6 @@ ensure_installed = {"python", "json", "http", "ruby", "graphql", "go", "bash", "
 
 require"nvim-treesitter.highlight".set_custom_captures {
   ["keyword.function"] = "Statement",
-  ["parameter"] = "Underlined",
   ["punctuation.bracket"] = "Normal",
 
   -- ["variable"] = "Underlined",
