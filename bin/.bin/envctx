@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+PROJECT_CONTEXT="${PWD}/.envrc.context"
+
+switch_context() {
+    env_context="$(echo -e "local\nstaging" | fzf --reverse)"
+    echo "writing ${env_context} to ${PROJECT_CONTEXT}"
+}
+
+if [[ "$#" != "1" ]]; then
+    echo "Usage: envctx [show|switch]"
+    exit 2
+fi
+
+if ! command -v fzf &> /dev/null; then
+    echo "please install FZF"
+    exit 2
+fi
+
+if [[ "${1}" == "switch" ]]; then
+    switch_context
+elif [[ "${1}" == "show" ]]; then
+    cat "${PROJECT_CONTEXT}"
+fi
