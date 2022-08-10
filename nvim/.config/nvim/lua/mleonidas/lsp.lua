@@ -77,9 +77,38 @@ require 'lspconfig'.yamlls.setup {
     on_attach = on_attach,
 }
 
-require 'lspconfig'.pyright.setup {
+
+require'lspconfig'.pylsp.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        formatCommand = {"black"},
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    maxLineLength = 100
+                },
+                pyls_flake8 = { enabled = false },
+                pylint = { enabled = true,
+                args = { '--rcfile','~/Documents/repos/work/flowcode-api/pyproject.toml' }
+            },
+            black = { enabled = true },
+            isort = { enabled = true },
+            pyls_mypy = {
+                enabled = true,
+                --live_mode = true,
+            },
+        },
+    }
 }
+
+
+
+})
+
+-- require 'lspconfig'.pyright.setup {
+--     on_attach = on_attach,
+-- }
 
 require 'lspconfig'.terraformls.setup({
     on_attach = on_attach,
