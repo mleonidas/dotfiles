@@ -128,9 +128,17 @@ augroup Mleonidas
     au FileType *.env setlocal commentstring=#\ %s
 augroup END
 
+augroup neoformat
+    autocmd!
+    autocmd BufWritePre *.py Neoformat
+
+augroup END
+
 let g:better_whitespace_filetypes_blacklist=['neogitstatus', 'NeogitCommitMessage', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive']
 
-
+let g:neoformat_enabled_python = ['black', 'isort', 'flake8']
+let g:neoformat_run_all_formatters = 1
+let test#python#runner = 'djangotest'
 
 let g:sql_type_default = 'pgsql'
 let g:gitblame_enabled = 0

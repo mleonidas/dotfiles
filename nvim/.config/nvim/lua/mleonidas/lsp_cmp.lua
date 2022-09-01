@@ -54,7 +54,7 @@ cmp.setup({
       { name = 'nvim_lsp', keyword_length = 3 },
       { name = 'luasnip' }, -- For luasnip users.
       { name = 'treesitter' },
-      { name = 'nvim_lsp_signature_help'},
+      -- { name = 'nvim_lsp_signature_help'},
       { name = 'cmp_tabnine' },
       { name = 'buffer', keyword_length = 3},
     })

@@ -24,8 +24,14 @@ return require("packer").startup(function(use)
     use("LnL7/vim-nix")
 
     -- language plugins
-    use("jose-elias-alvarez/null-ls.nvim")
+    -- use("jose-elias-alvarez/null-ls.nvim")
     use("jose-elias-alvarez/nvim-lsp-ts-utils")
+    use("averms/black-nvim")
+    use {"ellisonleao/glow.nvim"}
+
+
+    -- there's got to be a better way
+    use("vim-test/vim-test")
 
     use("ray-x/go.nvim")
     use("godlygeek/tabular")
@@ -45,7 +51,8 @@ return require("packer").startup(function(use)
     use("pwntester/octo.nvim")
 
     use { 'lewis6991/gitsigns.nvim' }
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use { 'tpope/vim-fugitive' }
 
     -- tpope plugins
     use("tpope/vim-vinegar")

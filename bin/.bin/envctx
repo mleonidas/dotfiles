@@ -1,24 +1,21 @@
 #!/usr/bin/env bash
 
-PROJECT_CONTEXT="${PWD}/.envrc.context"
+export REPO_PATH="${HOME}/Documents/repos"
+
+export SELECTED=$(find  $REPO_PATH/work -mindepth 1 -maxdepth 1 -type d|fzf --reverse)
+
+PROJECT_CONTEXT="${SELECTED}/.envrc.context"
 
 switch_context() {
-    env_context="$(echo -e "local\nstaging" | fzf --reverse)"
+    env_context="$(echo -e "local\nstaging\ntest" | fzf --reverse)"
     echo "writing ${env_context} to ${PROJECT_CONTEXT}"
+    echo "${env_context}" > "${PROJECT_CONTEXT}"
 }
-
-if [[ "$#" != "1" ]]; then
-    echo "Usage: envctx [show|switch]"
-    exit 2
-fi
 
 if ! command -v fzf &> /dev/null; then
     echo "please install FZF"
     exit 2
 fi
 
-if [[ "${1}" == "switch" ]]; then
-    switch_context
-elif [[ "${1}" == "show" ]]; then
-    cat "${PROJECT_CONTEXT}"
-fi
+switch_context
+
