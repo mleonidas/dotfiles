@@ -1,0 +1,97 @@
+{pkgs, ...}:
+{
+  programs = {
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        add_newline = true;
+        format = "$kubernetes$aws$python$terraform$line_break$directory$git_branch$git_commit$git_state$git_status$cmd_duration$line_break$character";
+        command_timeout = 1000;
+
+        character = {
+          error_symbol = "[✖](red) ";
+        };
+
+        gcloud = {
+          format = "[$symbol$active]($style) ";
+          style = "bold yellow";
+        };
+        aws = {
+          format = "[$symbol$profile(\\($region\\))]($style) ";
+          disabled = false;
+          style = "#af8700";
+          symbol = "🅰 ";
+        };
+
+        aws.region_aliases = {
+          ap-southeast-2 = "au";
+          us-east-1 = "va";
+          us-east-2 = "oh";
+          us-west-1 = "ca";
+          us-west-2 = "or";
+        };
+
+        cmd_duration = {
+          disabled = true;
+          min_time = 500;
+          format = "underwent [$duration](bold yellow)";
+        };
+
+        terraform = {
+          format = "[$version$workspace]($style) ";
+          disabled = false;
+        };
+
+        git_state = {
+          format = "[\\($state( $progress_current of $progress_total)\\)]($style) ";
+          disabled = true;
+          style = "#1c1c1c";
+          cherry_pick = "[🍒 PICKING](red)";
+          progress_divider = " of ";
+        };
+
+        git_status = {
+          format = "([$all_status$ahead_behind]($style))";
+          modified = "*";
+          style = "#d70000";
+        };
+
+        git_branch = {
+          style = "#585858";
+          format = "[$symbol$branch]($style)";
+        };
+
+        directory = {
+          truncation_length = 8;
+          format = "[$path]($style)[$lock_symbol]($lock_style) ";
+          truncation_symbol = ".../";
+          style = "blue";
+        };
+
+        python = {
+          format = "[$symbol$pyenv_prefix$version(\\($virtualenv\\))]($style) ";
+          style = "green";
+          symbol = "";
+        };
+
+        username = {
+          style_user = "dimmed blue";
+          show_always = false;
+        };
+        kubernetes = {
+          format = "[\\[$context[\\($namespace\\)](bold purple)\\]]($style) ";
+          style = "cyan";
+          disabled = false;
+        };
+
+        kubernetes.context_aliases = {
+          ".*arn:aws:eks:(?P<region>\\\\w+-\\\\w+-\\\\d):(?P<account>\\\\d+):cluster/(?P<cluster_name>\\\\w+-\\\\w+).*" = "$region:$account:$cluster_name";
+        };
+        time = {
+          disabled = true;
+        };
+      };
+    };
+  };
+}
