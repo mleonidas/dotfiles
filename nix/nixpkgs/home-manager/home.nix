@@ -17,8 +17,12 @@
       ripgrep
       jq
       vivid
+      autoconf
+      automake
+      bat
       stow
       awscli2
+      glow
       direnv
       kubectl
       kubectx

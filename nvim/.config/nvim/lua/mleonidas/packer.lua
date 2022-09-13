@@ -54,6 +54,10 @@ return require("packer").startup(function(use)
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use { 'tpope/vim-fugitive' }
 
+    -- use { 'tjdevries/cyclist.vim' }
+    use "lukas-reineke/indent-blankline.nvim"
+
+
     -- tpope plugins
     use("tpope/vim-vinegar")
     use("tpope/vim-dispatch")
