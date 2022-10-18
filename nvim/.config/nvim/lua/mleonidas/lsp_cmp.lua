@@ -86,8 +86,3 @@ tabnine:setup({
 	snippet_placeholder = "..",
 })
 
--- local Group = require("colorbuddy.group").Group
--- local g = require("colorbuddy.group").groups
--- -- local s = require("colorbuddy.style").styles
---
--- Group.new("CmpItemAbbr", g.Comment)

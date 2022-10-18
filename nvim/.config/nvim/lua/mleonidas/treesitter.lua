@@ -1,18 +1,10 @@
-require'nvim-treesitter.configs'.setup {
-ensure_installed = {"python", "json", "http", "ruby", "graphql", "go", "bash", "comment", "proto", "hcl", "make"},
+require "nvim-treesitter.configs".setup {
+  ensure_installed = {"python", "go", "json", "http", "ruby", "graphql", "go", "bash", "comment", "proto", "hcl", "make"},
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust"},  -- list of language that will be disabled
   },
-}
 
-require"nvim-treesitter.highlight".set_custom_captures {
-  ["keyword.function"] = "Statement",
-  ["punctuation.bracket"] = "Normal",
-
-  -- ["variable"] = "Underlined",
-}
-require "nvim-treesitter.configs".setup {
   playground = {
     enable = true,
     disable = {},

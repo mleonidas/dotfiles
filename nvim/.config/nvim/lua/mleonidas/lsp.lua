@@ -5,7 +5,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+        capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
     }, _config or {})
 end
 
@@ -117,7 +117,10 @@ local python_root_files = {
 
 require 'lspconfig'.pyright.setup {
     on_attach = on_attach,
-    root_dir = nvim_lsp.util.root_pattern(unpack(python_root_files))
+    root_dir = nvim_lsp.util.root_pattern(unpack(python_root_files)),
+    settings = {
+        typeCheckingMode = "off",
+    }
 }
 
 
@@ -130,10 +133,10 @@ require 'lspconfig'.terraformls.setup({
     capabilities = capabilities,
 })
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.formatting_sync,
-})
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+--   pattern = {"*.tf", "*.tfvars"},
+--   callback = vim.lsp.buf.formatting_sync,
+-- })
 
 
 require 'lspconfig'.graphql.setup {

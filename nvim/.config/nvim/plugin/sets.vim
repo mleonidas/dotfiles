@@ -27,7 +27,7 @@ set noswapfile
 set laststatus=3
 set nobackup
 set cursorline
-set t_Co=256
+" set t_Co=256
 set tags=./.tags;,./tags;
 
 " change the split size to be more like tmux

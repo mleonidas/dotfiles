@@ -16,7 +16,6 @@ nnoremap <SPACE> <Nop>
 " Leader Command Section
 let mapleader = " "
 set background=dark
-colo solarized
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
@@ -29,7 +28,8 @@ if has('nvim')
      nnoremap <BS> <C-W>h
 endif
 
-lua require("mleonidas")
+colo solarized
+lua require('mleonidas')
 
 " Paste shortcuts
 nnoremap <C-G> :set paste norelativenumber nonumber <Return>

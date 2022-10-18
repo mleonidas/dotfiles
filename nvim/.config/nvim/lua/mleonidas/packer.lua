@@ -24,7 +24,6 @@ return require("packer").startup(function(use)
     use("LnL7/vim-nix")
 
     -- language plugins
-    -- use("jose-elias-alvarez/null-ls.nvim")
     use("jose-elias-alvarez/nvim-lsp-ts-utils")
     use("averms/black-nvim")
     use {"ellisonleao/glow.nvim"}
@@ -43,10 +42,9 @@ return require("packer").startup(function(use)
     use("earthly/earthly.vim")
     use("towolf/vim-helm")
     use("kyazdani42/nvim-web-devicons")
-    -- use("ryanoasis/vim-devicons")
     use("MarcWeber/vim-addon-mw-utils")
     use('mleonidas/solarized.nvim')
-    -- use('ishan9299/nvim-solarized-lua')
+    use('folke/tokyonight.nvim')
 
     use("pwntester/octo.nvim")
 
@@ -104,9 +102,7 @@ return require("packer").startup(function(use)
 
     use("folke/lsp-colors.nvim")
 
-    -- Colorscheme section
-    use("gruvbox-community/gruvbox")
-    use("folke/tokyonight.nvim")
+    use("ellisonleao/gruvbox.nvim")
 
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
