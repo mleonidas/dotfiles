@@ -1,12 +1,13 @@
+# # Fig pre block. Keep at the top of this file.
+# [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # load prompt
 autoload -U promptinit; promptinit
 
 
 [[ $(uname) = "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-
 # User configuration
-# export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
 export PATH=/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin
 export EDITOR="nvim"
 export CLICOLOR=1
@@ -50,7 +51,7 @@ fi
 bindkey -e
 bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit
-bindkey -s "^L" 'sesh^M' 
+bindkey -s "^L" 'sesh^M'
 
 
 # asdf
@@ -61,6 +62,10 @@ fpath=(${ASDF_DIR}/completions $fpath)
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
 
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -74,6 +79,7 @@ if [ -f '/Users/mleone/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mleone/g
 if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/completion.zsh.inc'; fi
 
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -81,3 +87,10 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 
 # . <(hof completion zsh)
+#
+
+# Created by `pipx` on 2022-09-13 20:06:03
+export PATH="$PATH:/Users/mleone/.local/bin"
+
+# Fig post block. Keep at the bottom of this file.
+# [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
