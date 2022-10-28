@@ -40,7 +40,10 @@ cmp.setup({
         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
+      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+	  ["<C-d>"] = cmp.mapping.scroll_docs(4),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
       -- ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -48,11 +51,8 @@ cmp.setup({
       -- ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
       -- ['<C-e>'] = cmp.mapping.abort(),
       --         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-	  ["<C-d>"] = cmp.mapping.scroll_docs(4),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
 
+    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp', keyword_length = 3 },
       { name = 'luasnip' }, -- For luasnip users.
