@@ -41,12 +41,15 @@ cmp.setup({
       end,
     },
     mapping = {
-      ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
-      ['<C-e>'] = cmp.mapping.abort(),
+      -- ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+      -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      -- ['<C-Space>'] = cmp.mapping.complete(),
+      -- ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
+      -- ['<C-e>'] = cmp.mapping.abort(),
+      --         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+	  ["<C-d>"] = cmp.mapping.scroll_docs(4),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
 
