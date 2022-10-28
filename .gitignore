@@ -1,0 +1,5 @@
+ ./.luarc.json
+bin/.bin/ngrok
+bin/.bin/psqlconnect
+bin/.bin/skaffold
+nvim/.config/nvim/.luarc.json
