@@ -7,8 +7,8 @@ autoload -U promptinit; promptinit
 [[ $(uname) = "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.nightly/nvim-osx64/bin
-export PATH=/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
+export PATH="/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin:$PATH:/Users/mleone/.local/bin"
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
@@ -87,10 +87,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 
 # . <(hof completion zsh)
-#
-
-# Created by `pipx` on 2022-09-13 20:06:03
-export PATH="$PATH:/Users/mleone/.local/bin"
 
 # Fig post block. Keep at the bottom of this file.
 # [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
