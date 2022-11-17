@@ -162,6 +162,11 @@ require 'lspconfig'.solargraph.setup {
     on_attach = on_attach,
 }
 
+require'lspconfig'.rust_analyzer.setup{
+    on_attach = on_attach,
+}
+
+
 
 require("lspconfig").sumneko_lua.setup(config({
     cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },

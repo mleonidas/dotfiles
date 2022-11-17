@@ -1,5 +1,25 @@
-require "nvim-treesitter.configs".setup {
-  ensure_installed = {"python", "go", "json", "http", "ruby", "graphql", "go", "bash", "comment", "proto", "hcl", "make"},
+if not pcall(require, 'nvim-treesitter') then
+  print("Warning: treesitter not available, skipping configuration.")
+  return
+end
+
+
+local ts_configs = require("nvim-treesitter.configs")
+-- local ts_parsers = require("nvim-treesitter.parsers")
+
+local parsers_to_install = {
+   "python", "go", "json", "http", "ruby", "graphql", "go", "bash", "comment", "proto",
+   "hcl", "make", "dockerfile"
+}
+
+if vim.fn.has('mac') > 0 then
+  -- Disable 'dockerfile' until nvim-treesitter/nvim-treesitter#3515 is resolved
+  parsers_to_install = vim.tbl_filter(function(x) return x ~= "dockerfile" end, parsers_to_install)
+  pcall(function() require 'nvim-treesitter.install'.uninstall('dockerfile') end)
+end
+
+ts_configs.setup {
+  ensure_installed = parsers_to_install,
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust"},  -- list of language that will be disabled
@@ -24,3 +44,5 @@ require "nvim-treesitter.configs".setup {
     },
   }
 }
+
+
