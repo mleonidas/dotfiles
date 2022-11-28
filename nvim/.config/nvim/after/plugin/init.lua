@@ -9,7 +9,7 @@ local ts_configs = require("nvim-treesitter.configs")
 
 local parsers_to_install = {
    "python", "go", "json", "http", "ruby", "graphql", "go", "bash", "comment", "proto",
-   "hcl", "make", "dockerfile"
+   "hcl", "make", "dockerfile", "typescript"
 }
 
 if vim.fn.has('mac') > 0 then
