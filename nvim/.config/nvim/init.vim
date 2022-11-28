@@ -2,15 +2,6 @@ filetype plugin indent on
 
 syntax on
 
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*
-set completeopt=menu,menuone,noselect
-
 nnoremap <SPACE> <Nop>
 
 " Leader Command Section

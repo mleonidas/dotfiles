@@ -1,3 +1,5 @@
+require("mleonidas.set")
+require("mleonidas.keymaps")
 require("mleonidas.packer")
 require("mleonidas.statusline")
 require("mleonidas.octo")
@@ -7,8 +9,6 @@ require("mleonidas.debugger")
 require("mleonidas.vgit")
 require("mleonidas.todo_comments")
 require("mleonidas.solarized")
-require("mleonidas.keymaps")
-require("mleonidas.set")
 
 local augroup = vim.api.nvim_create_augroup
 

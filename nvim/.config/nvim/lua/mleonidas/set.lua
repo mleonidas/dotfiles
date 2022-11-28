@@ -1,3 +1,8 @@
+-- Ignore compiled files
+vim.opt.wildignore = "__pycache__"
+
+
+vim.opt.wildignore = "*.pyc,*_build/*,**/coverage/*,**/node_modules/*,**/.git/*,Cargo.lock,__pycache__"
 
 vim.opt.ignorecase = true
 vim.opt.relativenumber = true
