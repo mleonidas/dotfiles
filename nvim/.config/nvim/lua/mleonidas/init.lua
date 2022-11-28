@@ -1,5 +1,4 @@
 require("mleonidas.set")
-require("mleonidas.keymaps")
 require("mleonidas.packer")
 require("mleonidas.statusline")
 require("mleonidas.octo")
