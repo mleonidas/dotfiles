@@ -19,3 +19,7 @@ nnoremap("<leader>gm", function() require('telescope').extensions.git_worktree.c
 nnoremap("<leader>gw", function() require('telescope').extensions.git_worktree.git_worktrees() end, silent)
 nnoremap("<leader>ctt",":TodoTelescope<cr>", silent)
 nnoremap("<leader>xt", ":TodoTrouble<cr>", silent)
+
+nnoremap("<leader>ps", function()
+    require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
+end)

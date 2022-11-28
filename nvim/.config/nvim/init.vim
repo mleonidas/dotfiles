@@ -35,7 +35,7 @@ nnoremap <silent> <Leader>< :exe "vertical resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winheight(0) * 2/3)<CR>
 
 " delete all trailing whitespace
-nnoremap <leader>ps :call TrimWhitespace()<CR>
+nnoremap <leader>ds :call TrimWhitespace()<CR>
 
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
