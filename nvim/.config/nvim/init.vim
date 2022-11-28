@@ -40,9 +40,6 @@ nnoremap <leader>ps :call TrimWhitespace()<CR>
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
-" show syntax symbols
-nnoremap <leader>gm :call SynStack()<CR>
-
 " use 256 colors in terminal
 if !has("gui_running")
   set t_Co=256
@@ -53,15 +50,6 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
-
-function! SynStack ()
-    for i1 in synstack(line("."), col("."))
-        let i2 = synIDtrans(i1)
-        let n1 = synIDattr(i1, "name")
-        let n2 = synIDattr(i2, "name")
-        echo n1 "->" n2
-    endfor
-endfunction
 
 " function to merge tabs it's actually kinda useful
 function! MergeTabs()
@@ -80,13 +68,6 @@ function! MergeTabs()
   execute "buffer " . bufferName
 endfunction
 
-" set the 80 coloumn line
-if exists('+colorcolumn')
-  set colorcolumn=100
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
-endif
-
 augroup Mleonidas
     autocmd!
     au FileType *.env setlocal commentstring=#\ %s
@@ -95,7 +76,6 @@ augroup END
 augroup neoformat
     autocmd!
     autocmd BufWritePre *.py Neoformat
-
 augroup END
 
 let g:better_whitespace_filetypes_blacklist=['neogitstatus', 'NeogitCommitMessage', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive']
