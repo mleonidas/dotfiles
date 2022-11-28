@@ -19,9 +19,9 @@ if has('nvim')
      nnoremap <BS> <C-W>h
 endif
 
-colo solarized
-
 lua require('mleonidas')
+
+colo solarized
 
 nnoremap <DOWN> ddp
 nnoremap <UP> ddkP
@@ -45,7 +45,7 @@ nnoremap <leader>gm :call SynStack()<CR>
 
 " use 256 colors in terminal
 if !has("gui_running")
-    set t_Co=256
+  set t_Co=256
 endif
 
 fun! TrimWhitespace()

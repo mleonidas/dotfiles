@@ -14,6 +14,8 @@ vim.opt.background = "dark"
 
 vim.opt.encoding = "utf-8"
 
+vim.opt.termguicolors = true
+
 vim.opt.fileencoding = "utf-8"
 vim.opt.et = true
 
