@@ -31,12 +31,6 @@ endif
 colo solarized
 lua require('mleonidas')
 
-" Paste shortcuts
-nnoremap <C-G> :set paste norelativenumber nonumber <Return>
-nnoremap <C-N> :set nopaste relativenumber number<Return>
-
-" merge tabs
-nnoremap <leader>mt :call MergeTabs()<CR>
 
 " navigation (from http://statico.github.com/vim.html)
 " go up and down one row, not one line (useful for wrapped lines)

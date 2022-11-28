@@ -10,8 +10,9 @@ require("mleonidas.debugger")
 require("mleonidas.vgit")
 require("mleonidas.todo_comments")
 require("mleonidas.solarized")
-
-
+require("mleonidas.keymaps")
+require("mleonidas.set")
+require("mleonidas.colors")
 
 local augroup = vim.api.nvim_create_augroup
 
