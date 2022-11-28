@@ -13,8 +13,7 @@ vim.opt.incsearch = true
 vim.opt.background = "dark"
 
 vim.opt.encoding = "utf-8"
-
-vim.opt.termguicolors = true
+vim.opt.background = "dark"
 
 vim.opt.fileencoding = "utf-8"
 vim.opt.et = true
@@ -44,3 +43,4 @@ vim.opt.fillchars.vert = "vert:│"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.syntax = "enable"

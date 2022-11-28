@@ -1,12 +1,10 @@
 filetype plugin indent on
 
-syntax on
 
 nnoremap <SPACE> <Nop>
 
 " Leader Command Section
 let mapleader = " "
-set background=dark
 
 " fix the terminal
 tnoremap <Esc> <C-\><C-n>
@@ -20,8 +18,6 @@ if has('nvim')
 endif
 
 lua require('mleonidas')
-
-colo solarized
 
 nnoremap <DOWN> ddp
 nnoremap <UP> ddkP
@@ -86,3 +82,4 @@ let test#python#runner = 'djangotest'
 
 let g:sql_type_default = 'pgsql'
 let g:gitblame_enabled = 0
+
