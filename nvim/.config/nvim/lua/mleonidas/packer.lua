@@ -102,6 +102,15 @@ return require("packer").startup(function(use)
 
     use("folke/lsp-colors.nvim")
 
+    use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+}
+
+
     use("ellisonleao/gruvbox.nvim")
 
     use("nvim-treesitter/nvim-treesitter", {
