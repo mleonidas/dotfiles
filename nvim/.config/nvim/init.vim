@@ -20,33 +20,13 @@ if has('nvim')
 endif
 
 colo solarized
+
 lua require('mleonidas')
-
-" navigation (from http://statico.github.com/vim.html)
-" go up and down one row, not one line (useful for wrapped lines)
-nnoremap j gj
-nnoremap k gk
-
-" center after motion
-nnoremap G Gzz
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap } }zz
-nnoremap { {zz
 
 nnoremap <DOWN> ddp
 nnoremap <UP> ddkP
 
 nnoremap <Leader>rp :resize 100<CR>
-
-" Tabularize frequent matches
-nnoremap <Leader>cu :Tabularize /\|<CR>
-nnoremap <Leader>ce :Tabularize /=<CR>
-nnoremap <Leader>cp :Tabularize /=><CR>
-
-" quick buffer movement
-nnoremap <Leader>bn :bnext <CR>
-nnoremap <Leader>bp :bprev <CR>
 
 "resize splits
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>

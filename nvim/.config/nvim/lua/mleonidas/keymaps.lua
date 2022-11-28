@@ -31,10 +31,8 @@ keymap("n", "<leader>gw", ":lua require('telescope').extensions.git_worktree.git
 keymap("n", "<leader>ctt",":TodoTelescope<CR>", opts)
 keymap ("n", "<leader>xt", ":TodoTrouble<CR>", opts)
 
-
 -- refactoring plugin remaps
 keymap("v", "<leader>tre", ":lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
-
 
 -- git remaps
 keymap("n",  "<Leader>gs",  ":Git<CR>", opts)
@@ -45,6 +43,7 @@ keymap("n", "<Leader>grom", ":Git rebase origin/master<CR>", opts)
 keymap("n", "<Leader>gl", ":Git log<CR>", opts)
 keymap("n", "<Leader>gf",  ":diffget//2<CR>", opts)
 keymap("n", "<Leader>gj", ":diffget//3<CR>", opts)
+
 -- keymap("n", "<Leader>gs", ":Neogit<CR>", opts)
 keymap("n", "<Leader>gB", ":GitBlameToggle<CR>", opts)
 
@@ -61,3 +60,24 @@ keymap("n", "<leader>a", ':lua require("harpoon.ui").nav_file(1)<CR>', opts)
 keymap("n", "<leader>s", ':lua require("harpoon.ui").nav_file(2)<CR>', opts)
 keymap("n", "<leader>d", ':lua require("harpoon.ui").nav_file(3)<CR>', opts)
 keymap("n", "<leader>f", ':lua require("harpoon.ui").nav_file(4)<CR>', opts)
+
+-- navigation mappings
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+
+-- center after motion
+keymap("n", "G", "Gzz", opts)
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
+keymap("n", "}", "}zz", opts)
+keymap("n", "{", "{zz", opts)
+
+--  quick buffer movement
+keymap("n", "<Leader>bn", ":bnext <CR>", opts)
+keymap("n", "<Leader>bp", ":bprev <CR>", opts)
+
+-- Tabularize frequent matches
+keymap("n", "<Leader>cu", ':Tabularize /|<CR>', opts)
+keymap("n", "<Leader>ce", ":Tabularize /=<CR>", opts)
+keymap("n", "<Leader>cp", ":Tabularize /=><CR>", opts)
+
