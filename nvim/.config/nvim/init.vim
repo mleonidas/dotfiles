@@ -22,7 +22,6 @@ endif
 colo solarized
 lua require('mleonidas')
 
-
 " navigation (from http://statico.github.com/vim.html)
 " go up and down one row, not one line (useful for wrapped lines)
 nnoremap j gj
