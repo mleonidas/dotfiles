@@ -8,6 +8,7 @@ local vnoremap = Remap.vnoremap
 local xnoremap = Remap.xnoremap
 -- Silent keymap option
 local opts = { noremap = true, silent = true }
+local silent = { silent = true }
 
 keymap("", "<Space>", "<Nop>", opts)
 
@@ -17,6 +18,8 @@ vim.g.mapleader = " "
 nnoremap("<C-G>", ":set paste norelativenumber nonumber<CR>")
 nnoremap("<C-N>", ":set nopaste relativenumber number<CR>")
 
+-- Trim trailing whitespace
+nnoremap("<leader>ds", ":lua require('mleonidas.trim').trail()<CR>")
 
 -- refactoring plugin remaps
 vnoremap("<leader>tre", ":lua require('telescope').extensions.refactoring.refactors()<CR>")

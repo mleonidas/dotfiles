@@ -30,9 +30,6 @@ nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winheight(0) * 2/3)<CR>
 
-" delete all trailing whitespace
-nnoremap <leader>ds :call TrimWhitespace()<CR>
-
 " quickly open up my vimrc
 nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 
@@ -40,12 +37,6 @@ nnoremap <leader>v :sp ~/.config/nvim/init.vim  <cr>
 if !has("gui_running")
   set t_Co=256
 endif
-
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
 
 " function to merge tabs it's actually kinda useful
 function! MergeTabs()
