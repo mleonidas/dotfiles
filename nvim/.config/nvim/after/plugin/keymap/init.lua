@@ -48,3 +48,6 @@ xnoremap("<leader>p", "\"_dP")
 -- next greatest remap ever : asbjornHaland
 nnoremap("<leader>y", "\"+y")
 vnoremap("<leader>y", "\"+y")
+
+nnoremap('<A-r>', ":lua require('smart-splits').start_resize_mode()<CR>")
+

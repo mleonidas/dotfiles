@@ -30,6 +30,8 @@ return require("packer").startup(function(use)
     use {"ellisonleao/glow.nvim"}
 
 
+    use('mrjones2014/smart-splits.nvim')
+
     -- there's got to be a better way
     use("vim-test/vim-test")
 
