@@ -1,6 +1,5 @@
 # # Fig pre block. Keep at the top of this file.
-# [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# load prompt
+# # load prompt
 autoload -U promptinit; promptinit
 
 
@@ -89,4 +88,4 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # . <(hof completion zsh)
 
 # Fig post block. Keep at the bottom of this file.
-# [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+#

@@ -14,3 +14,4 @@ haskell
 css
 html
 gdb
+postgres

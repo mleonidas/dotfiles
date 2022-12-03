@@ -16,6 +16,7 @@ return require("packer").startup(function(use)
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
     use("nvim-telescope/telescope-live-grep-args.nvim")
+    use { "nvim-telescope/telescope-file-browser.nvim" }
 
     use("AndrewRadev/splitjoin.vim")
     use("christoomey/vim-tmux-navigator")
