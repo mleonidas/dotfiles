@@ -1,6 +1,11 @@
 require('refactoring').setup({})
 
 local keymap = vim.keymap.set
+local Remap = require("mleonidas.keymap")
+local nnoremap = Remap.nnoremap
+-- local inoremap = Remap.inoremap
+local vnoremap = Remap.vnoremap
+local xnoremap = Remap.xnoremap
 -- Silent keymap option
 local opts = { noremap = true, silent = true }
 
@@ -9,27 +14,34 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Toggle line numbers and paste
-keymap("n", "<C-G>", ":set paste norelativenumber nonumber<CR>", opts)
-keymap("n", "<C-N>", ":set nopaste relativenumber number<CR>",opts)
+nnoremap("<C-G>", ":set paste norelativenumber nonumber<CR>")
+nnoremap("<C-N>", ":set nopaste relativenumber number<CR>")
 
 
 -- refactoring plugin remaps
-keymap("v", "<leader>tre", ":lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
+vnoremap("<leader>tre", ":lua require('telescope').extensions.refactoring.refactors()<CR>")
 
 -- Octo bindings
-keymap("n", "<Leader>gopr", ":Octo pr list<CR>", opts)
+nnoremap("<Leader>gopr", ":Octo pr list<CR>")
 
 -- navigation mappings
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
+nnoremap("j", "gj")
+nnoremap("k", "gk")
 
 -- center after motion
-keymap("n", "G", "Gzz", opts)
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
-keymap("n", "}", "}zz", opts)
-keymap("n", "{", "{zz", opts)
+nnoremap("G", "Gzz")
+nnoremap("n", "nzz")
+nnoremap("N", "Nzz")
+nnoremap("}", "}zz")
+nnoremap("{", "{zz")
 
 --  quick buffer movement
-keymap("n", "<Leader>bn", ":bnext <CR>", opts)
-keymap("n", "<Leader>bp", ":bprev <CR>", opts)
+nnoremap("<Leader>bn", ":bnext <CR>")
+nnoremap("<Leader>bp", ":bprev <CR>")
+
+-- greatest remap ever
+xnoremap("<leader>p", "\"_dP")
+
+-- next greatest remap ever : asbjornHaland
+nnoremap("<leader>y", "\"+y")
+vnoremap("<leader>y", "\"+y")

@@ -47,11 +47,10 @@ return require("packer").startup(function(use)
     use('mleonidas/solarized.nvim')
     use('folke/tokyonight.nvim')
 
-    use("pwntester/octo.nvim")
-
     use { 'lewis6991/gitsigns.nvim' }
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use { 'tpope/vim-fugitive' }
+    use("nvim-telescope/telescope-project.nvim")
 
     -- use { 'tjdevries/cyclist.vim' }
     use "lukas-reineke/indent-blankline.nvim"
@@ -128,6 +127,11 @@ return require("packer").startup(function(use)
     use("sebdah/vim-delve")
     use("leoluz/nvim-dap-go")
     use("folke/todo-comments.nvim")
+
+    -- Github integration
+    if vim.fn.executable "gh" == 1 then
+      use "pwntester/octo.nvim"
+    end
 
 
 end)
