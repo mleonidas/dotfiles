@@ -29,9 +29,7 @@ vim.diagnostic.config(signconfig)
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
     if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
         vim.diagnostic.disable()
     end
@@ -237,7 +235,5 @@ function org_imports(wait_ms)
     end
 end
 
-
 require("luasnip.loaders.from_vscode").lazy_load()
-
 
