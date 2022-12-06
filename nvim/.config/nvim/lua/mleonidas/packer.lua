@@ -47,6 +47,8 @@ return require("packer").startup(function(use)
     use("towolf/vim-helm")
     use("kyazdani42/nvim-web-devicons")
     use("MarcWeber/vim-addon-mw-utils")
+    use 'simrat39/rust-tools.nvim'
+
     use('mleonidas/solarized.nvim')
     use('folke/tokyonight.nvim')
 

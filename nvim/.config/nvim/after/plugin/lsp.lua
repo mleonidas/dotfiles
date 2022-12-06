@@ -162,7 +162,39 @@ require 'lspconfig'.solargraph.setup {
 
 require'lspconfig'.rust_analyzer.setup{
     on_attach = on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            diagnostic = {
+                enable = false,
+            },
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            checkOnSave = {
+                command = "clippy"
+            },
+
+            inlayHints = {
+                lifetimeElisionHints = {
+                    enable = true,
+                    useParameterNames = true
+                },
+            },
+        },
+    },
 }
+
+local rt = require("rust-tools")
+
+rt.setup({
+    server = {
+        on_attach = on_attach
+    }
+})
+
 
 
 

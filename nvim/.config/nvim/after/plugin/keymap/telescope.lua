@@ -30,14 +30,6 @@ nnoremap("<C-p>", function()
     require('telescope.builtin').git_files({previewer=false})
 end, silent)
 
-nnoremap("<leader>gm", function()
-    require('telescope').extensions.git_worktree.create_git_worktree()
-end, silent)
-
-nnoremap("<leader>gw", function()
-    require('telescope').extensions.git_worktree.git_worktrees()
-end, silent)
-
 nnoremap("<leader>ctt",":TodoTelescope<cr>", silent)
 nnoremap("<leader>xt", ":TodoTrouble<cr>", silent)
 
