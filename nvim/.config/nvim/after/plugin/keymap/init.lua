@@ -67,3 +67,7 @@ nnoremap("<UP>", "ddkP")
 -- fix the terminal
 tnoremap("<Esc>", "<C-\\><C-n>")
 
+if vim.fn.has('nvim') then
+     nnoremap("<BS>", "<C-W>h")
+end
+

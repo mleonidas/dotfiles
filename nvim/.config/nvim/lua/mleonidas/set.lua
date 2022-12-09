@@ -44,3 +44,8 @@ vim.opt.fillchars.vert = "vert:│"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.syntax = "enable"
+
+-- use 256 colors in terminal
+if not vim.fn.has("gui_running") then
+    vim.opt.t_Co = 256
+end
