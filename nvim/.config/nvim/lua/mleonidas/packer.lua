@@ -137,6 +137,4 @@ return require("packer").startup(function(use)
     if vim.fn.executable "gh" == 1 then
       use "pwntester/octo.nvim"
     end
-
-
 end)
