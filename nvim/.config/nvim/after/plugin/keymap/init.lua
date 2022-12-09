@@ -14,7 +14,6 @@ local silent = { silent = true }
 
 keymap("", "<Space>", "<Nop>", opts)
 
-vim.g.mapleader = " "
 
 -- Toggle line numbers and paste
 nnoremap("<C-G>", ":set paste norelativenumber nonumber<CR>")

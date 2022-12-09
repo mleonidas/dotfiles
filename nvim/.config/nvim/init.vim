@@ -1,8 +1,6 @@
 filetype plugin indent on
 
-" Leader Command Section
-let mapleader = " "
-
+lua require("globals")
 lua require('mleonidas')
 
 augroup Mleonidas
