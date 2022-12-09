@@ -1,6 +1,11 @@
 local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+local Remap = require("mleonidas.keymap")
+local nnoremap = Remap.nnoremap
+local inoremap = Remap.inoremap
+
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local function config(_config)
@@ -25,7 +30,6 @@ local signconfig = {
 }
 
 vim.diagnostic.config(signconfig)
-
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -58,7 +62,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<space>rnn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help<CR>', opts)
+    buf_set_keymap('i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.server_capabilities.document_formatting then
