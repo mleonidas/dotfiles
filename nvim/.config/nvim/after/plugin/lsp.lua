@@ -8,12 +8,6 @@ local inoremap = Remap.inoremap
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local function config(_config)
-    return vim.tbl_deep_extend("force", {
-        capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    }, _config or {})
-end
-
 -- setup some bs for lua language server on osx
 local sumneko_binary_path = vim.fn.exepath("lua-language-server")
 local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/3.5.2/libexec/bin/"
@@ -31,55 +25,40 @@ local signconfig = {
 
 vim.diagnostic.config(signconfig)
 
-local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
-        vim.diagnostic.disable()
-    end
+local function config(_config)
+	return vim.tbl_deep_extend("force", {
+		on_attach = function()
+            local opts = { buffer = true };
+			nnoremap("gd", function() vim.lsp.buf.definition() end, opts)
+			nnoremap("K", function() vim.lsp.buf.hover() end, opts)
+			nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end, opts)
+			nnoremap("[d", function() vim.diagnostic.goto_next() end, opts)
+			nnoremap("]d", function() vim.diagnostic.goto_prev() end, opts)
+			nnoremap("<leader>xca", function() vim.lsp.buf.code_action() end, opts)
+			nnoremap("<leader>xco", function() vim.lsp.buf.code_action({
+                filter = function(code_action)
+                    if not code_action or not code_action.data then
+                        return false
+                    end
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    local opts = { noremap = true, silent = true }
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gic', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
-
-    -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    -- buf_set_keymap('n', '<space>e', '<cmd>vim.diagnostic.open_float()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    buf_set_keymap('n', '<space>rnn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-
-    -- Set some keybinds conditional on server capabilities
-    if client.server_capabilities.document_formatting then
-        buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.server_capabilities.document_range_formatting then
-        buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    end
-
+                    local data = code_action.data.id
+                    return string.sub(data, #data - 1, #data) == ":0"
+                end,
+                apply = true
+            }) end, opts)
+			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end, opts)
+			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+		end,
+	}, _config or {})
 end
+
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-require 'lspconfig'.yamlls.setup {
-    on_attach = on_attach,
-}
-
+require 'lspconfig'.yamlls.setup(config())
 
 -- require'lspconfig'.pylsp.setup({
 --     on_attach = on_attach,
@@ -118,40 +97,22 @@ local python_root_files = {
   'pyrightconfig.json',
 }
 
-require 'lspconfig'.pyright.setup {
-    on_attach = on_attach,
+require 'lspconfig'.pyright.setup(config {
     root_dir = nvim_lsp.util.root_pattern(unpack(python_root_files)),
     settings = {
         typeCheckingMode = "off",
     }
-}
-
-
+})
 require("lspconfig").tsserver.setup(config())
 
-
-require 'lspconfig'.terraformls.setup({
-    on_attach = on_attach,
+require 'lspconfig'.terraformls.setup(config({
     flags = { debounce_text_changes = 150 },
     capabilities = capabilities,
-})
+}))
 
--- vim.api.nvim_create_autocmd({"BufWritePre"}, {
---   pattern = {"*.tf", "*.tfvars"},
---   callback = vim.lsp.buf.formatting_sync,
--- })
-
-
-require 'lspconfig'.graphql.setup {
-    on_attach = on_attach,
-}
-
-
-require("lspconfig").tsserver.setup{
-    on_attach = on_attach,
-}
-
-require 'lspconfig'.solargraph.setup {
+require 'lspconfig'.graphql.setup(config())
+require("lspconfig").tsserver.setup(config())
+require 'lspconfig'.solargraph.setup(config({
     settings = {
         solargraph = {
             commandPath = '/Users/mleone/.asdf/shims/solargraph',
@@ -162,46 +123,24 @@ require 'lspconfig'.solargraph.setup {
     flags = {
         debounce_text_changes = 150,
     },
-    on_attach = on_attach,
-}
+}))
 
-require'lspconfig'.rust_analyzer.setup{
-    on_attach = on_attach,
+-- who even uses this?
+require("lspconfig").rust_analyzer.setup(config({
+	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
     settings = {
-        ["rust-analyzer"] = {
-            diagnostic = {
-                enable = false,
-            },
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            checkOnSave = {
-                command = "clippy"
-            },
-
-            inlayHints = {
-                lifetimeElisionHints = {
-                    enable = true,
-                    useParameterNames = true
-                },
-            },
+        rust = {
+            unstable_features = true,
+            build_on_save = false,
+            all_features = true,
         },
-    },
-}
+    }
+}))
+
+
 
 local rt = require("rust-tools")
-
-rt.setup({
-    server = {
-        on_attach = on_attach
-    }
-})
-
-
-
+rt.setup(config())
 
 require("lspconfig").sumneko_lua.setup(config({
     cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
@@ -223,30 +162,13 @@ require("lspconfig").sumneko_lua.setup(config({
             },
         },
     },
-    on_attach = on_attach,
 }))
 
 
-require 'lspconfig'.gopls.setup(config({
+require('lspconfig').gopls.setup(config({
     cmd = { "gopls", "serve" },
     settings = {
         gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}))
-
-
-nvim_lsp.gopls.setup {
-    cmd = { 'gopls' },
-    -- for postfix snippets and analyzers
-    capabilities = capabilities,
-    settings = {
-        gopls = {
-            experimentalPostfixCompletions = true,
             analyses = {
                 unusedparams = true,
                 shadow = true,
@@ -254,8 +176,7 @@ nvim_lsp.gopls.setup {
             staticcheck = true,
         },
     },
-    on_attach = on_attach,
-}
+}))
 
 function org_imports(wait_ms)
     local params = vim.lsp.util.make_range_params()
@@ -273,4 +194,3 @@ function org_imports(wait_ms)
 end
 
 require("luasnip.loaders.from_vscode").lazy_load()
-

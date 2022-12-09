@@ -108,16 +108,13 @@ return require("packer").startup(function(use)
     use("folke/lsp-colors.nvim")
 
     use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
     }
-}
-
-
     use("ellisonleao/gruvbox.nvim")
-
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
     })
@@ -135,6 +132,6 @@ return require("packer").startup(function(use)
 
     -- Github integration
     if vim.fn.executable "gh" == 1 then
-      use "pwntester/octo.nvim"
+        use "pwntester/octo.nvim"
     end
 end)
