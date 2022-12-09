@@ -9,7 +9,6 @@ augroup Golang
     au FileType GOTERM set nonumber norelativenumber
 augroup END
 
-
 augroup Rustlang
     autocmd!
     autocmd BufWritePre *.rs :silent lua vim.lsp.buf.formatting_sync(nil, 3000)

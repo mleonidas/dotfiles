@@ -25,3 +25,30 @@ autocmd('TextYankPost', {
         })
     end,
 })
+
+local mleone_group = augroup("Mleonidas", {})
+
+autocmd("FileType", {
+    group =  mleone_group,
+    pattern =  "*.env",
+    callback = function()
+        vim.cmd([[setlocal commentstring=#\ %s]])
+    end
+})
+
+autocmd({"TermOpen","BufWinEnter","WinEnter"}, {
+    group =  mleone_group,
+    pattern =  "term://*",
+    callback = function()
+        vim.cmd([[DisableWhitespace]])
+    end
+})
+
+local neoformat = augroup("NFormat", {})
+autocmd({"BufWritePre"}, {
+    group = neoformat,
+    pattern = "*.py",
+    callback = function()
+        vim.cmd([[Neoformat]])
+    end
+})
