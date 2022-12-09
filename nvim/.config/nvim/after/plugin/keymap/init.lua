@@ -6,6 +6,8 @@ local nnoremap = Remap.nnoremap
 -- local inoremap = Remap.inoremap
 local vnoremap = Remap.vnoremap
 local xnoremap = Remap.xnoremap
+local tnoremap = Remap.tnoremap
+
 -- Silent keymap option
 local opts = { noremap = true, silent = true }
 local silent = { silent = true }
@@ -31,6 +33,9 @@ nnoremap("<Leader>gopr", ":Octo pr list<CR>")
 nnoremap("j", "gj")
 nnoremap("k", "gk")
 
+-- make Y behave like other capitols
+nnoremap('Y', 'y$')
+
 -- center after motion
 nnoremap("G", "Gzz")
 nnoremap("n", "nzz")
@@ -50,4 +55,15 @@ nnoremap("<leader>y", "\"+y")
 vnoremap("<leader>y", "\"+y")
 
 nnoremap('<A-r>', ":lua require('smart-splits').start_resize_mode()<CR>")
+nnoremap("<Leader>+", require('smart-splits').resize_up)
+nnoremap("<Leader>_", require('smart-splits').resize_down)
+nnoremap("<Leader><", require('smart-splits').resize_left)
+nnoremap("<Leader>>", require('smart-splits').resize_right)
+nnoremap("<Leader>rp", ":resize 100<CR>")
+
+nnoremap("<DOWN>", "ddp")
+nnoremap("<UP>", "ddkP")
+
+-- fix the terminal
+tnoremap("<Esc>", "<C-\\><C-n>")
 
