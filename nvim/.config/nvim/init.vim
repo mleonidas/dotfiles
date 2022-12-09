@@ -20,5 +20,3 @@ let g:neoformat_run_all_formatters = 1
 let test#python#runner = 'djangotest'
 let g:sql_type_default = 'pgsql'
 let g:gitblame_enabled = 0
-
-
