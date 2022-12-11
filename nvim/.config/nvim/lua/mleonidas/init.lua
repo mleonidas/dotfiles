@@ -52,3 +52,21 @@ autocmd({"BufWritePre"}, {
         vim.cmd([[Neoformat]])
     end
 })
+
+local earthly = augroup("Earthly", {})
+
+autocmd({"FileType"}, {
+    group = earthly,
+    pattern = "Earthfile",
+    callback = function()
+        vim.cmd([[hi! link earthFileKeyword Underlined]])
+    end
+})
+
+autocmd({"FileType"}, {
+    group = earthly,
+    pattern = "Earthfile",
+    callback = function()
+        vim.cmd([[setlocal commentstring=#\ %s]])
+    end
+})
