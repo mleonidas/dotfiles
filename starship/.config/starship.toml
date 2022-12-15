@@ -37,7 +37,7 @@ us-west-1 = "ca"
 us-west-2 = "or"
 
 [nodejs]
-format = 'via [🤖 $version](bold green) '
+format = 'nvm [$version](bold green) '
 
 [cmd_duration]
 disabled = true
