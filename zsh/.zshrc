@@ -66,6 +66,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select

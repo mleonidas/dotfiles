@@ -211,3 +211,8 @@ function org_imports(wait_ms)
 end
 
 require("luasnip.loaders.from_vscode").lazy_load()
+
+require'lspconfig'.metals.setup({
+    on_attach = on_attach,
+})
+

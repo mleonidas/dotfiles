@@ -4,6 +4,7 @@ format = """\
   $aws\
   $python\
   $terraform\
+  $nodejs\
   $line_break\
   $directory\
   $git_branch\
@@ -34,6 +35,9 @@ us-east-1 = "va"
 us-east-2 = "oh"
 us-west-1 = "ca"
 us-west-2 = "or"
+
+[nodejs]
+format = 'via [🤖 $version](bold green) '
 
 [cmd_duration]
 disabled = true

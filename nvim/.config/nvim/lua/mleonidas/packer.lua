@@ -29,6 +29,8 @@ return require("packer").startup(function(use)
     use("jose-elias-alvarez/nvim-lsp-ts-utils")
     use("averms/black-nvim")
     use {"ellisonleao/glow.nvim"}
+    use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+
 
 
     use('mrjones2014/smart-splits.nvim')
