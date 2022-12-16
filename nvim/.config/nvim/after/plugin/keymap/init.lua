@@ -22,6 +22,9 @@ nnoremap("<C-N>", ":set nopaste relativenumber number<CR>")
 -- Trim trailing whitespace
 nnoremap("<leader>ds", ":lua require('mleonidas.trim').trail()<CR>")
 
+vnoremap("J", ":m '>+1<CR>gv=gv")
+vnoremap("K", ":m '<-2<CR>gv=gv")
+
 -- refactoring plugin remaps
 vnoremap("<leader>tre", ":lua require('telescope').extensions.refactoring.refactors()<CR>")
 
