@@ -25,6 +25,15 @@ nnoremap("<leader>ds", ":lua require('mleonidas.trim').trail()<CR>")
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
 
+-- keep cursor in place while jumping
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
+
+-- keep search terms in middle
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
+
+
 -- refactoring plugin remaps
 vnoremap("<leader>tre", ":lua require('telescope').extensions.refactoring.refactors()<CR>")
 
