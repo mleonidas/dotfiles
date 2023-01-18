@@ -7,19 +7,32 @@ local gls = gl.section
 gl.short_line_list = {'defx', 'packager', 'vista'}
 
 -- Colors
+-- local colors = {
+--   -- bg = '#3c3836', -- gruvbox background
+--   bg = '#002b36', -- solarized8 background
+--   fg = '#f8f8f2',
+--   -- section_bg = '#38393f',
+--   section_bg = '#002b36',
+--   yellow = '#f1fa8c',
+--   cyan = '#8be9fd',
+--   green = '#50fa7b',
+--   orange = '#ffb86c',
+--   magenta = '#ff79c6',
+--   blue = '#8be9fd',
+--   red = '#ff5555'
+-- }
+
 local colors = {
-  -- bg = '#3c3836', -- gruvbox background
-  bg = '#002b36', -- solarized8 background
-  fg = '#f8f8f2',
-  -- section_bg = '#38393f',
-  section_bg = '#002b36',
-  yellow = '#f1fa8c',
-  cyan = '#8be9fd',
-  green = '#50fa7b',
-  orange = '#ffb86c',
-  magenta = '#ff79c6',
-  blue = '#8be9fd',
-  red = '#ff5555'
+  bg = '#24283b', -- solarized8 background
+  fg = '#c0caf5',
+  section_bg = '#24283b',
+  yellow = '#e0af68',
+  cyan = '#7dcfff',
+  green = '#9ece6a',
+  orange = '#ff9e64',
+  magenta = '#bb9af7',
+  blue = '#7aa2f7',
+  red = '#f7768e'
 }
 
 local buffer_not_empty = function()
@@ -92,7 +105,7 @@ gls.left[3] = {
 gls.left[4] = {
   GitIcon = {
     provider = function() return '  ' end,
-    condition = buffer_not_empty, 
+    condition = buffer_not_empty,
     highlight = {colors.red, colors.bg}
   }
 }
@@ -108,7 +121,7 @@ gls.right[5] = {
 gls.left[6] = {
   DiffAdd = {
     provider = 'DiffAdd',
-    condition = buffer_not_empty, 
+    condition = buffer_not_empty,
     icon = ' ',
     highlight = {colors.green, colors.bg}
   }
