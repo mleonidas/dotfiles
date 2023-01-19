@@ -1,5 +1,5 @@
-local neogit = require('neogit')
-
-neogit.setup {
-    disable_hint = true,
-}
+-- local neogit = require('neogit')
+--
+-- neogit.setup {
+--     disable_hint = true,
+-- }

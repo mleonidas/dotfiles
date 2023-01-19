@@ -38,6 +38,8 @@ us-west-2 = "or"
 
 [nodejs]
 format = 'nvm [$version](bold green) '
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
 
 [cmd_duration]
 disabled = true

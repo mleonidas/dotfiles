@@ -1,6 +1,6 @@
-vim.g.solarized_italic_comments = true
+-- vim.g.solarized_italic_comments = true
 -- require('solarized').set()
 
 -- vim.cmd("colorscheme solarized")
 
-vim.cmd("colorschem tokyonight")
+vim.cmd("colorscheme tokyonight-storm")

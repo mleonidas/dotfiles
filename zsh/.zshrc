@@ -15,7 +15,7 @@ export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
-export LS_COLORS=$(vivid generate solarized-dark)
+export LS_COLORS=$(vivid generate tokyonight)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data

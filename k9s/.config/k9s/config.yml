@@ -15,17 +15,18 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: ""
-  currentCluster: ""
+  currentContext: fc-services-stg:fc-eng-sre-admin:use1:primary
+  currentCluster: arn:aws:eks:us-east-1:904503221277:cluster/primary
   clusters:
-    "":
+    arn:aws:eks:us-east-1:904503221277:cluster/primary:
       namespace:
-        active: default
+        active: fc-backend-stas-service
         lockFavorites: false
         favorites:
+        - fc-backend-stas-service
         - default
       view:
-        active: po
+        active: ctx
       featureGates:
         nodeShell: false
       shellPod:

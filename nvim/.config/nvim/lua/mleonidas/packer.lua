@@ -1,4 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
+
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
@@ -17,7 +18,7 @@ return require("packer").startup(function(use)
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
     use("nvim-telescope/telescope-live-grep-args.nvim")
-    use { "nvim-telescope/telescope-file-browser.nvim" }
+    use("nvim-telescope/telescope-file-browser.nvim")
 
     use("AndrewRadev/splitjoin.vim")
     use("christoomey/vim-tmux-navigator")
@@ -29,9 +30,6 @@ return require("packer").startup(function(use)
     use("jose-elias-alvarez/nvim-lsp-ts-utils")
     use("averms/black-nvim")
     use {"ellisonleao/glow.nvim"}
-    use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
-
-
 
     use('mrjones2014/smart-splits.nvim')
 
@@ -49,10 +47,10 @@ return require("packer").startup(function(use)
     use("towolf/vim-helm")
     use("kyazdani42/nvim-web-devicons")
     use("MarcWeber/vim-addon-mw-utils")
-    use 'simrat39/rust-tools.nvim'
+    use('simrat39/rust-tools.nvim')
 
-    use('mleonidas/solarized.nvim')
-    use('folke/tokyonight.nvim')
+    -- use('mleonidas/solarized.nvim')
+    use('mleonidas/tokyonight.nvim')
 
     use { 'lewis6991/gitsigns.nvim' }
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
@@ -63,13 +61,23 @@ return require("packer").startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
 
 
+    use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+    })
+
+
     -- tpope plugins
     use("tpope/vim-vinegar")
     use("tpope/vim-dispatch")
     use("tpope/vim-endwise" )
     use("tpope/vim-projectionist")
     use("tpope/vim-repeat")
-    use("tpope/vim-surround")
     use("tpope/vim-unimpaired")
 
 
@@ -77,7 +85,11 @@ return require("packer").startup(function(use)
     use("f-person/git-blame.nvim")
 
     -- status bar
-    use("NTBBloodbath/galaxyline.nvim")
+    use({
+       "NTBBloodbath/galaxyline.nvim",
+      requires = { "kyazdani42/nvim-web-devicons", opt = true }
+    })
+
 
     -- All the things
     use("neovim/nvim-lspconfig")
@@ -90,7 +102,10 @@ return require("packer").startup(function(use)
     use("hrsh7th/nvim-cmp")
     use("folke/trouble.nvim")
 
-    use("tzachar/cmp-tabnine", {run='./install.sh', requires = 'hrsh7th/nvim-cmp'})
+    use {'tzachar/cmp-tabnine', 
+          run='./install.sh', 
+          requires = 'hrsh7th/nvim-cmp'}
+
 
     use("onsails/lspkind-nvim")
     use("nvim-lua/lsp_extensions.nvim")
