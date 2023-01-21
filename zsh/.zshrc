@@ -5,9 +5,14 @@ autoload -U promptinit; promptinit
 
 [[ $(uname) = "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# go vars 
+export GOPATH=$(go env GOPATH)
+export GOROOT=$(go env GOROOT)
+
+
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
-export PATH="/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin:$PATH:/Users/mleone/.local/bin"
+export PATH="/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin:$PATH:/Users/mleone/.local/bin:$GOPATH/bin:$GOROOT/bin"
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
@@ -15,7 +20,7 @@ export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
-export LS_COLORS=$(vivid generate tokyonight)
+export LS_COLORS=$(vivid generate solarized-dark)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
