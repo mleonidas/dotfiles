@@ -5,14 +5,12 @@ autoload -U promptinit; promptinit
 
 [[ $(uname) = "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# go vars 
-export GOPATH=$(go env GOPATH)
-export GOROOT=$(go env GOROOT)
+# go vars
 
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH
-export PATH="/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/.asdf/installs/golang/1.18/packages/bin:$PATH:/Users/mleone/.local/bin:$GOPATH/bin:$GOROOT/bin"
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$HOME/go/bin
+export PATH="/opt/homebrew/opt/curl/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$PATH:$PATH:/Users/mleone/.local/bin:$GOPATH/bin:$GOROOT/bin"
 export EDITOR="nvim"
 export CLICOLOR=1
 export GREP_COLOR=33
@@ -20,7 +18,8 @@ export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
-export LS_COLORS=$(vivid generate solarized-dark)
+export LS_COLORS=$(vivid generate tokyonight)
+# export LS_COLORS=$(vivid generate solarized-dark)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
@@ -58,17 +57,13 @@ bindkey '^Q' push-line-or-edit
 bindkey -s "^L" 'sesh^M'
 
 
-# asdf
-. $HOME/.asdf/asdf.sh
-
-fpath=(${ASDF_DIR}/completions $fpath)
-
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 export NVM_DIR=~/.nvm
@@ -97,4 +92,5 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # . <(hof completion zsh)
 
 # Fig post block. Keep at the bottom of this file.
-#
+
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
