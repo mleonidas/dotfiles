@@ -22,7 +22,7 @@ ts_configs.setup {
   ensure_installed = parsers_to_install,
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust"},  -- list of language that will be disabled
+    disable = { "c" },  -- list of language that will be disabled
   },
 
   playground = {
