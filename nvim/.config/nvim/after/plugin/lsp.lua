@@ -4,7 +4,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- setup some bs for lua language server on osx
 local sumneko_binary_path = vim.fn.exepath("lua-language-server")
-local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/3.5.2/libexec/bin/"
+local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/3.6.10/libexec/bin"
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -102,6 +102,9 @@ require 'lspconfig'.pyright.setup({
 })
 require("lspconfig").tsserver.setup({
     on_attach = on_attach,
+    filetypes = {'typescript', 'typescriptreact', 'typescript.tsx' },
+    cmd = {"typescript-language-server", "--stdio"},
+    capabilities = capabilities
 })
 
 require 'lspconfig'.terraformls.setup({
@@ -194,6 +197,9 @@ require('lspconfig').gopls.setup({
         },
     },
 })
+
+require'lspconfig'.kotlin_language_server.setup{}
+
 
 function org_imports(wait_ms)
     local params = vim.lsp.util.make_range_params()
