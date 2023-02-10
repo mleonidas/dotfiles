@@ -22,8 +22,28 @@ lsp.configure('sumneko_lua', {
     }
 })
 
+local source_mapping = {
+    buffer = "[Buf]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[api]",
+    path = "[Path]",
+    cmp_tabnine = "[TN]",
+    luasnip = "[Snip]",
+}
+
+local tabnine = require("cmp_tabnine.config")
+
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = "..",
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
@@ -31,23 +51,38 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
+local cmp_sources = lsp.defaults.cmp_sources()
 
-cmp.config.sources({
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'luasnip' }, -- For luasnip users.
-    { name = 'treesitter' },
-    -- { name = 'nvim_lsp_signature_help'},
-    { name = 'cmp_tabnine' },
-    { name = 'buffer', keyword_length = 3},
-})
-
+table.insert(cmp_sources, { name = 'nvim_lsp', keyword_length = 3 })
+table.insert(cmp_sources, { name = 'luasnip' })
+table.insert(cmp_sources, { name = 'treesitter' })
+table.insert(cmp_sources, { name = 'cmp_tabnine' })
+table.insert(cmp_sources, { name = 'buffer', keyword_length = 3})
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
+  formatting = {
+      fields = {'abbr', 'kind', 'menu'},
+      format = require('lspkind').cmp_format({
+        mode = 'symbol', -- show only symbol annotations
+        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        ellipsis_char = '...',
+        before = function(entry, vim_item)
+                       local menu = source_mapping[entry.source.name]
+                       if entry.source.name == "cmp_tabnine" then
+                               if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                                       menu = entry.completion_item.data.detail .. " " .. menu
+                               end
+                               vim_item.kind = ""
+                       end
+                       vim_item.menu = menu
+                       return vim_item
+               end,
+    }),
   mapping = cmp_mappings
-})
+  }})
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
@@ -110,13 +145,4 @@ local signconfig = {
 
 vim.diagnostic.config(signconfig)
 
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
-})
 

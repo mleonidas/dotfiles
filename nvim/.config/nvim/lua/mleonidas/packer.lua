@@ -111,20 +111,17 @@ return require("packer").startup(function(use)
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
+          {"hrsh7th/cmp-cmdline"},
+          {"hrsh7th/cmp-nvim-lsp-signature-help"},
+          {"onsails/lspkind.nvim"},
+          {'tzachar/cmp-tabnine',
+            run='./install.sh',
+            requires = 'hrsh7th/nvim-cmp'}
+
 	  }
   }
     -- All the things
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
-
-    use("hrsh7th/cmp-cmdline")
     use("folke/trouble.nvim")
-
-    use {'tzachar/cmp-tabnine',
-          run='./install.sh',
-          requires = 'hrsh7th/nvim-cmp'}
-
-
-    use("onsails/lspkind-nvim")
     use("nvim-lua/lsp_extensions.nvim")
     use("glepnir/lspsaga.nvim")
     use("simrat39/symbols-outline.nvim")
