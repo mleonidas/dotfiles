@@ -1,205 +1,86 @@
-local nvim_lsp = require('lspconfig')
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local lsp = require("lsp-zero")
 
+lsp.preset("recommended")
 
--- setup some bs for lua language server on osx
-local sumneko_binary_path = vim.fn.exepath("lua-language-server")
-local sumneko_root_path = "/opt/homebrew/Cellar/lua-language-server/3.6.10/libexec/bin"
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-local signconfig = {
-    virtual_text = false,
-    signs = true,
-    underline = true,
-    update_in_insert = true,
-    severity_sort = true,
-}
-
-vim.diagnostic.config(signconfig)
-
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
-        vim.diagnostic.disable()
-    end
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, bufopts)
-end
-
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-
-require 'lspconfig'.yamlls.setup({
-    on_attach = on_attach
+lsp.ensure_installed({
+  'tsserver',
+  'gopls',
+  'terraformls',
+  'pyright',
+  'sumneko_lua',
+  'rust_analyzer',
 })
 
--- require'lspconfig'.pylsp.setup({
---     on_attach = on_attach,
---     capabilities = capabilities,
---     settings = {
---         formatCommand = {"black"},
---         pylsp = {
---             plugins = {
---                 pycodestyle = {
---                     maxLineLength = 100
---                 },
---                 pyls_flake8 = { enabled = false },
---                 pylint = { enabled = true,
---                 args = { '--rcfile','~/Documents/repos/work/flowcode-api/pyproject.toml' }
---             },
---             black = { enabled = true },
---             isort = { enabled = true },
---             pyls_mypy = {
---                 enabled = true,
---                 --live_mode = true,
---             },
---         },
---     }
--- }
---
---
---
--- })
---
-local python_root_files = {
-  'pyproject.toml',
-  'setup.py',
-  'setup.cfg',
-  'requirements.txt',
-  'Pipfile',
-  'pyrightconfig.json',
-}
-
-require 'lspconfig'.pyright.setup({
-    on_attach = on_attach,
-    root_dir = nvim_lsp.util.root_pattern(unpack(python_root_files)),
-    settings = {
-        typeCheckingMode = "off",
-    }
-})
-require("lspconfig").tsserver.setup({
-    on_attach = on_attach,
-    filetypes = {'typescript', 'typescriptreact', 'typescript.tsx' },
-    cmd = {"typescript-language-server", "--stdio"},
-    capabilities = capabilities
-})
-
-require 'lspconfig'.terraformls.setup({
-    on_attach = on_attach,
-    flags = { debounce_text_changes = 150 },
-    capabilities = capabilities,
-})
-
-require 'lspconfig'.graphql.setup({
-    on_attach = on_attach,
-})
-require("lspconfig").tsserver.setup({
-    on_attach = on_attach,
-})
-require 'lspconfig'.solargraph.setup({
-    on_attach = on_attach,
-    settings = {
-        solargraph = {
-            commandPath = '/Users/mleone/.asdf/shims/solargraph',
-            diagnostics = true,
-            completion = true,
-        }
-    },
-    flags = {
-        debounce_text_changes = 150,
-    },
-})
-
-local rust_opts = {
-  tools = {
-    runnables = {
-      use_telescope = true,
-    },
-    inlay_hints = {
-      auto = true,
-      show_parameter_hints = false,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
-    },
-  },
-  server = {
-    on_attach = on_attach,
-    settings = {
-      ["rust-analyzer"] = {
-        -- enable clippy on save
-        checkOnSave = {
-          command = "clippy",
-        },
-      },
-    },
-  },
-}
-
-require("rust-tools").setup(rust_opts)
-
-require("lspconfig").sumneko_lua.setup({
-    cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
-    on_attach = on_attach,
+-- Fix Undefined global 'vim'
+lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-                -- Setup your lua path
-                path = vim.split(package.path, ";"),
-            },
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-        },
-    },
+                globals = { 'vim' }
+            }
+        }
+    }
+})
+
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 
-require('lspconfig').gopls.setup({
-    on_attach = on_attach,
-    cmd = { "gopls", "serve" },
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-                shadow = true,
-            },
-            staticcheck = true,
-        },
-    },
+cmp.config.sources({
+    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'luasnip' }, -- For luasnip users.
+    { name = 'treesitter' },
+    -- { name = 'nvim_lsp_signature_help'},
+    { name = 'cmp_tabnine' },
+    { name = 'buffer', keyword_length = 3},
 })
 
-require'lspconfig'.kotlin_language_server.setup{}
 
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
+
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
+
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+end)
+
+lsp.setup()
 
 function org_imports(wait_ms)
     local params = vim.lsp.util.make_range_params()
@@ -218,7 +99,24 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-require'lspconfig'.metals.setup({
-    on_attach = on_attach,
+
+local signconfig = {
+   virtual_text = false,
+   signs = true,
+   underline = true,
+   update_in_insert = true,
+   severity_sort = true,
+}
+
+vim.diagnostic.config(signconfig)
+
+local tabnine = require("cmp_tabnine.config")
+
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = "..",
 })
 

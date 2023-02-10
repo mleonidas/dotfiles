@@ -29,7 +29,7 @@ return require("packer").startup(function(use)
     -- language plugins
     use("jose-elias-alvarez/nvim-lsp-ts-utils")
     use("averms/black-nvim")
-    use {"ellisonleao/glow.nvim"}
+    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
 
     use('mrjones2014/smart-splits.nvim')
 
@@ -50,12 +50,13 @@ return require("packer").startup(function(use)
     use('simrat39/rust-tools.nvim')
 
     use('mleonidas/solarized.nvim')
-    -- use('mleonidas/tokyonight.nvim')
 
     use { 'lewis6991/gitsigns.nvim' }
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use { 'tpope/vim-fugitive' }
     use("nvim-telescope/telescope-project.nvim")
+
+    use 'folke/tokyonight.nvim'
 
     -- use { 'tjdevries/cyclist.vim' }
     use "lukas-reineke/indent-blankline.nvim"
@@ -90,20 +91,36 @@ return require("packer").startup(function(use)
       requires = { "kyazdani42/nvim-web-devicons", opt = true }
     })
 
+    use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v1.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
 
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  }
+  }
     -- All the things
-    use("neovim/nvim-lspconfig")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-nvim-lsp-signature-help")
 
-    use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/nvim-cmp")
     use("folke/trouble.nvim")
 
-    use {'tzachar/cmp-tabnine', 
-          run='./install.sh', 
+    use {'tzachar/cmp-tabnine',
+          run='./install.sh',
           requires = 'hrsh7th/nvim-cmp'}
 
 
@@ -111,8 +128,6 @@ return require("packer").startup(function(use)
     use("nvim-lua/lsp_extensions.nvim")
     use("glepnir/lspsaga.nvim")
     use("simrat39/symbols-outline.nvim")
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
 
     use("rafamadriz/friendly-snippets")
 
@@ -146,6 +161,11 @@ return require("packer").startup(function(use)
     use("sebdah/vim-delve")
     use("leoluz/nvim-dap-go")
     use("folke/todo-comments.nvim")
+
+    -- typescript bs
+    use('jose-elias-alvarez/null-ls.nvim')
+    use('MunifTanjim/prettier.nvim')
+
 
     -- Github integration
     if vim.fn.executable "gh" == 1 then
