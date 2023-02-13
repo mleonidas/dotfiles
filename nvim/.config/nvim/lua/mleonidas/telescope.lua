@@ -9,6 +9,7 @@ local actions = require("telescope.actions")
 require("telescope").setup{
 	defaults = {
 		file_sorter = require("telescope.sorters").get_fzy_sorter,
+        file_ignore_patterns = {".git/", "node_modules/"},
 		prompt_prefix = " > ",
 		color_devicons = true,
 
@@ -24,23 +25,11 @@ require("telescope").setup{
 			},
 		},
 	},
-    extensions = {
-      project = {
-        base_dirs = {
-            '/Users/mleone/Documents/repos/work/ithaca',
-      },
-      hidden_files = true, -- default: false
-      theme = "dropdown",
-      order_by = "asc",
-      sync_with_nvim_tree = true, -- default false
-    },
-  }
 }
 
 require("telescope").load_extension("git_worktree")
 
 local M = {}
-
 
 local function refactor(prompt_bufnr)
 	local content = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
