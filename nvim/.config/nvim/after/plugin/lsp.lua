@@ -7,6 +7,8 @@ lsp.ensure_installed({
   'gopls',
   'terraformls',
   'pyright',
+  'eslint',
+  'cssls',
   'bufls',
   'lua_ls',
   'rust_analyzer',

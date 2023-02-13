@@ -162,7 +162,6 @@ return require("packer").startup(function(use)
 
     -- typescript bs
     use('jose-elias-alvarez/null-ls.nvim')
-    use('MunifTanjim/prettier.nvim')
 
 
     -- Github integration
