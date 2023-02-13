@@ -7,7 +7,8 @@ lsp.ensure_installed({
   'gopls',
   'terraformls',
   'pyright',
-  'sumneko_lua',
+  'bufls',
+  'lua_ls',
   'rust_analyzer',
 })
 
@@ -20,6 +21,14 @@ lsp.configure('sumneko_lua', {
             }
         }
     }
+})
+
+lsp.configure("gopls", {
+    settings = {
+        gopls = {
+            env = {GOFLAGS="-tags=!windows"},
+    }
+  }
 })
 
 local source_mapping = {

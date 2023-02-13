@@ -49,13 +49,14 @@ return require("packer").startup(function(use)
     use("MarcWeber/vim-addon-mw-utils")
     use('simrat39/rust-tools.nvim')
 
-    use('mleonidas/solarized.nvim')
+    -- use('mleonidas/solarized.nvim')
 
     use { 'lewis6991/gitsigns.nvim' }
     -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use { 'tpope/vim-fugitive' }
     use("nvim-telescope/telescope-project.nvim")
 
+    -- use 'mleonidas/tokyonight.nvim'
     use 'folke/tokyonight.nvim'
 
     -- use { 'tjdevries/cyclist.vim' }
