@@ -151,5 +151,3 @@ local signconfig = {
 }
 
 vim.diagnostic.config(signconfig)
-
-
