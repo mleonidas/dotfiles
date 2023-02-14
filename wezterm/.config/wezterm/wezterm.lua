@@ -17,9 +17,9 @@ return {
     color_scheme = "tokyonight_storm",
     font = wezterm.font("MesloLGMDZ Nerd Font Mono"),
     keys = {
-        { key = "n", mods = "CTRL", action = wezterm.action.ToggleFullScreen },
-        { key = "v", mods = "CMD",  action = wezterm.action.Paste },
-        { key = "c", mods = "CMD",  action = wezterm.action.Copy },
+        { key = "Enter", mods = "CTRL", action = wezterm.action.ToggleFullScreen },
+        { key = "v",     mods = "CMD",  action = wezterm.action.Paste },
+        { key = "c",     mods = "CMD",  action = wezterm.action.Copy },
     },
     -- leader = { key = "a", mods = "CTRL" },
     -- keys = {
@@ -58,10 +58,8 @@ return {
     use_ime = false,
     hide_tab_bar_if_only_one_tab = true,
     selection_word_boundary = " \t\n{}[]()\"'`,;:@",
-    -- disable_default_key_bindings = true,
     line_height = 1.25,
     font_size = 12,
-    -- window_background_opacity = 0.95,
     bold_brightens_ansi_colors = false,
     -- term = "wezterm",
     -- freetype_load_target = "Light",
