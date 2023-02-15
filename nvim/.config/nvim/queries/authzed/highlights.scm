@@ -1,9 +1,23 @@
-((identifier) @property)
+((relation_literal) @keyword)
 
-(block (identifier) @type)
+
+((perm_expression) (identifier) @operator)
+
+(block (identifier) @function)
+(block (identifier) (identifier) @type)
+
+((permission (permission_literal) @variable.builtin))
+
+((perm_expression) @operator)
+
 [
   (rel_expression)
   (perm_expression)
-] @string
+] @function
+
+[
+ (plus_literal)
+ (pipe_literal)
+] @punctuation
 
 (comment) @comment
