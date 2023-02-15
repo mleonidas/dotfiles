@@ -5,5 +5,10 @@ augroup END
 
 augroup LspFormat
     autocmd!
-    autocmd BufWritePre * undojoin | NullFormat
+    autocmd BufWritePre *.py  NullFormat
+    autocmd BufWritePre *.lua NullFormat
+    autocmd BufWritePre *.ts  NullFormat
+    autocmd BufWritePre *.tsx NullFormat
+    autocmd BufWritePre *.go  NullFormat
+    autocmd BufWritePre *.js  NullFormat
 augroup END
