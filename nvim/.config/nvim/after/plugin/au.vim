@@ -12,3 +12,11 @@ augroup LspFormat
     autocmd BufWritePre *.go  NullFormat
     autocmd BufWritePre *.js  NullFormat
 augroup END
+
+augroup Authzed
+  au!
+  autocmd BufNewFile,BufRead *.authzed set ft=authzed
+  autocmd BufNewFile,BufRead *.zed set ft=authzed
+  autocmd BufNewFile,BufRead *.azd set ft=authzed
+augroup END
+
