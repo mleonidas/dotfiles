@@ -2,6 +2,5 @@
 bin/.bin/ngrok
 bin/.bin/psqlconnect
 bin/.bin/skaffold
-k9s/*
 nvim/.config/nvim/.luarc.json
 k9s/.config/k9s/config.yml
