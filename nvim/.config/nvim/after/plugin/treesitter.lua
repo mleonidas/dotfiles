@@ -12,6 +12,7 @@ local parsers_to_install = {
 	"json",
 	"http",
 	"ruby",
+	"sql",
 	"graphql",
 	"go",
 	"bash",

@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/earthly.vim",
     url = "https://github.com/earthly/earthly.vim"
   },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -179,11 +184,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
-  },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   harpoon = {
     loaded = true,
@@ -229,11 +229,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  neoformat = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/neoformat",
-    url = "https://github.com/sbdchd/neoformat"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -305,11 +300,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  ["pgsql.vim"] = {
-    loaded = true,
-    path = "/Users/mleone/.local/share/nvim/site/pack/packer/start/pgsql.vim",
-    url = "https://github.com/lifepillar/pgsql.vim"
   },
   playground = {
     loaded = true,
