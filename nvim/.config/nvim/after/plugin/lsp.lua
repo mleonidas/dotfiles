@@ -9,7 +9,6 @@ lsp.ensure_installed({
 	"pyright",
 	"dockerls",
 	"docker_compose_language_service",
-	"sql-formatter",
 	"eslint",
 	"cssls",
 	"bufls",
