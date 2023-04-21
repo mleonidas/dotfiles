@@ -23,8 +23,10 @@ require("formatter").setup({
 		svg = { require("formatter.defaults.prettier") },
 		lua = { require("formatter.filetypes.lua").stylua },
 		rust = { require("formatter.filetypes.rust").rustfmt },
+		terraform = { require("formatter.filetypes.terraform").terraformfmt },
 		go = { require("formatter.filetypes.go").goimports },
 		gofumpt = { require("formatter.filetypes.go").gofumpt },
+		sql = { require("formatter.filetypes.sql").pgformat },
 		["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace },
 	},
 })
