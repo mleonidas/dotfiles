@@ -15,8 +15,5 @@ vim.g.better_whitespace_filetypes_blacklist = {
 	"fugitive",
 	"terminal",
 }
-vim.g.neoformat_enabled_python = { "black", "isort", "flake8" }
-vim.g.neoformat_run_all_formatters = 1
-
 vim.g.terraform_align = 1
 vim.g.terraform_fmt_on_save = 1
