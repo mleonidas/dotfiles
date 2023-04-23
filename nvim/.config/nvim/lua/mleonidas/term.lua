@@ -7,7 +7,7 @@ local git_tui = "lazygit"
 -- local git_tui = "gitui"
 
 -- Committizen
-local git_cz = "git cz"
+local git_cz = "git cz --disable-emoji"
 
 local git_client = Terminal:new({
 	cmd = git_tui,
