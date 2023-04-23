@@ -24,6 +24,7 @@ return require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"nvim-lua/popup.nvim",
 	"nvim-telescope/telescope.nvim",
+	"benfowler/telescope-luasnip.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
 	"AndrewRadev/splitjoin.vim",

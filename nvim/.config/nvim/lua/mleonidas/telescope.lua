@@ -1,15 +1,16 @@
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")
-local pkgs = require'telescope'.load_extension('project')
+local pkgs = require("telescope").load_extension("project")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
+local lst = require("telescope").extensions.luasnip
 
-require("telescope").setup{
+require("telescope").setup({
 	defaults = {
 		file_sorter = require("telescope.sorters").get_fzy_sorter,
-        file_ignore_patterns = {".git/", "node_modules/"},
+		file_ignore_patterns = { ".git/", "node_modules/" },
 		prompt_prefix = " > ",
 		color_devicons = true,
 
@@ -21,13 +22,14 @@ require("telescope").setup{
 			i = {
 				["<C-x>"] = false,
 				["<C-q>"] = actions.send_to_qflist,
-                ["<CR>"] = actions.select_default,
+				["<CR>"] = actions.select_default,
 			},
 		},
 	},
-}
+})
 
 require("telescope").load_extension("git_worktree")
+require("telescope").load_extension("luasnip")
 
 local M = {}
 
@@ -37,20 +39,21 @@ local function refactor(prompt_bufnr)
 	require("refactoring").refactor(content.value)
 end
 
-
 M.refactors = function()
-	require("telescope.pickers").new({}, {
-		prompt_title = "refactors",
-		finder = require("telescope.finders").new_table({
-			results = require("refactoring").get_refactors(),
-		}),
-		sorter = require("telescope.config").values.generic_sorter({}),
-		attach_mappings = function(_, map)
-			map("i", "<CR>", refactor)
-			map("n", "<CR>", refactor)
-			return true
-		end,
-	}):find()
+	require("telescope.pickers")
+		.new({}, {
+			prompt_title = "refactors",
+			finder = require("telescope.finders").new_table({
+				results = require("refactoring").get_refactors(),
+			}),
+			sorter = require("telescope.config").values.generic_sorter({}),
+			attach_mappings = function(_, map)
+				map("i", "<CR>", refactor)
+				map("n", "<CR>", refactor)
+				return true
+			end,
+		})
+		:find()
 end
 
 M.git_branches = function()
@@ -63,10 +66,9 @@ M.git_branches = function()
 	})
 end
 
-if vim.fn.executable "gh" == 1 then
-  pcall(require("telescope").load_extension, "gh")
-  pcall(require("telescope").load_extension, "octo")
+if vim.fn.executable("gh") == 1 then
+	pcall(require("telescope").load_extension, "gh")
+	pcall(require("telescope").load_extension, "octo")
 end
-
 
 return M
