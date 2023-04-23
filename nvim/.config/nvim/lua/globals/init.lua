@@ -1,2 +1,22 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+vim.g.gitblame_enabled = 0
+vim.g.better_whitespace_filetypes_blacklist = {
+	"neogitstatus",
+	"NeogitCommitMessage",
+	"diff",
+	"git",
+	"gitcommit",
+	"unite",
+	"qf",
+	"help",
+	"markdown",
+	"fugitive",
+	"terminal",
+}
+vim.g.neoformat_enabled_python = { "black", "isort", "flake8" }
+vim.g.neoformat_run_all_formatters = 1
+
+vim.g.terraform_align = 1
+vim.g.terraform_fmt_on_save = 1
