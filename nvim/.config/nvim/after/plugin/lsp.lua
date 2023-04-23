@@ -1,7 +1,6 @@
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
-
 lsp.ensure_installed({
 	"tsserver",
 	"gopls",
@@ -34,69 +33,6 @@ lsp.configure("gopls", {
 		},
 	},
 })
-
-local source_mapping = {
-	luasnip = "[Snip]",
-	buffer = "[Buf]",
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[api]",
-	path = "[Path]",
-	cmp_tabnine = "[TN]",
-}
-
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
-})
-
-local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-	["<C-y>"] = cmp.mapping.confirm({ select = true }),
-	["<C-Space>"] = cmp.mapping.complete(),
-})
-
-local cmp_sources = lsp.defaults.cmp_sources()
-
-table.insert(cmp_sources, { name = "luasnip" })
-table.insert(cmp_sources, { name = "nvim_lsp", keyword_length = 3 })
-table.insert(cmp_sources, { name = "treesitter" })
-table.insert(cmp_sources, { name = "cmp_tabnine" })
-table.insert(cmp_sources, { name = "buffer", keyword_length = 3 })
-
-cmp_mappings["<Tab>"] = nil
-cmp_mappings["<S-Tab>"] = nil
-
--- lsp.setup_nvim_cmp({
---     formatting = {
---         fields = { "abbr", "kind", "menu" },
---         format = require("lspkind").cmp_format({
---             mode = "symbol", -- show only symbol annotations
---             maxwidth = 50,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
---             ellipsis_char = "...",
---             before = function(entry, vim_item)
---                 local menu = source_mapping[entry.source.name]
---                 if entry.source.name == "cmp_tabnine" then
---                     if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
---                         menu = entry.completion_item.data.detail .. " " .. menu
---                     end
---                     vim_item.kind = ""
---                 end
---                 vim_item.menu = menu
---                 return vim_item
---             end,
---         }),
---         mapping = cmp_mappings,
---     },
--- })
 
 lsp.set_preferences({
 	suggest_lsp_servers = false,
@@ -148,8 +84,6 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
-require("luasnip.loaders.from_vscode").lazy_load()
-
 lsp.setup()
 
 local signconfig = {
@@ -191,4 +125,40 @@ null_ls.setup({
 		null_ls.builtins.formatting.goimports,
 		null_ls.builtins.formatting.stylua,
 	},
+})
+
+local tabnine = require("cmp_tabnine.config")
+
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = "..",
+})
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
+local cmp = require("cmp")
+-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_action = require("lsp-zero").cmp_action()
+local cmp_mappings = {
+	["<CR>"] = cmp.mapping.confirm({ select = false }),
+	["<C-p>"] = cmp.mapping.select_prev_item({ select = false }),
+	["<C-n>"] = cmp.mapping.select_next_item({ select = false }),
+	["<C-y>"] = cmp.mapping.confirm({ select = false }),
+	-- Navigate between snippet placeholder
+	["<C-f>"] = cmp_action.luasnip_jump_forward(),
+	["<C-b>"] = cmp_action.luasnip_jump_backward(),
+	["<C-Space>"] = cmp.mapping.complete({ select = false }),
+}
+
+cmp.setup({
+	sources = {
+		{ name = "luasnip" },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "cmp_tabnine", keyword_length = 3 },
+	},
+	mapping = cmp_mappings,
 })
