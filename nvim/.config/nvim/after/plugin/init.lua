@@ -16,3 +16,5 @@ rt.setup({
 })
 
 require("rust-tools").inlay_hints.enable()
+
+require("toggleterm").setup({})

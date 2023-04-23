@@ -29,6 +29,7 @@ return require("lazy").setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 	"AndrewRadev/splitjoin.vim",
 	"christoomey/vim-tmux-navigator",
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	"tmux-plugins/vim-tmux",
 	"jjo/vim-cue",
 	"LnL7/vim-nix",

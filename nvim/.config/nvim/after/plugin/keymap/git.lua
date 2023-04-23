@@ -13,6 +13,10 @@ nnoremap("<Leader>gf", ":diffget//2<cr>", silent)
 nnoremap("<Leader>gj", ":diffget//3<cr>", silent)
 nnoremap("<Leader>gxp", ":Gvdiffsplit<cr>", silent)
 
+nnoremap("<Leader>gcz", function()
+	require("mleonidas.term").git_commit_toggle()
+end, silent)
+
 -- nnoremap("<Leader>gs", ":Neogit<cr>", silent)
 nnoremap("<leader>gwl", function()
 	require("telescope").extensions.git_worktree.git_worktrees()
