@@ -15,6 +15,11 @@ local parsers_to_install = {
 	"sql",
 	"graphql",
 	"go",
+	"jq",
+	"json",
+	"yaml",
+	"nix",
+	"regex",
 	"gomod",
 	"gosum",
 	"gowork",
@@ -25,6 +30,11 @@ local parsers_to_install = {
 	"hcl",
 	"make",
 	"dockerfile",
+	"gitcommit",
+	"gitignore",
+	"gitattributes",
+	"git_rebase",
+	"git_config",
 	"typescript",
 }
 
