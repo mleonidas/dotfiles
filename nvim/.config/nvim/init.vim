@@ -1,6 +1,7 @@
 filetype plugin indent on
 
 lua require("globals")
+
 lua require('mleonidas')
 
 let g:better_whitespace_filetypes_blacklist=['neogitstatus', 'NeogitCommitMessage', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'terminal']

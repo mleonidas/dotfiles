@@ -1,5 +1,5 @@
 require("mleonidas.set")
-require("mleonidas.packer")
+require("mleonidas.lazy")
 require("mleonidas.statusline")
 require("mleonidas.octo")
 require("mleonidas.rest")
