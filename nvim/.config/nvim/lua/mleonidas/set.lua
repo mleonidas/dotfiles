@@ -1,5 +1,4 @@
 -- Ignore compiled files
-vim.opt.wildignore = "__pycache__"
 vim.opt.wildignore = "*.pyc,*_build/*,**/coverage/*,**/node_modules/*,**/.git/*,Cargo.lock,__pycache__"
 vim.opt.ignorecase = true
 vim.opt.relativenumber = true
@@ -32,7 +31,6 @@ vim.opt.expandtab = true
 -- delays and poor user experience.
 vim.opt.updatetime = 50
 
-
 vim.opt.laststatus = 3
 vim.opt.cursorline = true
 
@@ -44,5 +42,5 @@ vim.opt.syntax = "enable"
 
 -- use 256 colors in terminal
 if not vim.fn.has("gui_running") then
-    vim.opt.t_Co = 256
+	vim.opt.t_Co = 256
 end
