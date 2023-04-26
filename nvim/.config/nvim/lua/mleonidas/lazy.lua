@@ -13,9 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	-- rest client
-	"NTBBloodbath/rest.nvim",
-
 	-- show hex colors
 	"chrisbra/Colorizer",
 	-- better whitespace ? TODO(mleonidas): rewrite in lua
@@ -27,12 +24,9 @@ return require("lazy").setup({
 	"benfowler/telescope-luasnip.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
-	"AndrewRadev/splitjoin.vim",
 	"christoomey/vim-tmux-navigator",
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	"tmux-plugins/vim-tmux",
-	"jjo/vim-cue",
-	"LnL7/vim-nix",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"averms/black-nvim",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
@@ -56,7 +50,6 @@ return require("lazy").setup({
 	-- there's got to be a better way
 	"vim-test/vim-test",
 	"godlygeek/tabular",
-	"jremmen/vim-ripgrep",
 	"numToStr/Comment.nvim",
 	"tomtom/tlib_vim",
 	"ekalinin/Dockerfile.vim",
