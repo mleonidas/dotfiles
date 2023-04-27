@@ -51,12 +51,7 @@ return require("lazy").setup({
 	"vim-test/vim-test",
 	"godlygeek/tabular",
 	"numToStr/Comment.nvim",
-	"tomtom/tlib_vim",
-	"ekalinin/Dockerfile.vim",
-	"earthly/earthly.vim",
-	"towolf/vim-helm",
 	"kyazdani42/nvim-web-devicons",
-	"MarcWeber/vim-addon-mw-utils",
 	"simrat39/rust-tools.nvim",
 	"simrat39/symbols-outline.nvim",
 	"lewis6991/gitsigns.nvim",
@@ -133,9 +128,12 @@ return require("lazy").setup({
 		},
 	},
 
+	{
+		"sindrets/diffview.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+	},
+
 	"folke/trouble.nvim",
-	"nvim-lua/lsp_extensions.nvim",
-	"glepnir/lspsaga.nvim",
 
 	-- Primeagen doesn"t create lodash
 	"ThePrimeagen/git-worktree.nvim",
@@ -167,8 +165,6 @@ return require("lazy").setup({
 	"rcarriga/nvim-dap-ui",
 	"theHamsta/nvim-dap-virtual-text",
 
-	"sebdah/vim-delve",
-	"leoluz/nvim-dap-go",
 	"folke/todo-comments.nvim",
 	"mhartington/formatter.nvim",
 
