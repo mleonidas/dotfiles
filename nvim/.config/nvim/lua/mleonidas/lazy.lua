@@ -58,6 +58,7 @@ return require("lazy").setup({
 	"tpope/vim-fugitive",
 	"nvim-telescope/telescope-project.nvim",
 	"folke/tokyonight.nvim",
+	{ "rose-pine/neovim", name = "rose-pine" },
 	"lukas-reineke/indent-blankline.nvim",
 
 	{
