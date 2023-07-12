@@ -19,8 +19,8 @@ end
 
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
--- config.color_scheme = "tokyonight_storm"
-config.color_scheme = "rose-pine-moon"
+config.color_scheme = "tokyonight_storm"
+-- config.color_scheme = "rose-pine-moon"
 config.font = wezterm.font("MesloLGMDZ Nerd Font Mono")
 config.keys = {
 	{ key = "Enter", mods = "CTRL", action = wezterm.action.ToggleFullScreen },

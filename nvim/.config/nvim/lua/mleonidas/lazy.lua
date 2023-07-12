@@ -56,6 +56,7 @@ return require("lazy").setup({
 	"simrat39/symbols-outline.nvim",
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
+	"vim-crystal/vim-crystal",
 	"nvim-telescope/telescope-project.nvim",
 	"folke/tokyonight.nvim",
 	{ "rose-pine/neovim", name = "rose-pine" },
@@ -122,9 +123,8 @@ return require("lazy").setup({
 			},
 
 			{
-				"tzachar/cmp-tabnine",
-				build = "./install.sh",
-				dependencies = "hrsh7th/nvim-cmp",
+				"codota/tabnine-nvim",
+				build = "./dl_binaries.sh",
 			},
 		},
 	},
@@ -169,7 +169,6 @@ return require("lazy").setup({
 	"folke/todo-comments.nvim",
 	"mhartington/formatter.nvim",
 
-	"jose-elias-alvarez/null-ls.nvim",
 	-- Github integration
 	"pwntester/octo.nvim",
 })

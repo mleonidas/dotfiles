@@ -92,5 +92,6 @@ disabled = false
 [kubernetes.context_aliases]
 ".*arn:aws:eks:(?P<region>\\w+-\\w+-\\d):(?P<account>\\d+):cluster/(?P<cluster_name>\\w+-\\w+).*" = "$region:$account:$cluster_name"
 
+
 [time]
 disabled = true

@@ -8,10 +8,11 @@ lsp.ensure_installed({
 	"pyright",
 	"dockerls",
 	"docker_compose_language_service",
-	"eslint",
+	-- "eslint",
 	"cssls",
 	"bufls",
 	"lua_ls",
+	"svelte",
 	"rust_analyzer",
 })
 
@@ -33,6 +34,17 @@ lsp.configure("gopls", {
 		},
 	},
 })
+
+require("lspconfig.configs").crystalline = {
+	default_config = {
+		name = "crystalline",
+		cmd = { "/Users/mleone/.bin/crystalline" },
+		filetypes = { "crystal", "cr" },
+		root_dir = require("lspconfig.util").root_pattern({ "shard.yml" }),
+	},
+}
+
+require("lspconfig").crystalline.setup({})
 
 lsp.set_preferences({
 	suggest_lsp_servers = false,
@@ -84,7 +96,23 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
+lsp.skip_server_setup({ "rust_analyzer" })
 lsp.setup()
+
+local rt = require("rust-tools")
+
+rt.setup({
+	server = {
+		on_attach = function(_, bufnr)
+			-- Hover actions
+			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+			-- Code action groups
+			vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+		end,
+	},
+})
+
+require("rust-tools").inlay_hints.enable()
 
 local signconfig = {
 	virtual_text = false,
@@ -96,45 +124,14 @@ local signconfig = {
 
 vim.diagnostic.config(signconfig)
 
-local null_ls = require("null-ls")
-local null_opts = lsp.build_options("null-ls", {})
-
-null_ls.setup({
-	on_attach = function(client, bufnr)
-		null_opts.on_attach(client, bufnr)
-		local format_cmd = function(input)
-			vim.lsp.buf.format({
-				id = client.id,
-				timeout_ms = 5000,
-				async = input.bang,
-			})
-		end
-
-		local bufcmd = vim.api.nvim_buf_create_user_command
-		bufcmd(bufnr, "NullFormat", format_cmd, {
-			bang = true,
-			range = true,
-			desc = "Format using null-ls",
-		})
-	end,
-	sources = {
-		--- Replace these with the tools you have installed
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.autopep8,
-		null_ls.builtins.formatting.gofumpt,
-		null_ls.builtins.formatting.goimports,
-		null_ls.builtins.formatting.stylua,
-	},
-})
-
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
+require("tabnine").setup({
+	disable_auto_comment = true,
+	accept_keymap = "<C-J>",
+	dismiss_keymap = "<C-]>",
+	debounce_ms = 800,
+	suggestion_color = { gui = "#808080", cterm = 244 },
+	exclude_filetypes = { "TelescopePrompt" },
+	log_file_path = nil, -- absolute path to Tabnine log file
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
