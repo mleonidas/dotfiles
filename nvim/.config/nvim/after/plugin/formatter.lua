@@ -16,6 +16,7 @@ require("formatter").setup({
 		-- typescriptreact = { require("formatter.defaults.prettier") },
 		-- typescript = { require("formatter.defaults.prettier") },
 		json = { require("formatter.defaults.prettier") },
+		-- svelte = { require("formatter.filetypes.svelte").prettier },
 		markdown = { require("formatter.defaults.prettier") },
 		scss = { require("formatter.defaults.prettier") },
 		html = { require("formatter.defaults.prettier") },
@@ -27,6 +28,7 @@ require("formatter").setup({
 		go = { require("formatter.filetypes.go").goimports },
 		gofumpt = { require("formatter.filetypes.go").gofumpt },
 		sql = { require("formatter.filetypes.sql").pgformat },
+		proto = { require("formatter.filetypes.proto").buffmt },
 		["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace },
 	},
 })

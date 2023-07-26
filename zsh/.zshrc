@@ -99,9 +99,6 @@ listening() {
     fi
 }
 
-
-# . <(hof completion zsh)
-
-# Fig post block. Keep at the bottom of this file.
+command -v timoni >/dev/null && . <(timoni completion zsh) && compdef _timoni timoni
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g

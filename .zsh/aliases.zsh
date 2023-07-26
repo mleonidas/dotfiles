@@ -23,8 +23,8 @@ alias glo="git log --pretty=oneline --abbrev-commit"
 
 
 
-# lazy load kubectl completions, this is slow AF if 
-# done the way the documentation tells you to do 
+# lazy load kubectl completions, this is slow AF if
+# done the way the documentation tells you to do
 # shell startup time takes over a second
 #
 function kubectl() {
@@ -48,8 +48,6 @@ alias ff='find . -type f -name'
 ## alias pip='/usr/local/bin/pip3'
 
 
-
-# ls 
 alias ls='lsd'
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable

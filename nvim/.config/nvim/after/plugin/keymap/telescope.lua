@@ -24,13 +24,13 @@ nnoremap("<leader>gb", function()
 end, silent)
 
 nnoremap("<leader>tr", ":Telescope registers<cr>", silent)
+nnoremap("<leader>tkm", ":Telescope keymaps<cr>", silent)
 
 nnoremap("<C-p>", function()
 	require("telescope.builtin").git_files({ previewer = false })
 end, silent)
 
 nnoremap("<leader>ctt", ":TodoTelescope<cr>", silent)
-nnoremap("<leader>xt", ":TodoTrouble<cr>", silent)
 
 nnoremap("<leader>ps", function()
 	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ") })

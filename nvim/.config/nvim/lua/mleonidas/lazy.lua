@@ -167,7 +167,10 @@ return require("lazy").setup({
 	"theHamsta/nvim-dap-virtual-text",
 
 	"folke/todo-comments.nvim",
-	"mhartington/formatter.nvim",
+	{
+		"mleonidas/formatter.nvim",
+		branch = "mleonidas/add-buf-support",
+	},
 
 	-- Github integration
 	"pwntester/octo.nvim",
