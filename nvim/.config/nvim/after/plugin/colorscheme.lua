@@ -10,7 +10,7 @@ require("tokyonight").setup({
 	styles = {
 		comments = { italic = true },
 		keywords = { italic = true },
-		functions = { italic = true },
+		functions = { italic = false },
 		variables = {},
 		floats = "dark", -- style for floating windows
 

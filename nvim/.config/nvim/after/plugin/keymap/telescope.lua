@@ -32,9 +32,11 @@ end, silent)
 
 nnoremap("<leader>ctt", ":TodoTelescope<cr>", silent)
 
-nnoremap("<leader>ps", function()
-	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ") })
-end)
+-- nnoremap("<leader>ps", function()
+-- 	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ") })
+-- end)
+
+nnoremap("<leader>ps", ":Telescope live_grep previewer=false color=true<cr>")
 
 nnoremap("<leader>:", function()
 	require("telescope.builtin").command_history()

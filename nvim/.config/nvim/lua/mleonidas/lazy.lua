@@ -159,6 +159,14 @@ return require("lazy").setup({
 		},
 	},
 
+	{
+		"kdheepak/lazygit.nvim",
+		-- optional for floating window border decoration
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
 	"nvim-treesitter/playground",
 	"romgrk/nvim-treesitter-context",
 

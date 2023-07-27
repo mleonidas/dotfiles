@@ -20,8 +20,16 @@ end
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
 config.color_scheme = "tokyonight_storm"
--- config.color_scheme = "rose-pine-moon"
-config.font = wezterm.font("MesloLGMDZ Nerd Font Mono")
+
+config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Regular", stretch = "Normal" })
+-- config.font = wezterm.font_with_fallback({
+-- 	{
+-- 		family = "CaskaydiaCove Nerd Font",
+-- 	},
+-- 	{ family = "Terminus", weight = "Bold" },
+-- 	"Noto Color Emoji",
+-- })
+
 config.keys = {
 	{ key = "Enter", mods = "CTRL", action = wezterm.action.ToggleFullScreen },
 }
@@ -35,6 +43,6 @@ config.use_ime = false
 config.hide_tab_bar_if_only_one_tab = true
 config.selection_word_boundary = " \t\n{}[]()\"'`,;:@"
 config.line_height = 1.25
-config.font_size = 12
+config.font_size = 14
 config.bold_brightens_ansi_colors = false
 return config
