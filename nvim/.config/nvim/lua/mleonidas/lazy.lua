@@ -59,6 +59,7 @@ return require("lazy").setup({
 	"vim-crystal/vim-crystal",
 	"nvim-telescope/telescope-project.nvim",
 	"folke/tokyonight.nvim",
+	"github/copilot.vim",
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"lukas-reineke/indent-blankline.nvim",
 
@@ -115,17 +116,17 @@ return require("lazy").setup({
 			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			-- { "zbirenbaum/copilot-cmp" },
 
 			{
 				"L3MON4D3/LuaSnip",
 				version = "1.2.1",
 				build = "make install_jsregexp",
 			},
-
-			{
-				"codota/tabnine-nvim",
-				build = "./dl_binaries.sh",
-			},
+			-- {
+			-- 	"codota/tabnine-nvim",
+			-- 	build = "./dl_binaries.sh",
+			-- },
 		},
 	},
 

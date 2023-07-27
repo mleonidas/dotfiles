@@ -80,3 +80,7 @@ tnoremap("<Esc>", "<C-\\><C-n>")
 if vim.fn.has("nvim") then
 	nnoremap("<BS>", "<C-W>h")
 end
+
+-- setup copilot override since tab is used in cmp
+vim.g.copilot_no_tab_map = true
+vim.cmd([[imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")]])

@@ -14,3 +14,4 @@ function! MergeTabs()
 
   execute "buffer " . bufferName
 endfunction
+

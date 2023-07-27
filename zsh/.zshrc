@@ -16,6 +16,7 @@ export CLICOLOR=1
 export GREP_COLOR=33
 export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 export LS_COLORS=$(vivid generate tokyonight)

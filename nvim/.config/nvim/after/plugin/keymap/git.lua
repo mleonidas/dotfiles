@@ -3,7 +3,7 @@ local nnoremap = require("mleonidas.keymap").nnoremap
 local silent = { silent = true }
 
 -- git remaps
--- nnoremap("<Leader>gs", ":Git<cr>", silent)
+nnoremap("<Leader>gs", ":Git<cr>", silent)
 nnoremap("<Leader>gB", ":GitBlameToggle<cr>", silent)
 nnoremap("<Leader>gitph", ":Git push origin HEAD<cr>", silent)
 nnoremap("<Leader>gfa", ":Git fetch --all<cr>", silent)
