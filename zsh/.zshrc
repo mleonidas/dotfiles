@@ -89,6 +89,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
 
 listening() {
     if [ $# -eq 0 ]; then
@@ -101,5 +104,6 @@ listening() {
 }
 
 command -v timoni >/dev/null && . <(timoni completion zsh) && compdef _timoni timoni
+
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
