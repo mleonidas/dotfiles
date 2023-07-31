@@ -1,6 +1,7 @@
 # # Fig pre block. Keep at the top of this file.
 # # load prompt
 autoload -U promptinit; promptinit
+source ~/.zplug/init.zsh
 
 
 [[ $(uname) = "Darwin" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -34,9 +35,11 @@ alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
 # load plugins
 export DOTFILES_PATH="$HOME/.dotfiles"
 
-source $DOTFILES_PATH/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source $DOTFILES_PATH/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $DOTFILES_PATH/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "/zdharma-continuum/fast-syntax-highlighting"
+zplug load --verbose
+
 
 # alias dircolors='gdircolors'
 
@@ -69,6 +72,7 @@ fi
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
 
 
 
