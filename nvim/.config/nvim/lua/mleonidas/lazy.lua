@@ -20,6 +20,7 @@ return require("lazy").setup({
 	-- TJ created lodash of neovim
 	"nvim-lua/plenary.nvim",
 	"nvim-lua/popup.nvim",
+	"folke/tokyonight.nvim",
 	"nvim-telescope/telescope.nvim",
 	"benfowler/telescope-luasnip.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
@@ -74,7 +75,6 @@ return require("lazy").setup({
 	"tpope/vim-fugitive",
 	"vim-crystal/vim-crystal",
 	"nvim-telescope/telescope-project.nvim",
-	"folke/tokyonight.nvim",
 	"github/copilot.vim",
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"lukas-reineke/indent-blankline.nvim",

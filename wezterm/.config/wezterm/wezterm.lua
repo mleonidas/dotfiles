@@ -20,8 +20,7 @@ end
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
 config.color_scheme = "tokyonight_storm"
-
-config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Regular", stretch = "Normal" })
+config.font = wezterm.font("Liga SFMono Nerd Font", { weight = "Regular", stretch = "Normal" })
 -- config.font = wezterm.font_with_fallback({
 -- 	{
 -- 		family = "CaskaydiaCove Nerd Font",
@@ -43,6 +42,7 @@ config.use_ime = false
 config.hide_tab_bar_if_only_one_tab = true
 config.selection_word_boundary = " \t\n{}[]()\"'`,;:@"
 config.line_height = 1.25
-config.font_size = 14
-config.bold_brightens_ansi_colors = false
+config.font_size = 13
+config.bold_brightens_ansi_colors = true
+config.front_end = "OpenGL"
 return config
