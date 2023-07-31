@@ -33,8 +33,8 @@ config.keys = {
 	{ key = "Enter", mods = "CTRL", action = wezterm.action.ToggleFullScreen },
 }
 
-config.initial_cols = 128
-config.initial_rows = 32
+-- config.initial_cols = 128
+-- config.initial_rows = 32
 config.use_dead_keys = false
 config.window_padding = padding
 config.window_decorations = "RESIZE"

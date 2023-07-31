@@ -15,6 +15,7 @@ local parsers_to_install = {
 	"sql",
 	"graphql",
 	"go",
+	"rust",
 	"cue",
 	"jq",
 	"json",

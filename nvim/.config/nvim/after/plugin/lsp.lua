@@ -13,7 +13,6 @@ lsp.ensure_installed({
 	"bufls",
 	"lua_ls",
 	"svelte",
-	"rust_analyzer",
 })
 
 -- Fix Undefined global 'vim'
@@ -96,14 +95,15 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
-lsp.skip_server_setup({ "rust_analyzer" })
 lsp.setup()
 
 local rt = require("rust-tools")
 
 rt.setup({
 	server = {
-		on_attach = function(_, bufnr)
+		on_attach = function(client, bufnr)
+			-- turn off semanticTokens
+			client.server_capabilities.semanticTokensProvider = nil
 			-- Hover actions
 			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 			-- Code action groups
