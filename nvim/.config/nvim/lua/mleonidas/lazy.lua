@@ -47,6 +47,22 @@ return require("lazy").setup({
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+		},
+		-- "rcarriga/nvim-notify",
+	},
+
 	-- there's got to be a better way
 	"vim-test/vim-test",
 	"godlygeek/tabular",
@@ -171,9 +187,11 @@ return require("lazy").setup({
 	"nvim-treesitter/playground",
 	"romgrk/nvim-treesitter-context",
 
-	"mfussenegger/nvim-dap",
-	"rcarriga/nvim-dap-ui",
-	"theHamsta/nvim-dap-virtual-text",
+	"leoluz/nvim-dap-go",
+	{ "rcarriga/nvim-dap-ui", dependencies = {
+		"mfussenegger/nvim-dap",
+	} },
+	"sebdah/vim-delve",
 
 	"folke/todo-comments.nvim",
 	{

@@ -8,6 +8,7 @@ require("mleonidas.todo_comments")
 require("mleonidas.telescope")
 require("mleonidas.trim")
 require("mleonidas.term")
+require("mleonidas.dap")
 
 local augroup = vim.api.nvim_create_augroup
 
