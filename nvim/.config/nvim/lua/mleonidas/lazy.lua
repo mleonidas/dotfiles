@@ -69,6 +69,7 @@ return require("lazy").setup({
 	"godlygeek/tabular",
 	"numToStr/Comment.nvim",
 	"kyazdani42/nvim-web-devicons",
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	"simrat39/rust-tools.nvim",
 	"simrat39/symbols-outline.nvim",
 	"lewis6991/gitsigns.nvim",

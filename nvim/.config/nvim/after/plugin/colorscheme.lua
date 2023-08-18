@@ -1,11 +1,6 @@
--- vim.g.solarized_italic_comments = true
--- require('solarized').set()
---
--- vim.cmd("colorscheme solarized")
-
 require("tokyonight").setup({
 	priority = 1000,
-	style = "storm",
+	style = "night",
 	lazy = false,
 	styles = {
 		comments = { italic = true },
@@ -47,4 +42,5 @@ require("tokyonight").setup({
 	end,
 })
 
-vim.cmd("colorscheme tokyonight-storm")
+-- vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme catppuccin-macchiato")

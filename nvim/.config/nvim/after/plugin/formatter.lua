@@ -28,7 +28,7 @@ require("formatter").setup({
 		go = { require("formatter.filetypes.go").goimports },
 		gofumpt = { require("formatter.filetypes.go").gofumpt },
 		sql = { require("formatter.filetypes.sql").pgformat },
-		proto = { require("formatter.filetypes.proto").buffmt },
+		-- proto = { require("formatter.filetypes.proto").buffmt },
 		["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace },
 	},
 })
