@@ -27,7 +27,16 @@ return require("lazy").setup({
 	"nvim-telescope/telescope-file-browser.nvim",
 	"christoomey/vim-tmux-navigator",
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	"navarasu/onedark.nvim",
 	"tmux-plugins/vim-tmux",
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
+		end,
+	},
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"averms/black-nvim",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
@@ -57,11 +66,11 @@ return require("lazy").setup({
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
 		},
-		-- "rcarriga/nvim-notify",
 	},
 
 	-- there's got to be a better way

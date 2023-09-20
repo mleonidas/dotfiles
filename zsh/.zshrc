@@ -28,9 +28,8 @@ export PATH="$HOME/.bin:$PATH"
 source ~/.private_env
 
 alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
+alias j='z'
 
-# autojump
-[[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]] && source ${HOME}/.autojump/etc/profile.d/autojump.sh
 
 # load plugins
 export DOTFILES_PATH="$HOME/.dotfiles"
@@ -68,6 +67,10 @@ autoload -Uz compinit && compinit
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+fi
+
+if command -v zoxide 1>/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
 fi
 
 export NVM_DIR=~/.nvm
@@ -109,5 +112,6 @@ listening() {
 
 command -v timoni >/dev/null && . <(timoni completion zsh) && compdef _timoni timoni
 
+eval $(op signin --account thedtxcompany.1password.com)
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g

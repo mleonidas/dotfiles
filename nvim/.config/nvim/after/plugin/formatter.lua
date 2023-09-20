@@ -11,8 +11,8 @@ end
 require("formatter").setup({
 	filetype = {
 		r = { rfmt },
-		javascriptreact = { require("formatter.defaults.prettier") },
-		javascript = { require("formatter.defaults.prettier") },
+		-- javascriptreact = { require("formatter.defaults.prettier") },
+		-- javascript = { require("formatter.defaults.prettier") },
 		-- typescriptreact = { require("formatter.defaults.prettier") },
 		-- typescript = { require("formatter.defaults.prettier") },
 		json = { require("formatter.defaults.prettier") },

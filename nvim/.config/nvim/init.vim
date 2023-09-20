@@ -3,6 +3,8 @@ let test#python#runner = 'djangotest'
 lua require("globals")
 lua require('mleonidas')
 
+set mouse-=a
+
 " Inform vim how to enable undercurl in wezterm
 let &t_Cs = "\e[60m"
 " Inform vim how to disable undercurl in wezterm (this disables all underline modes)

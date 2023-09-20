@@ -1,9 +1,9 @@
 require("noice").setup({
 	messages = {
-		enable = false,
+		enable = true,
 	},
 	noitify = {
-		enable = false,
+		enable = true,
 	},
 	lsp = {
 		message = {

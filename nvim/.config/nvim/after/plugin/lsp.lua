@@ -8,7 +8,7 @@ lsp.ensure_installed({
 	"pyright",
 	"dockerls",
 	"docker_compose_language_service",
-	-- "eslint",
+	"eslint",
 	"cssls",
 	"bufls",
 	"lua_ls",
