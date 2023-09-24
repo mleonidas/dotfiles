@@ -29,14 +29,6 @@ return require("lazy").setup({
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	"navarasu/onedark.nvim",
 	"tmux-plugins/vim-tmux",
-	{
-		"AlexvZyl/nordic.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("nordic").load()
-		end,
-	},
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"averms/black-nvim",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
@@ -78,13 +70,18 @@ return require("lazy").setup({
 	"godlygeek/tabular",
 	"numToStr/Comment.nvim",
 	"kyazdani42/nvim-web-devicons",
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	"simrat39/rust-tools.nvim",
 	"simrat39/symbols-outline.nvim",
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
 	"vim-crystal/vim-crystal",
-	"nvim-telescope/telescope-project.nvim",
+	-- "ahmedkhalf/project.nvim",
+	-- {
+	-- 	"nvim-telescope/telescope-project.nvim",
+	-- 	config = function()
+	-- 		require("project_nvim").setup({})
+	-- 	end,
+	-- },
 	"github/copilot.vim",
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"lukas-reineke/indent-blankline.nvim",
@@ -103,7 +100,6 @@ return require("lazy").setup({
 	"tpope/vim-vinegar",
 	"tpope/vim-dispatch",
 	"tpope/vim-endwise",
-	"tpope/vim-projectionist",
 	"tpope/vim-repeat",
 	"tpope/vim-unimpaired",
 	-- better git blame

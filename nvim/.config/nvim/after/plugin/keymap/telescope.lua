@@ -37,7 +37,7 @@ nnoremap("<leader>ctt", ":TodoTelescope<cr>", silent)
 -- end)
 
 nnoremap("<leader>ps", ":Telescope live_grep previewer=false color=true<cr>")
-
+nnoremap("<leader>pp", ":Telescope projects<cr>", silent)
 nnoremap("<leader>:", function()
 	require("telescope.builtin").command_history()
 end)

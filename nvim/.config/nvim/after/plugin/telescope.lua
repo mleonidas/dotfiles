@@ -1,7 +1,7 @@
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")
-local pkgs = require("telescope").load_extension("project")
+-- local pkgs = require("telescope").load_extension("project")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
@@ -31,7 +31,7 @@ require("telescope").setup({
 
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("luasnip")
-
+-- require("telescope").load_extension("projects")
 local M = {}
 
 local function refactor(prompt_bufnr)

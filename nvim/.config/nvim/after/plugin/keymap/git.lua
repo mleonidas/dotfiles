@@ -25,5 +25,3 @@ end, silent)
 nnoremap("<leader>gwc", function()
 	require("telescope").extensions.git_worktree.create_git_worktree()
 end, silent)
-
--- keymap("n", "<Leader>gs", ":Neogit<CR>", opts)

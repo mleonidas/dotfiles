@@ -1,6 +1,6 @@
 require("tokyonight").setup({
 	priority = 1000,
-	style = "night",
+	style = "storm",
 	lazy = false,
 	styles = {
 		comments = { italic = true },
@@ -42,27 +42,4 @@ require("tokyonight").setup({
 	end,
 })
 
-local palette = require("nordic.colors")
-require("nordic").setup({
-	override = {
-		["@namespace"] = {
-			fg = palette.fg,
-		},
-		TelescopePromptTitle = {
-			fg = palette.red.bright,
-			bg = palette.green.base,
-			italic = true,
-			underline = true,
-			sp = palette.yellow.dim,
-			undercurl = false,
-		},
-	},
-})
-
--- require("onedark").setup({
--- 	style = "warmer",
--- })
-
--- vim.cmd("colorscheme tokyonight")
-vim.cmd("colorscheme catppuccin-macchiato")
--- vim.cmd("colorscheme nordic")
+vim.cmd("colorscheme tokyonight")
