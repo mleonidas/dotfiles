@@ -3,7 +3,6 @@ require("mleonidas.lazy")
 require("mleonidas.statusline")
 require("mleonidas.trim")
 require("mleonidas.term")
-require("mleonidas.worktree")
 
 local augroup = vim.api.nvim_create_augroup
 

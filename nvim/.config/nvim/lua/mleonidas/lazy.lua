@@ -33,7 +33,7 @@ return require("lazy").setup({
 	"averms/black-nvim",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	"mrjones2014/smart-splits.nvim",
-
+    "simrat39/inlay-hints.nvim",
 	{
 		"ray-x/go.nvim",
 		dependencies = { -- optional packages

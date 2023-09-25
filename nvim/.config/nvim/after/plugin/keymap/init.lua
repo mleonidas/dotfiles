@@ -77,6 +77,7 @@ nnoremap("<UP>", "ddkP")
 -- fix the terminal
 tnoremap("<Esc>", "<C-\\><C-n>")
 
+nnoremap("<Leader>tt", ":ToggleTerm<CR>")
 if vim.fn.has("nvim") then
 	nnoremap("<BS>", "<C-W>h")
 end
