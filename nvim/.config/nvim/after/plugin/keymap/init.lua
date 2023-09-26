@@ -15,8 +15,8 @@ local silent = { silent = true }
 keymap("", "<Space>", "<Nop>", opts)
 
 -- Toggle line numbers and paste
-nnoremap("<C-G>", ":set paste norelativenumber nonumber<CR>")
-nnoremap("<C-N>", ":set nopaste relativenumber number<CR>")
+nnoremap("<Leader>tn", ":set paste norelativenumber nonumber<CR>")
+nnoremap("<Leader>tg", ":set nopaste relativenumber number<CR>")
 
 -- Trim trailing whitespace
 nnoremap("<leader>ds", ":lua require('mleonidas.trim').trail()<CR>")
