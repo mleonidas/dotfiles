@@ -33,7 +33,8 @@ return require("lazy").setup({
 	"averms/black-nvim",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	"mrjones2014/smart-splits.nvim",
-    "simrat39/inlay-hints.nvim",
+	"simrat39/inlay-hints.nvim",
+	-- "lvimuser/lsp-inlayhints.nvim",
 	{
 		"ray-x/go.nvim",
 		dependencies = { -- optional packages
@@ -116,7 +117,7 @@ return require("lazy").setup({
 
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
+		branch = "v3.x",
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required

@@ -1,62 +1,9 @@
-local lsp = require("lsp-zero")
+local lsp_zero = require("lsp-zero")
+local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
+local inlays = require("mleonidas.lsp.inlay")
 
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-	"tsserver",
-	"gopls",
-	"terraformls",
-	"pyright",
-	"dockerls",
-	"docker_compose_language_service",
-	"eslint",
-	"cssls",
-	"bufls",
-	"lua_ls",
-	"svelte",
-})
-
--- Fix Undefined global 'vim'
-lsp.configure("lua_ls", {
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
-})
-
-lsp.configure("gopls", {
-	settings = {
-		gopls = {
-			env = { GOFLAGS = "-tags=!windows" },
-		},
-	},
-})
-
-require("lspconfig.configs").crystalline = {
-	default_config = {
-		name = "crystalline",
-		cmd = { "/Users/mleone/.bin/crystalline" },
-		filetypes = { "crystal", "cr" },
-		root_dir = require("lspconfig.util").root_pattern({ "shard.yml" }),
-	},
-}
-
-require("lspconfig").crystalline.setup({})
-
-lsp.set_preferences({
-	suggest_lsp_servers = false,
-	sign_icons = {
-		error = "E",
-		warn = "W",
-		hint = "H",
-		info = "I",
-	},
-})
-
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
@@ -96,7 +43,83 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
-lsp.setup()
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"tsserver",
+		"gopls",
+		"terraformls",
+		"pyright",
+		"dockerls",
+		"docker_compose_language_service",
+		"eslint",
+		"cssls",
+		"bufls",
+		"lua_ls",
+		"svelte",
+	},
+
+	handlers = {
+		lsp_zero.defult_setup,
+	},
+})
+
+-- Fix Undefined global 'vim'
+lspconfig.lua_ls.setup({
+	capabilities = lsp_capabilities,
+	settings = {
+		Lua = {
+			hint = {
+				enable = true,
+			},
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
+
+lspconfig.gopls.setup({
+	capabilities = lsp_capabilities,
+	settings = {
+		gopls = {
+			env = { GOFLAGS = "-tags=!windows" },
+			codelenses = { test = true },
+			hints = inlays and {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			} or nil,
+		},
+	},
+})
+
+require("lspconfig.configs").crystalline = {
+	default_config = {
+		name = "crystalline",
+		cmd = { "/Users/mleone/.bin/crystalline" },
+		filetypes = { "crystal", "cr" },
+		root_dir = require("lspconfig.util").root_pattern({ "shard.yml" }),
+	},
+}
+
+require("lspconfig").crystalline.setup({})
+
+lsp_zero.set_preferences({
+	suggest_lsp_servers = false,
+	sign_icons = {
+		error = "E",
+		warn = "W",
+		hint = "H",
+		info = "I",
+	},
+})
+
+lsp_zero.setup()
 
 local rt = require("rust-tools")
 
