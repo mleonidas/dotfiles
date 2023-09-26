@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+#
+# zellij-swap
+#  Swap sessions in zellij
+#
+
+session=$(zellij sessions | fzf  --layout=reverse --prompt="Swap session: " | awk '{print $1}')
+
+if [ -n "$session" ]; then
+    zellij swap-session "$session"
+fi

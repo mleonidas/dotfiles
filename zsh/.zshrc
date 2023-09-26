@@ -28,6 +28,8 @@ export PATH="$HOME/.bin:$PATH"
 source ~/.private_env
 
 alias av='ansible-vault edit --vault-password-file=~/.vault_pass.txt'
+alias zellij='zellij --config-dir ~/.config/zellij'
+alias new-tab='~/.bin/new-tab'
 alias j='z'
 
 
@@ -36,16 +38,16 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
-zplug "/zdharma-continuum/fast-syntax-highlighting"
+zplug "zdharma-continuum/fast-syntax-highlighting"
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+
 zplug load --verbose
 
 
 # alias dircolors='gdircolors'
 
-# source $DOTFILES_PATH/.zsh/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh
 source $DOTFILES_PATH/.zsh/history.zsh
 source $DOTFILES_PATH/.zsh/functions.zsh
-source $DOTFILES_PATH/.zsh/async.zsh
 source $DOTFILES_PATH/.zsh/aliases.zsh
 
 if command -v fasd >/dev/null 2>&1; then
@@ -57,7 +59,7 @@ fi
 bindkey -e
 bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit
-bindkey -s "^L" 'sesh^M'
+# bindkey -s "^L" 'zellij-sesh^M'
 
 
 
@@ -112,6 +114,6 @@ listening() {
 
 command -v timoni >/dev/null && . <(timoni completion zsh) && compdef _timoni timoni
 
-eval $(op signin --account thedtxcompany.1password.com)
+# eval $(op signin --account thedtxcompany.1password.com)
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g

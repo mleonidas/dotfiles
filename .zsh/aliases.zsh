@@ -5,7 +5,7 @@ alias vim="TERM=wezterm nvim"
 alias dm=docker-machine
 alias grep='grep --color'
 
-alias tmux='tmux -2'
+# alias tmux='tmux -2'
 
 # git aliases
 alias gitpp='git pull --prune --all'

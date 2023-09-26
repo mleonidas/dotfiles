@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+REPO_PATH="${HOME}/Documents/repos"
+
+export selected=$(find  $HOME $REPO_PATH/personal $REPO_PATH/work -mindepth 1 -maxdepth 1 -type d|fzf --reverse)
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+zellij_running=$(pgrep zellij)
+
+if [[ -z $ZELLIJ ]] && [[ -z $zellij_running ]]; then
+    zellij -s $selected_name
+    exit 0
+fi
+
+
+if zellij list-sessions| grep $selected_name 2> /dev/null; then
+    echo "already exists attaching to it"
+    zellij attach -c $selected_name
+fi
