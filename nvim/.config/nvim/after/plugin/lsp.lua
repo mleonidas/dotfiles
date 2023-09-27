@@ -1,7 +1,6 @@
 local lsp_zero = require("lsp-zero")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
-local inlays = require("mleonidas.lsp.inlay")
 
 lsp_zero.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
@@ -85,15 +84,15 @@ lspconfig.gopls.setup({
 		gopls = {
 			env = { GOFLAGS = "-tags=!windows" },
 			codelenses = { test = true },
-			hints = inlays and {
+			hints = {
 				assignVariableTypes = true,
 				compositeLiteralFields = true,
 				compositeLiteralTypes = true,
 				constantValues = true,
-				functionTypeParameters = true,
+				functionTypeParameters = false,
 				parameterNames = true,
-				rangeVariableTypes = true,
-			} or nil,
+				rangeVariableTypes = false,
+			},
 		},
 	},
 })
