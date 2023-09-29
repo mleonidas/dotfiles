@@ -84,15 +84,15 @@ lspconfig.gopls.setup({
 		gopls = {
 			env = { GOFLAGS = "-tags=!windows" },
 			codelenses = { test = true },
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
-				functionTypeParameters = false,
-				parameterNames = true,
-				rangeVariableTypes = false,
-			},
+			-- hints = {
+			-- 	assignVariableTypes = true,
+			-- 	compositeLiteralFields = true,
+			-- 	compositeLiteralTypes = true,
+			-- 	constantValues = true,
+			-- 	functionTypeParameters = false,
+			-- 	parameterNames = true,
+			-- 	rangeVariableTypes = false,
+			-- },
 		},
 	},
 })
