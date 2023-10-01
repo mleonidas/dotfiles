@@ -14,7 +14,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 export LS_COLORS=$(vivid generate tokyonight)
-export LS_COLORS=$(vivid generate solarized-dark)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
