@@ -2,7 +2,7 @@
 
 REPO_PATH="${HOME}/Documents/repos"
 
-export selected=$(find  $HOME $REPO_PATH/personal $REPO_PATH/work -mindepth 1 -maxdepth 2 -type d|fzf --reverse)
+export selected=$(find  $HOME $REPO_PATH/personal $REPO_PATH/work -mindepth 1 -maxdepth 1 -type d|fzf --reverse)
 
 echo $selected
 

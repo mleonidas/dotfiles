@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+zellij --config ~/.config/zellij/config.kdl action new-tab --name center --layout ~/.config/zellij/layouts/stacked.kdl

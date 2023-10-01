@@ -188,6 +188,7 @@ plugins {
     strider { path "strider"; }
     compact-bar { path "compact-bar"; }
     session-manager { path "session-manager"; }
+    zellij-bar { path "/Users/mleone/.config/zellij/plugins/zellij-bar.wasm"; }
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
@@ -208,7 +209,7 @@ simplified_ui true
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
-default_shell "zsh"
+default_shell "fish"
 
 // Choose the path to override cwd that zellij will use for opening new panes
 //
@@ -313,7 +314,7 @@ theme "tokyo-night-storm"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-// default_layout "compact"
+// default_layout "neovim"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal

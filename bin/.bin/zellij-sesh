@@ -1,23 +1,47 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-REPO_PATH="${HOME}/Documents/repos"
 
-export selected=$(find  $HOME $REPO_PATH/personal $REPO_PATH/work -mindepth 1 -maxdepth 1 -type d|fzf --reverse)
+export REPO_PATH="$HOME/Documents/repos"
+paths="$REPO_PATH/personal $REPO_PATH/work"
 
-if [[ -z $selected ]]; then
-    exit 0
+if [[ -z $paths ]]; then
+	echo "No paths were specified, usage: ./zellij-sessionizer path1 path2 etc.."
+	exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-zellij_running=$(pgrep zellij)
-
-if [[ -z $ZELLIJ ]] && [[ -z $zellij_running ]]; then
-    zellij -s $selected_name
-    exit 0
+# Check whether the machine has fd available
+if [ -x "$(command -v fd)" ]; then
+	selected_path=$(fd . $paths --min-depth 1 --max-depth 2 --type d | fzf)
+else
+	# defer to find if not
+	selected_path=$(find $paths -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
-
-if zellij list-sessions| grep $selected_name 2> /dev/null; then
-    echo "already exists attaching to it"
-    zellij attach -c $selected_name
+# If nothing was picked, silently exit
+if [[ -z $selected_path ]]; then
+	exit 0
 fi
+
+# If no directory was selected, exit the script
+if [[ -z $selected_path ]]; then
+	exit 0
+fi
+
+# Get the name of the selected directory, replacing "." with "_"
+session_name=$(basename "$selected_path" | tr . _)
+
+# We're outside of zellij, so lets create a new session or attach to a new one.
+if [[ -z $ZELLIJ ]]; then
+	cd $selected_path
+
+  # -c will make zellij to either create a new session or to attach into an existing one
+	zellij attach $session_name -c
+	exit 0
+fi
+
+# We're inside zellij so we'll open a new pane and move into the selected directory
+zellij action new-pane
+
+# Hopefully they'll someday support specifying a directory and this won't be as laggy
+# thanks to @msirringhaus for getting this from the community some time ago!
+zellij action write-chars "cd $selected_path" && zellij action write 10
