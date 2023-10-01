@@ -2,8 +2,6 @@
 # # load prompt
 autoload -U promptinit; promptinit
 
-source ~/.antigen/antigen.zsh
-
 export GOPATH="$HOME/go"
 export GOROOT="$HOME/.go"
 # User configuration
@@ -25,11 +23,6 @@ source ~/.private_env
 alias zellij='zellij --config-dir ~/.config/zellij'
 alias j='z'
 
-# load plugins
-antigen bundle "zsh-users/zsh-autosuggestions"
-antigen bundle "zsh-users/zsh-history-substring-search"
-antigen bundle "zsh-users/zsh-syntax-highlighting"
-antigen apply
 
 export DOTFILES_PATH="$HOME/.dotfiles"
 source $DOTFILES_PATH/.zsh/history.zsh
@@ -40,22 +33,6 @@ if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
 fi
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
-
-typeset -A ZSH_HIGHLIGHT_STYLES
-
-# To differentiate aliases from other command types
-ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[arguments]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue,bold'
-
-# To have paths colored instead of underlined
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-
-# To disable highlighting of globbing expressions
-ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
 
 # set vi mode
@@ -65,8 +42,6 @@ bindkey '^Q' push-line-or-edit
 bindkey -s "^L" 'sesh^M'
 
 
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
 
 # if command -v pyenv 1>/dev/null 2>&1; then
 #     eval "$(pyenv init -)"
@@ -80,9 +55,6 @@ fi
 export NVM_LAZY_LOAD=true
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
-
-
-
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
@@ -106,13 +78,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 fpath=(~/.zsh/completion $fpath)
 
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
-
 listening() {
     if [ $# -eq 0 ]; then
         sudo lsof -iTCP -sTCP:LISTEN -n -P
@@ -124,3 +89,56 @@ listening() {
 }
 
 # eval $(op signin --account thedtxcompany.1password.com)
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+# load plugins
+zi light "zsh-users/zsh-autosuggestions"
+zi light "zsh-users/zsh-history-substring-search"
+zi light "zsh-users/zsh-syntax-highlighting"
+### End of Zinit's installer chunk
+
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# To differentiate aliases from other command types
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[arguments]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue,bold'
+
+# To have paths colored instead of underlined
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+
+# To disable highlighting of globbing expressions
+ZSH_HIGHLIGHT_STYLES[globbing]='none'
+
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+zi cdreplay -q
