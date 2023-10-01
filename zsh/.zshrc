@@ -1,7 +1,6 @@
 # # Fig pre block. Keep at the top of this file.
 # # load prompt
 autoload -U promptinit; promptinit
-
 export GOPATH="$HOME/go"
 export GOROOT="$HOME/.go"
 # User configuration
@@ -15,14 +14,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 export LS_COLORS=$(vivid generate tokyonight)
-# export LS_COLORS=$(vivid generate solarized-dark)
+export LS_COLORS=$(vivid generate solarized-dark)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
 source ~/.private_env
-alias zellij='zellij --config-dir ~/.config/zellij'
-alias j='z'
-
 
 export DOTFILES_PATH="$HOME/.dotfiles"
 source $DOTFILES_PATH/.zsh/history.zsh
@@ -33,15 +29,11 @@ if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
 fi
 
-
-
 # set vi mode
 bindkey -e
 bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit
 bindkey -s "^L" 'sesh^M'
-
-
 
 # if command -v pyenv 1>/dev/null 2>&1; then
 #     eval "$(pyenv init -)"
@@ -62,21 +54,15 @@ zmodload zsh/complist
 
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mleone/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/mleone/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mleone/google-cloud-sdk/completion.zsh.inc'; fi
-
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
+
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-fpath=(~/.zsh/completion $fpath)
+fpath=(~/.zsh/completion $(brew --prefix)/share/zsh/site-functions $fpath)
 
 listening() {
     if [ $# -eq 0 ]; then
@@ -117,22 +103,15 @@ zi light "zsh-users/zsh-history-substring-search"
 zi light "zsh-users/zsh-syntax-highlighting"
 ### End of Zinit's installer chunk
 
-
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
-
 typeset -A ZSH_HIGHLIGHT_STYLES
-
 # To differentiate aliases from other command types
-ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[arguments]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=135,bold'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue,bold'
-
-# To have paths colored instead of underlined
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-
-# To disable highlighting of globbing expressions
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
 autoload -Uz compinit
