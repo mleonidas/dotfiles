@@ -35,18 +35,10 @@ bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit
 bindkey -s "^L" 'sesh^M'
 
-# if command -v pyenv 1>/dev/null 2>&1; then
-#     eval "$(pyenv init -)"
-#     eval "$(pyenv virtualenv-init -)"
-# fi
-
 if command -v zoxide 1>/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
 fi
 
-export NVM_LAZY_LOAD=true
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select

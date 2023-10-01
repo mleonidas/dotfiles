@@ -37,6 +37,18 @@ function kubectl() {
     command kubectl "$@"
 }
 
+function nvm() {
+    export NVM_DIR=~/.nvm
+    source $(brew --prefix nvm)/nvm.sh
+}
+
+function pyenv() {
+    if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    fi
+}
+
 # alias shortcut to lazy loaded function
 alias k=kubectl
 
