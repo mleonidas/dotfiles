@@ -100,7 +100,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[alias]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[arguments]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=135,bold'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=5,bold'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
