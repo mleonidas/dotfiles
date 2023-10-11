@@ -14,6 +14,8 @@ local parsers_to_install = {
 	"ruby",
 	"sql",
 	"graphql",
+	"markdown",
+	"markdown_inline",
 	"go",
 	"rust",
 	"cue",
@@ -56,7 +58,6 @@ ts_configs.setup({
 		enable = true, -- false will disable the whole extension
 		disable = { "c" }, -- list of language that will be disabled
 	},
-
 	playground = {
 		enable = true,
 		disable = {},
@@ -77,14 +78,14 @@ ts_configs.setup({
 	},
 })
 
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.authzed = {
-	install_info = {
-		url = "/Users/mleone/Documents/repos/personal/tree-sitter-authzed", -- local path or git repo
-		files = { "src/parser.c" },
-		generate_requires_npm = false,
-		requires_generate_from_grammar = false,
-		-- optional entries:
-	},
-	filetype = "zed", -- if filetype does not match the parser name
-}
+-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+-- parser_config.zed = {
+-- 	install_info = {
+-- 		url = "/Users/mleone/Documents/repos/personal/tree-sitter-authzed", -- local path or git repo
+-- 		files = { "src/parser.c" },
+-- 		generate_requires_npm = false,
+-- 		requires_generate_from_grammar = false,
+-- 		-- optional entries:
+-- 	},
+-- 	filetype = "authzed", -- if filetype does not match the parser name
+-- }

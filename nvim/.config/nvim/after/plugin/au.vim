@@ -1,7 +1,7 @@
-augroup Authzed
-  au!
-  autocmd BufNewFile,BufRead *.zed set ft=zed
-augroup END
+" augroup Authzed
+"   au!
+"   autocmd BufNewFile,BufRead *.zed set ft=zed
+" augroup END
 
 " augroup LspBuf
 "   au!

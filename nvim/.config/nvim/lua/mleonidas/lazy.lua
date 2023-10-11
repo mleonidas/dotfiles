@@ -109,7 +109,6 @@ return require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
-			opt = true,
 		},
 	},
 	{
@@ -196,13 +195,11 @@ return require("lazy").setup({
 		"mfussenegger/nvim-dap",
 	} },
 	"sebdah/vim-delve",
-
 	"folke/todo-comments.nvim",
 	{
 		"mleonidas/formatter.nvim",
 		branch = "mleonidas/add-buf-support",
 	},
-
 	-- Github integration
 	"pwntester/octo.nvim",
 })

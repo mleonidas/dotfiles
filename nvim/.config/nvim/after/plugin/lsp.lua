@@ -63,6 +63,10 @@ require("mason-lspconfig").setup({
 	},
 })
 
+lspconfig.tsserver.setup({
+	capabilities = lsp_capabilities,
+})
+
 -- Fix Undefined global 'vim'
 lspconfig.lua_ls.setup({
 	capabilities = lsp_capabilities,
