@@ -42,6 +42,20 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
+lsp_zero.set_preferences({
+	suggest_lsp_servers = false,
+	sign_icons = {
+		error = "E",
+		warn = "W",
+		hint = "H",
+		info = "I",
+	},
+})
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = false,
+})
+
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -64,6 +78,10 @@ require("mason-lspconfig").setup({
 })
 
 lspconfig.tsserver.setup({
+	capabilities = lsp_capabilities,
+})
+
+lspconfig.pyright.setup({
 	capabilities = lsp_capabilities,
 })
 
@@ -111,18 +129,6 @@ require("lspconfig.configs").crystalline = {
 }
 
 require("lspconfig").crystalline.setup({})
-
-lsp_zero.set_preferences({
-	suggest_lsp_servers = false,
-	sign_icons = {
-		error = "E",
-		warn = "W",
-		hint = "H",
-		info = "I",
-	},
-})
-
-lsp_zero.setup()
 
 local rt = require("rust-tools")
 
@@ -193,6 +199,10 @@ cmp.setup({
 		-- { name = "cmp_tabnine", keyword_length = 3 },
 	},
 	mapping = cmp_mappings,
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 })
 
 cmp.setup.cmdline(":", {
