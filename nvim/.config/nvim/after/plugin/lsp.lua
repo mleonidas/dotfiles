@@ -42,19 +42,18 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
-lsp_zero.set_preferences({
-	suggest_lsp_servers = false,
-	sign_icons = {
-		error = "E",
-		warn = "W",
-		hint = "H",
-		info = "I",
-	},
-})
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = false,
+	underline = true,
+	update_in_insert = true,
+	severity_sort = true,
 })
+
+local signs = { Error = "", Warn = " ", Hint = "", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -129,9 +128,7 @@ require("lspconfig.configs").crystalline = {
 }
 
 require("lspconfig").crystalline.setup({})
-
 local rt = require("rust-tools")
-
 rt.setup({
 	server = {
 		on_attach = function(client, bufnr)
@@ -147,15 +144,15 @@ rt.setup({
 
 require("rust-tools").inlay_hints.enable()
 
-local signconfig = {
-	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = true,
-	severity_sort = true,
-}
-
-vim.diagnostic.config(signconfig)
+-- local signconfig = {
+-- 	virtual_text = false,
+-- 	signs = true,
+-- 	underline = true,
+-- 	update_in_insert = true,
+-- 	severity_sort = true,
+-- }
+--
+-- vim.diagnostic.config(signconfig)
 
 -- require("tabnine").setup({
 -- 	disable_auto_comment = true,
