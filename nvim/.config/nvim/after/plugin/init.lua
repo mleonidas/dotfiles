@@ -16,3 +16,7 @@ require("git-worktree").setup({
 	autopush = false,
 	clearjumps_on_change = true,
 })
+
+require("gitblame").setup({
+	enabled = false,
+})
