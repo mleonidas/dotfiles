@@ -23,6 +23,7 @@ return require("lazy").setup({
 	"folke/tokyonight.nvim",
 	"nvim-telescope/telescope.nvim",
 	"benfowler/telescope-luasnip.nvim",
+	"oxfist/night-owl.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
 	"christoomey/vim-tmux-navigator",
@@ -154,7 +155,43 @@ return require("lazy").setup({
 		dependencies = "nvim-lua/plenary.nvim",
 	},
 
-	"folke/trouble.nvim",
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
 
 	-- Primeagen doesn"t create lodash
 	"ThePrimeagen/git-worktree.nvim",
@@ -200,6 +237,4 @@ return require("lazy").setup({
 		"mleonidas/formatter.nvim",
 		branch = "mleonidas/add-buf-support",
 	},
-	-- Github integration
-	"pwntester/octo.nvim",
 })

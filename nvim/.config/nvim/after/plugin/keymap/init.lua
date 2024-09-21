@@ -71,8 +71,8 @@ nnoremap("<Leader><", require("smart-splits").resize_left)
 nnoremap("<Leader>>", require("smart-splits").resize_right)
 nnoremap("<Leader>rp", ":resize 100<CR>")
 
-nnoremap("<DOWN>", "ddp")
-nnoremap("<UP>", "ddkP")
+-- nnoremap("<DOWN>", "ddp")
+-- nnoremap("<UP>", "ddkP")
 
 -- fix the terminal
 tnoremap("<Esc>", "<C-\\><C-n>")

@@ -56,9 +56,10 @@ for type, icon in pairs(signs) do
 end
 
 require("mason").setup({})
+
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"tsserver",
+		"ts_ls",
 		"gopls",
 		"terraformls",
 		"pyright",
@@ -69,6 +70,7 @@ require("mason-lspconfig").setup({
 		"bufls",
 		"lua_ls",
 		"svelte",
+		"zls",
 	},
 
 	handlers = {
@@ -76,13 +78,32 @@ require("mason-lspconfig").setup({
 	},
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
 	capabilities = lsp_capabilities,
 })
+
+lspconfig.svelte.setup({
+	capabilities = lsp_capabilities,
+})
+
+-- require'lspconfig'.svelte.setup {
+--   on_attach = function(client)
+--     vim.api.nvim_create_autocmd("BufWritePost", {
+--       pattern = { "*.js", "*.ts" },
+--       callback = function(ctx)
+--         client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+--       end,
+--     })
+--   end
+-- }
 
 lspconfig.pyright.setup({
 	capabilities = lsp_capabilities,
 })
+
+lspconfig.zls.setup({})
+
+lspconfig.gleam.setup({})
 
 -- Fix Undefined global 'vim'
 lspconfig.lua_ls.setup({
@@ -104,6 +125,9 @@ lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			env = { GOFLAGS = "-tags=!windows" },
+			-- analyses = {
+			-- 	fieldalignment = true,
+			-- },
 			codelenses = { test = true },
 			-- hints = {
 			-- 	assignVariableTypes = true,
@@ -118,31 +142,31 @@ lspconfig.gopls.setup({
 	},
 })
 
-require("lspconfig.configs").crystalline = {
-	default_config = {
-		name = "crystalline",
-		cmd = { "/Users/mleone/.bin/crystalline" },
-		filetypes = { "crystal", "cr" },
-		root_dir = require("lspconfig.util").root_pattern({ "shard.yml" }),
-	},
-}
+-- require("lspconfig.configs").crystalline = {
+-- 	default_config = {
+-- 		name = "crystalline",
+-- 		cmd = { "/Users/mleone/.bin/crystalline" },
+-- 		filetypes = { "crystal", "cr" },
+-- 		root_dir = require("lspconfig.util").root_pattern({ "shard.yml" }),
+-- 	},
+-- }
 
-require("lspconfig").crystalline.setup({})
-local rt = require("rust-tools")
-rt.setup({
-	server = {
-		on_attach = function(client, bufnr)
-			-- turn off semanticTokens
-			client.server_capabilities.semanticTokensProvider = nil
-			-- Hover actions
-			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-			-- Code action groups
-			vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-		end,
-	},
-})
+-- require("lspconfig").crystalline.setup({})
+-- local rt = require("rust-tools")
+-- rt.setup({
+-- 	server = {
+-- 		on_attach = function(client, bufnr)
+-- 			-- turn off semanticTokens
+-- 			client.server_capabilities.semanticTokensProvider = nil
+-- 			-- Hover actions
+-- 			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+-- 			-- Code action groups
+-- 			vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+-- 		end,
+-- 	},
+-- })
 
-require("rust-tools").inlay_hints.enable()
+-- require("rust-tools").inlay_hints.enable()
 
 -- local signconfig = {
 -- 	virtual_text = false,
