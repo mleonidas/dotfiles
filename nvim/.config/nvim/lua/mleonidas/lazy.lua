@@ -17,18 +17,19 @@ return require("lazy").setup({
 	"chrisbra/Colorizer",
 	-- better whitespace ? TODO(mleonidas): rewrite in lua
 	"ntpeters/vim-better-whitespace",
-	-- TJ created lodash of neovim
-	"nvim-lua/plenary.nvim",
-	"nvim-lua/popup.nvim",
 	"folke/tokyonight.nvim",
-	"nvim-telescope/telescope.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/popup.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	"benfowler/telescope-luasnip.nvim",
-	"oxfist/night-owl.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
 	"christoomey/vim-tmux-navigator",
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-	"navarasu/onedark.nvim",
 	"tmux-plugins/vim-tmux",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	"averms/black-nvim",
@@ -75,17 +76,14 @@ return require("lazy").setup({
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
 	"vim-crystal/vim-crystal",
-	-- "ahmedkhalf/project.nvim",
-	-- {
-	-- 	"nvim-telescope/telescope-project.nvim",
-	-- 	config = function()
-	-- 		require("project_nvim").setup({})
-	-- 	end,
-	-- },
-	"github/copilot.vim",
-	{ "rose-pine/neovim", name = "rose-pine" },
+	-- "github/copilot.vim",
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
+	},
 	"lukas-reineke/indent-blankline.nvim",
-
 	{
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -228,8 +226,10 @@ return require("lazy").setup({
 	"romgrk/nvim-treesitter-context",
 
 	"leoluz/nvim-dap-go",
+	"ldelossa/nvim-dap-projects",
 	{ "rcarriga/nvim-dap-ui", dependencies = {
 		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
 	} },
 	"sebdah/vim-delve",
 	"folke/todo-comments.nvim",

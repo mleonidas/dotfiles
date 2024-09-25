@@ -19,3 +19,5 @@ require("git-worktree").setup({
 require("gitblame").setup({
 	enabled = false,
 })
+
+require("nvim-dap-projects").search_project_config()

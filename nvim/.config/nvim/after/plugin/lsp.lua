@@ -215,6 +215,7 @@ cmp.setup({
 		{ name = "luasnip", keyword_length = 2 },
 		{ name = "nvim_lsp", keyword_length = 3 },
 		{ name = "buffer", keyword_length = 3 },
+		{ name = "supermaven", keyword_length = 3 },
 		-- { name = "copilot", keyword_length = 2 },
 
 		-- { name = "cmp_tabnine", keyword_length = 3 },

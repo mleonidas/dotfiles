@@ -21,7 +21,7 @@ vim.opt.undofile = true
 
 vim.opt.colorcolumn = "100"
 
-vim.opt.mouse = "v"
+vim.opt.mouse = "n"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
