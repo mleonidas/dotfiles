@@ -70,6 +70,7 @@ nnoremap("<Leader>_", require("smart-splits").resize_down)
 nnoremap("<Leader><", require("smart-splits").resize_left)
 nnoremap("<Leader>>", require("smart-splits").resize_right)
 nnoremap("<Leader>rp", ":resize 100<CR>")
+nnoremap("<Leader>o", "<cmd>Telescope neoclip<CR>")
 
 -- nnoremap("<DOWN>", "ddp")
 -- nnoremap("<UP>", "ddkP")
