@@ -34,7 +34,10 @@
 
 [core]
     editor = nvim
-	excludesFile = ~/.gitignore
-	pager = less -FX
+    excludesFile = ~/.gitignore
+    pager = less -FX
+    commentChar = "#"
 [pull]
-	rebase = false
+    rebase = true
+[commit]
+    template = /Users/mleone/.dotfiles/templates/commit.txt

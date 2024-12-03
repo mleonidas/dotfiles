@@ -20,10 +20,12 @@ end
 config.bidi_enabled = true
 config.bidi_direction = "AutoLeftToRight"
 config.color_scheme = "tokyonight_storm"
+config.term = "wezterm"
 -- config.color_scheme = "nordfox"
 -- config.color_scheme = 'Nord (Gogh)'
 
 config.font = wezterm.font("Liga SFMono Nerd Font", { weight = "Regular", stretch = "Normal" })
+-- config.font = wezterm.font("Comic Mono", { weight = "Regular", stretch = "Normal" })
 -- config.font = wezterm.font_with_fallback({
 -- 	{
 -- 		family = "CaskaydiaCove Nerd Font",

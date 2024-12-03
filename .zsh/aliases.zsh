@@ -1,7 +1,8 @@
 # common aliases
 alias ssh='ssh -A'
 alias more='less'
-alias vim="TERM=wezterm nvim"
+alias vim="/opt/homebrew/bin/nvim"
+# alias vim="TERM=wezterm nvim"
 alias dm=docker-machine
 alias grep='grep --color'
 
