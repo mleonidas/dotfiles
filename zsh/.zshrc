@@ -2,7 +2,6 @@
 # # load prompt
 autoload -U promptinit; promptinit
 export GOPATH="$HOME/go"
-export GOROOT="$HOME/.go"
 # User configuration
 export PATH="$GOPATH/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 export EDITOR="nvim"
@@ -13,7 +12,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
-export LS_COLORS=$(vivid generate tokyonight)
+export LS_COLORS=$(vivid generate tokyonight-storm)
 export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
@@ -112,3 +111,7 @@ else
   compinit -C
 fi
 zi cdreplay -q
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

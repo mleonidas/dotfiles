@@ -38,6 +38,6 @@
     pager = less -FX
     commentChar = "#"
 [pull]
-    rebase = true
+    rebase = false
 [commit]
     template = /Users/mleone/.dotfiles/templates/commit.txt
