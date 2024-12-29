@@ -233,10 +233,7 @@ return require("lazy").setup({
 	} },
 	"sebdah/vim-delve",
 	"folke/todo-comments.nvim",
-	{
-		"mleonidas/formatter.nvim",
-		branch = "mleonidas/add-buf-support",
-	},
+	"mhartington/formatter.nvim",
 	{
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {

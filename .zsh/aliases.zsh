@@ -21,6 +21,10 @@ alias glo="git log --pretty=oneline --abbrev-commit"
 alias lg='lazygit'
 
 
+# psqlconnect
+alias pgc='psqlconnect'
+
+# kubectl aliases
 alias k9s='XDG_CONFIG_HOME=~/.config k9s'
 alias zellij='zellij --config-dir ~/.config/zellij'
 

@@ -67,7 +67,7 @@ require("mason-lspconfig").setup({
 		"docker_compose_language_service",
 		"eslint",
 		"cssls",
-		"bufls",
+        "buf_ls",
 		"lua_ls",
 		"svelte",
 		"zls",
@@ -119,6 +119,8 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+lspconfig.buf_ls.setup{}
 
 lspconfig.gopls.setup({
 	capabilities = lsp_capabilities,
