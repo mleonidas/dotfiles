@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
 	-- show hex colors
-	"chrisbra/Colorizer",
+	"norcalli/nvim-colorizer.lua",
 	-- better whitespace ? TODO(mleonidas): rewrite in lua
 	"ntpeters/vim-better-whitespace",
 	"folke/tokyonight.nvim",

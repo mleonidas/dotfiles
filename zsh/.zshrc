@@ -1,13 +1,16 @@
 # # Fig pre block. Keep at the top of this file.
 # # load prompt
 autoload -U promptinit; promptinit
+autoload -Uz compinit
+compinit
+
 export GOPATH="$HOME/go"
 # User configuration
 export PATH="$GOPATH/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 export EDITOR="nvim"
 # export CLICOLOR=1
 export GREP_COLOR=33
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -17,7 +20,7 @@ export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
 source ~/.private_env
-
+source <(fx --comp zsh)
 export DOTFILES_PATH="$HOME/.dotfiles"
 source $DOTFILES_PATH/.zsh/history.zsh
 source $DOTFILES_PATH/.zsh/functions.zsh
@@ -25,6 +28,10 @@ source $DOTFILES_PATH/.zsh/aliases.zsh
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
+fi
+
+if command -v fuck >/dev/null 2>&1; then
+  eval $(thefuck --alias)
 fi
 
 # set vi mode

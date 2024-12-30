@@ -1,0 +1,13 @@
+theme = "tokyonight-storm"
+macos-non-native-fullscreen = true
+# font-family = "Geist Mono"
+font-family = "Liga SFMono Nerd Font"
+font-size = 13
+adjust-cell-height = 20%
+
+
+cursor-style = bar
+cursor-style-blink = true
+shell-integration-features = true
+window-padding-color = background
+# vim: ft=toml

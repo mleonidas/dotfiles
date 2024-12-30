@@ -21,3 +21,5 @@ require("gitblame").setup({
 })
 
 require("nvim-dap-projects").search_project_config()
+
+require('colorizer').setup()

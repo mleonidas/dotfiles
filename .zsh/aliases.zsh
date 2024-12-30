@@ -1,6 +1,7 @@
 # common aliases
 alias ssh='ssh -A'
 alias more='less'
+alias cat='bat'
 alias vim="/opt/homebrew/bin/nvim"
 # alias vim="TERM=wezterm nvim"
 alias dm=docker-machine
@@ -22,7 +23,7 @@ alias lg='lazygit'
 
 
 # psqlconnect
-alias pgc='psqlconnect'
+alias pgc='TERM=screen-256color psqlconnect'
 
 # kubectl aliases
 alias k9s='XDG_CONFIG_HOME=~/.config k9s'
