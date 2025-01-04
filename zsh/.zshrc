@@ -119,8 +119,13 @@ else
 fi
 zi cdreplay -q
 
+if [ -f "${HOME}/.g/env" ]; then
+    . "${HOME}/.g/env"
+fi
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [[ -s "/Users/mleone/.gvm/scripts/gvm" ]] && source "/Users/mleone/.gvm/scripts/gvm"
+
+[ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
