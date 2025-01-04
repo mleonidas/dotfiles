@@ -1,15 +1,13 @@
-export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
+export HISTSIZE=999999999
 export HISTFILE=~/.zsh_history
 export HISTTIMEFORMAT="[%F %T] "
+export SAVEHIST=$HISTSIZE
 
 
-setopt INC_APPEND_HISTORY     # Immediately append to history file.
-setopt EXTENDED_HISTORY       # Record timestamp in history.
-setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS       # Dont record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE      # Dont record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS      # Dont write duplicate entries in the history file.
-setopt SHARE_HISTORY          # Share history between all sessions.
+## History command configuration
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
