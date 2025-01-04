@@ -84,14 +84,27 @@ symbol = ""
 style_user = "dimmed blue"
 show_always = false
 
+
+
+# [kubernetes]
+# format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
+# disabled = false
+# contexts = [
+#   { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+# ]
+
 [kubernetes]
-format = '[\[$context[\($namespace\)](bold purple)\]]($style) '
-style = "cyan"
 disabled = false
+style = "purple"
+format = '[$context]($style)[\($namespace\)](purple) '
 
 
-[kubernetes.context_aliases]
-".*arn:aws:eks:(?P<region>\\w+-\\w+-\\d):(?P<account>\\d+):cluster/(?P<cluster_name>\\w+-\\w+).*" = "$region:$account:$cluster_name"
+[[kubernetes.contexts]]
+# context_pattern = ".*arn:aws:eks:(?P<region>\\w+-\\w+-\\d):(?P<account>\\d+):cluster/(?P<cluster_name>\\w+-\\w+).*"
+# context_alias = '$region:$account:$cluster_name'
+context_pattern = '^(?P<cluster_name>[^\s]+)\s+-\s+(?P<user>[^\s]+)\s+-\s+(?P<account>[^\s]+)\s+-\s+(?P<region>[^\s]+)$'
+context_alias = "$region:$cluster_name"
+style = "cyan"
 
 
 [time]
