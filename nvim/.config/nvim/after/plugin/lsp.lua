@@ -65,9 +65,10 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"dockerls",
 		"docker_compose_language_service",
+		"bashls",
 		"eslint",
 		"cssls",
-        "buf_ls",
+		"buf_ls",
 		"lua_ls",
 		"svelte",
 		"zls",
@@ -85,6 +86,7 @@ lspconfig.ts_ls.setup({
 lspconfig.svelte.setup({
 	capabilities = lsp_capabilities,
 })
+lspconfig.bashls.setup({})
 
 -- require'lspconfig'.svelte.setup {
 --   on_attach = function(client)
@@ -120,7 +122,7 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-lspconfig.buf_ls.setup{}
+lspconfig.buf_ls.setup({})
 
 lspconfig.gopls.setup({
 	capabilities = lsp_capabilities,
