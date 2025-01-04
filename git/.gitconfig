@@ -1,6 +1,7 @@
 [user]
 	name = Michael Leone
 	email = mleone896@gmail.com
+    signingkey = 4A29FDF31CF12D2F
 [includeIf "gitdir:~/Documents/repos/work/"]
     path = .gitconfig-work
 
@@ -42,3 +43,6 @@
     rebase = false
 [commit]
     template = /Users/mleone/.dotfiles/templates/commit.txt
+    gpgsign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
