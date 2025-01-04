@@ -1,7 +1,8 @@
+[user]
+	name = Michael Leone
+	email = mleone896@gmail.com
 [includeIf "gitdir:~/Documents/repos/work/"]
     path = .gitconfig-work
-[includeIf "gitdir:~/Documents/repos/personal/"]
-    path = .gitconfig-personal
 
 [color]
   ui = true
