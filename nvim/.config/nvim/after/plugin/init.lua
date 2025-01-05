@@ -8,6 +8,8 @@ require("todo-comments").setup({
 	signs = false,
 })
 
+require("smart-splits").setup()
+
 require("git-worktree").setup({
 	change_directory_command = "cd",
 	update_on_change = true, -- default: true,
@@ -22,4 +24,4 @@ require("gitblame").setup({
 
 require("nvim-dap-projects").search_project_config()
 
-require('colorizer').setup()
+require("colorizer").setup()

@@ -64,9 +64,15 @@ xnoremap("<leader>p", '"_dP')
 nnoremap("<leader>y", '"+y')
 vnoremap("<leader>y", '"+y')
 
-nnoremap("<A-r>", ":lua require('smart-splits').start_resize_mode()<CR>")
+nnoremap("<Leader>_", function()
+	require("smart-splits").resize_down()
+end, silent)
+
+nnoremap("<A-r>", function()
+	require("smart-splits").start_resize_mode()
+end, silent)
+
 nnoremap("<Leader>+", require("smart-splits").resize_up)
-nnoremap("<Leader>_", require("smart-splits").resize_down)
 nnoremap("<Leader><", require("smart-splits").resize_left)
 nnoremap("<Leader>>", require("smart-splits").resize_right)
 nnoremap("<Leader>rp", ":resize 100<CR>")
