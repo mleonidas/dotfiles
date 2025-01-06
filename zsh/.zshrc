@@ -1,5 +1,6 @@
 # # Fig pre block. Keep at the top of this file.
 # # load prompt
+#
 autoload -U promptinit; promptinit
 autoload -Uz compinit
 compinit
