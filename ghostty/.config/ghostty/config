@@ -1,6 +1,7 @@
 theme = "tokyonight-storm"
 macos-non-native-fullscreen = true
-font-family = "Liga SFMono Nerd Font"
+# font-family = "Liga SFMono Nerd Font"
+font-family = "JetBrainsMono Nerd Font"
 font-size = 13
 adjust-cell-height = 20%
 cursor-style = bar
