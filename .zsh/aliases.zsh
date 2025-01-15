@@ -8,6 +8,8 @@ alias grep='grep --color'
 
 alias make='just'
 # alias tmux='tmux -2'
+#
+alias etc='cat .envrc.context'
 
 # git aliases
 alias gitpp='git pull --prune --all'

@@ -11,6 +11,8 @@ brew "jq"
 brew "just"
 brew "lazygit"
 brew "lsd"
+brew "fd"
+brew "sesh"
 brew "neovim"
 brew "pgformatter"
 brew "postgresql@17", link: true
