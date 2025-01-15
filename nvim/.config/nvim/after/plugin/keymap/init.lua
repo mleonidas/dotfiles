@@ -85,6 +85,9 @@ nnoremap("<Leader>o", "<cmd>Telescope neoclip<CR>")
 tnoremap("<Esc>", "<C-\\><C-n>")
 
 nnoremap("<Leader>tt", ":ToggleTerm<CR>")
+nnoremap("<Leader>gtt", ":GoAlt<CR>")
+nnoremap("<Leader>gtf", ":GoTestFunc<CR>")
+
 if vim.fn.has("nvim") then
 	nnoremap("<BS>", "<C-W>h")
 end

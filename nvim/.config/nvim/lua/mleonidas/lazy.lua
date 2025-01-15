@@ -247,7 +247,10 @@ return require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			require("go").setup()
+			require("go").setup({
+				run_in_floaterm = false,
+				test_runner = "ginkgo",
+			})
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },

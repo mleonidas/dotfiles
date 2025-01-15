@@ -88,17 +88,6 @@ lspconfig.svelte.setup({
 })
 lspconfig.bashls.setup({})
 
--- require'lspconfig'.svelte.setup {
---   on_attach = function(client)
---     vim.api.nvim_create_autocmd("BufWritePost", {
---       pattern = { "*.js", "*.ts" },
---       callback = function(ctx)
---         client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
---       end,
---     })
---   end
--- }
-
 lspconfig.pyright.setup({
 	capabilities = lsp_capabilities,
 })
@@ -146,58 +135,6 @@ lspconfig.gopls.setup({
 	},
 })
 
--- require("lspconfig.configs").crystalline = {
--- 	default_config = {
--- 		name = "crystalline",
--- 		cmd = { "/Users/mleone/.bin/crystalline" },
--- 		filetypes = { "crystal", "cr" },
--- 		root_dir = require("lspconfig.util").root_pattern({ "shard.yml" }),
--- 	},
--- }
-
--- require("lspconfig").crystalline.setup({})
--- local rt = require("rust-tools")
--- rt.setup({
--- 	server = {
--- 		on_attach = function(client, bufnr)
--- 			-- turn off semanticTokens
--- 			client.server_capabilities.semanticTokensProvider = nil
--- 			-- Hover actions
--- 			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
--- 			-- Code action groups
--- 			vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
--- 		end,
--- 	},
--- })
-
--- require("rust-tools").inlay_hints.enable()
-
--- local signconfig = {
--- 	virtual_text = false,
--- 	signs = true,
--- 	underline = true,
--- 	update_in_insert = true,
--- 	severity_sort = true,
--- }
---
--- vim.diagnostic.config(signconfig)
-
--- require("tabnine").setup({
--- 	disable_auto_comment = true,
--- 	accept_keymap = "<C-J>",
--- 	dismiss_keymap = "<C-]>",
--- 	debounce_ms = 800,
--- 	suggestion_color = { gui = "#808080", cterm = 244 },
--- 	exclude_filetypes = { "TelescopePrompt" },
--- 	log_file_path = nil, -- absolute path to Tabnine log file
--- })
---
--- require("copilot").setup({
--- 	suggestion = { enabled = false },
--- 	panel = { enabled = false },
--- 	accept_keymap = "<c-J>",
--- })
-
 require("luasnip.loaders.from_vscode").lazy_load()
 
 local cmp = require("cmp")
@@ -220,9 +157,6 @@ cmp.setup({
 		{ name = "nvim_lsp", keyword_length = 3 },
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "supermaven", keyword_length = 3 },
-		-- { name = "copilot", keyword_length = 2 },
-
-		-- { name = "cmp_tabnine", keyword_length = 3 },
 	},
 	mapping = cmp_mappings,
 	window = {
