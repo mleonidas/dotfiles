@@ -6,7 +6,7 @@ startup_command = "clear"
 [[session]]
 name = "poseidon"
 path = "~/Documents/repos/work/poseidon"
-startup_command = "clear"
+startup_command = "tmux split-window -v -p 80"
 
 [[session]]
 name = "scrooge"
