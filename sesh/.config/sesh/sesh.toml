@@ -14,21 +14,21 @@ path = "~/Documents/repos/work/scrooge"
 startup_command = "nvim -c ':Telescope find_files'"
 
 [[session]]
-name = "scrooge"
+name = "go-service"
 path = "~/Documents/repos/work/go-service"
 startup_command = "nvim -c ':Telescope find_files'"
 
 [[session]]
-name = "scrooge"
+name = "go-common"
 path = "~/Documents/repos/work/go-common"
 startup_command = "nvim -c ':Telescope find_files'"
 
 [[session]]
-name = "scrooge"
+name = "go-authorize"
 path = "~/Documents/repos/work/go-authorize"
 startup_command = "nvim -c ':Telescope find_files'"
 
 [[session]]
-name = "scrooge"
+name = "go-frontegg"
 path = "~/Documents/repos/work/go-frontegg"
 startup_command = "nvim -c ':Telescope find_files'"
