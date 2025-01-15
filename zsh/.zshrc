@@ -40,13 +40,25 @@ fi
 bindkey -e
 bindkey '^U' backward-kill-line
 bindkey '^Q' push-line-or-edit
-bindkey -s "^L" 'sesh^M'
 
 if command -v zoxide 1>/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
 fi
 
+function sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
+}
 
+zle    -N   sesh-sessions
+bindkey -M emacs -s "^L" 'sesh-sessions^M'
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist

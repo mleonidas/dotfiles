@@ -1,0 +1,34 @@
+[[session]]
+name = "dotfiles"
+path = "~/.dotfiles"
+startup_command = "clear"
+
+[[session]]
+name = "poseidon"
+path = "~/Documents/repos/work/poseidon"
+startup_command = "clear"
+
+[[session]]
+name = "scrooge"
+path = "~/Documents/repos/work/scrooge"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "scrooge"
+path = "~/Documents/repos/work/go-service"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "scrooge"
+path = "~/Documents/repos/work/go-common"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "scrooge"
+path = "~/Documents/repos/work/go-authorize"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "scrooge"
+path = "~/Documents/repos/work/go-frontegg"
+startup_command = "nvim -c ':Telescope find_files'"
