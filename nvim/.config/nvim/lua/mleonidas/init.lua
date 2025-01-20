@@ -1,5 +1,4 @@
 require("mleonidas.set")
-require("mleonidas.lazy")
 require("mleonidas.statusline")
 require("mleonidas.trim")
 require("mleonidas.term")

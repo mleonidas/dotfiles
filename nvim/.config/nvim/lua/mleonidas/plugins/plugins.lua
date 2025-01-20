@@ -1,33 +1,8 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-
-vim.opt.rtp:prepend(lazypath)
-
-return require("lazy").setup({
+return {
 	-- show hex colors
 	"norcalli/nvim-colorizer.lua",
 	-- better whitespace ? TODO(mleonidas): rewrite in lua
 	"ntpeters/vim-better-whitespace",
-	"folke/tokyonight.nvim",
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-lua/popup.nvim",
-			"nvim-lua/plenary.nvim",
-		},
-	},
 	"benfowler/telescope-luasnip.nvim",
 	"nvim-telescope/telescope-live-grep-args.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
@@ -264,4 +239,4 @@ return require("lazy").setup({
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 	},
-})
+}
