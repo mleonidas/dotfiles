@@ -27,6 +27,7 @@ local parsers_to_install = {
 	"gomod",
 	"gosum",
 	"gowork",
+	"gotmpl",
 	"graphql",
 	"bash",
 	"comment",
