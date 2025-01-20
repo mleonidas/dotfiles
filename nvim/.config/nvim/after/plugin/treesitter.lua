@@ -55,6 +55,9 @@ end
 
 ts_configs.setup({
 	ensure_installed = parsers_to_install,
+	endwise = {
+		enable = true,
+	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		disable = { "c" }, -- list of language that will be disabled

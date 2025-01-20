@@ -18,14 +18,6 @@ return {
 	},
 	"mbbill/undotree",
 	"folke/lsp-colors.nvim",
-	{
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-	},
-
 	"leoluz/nvim-dap-go",
 	"ldelossa/nvim-dap-projects",
 	{ "rcarriga/nvim-dap-ui", dependencies = {
