@@ -89,7 +89,6 @@ return require("lazy").setup({
 		end,
 	},
 	-- tpope plugins
-	"tpope/vim-vinegar",
 	"tpope/vim-dispatch",
 	"tpope/vim-endwise",
 	"tpope/vim-repeat",
@@ -255,5 +254,14 @@ return require("lazy").setup({
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+	},
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 	},
 })

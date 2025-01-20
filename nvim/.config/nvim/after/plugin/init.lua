@@ -27,3 +27,5 @@ require("nvim-dap-projects").search_project_config()
 require("colorizer").setup()
 
 require("telescope").load_extension("harpoon")
+
+require("oil").setup()
