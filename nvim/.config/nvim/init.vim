@@ -1,5 +1,6 @@
 filetype plugin indent on
 let test#python#runner = 'djangotest'
+lua require("config.lazy")
 lua require("globals")
 lua require('mleonidas')
 " Inform vim how to enable undercurl in wezterm
