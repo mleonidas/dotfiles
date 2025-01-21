@@ -8,8 +8,13 @@ return {
 		},
 		config = function()
 			require("go").setup({
-				run_in_floaterm = false,
+				run_in_floaterm = true,
 				test_runner = "ginkgo",
+				trouble = true,
+				floaterm = { -- position
+					posititon = "center", -- one of {`top`, `bottom`, `left`, `right`, `center`, `auto`}
+					title_colors = "tokyo",
+				},
 			})
 		end,
 		event = { "CmdlineEnter" },

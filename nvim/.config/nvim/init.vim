@@ -1,5 +1,7 @@
 filetype plugin indent on
 let test#python#runner = 'djangotest'
+let test#strategy = "neovim"
+
 lua require("config.lazy")
 lua require("globals")
 lua require('mleonidas')
