@@ -24,6 +24,8 @@ alias glo="git log --pretty=oneline --abbrev-commit"
 alias lg='lazygit'
 
 
+# ngrok color support
+alias ngrok='TERM=xterm-256color ngrok'
 # psqlconnect
 alias pgc='TERM=screen-256color psqlconnect'
 
