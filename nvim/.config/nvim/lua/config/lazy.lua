@@ -19,5 +19,5 @@ return require("lazy").setup({
 	spec = {
 		{ import = "mleonidas/plugins" },
 	},
-	checker = { enabled = true },
+	checker = { enabled = false },
 })

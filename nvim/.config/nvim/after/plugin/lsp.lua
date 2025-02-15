@@ -94,7 +94,7 @@ lspconfig.pyright.setup({
 
 lspconfig.zls.setup({})
 
-lspconfig.gleam.setup({})
+require("lspconfig").gleam.setup({})
 
 -- Fix Undefined global 'vim'
 lspconfig.lua_ls.setup({
