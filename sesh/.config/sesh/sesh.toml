@@ -32,3 +32,13 @@ startup_command = "nvim -c ':Telescope find_files'"
 name = "go-frontegg"
 path = "~/Documents/repos/work/go-frontegg"
 startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "zig-exercises"
+path = "~/Documents/repos/personal/ziglings.org"
+startup_command = "nvim -c ':Telescope find_files'"
+
+[[session]]
+name = "fc-infra-kubernetes"
+path = "~/Documents/repos/work/fc-infra-kubernetes"
+startup_command = "clear"

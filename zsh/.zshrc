@@ -27,6 +27,7 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 source $DOTFILES_PATH/.zsh/history.zsh
 source $DOTFILES_PATH/.zsh/functions.zsh
 source $DOTFILES_PATH/.zsh/aliases.zsh
+export _ZO_DATA_DIR="$HOME/.local/share/zoxide"
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"

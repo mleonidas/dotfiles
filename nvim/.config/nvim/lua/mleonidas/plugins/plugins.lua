@@ -10,8 +10,6 @@ return {
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	"tmux-plugins/vim-tmux",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
-	-- better git blame
-	"f-person/git-blame.nvim",
 	{
 		"sindrets/diffview.nvim",
 		dependencies = "nvim-lua/plenary.nvim",

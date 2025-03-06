@@ -18,10 +18,6 @@ require("git-worktree").setup({
 	clearjumps_on_change = true,
 })
 
-require("gitblame").setup({
-	enabled = false,
-})
-
 require("nvim-dap-projects").search_project_config()
 
 require("colorizer").setup()
