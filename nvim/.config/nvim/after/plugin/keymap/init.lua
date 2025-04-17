@@ -93,6 +93,8 @@ if vim.fn.has("nvim") then
 	nnoremap("<BS>", "<C-W>h")
 end
 
+vnoremap("<leader>s1", '<cmd>lua require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })<cr>', silent)
+
 -- setup copilot override since tab is used in cmp
 vim.g.copilot_no_tab_map = true
 vim.cmd([[imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")]])
