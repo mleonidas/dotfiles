@@ -28,6 +28,7 @@ require("formatter").setup({
 		-- gofumpt = { require("formatter.filetypes.go").gofumpt },
 		sql = { require("formatter.filetypes.sql").pgformat },
 		proto = { require("formatter.filetypes.proto").buf_format },
+		zig = { require("formatter.filetypes.zig").zigfmt },
 		["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace },
 	},
 })
