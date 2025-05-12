@@ -111,7 +111,7 @@ return { -- LSP Configuration & Plugins
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		-- Enable the following language servers
-		require("lazy").load({ plugins = "neodev.nvim" })
+		require("neodev").setup({})
 		local servers = {
 			lua_ls = {
 				-- cmd = {...},
