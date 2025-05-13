@@ -5,11 +5,31 @@ return { -- LSP Configuration & Plugins
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-		"folke/neodev.nvim",
 		"hrsh7th/nvim-cmp", -- Required
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-nvim-lsp", -- Required
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
+		{ -- optional cmp completion source for require statements and module annotations
+			"hrsh7th/nvim-cmp",
+			opts = function(_, opts)
+				opts.sources = opts.sources or {}
+				table.insert(opts.sources, {
+					name = "lazydev",
+					group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+				})
+			end,
+		},
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -111,7 +131,6 @@ return { -- LSP Configuration & Plugins
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		-- Enable the following language servers
-		require("neodev").setup({})
 		local servers = {
 			lua_ls = {
 				-- cmd = {...},
