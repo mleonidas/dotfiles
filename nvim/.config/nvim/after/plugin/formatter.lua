@@ -32,12 +32,22 @@ require("formatter").setup({
 		["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace },
 	},
 })
-vim.api.nvim_exec(
+
+vim.api.nvim_exec2(
 	[[
-    augroup FormatAutogroup
-      autocmd!
-      autocmd BufWritePost * FormatWrite
-    augroup END
-  ]],
-	true
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost * FormatWrite
+  augroup END
+]],
+	{ output = false }
 )
+
+-- alternative, we can use vim.cmd instead of vim.api.nvim_exec2
+-- vim.cmd([[
+--   augroup FormatAutogroup
+--     autocmd!
+--     autocmd BufWritePost * FormatWrite
+--   augroup END
+-- ]])
+--

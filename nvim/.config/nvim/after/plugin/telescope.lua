@@ -1,11 +1,11 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
+-- local pickers = require("telescope.pickers")
+-- local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")
 -- local pkgs = require("telescope").load_extension("project")
-local action_state = require("telescope.actions.state")
-local conf = require("telescope.config").values
+-- local action_state = require("telescope.actions.state")
+-- local conf = require("telescope.config").values
 local actions = require("telescope.actions")
-local lst = require("telescope").extensions.luasnip
+-- local lst = require("telescope").extensions.luasnip
 
 require("telescope").setup({
 	defaults = {
@@ -35,7 +35,7 @@ require("telescope").load_extension("luasnip")
 local M = {}
 
 local function refactor(prompt_bufnr)
-	local content = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+	local content = require("telescope.actions.state").get_selected_entry()
 	require("telescope.actions").close(prompt_bufnr)
 	require("refactoring").refactor(content.value)
 end
