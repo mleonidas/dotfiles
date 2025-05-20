@@ -10,7 +10,12 @@ return {
 			require("go").setup({
 				run_in_floaterm = true,
 				test_runner = "ginkgo",
+				lsp_inlay_hints = {
+					enable = true,
+				},
 				trouble = true,
+				luasnip = true,
+				lsp_on_attach = true,
 				floaterm = { -- position
 					posititon = "center", -- one of {`top`, `bottom`, `left`, `right`, `center`, `auto`}
 					title_colors = "tokyo",

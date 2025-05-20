@@ -177,6 +177,22 @@ return { -- LSP Configuration & Plugins
 			dockerls = {},
 			docker_compose_language_service = {},
 			svelte = {},
+			gopls = {
+				env = { GOFLAGS = "-tags=!windows" },
+				-- analyses = {
+				-- 	fieldalignment = true,
+				-- },
+				codelenses = { test = true },
+				-- hints = {
+				-- 	assignVariableTypes = true,
+				-- 	compositeLiteralFields = true,
+				-- 	compositeLiteralTypes = true,
+				-- 	constantValues = true,
+				-- 	functionTypeParameters = false,
+				-- 	parameterNames = true,
+				-- 	rangeVariableTypes = false,
+				-- },
+			},
 			-- tailwindcss = {},
 			-- graphql = {},
 			-- html = { filetypes = { 'html', 'twig', 'hbs' } },
