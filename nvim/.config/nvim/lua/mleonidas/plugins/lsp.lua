@@ -51,6 +51,132 @@ return { -- LSP Configuration & Plugins
 		},
 	},
 	config = function()
+		local capabilities = nil
+		if pcall(require, "cmp_nvim_lsp") then
+			capabilities = require("cmp_nvim_lsp").default_capabilities()
+		end
+
+		-- Enable the following language servers
+		local servers = {
+			lua_ls = {
+				cmd = { "lua-language-server" },
+			},
+			gopls = {},
+			rust_analyzer = {
+				settings = {
+					rust_analyzer = {
+						cargo = {
+							allFeatures = true,
+							loadOutDirsFromCheck = true,
+							runBuildScripts = true,
+						},
+						inlayHints = {
+							bindingModeHints = { enabled = true },
+							closureCaptureHints = { enabled = true },
+							closureReturnTypeHints = { enable = "always" },
+						},
+						-- Add other rust-analyzer settings as needed
+						-- root_dir = vim.lsp.util.root_pattern("Cargo.toml", ".git"), -- Define how to find the project root
+						filetypes = { "rust" }, -- Specify file types for which this LSP server should be active
+						-- Add clippy lints for Rust.
+						checkOnSave = {
+							allFeatures = true,
+							command = "clippy",
+							extraArgs = {
+								"--",
+								"--no-deps",
+								"-Dclippy::correctness",
+								"-Dclippy::complexity",
+								"-Wclippy::perf",
+								"-Wclippy::pedantic",
+							},
+						},
+					},
+				},
+			},
+			pylsp = {
+				settings = {
+					pylsp = {
+						plugins = {
+							pyflakes = { enabled = false },
+							pycodestyle = { enabled = false },
+							autopep8 = { enabled = false },
+							yapf = { enabled = false },
+							mccabe = { enabled = false },
+							pylsp_mypy = { enabled = false },
+							pylsp_black = { enabled = false },
+							pylsp_isort = { enabled = false },
+						},
+					},
+				},
+			},
+			jsonls = {},
+			sqlls = {},
+			terraformls = {},
+			ts_ls = {},
+			-- tsgo = {},
+			yamlls = {},
+			-- typescript_language_server = {
+			-- 	settings = {
+			-- 		typescript_language_server = {
+			-- 			cmd = { "typescript-language-server", "--stdio" },
+			-- 		},
+			-- 	},
+			-- },
+			jsonnet_ls = {},
+			bashls = {},
+			dockerls = {},
+			docker_compose_language_service = {},
+		}
+
+		local servers_to_install = vim.tbl_filter(function(key)
+			local t = servers[key]
+			if type(t) == "table" then
+				return not t.manual_install
+			else
+				return t
+			end
+		end, vim.tbl_keys(servers))
+
+		-- Ensure the servers and tools above are installed
+		require("mason").setup()
+
+		-- You can add other tools here that you want Mason to install
+		-- for you, so that they are available from within Neovim.
+		local ensure_installed = {
+			"stylua",
+			"lua_ls",
+			"delve",
+			-- "tailwind-language-server",
+		}
+
+		vim.list_extend(ensure_installed, servers_to_install)
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+
+		-- Configure and enable each LSP server
+		for name, config in pairs(servers) do
+			if config == true then
+				config = {}
+			end
+			-- Only call vim.lsp.config if there are server-specific settings
+			if next(config) ~= nil then
+				-- Remove manual_install flag as it's not an LSP config field
+				local lsp_config = vim.tbl_deep_extend("force", {}, config)
+				lsp_config.manual_install = nil
+				vim.lsp.config(name, lsp_config)
+			end
+
+			vim.lsp.enable(name)
+		end
+
+		local disable_semantic_tokens = {
+			-- lua = true,
+		}
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 			-- Create a function that lets us more easily define mappings specific LSP related items.
@@ -60,22 +186,34 @@ return { -- LSP Configuration & Plugins
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
+				local bufnr = event.buf
+				local client = assert(vim.lsp.get_client_by_id(event.data.client_id), "must have valid client")
+
+				local settings = servers[client.name]
+				if type(settings) ~= "table" then
+					settings = {}
+				end
+
+				local builtin = require("telescope.builtin")
+
+				vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
 				--  To jump back, press <C-T>.
-				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+				map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
 
 				-- Find references for the word under your cursor.
-				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+				map("gr", builtin.lsp_references, "[G]oto [R]eferences")
 
 				-- Jump to the implementation of the word under your cursor.
 				--  Useful when your language has ways of declaring types without an actual implementation.
-				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+				map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
 
 				-- Jump to the type of the word under your cursor.
 				--  Useful when you're not sure what type a variable is and you want to see
 				--  the definition of its *type*, not where it was *defined*.
-				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+				map("gT", vim.lsp.buf.type_definition, "Type [D]efinition")
 
 				-- Fuzzy find all the symbols in your current document.
 				--  Symbols are things like variables, functions, types, etc.
@@ -106,13 +244,11 @@ return { -- LSP Configuration & Plugins
 				map("<leader>wl", function()
 					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 				end, "[W]orkspace [L]ist Folders")
-
 				-- The following two autocommands are used to highlight references of the
 				-- word under your cursor when your cursor rests there for a little while.
 				--    See `:help CursorHold` for information about when this is executed
 				--
 				-- When you move your cursor, the highlights will be cleared (the second autocommand).
-				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.server_capabilities.documentHighlightProvider then
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 						buffer = event.buf,
@@ -124,113 +260,18 @@ return { -- LSP Configuration & Plugins
 						callback = vim.lsp.buf.clear_references,
 					})
 				end
+				-- Override server capabilities
+				if settings.server_capabilities then
+					for k, v in pairs(settings.server_capabilities) do
+						if v == vim.NIL then
+							---@diagnostic disable-next-line: cast-local-type
+							v = nil
+						end
+
+						client.server_capabilities[k] = v
+					end
+				end
 			end,
-		})
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-		-- Enable the following language servers
-		local servers = {
-			lua_ls = {
-				-- cmd = {...},
-				-- filetypes { ...},
-				-- capabilities = {},
-				settings = {
-					Lua = {
-						runtime = { version = "LuaJIT" },
-						workspace = {
-							checkThirdParty = false,
-							library = vim.env.VIMRUNTIME,
-						},
-						completion = {
-							callSnippet = "Replace",
-						},
-						telemetry = { enable = false },
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
-				},
-			},
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							pyflakes = { enabled = false },
-							pycodestyle = { enabled = false },
-							autopep8 = { enabled = false },
-							yapf = { enabled = false },
-							mccabe = { enabled = false },
-							pylsp_mypy = { enabled = false },
-							pylsp_black = { enabled = false },
-							pylsp_isort = { enabled = false },
-						},
-					},
-				},
-			},
-			jsonls = {},
-			sqlls = {},
-			terraformls = {},
-			yamlls = {},
-			bashls = {},
-			dockerls = {},
-			docker_compose_language_service = {},
-			svelte = {},
-			gopls = {
-				env = { GOFLAGS = "-tags=!windows" },
-				-- analyses = {
-				-- 	fieldalignment = true,
-				-- },
-				codelenses = { test = true },
-				-- hints = {
-				-- 	assignVariableTypes = true,
-				-- 	compositeLiteralFields = true,
-				-- 	compositeLiteralTypes = true,
-				-- 	constantValues = true,
-				-- 	functionTypeParameters = false,
-				-- 	parameterNames = true,
-				-- 	rangeVariableTypes = false,
-				-- },
-			},
-			-- tailwindcss = {},
-			-- graphql = {},
-			-- html = { filetypes = { 'html', 'twig', 'hbs' } },
-			-- cssls = {},
-			-- ltex = {},
-			-- texlab = {},
-		}
-
-		-- Ensure the servers and tools above are installed
-		require("mason").setup()
-
-		-- You can add other tools here that you want Mason to install
-		-- for you, so that they are available from within Neovim.
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format lua code
-		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-		-- function(server_name)
-		-- 	local server = servers[server_name] or {}
-		-- 	-- This handles overriding only values explicitly passed
-		-- 	-- by the server configuration above. Useful when disabling
-		-- 	-- certain features of an LSP (for example, turning off formatting for tsserver)
-		-- 	server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-		-- 	require("lspconfig")[server_name].setup(server)
-		-- end,
-
-		require("mason-lspconfig").setup({
-			ensure_installed = {}, -- or a list like { "lua_ls", "tsserver" }
-			automatic_enable = true,
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
 		})
 	end,
 }

@@ -1,14 +1,20 @@
 return {
-	"mhartington/formatter.nvim",
 	{
-		"AckslD/nvim-neoclip.lua",
-		dependencies = {
-			-- you'll need at least one of these
-			-- {'nvim-telescope/telescope.nvim'},
-			-- {'ibhagwan/fzf-lua'},
+		"stevearc/conform.nvim",
+		opts = {
+			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
+			javascript = { "prettier" },
+			javascriptreact = { "prettier" },
+			css = { "prettier" },
+			scss = { "prettier" },
+			html = { "prettier" },
+			json = { "prettier" },
+			jsonc = { "prettier" },
+			markdown = { "prettier" },
+			yaml = { "prettier" },
+			graphql = { "prettier" },
+			svelte = { "prettier" },
 		},
-		config = function()
-			require("neoclip").setup()
-		end,
 	},
 }

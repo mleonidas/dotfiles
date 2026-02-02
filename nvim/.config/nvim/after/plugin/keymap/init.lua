@@ -64,12 +64,17 @@ xnoremap("<leader>p", '"_dP')
 nnoremap("<leader>y", '"+y')
 vnoremap("<leader>y", '"+y')
 
+nnoremap("<A-h>", require("smart-splits").resize_left)
+nnoremap("<A-j>", require("smart-splits").resize_down)
+nnoremap("<A-k>", require("smart-splits").resize_up)
+nnoremap("<A-l>", require("smart-splits").resize_right)
+
 nnoremap("<Leader>_", function()
-	require("smart-splits").resize_down()
+    require("smart-splits").resize_down()
 end, silent)
 
 nnoremap("<A-r>", function()
-	require("smart-splits").start_resize_mode()
+    require("smart-splits").start_resize_mode()
 end, silent)
 
 nnoremap("<Leader>+", require("smart-splits").resize_up)
@@ -90,7 +95,7 @@ nnoremap("<Leader>gtt", ":GoAlt<CR>")
 nnoremap("<Leader>gtf", ":GoTestFunc<CR>")
 
 if vim.fn.has("nvim") then
-	nnoremap("<BS>", "<C-W>h")
+    nnoremap("<BS>", "<C-W>h")
 end
 
 vnoremap("<leader>s1", '<cmd>lua require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })<cr>', silent)
