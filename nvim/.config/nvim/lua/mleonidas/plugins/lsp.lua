@@ -71,10 +71,14 @@ return { -- LSP Configuration & Plugins
 							runBuildScripts = true,
 						},
 						inlayHints = {
-							bindingModeHints = { enabled = true },
-							closureCaptureHints = { enabled = true },
+							bindingModeHints = { enable = true },
+							closureCaptureHints = { enable = true },
 							closureReturnTypeHints = { enable = "always" },
+							lifetimeElisionHints = { enable = "always" },
+							reborrowHints = { enable = "always" },
+							typeHints = { enable = true },
 						},
+
 						-- Add other rust-analyzer settings as needed
 						-- root_dir = vim.lsp.util.root_pattern("Cargo.toml", ".git"), -- Define how to find the project root
 						filetypes = { "rust" }, -- Specify file types for which this LSP server should be active
@@ -123,6 +127,7 @@ return { -- LSP Configuration & Plugins
 			-- 		},
 			-- 	},
 			-- },
+			zls = {},
 			jsonnet_ls = {},
 			bashls = {},
 			dockerls = {},
@@ -187,6 +192,7 @@ return { -- LSP Configuration & Plugins
 				end
 
 				local bufnr = event.buf
+
 				local client = assert(vim.lsp.get_client_by_id(event.data.client_id), "must have valid client")
 
 				local settings = servers[client.name]
@@ -197,6 +203,9 @@ return { -- LSP Configuration & Plugins
 				local builtin = require("telescope.builtin")
 
 				vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+				if client.server_capabilities.inlayHintProvider then
+					vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+				end
 
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.

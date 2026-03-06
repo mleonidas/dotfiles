@@ -14,7 +14,7 @@ require("conform").setup({
 		typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 
 		json = { "prettierd", "prettier", stop_after_first = true },
-		zig = { "zig_fmt" },
+		zig = { "zigfmt" },
 		proto = { "buf_format" },
 	},
 })
