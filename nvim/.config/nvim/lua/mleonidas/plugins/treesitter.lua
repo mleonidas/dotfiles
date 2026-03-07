@@ -9,6 +9,5 @@ return {
 		},
 	},
 	"romgrk/nvim-treesitter-context",
-	"nvim-treesitter/playground",
 	"RRethy/nvim-treesitter-endwise",
 }

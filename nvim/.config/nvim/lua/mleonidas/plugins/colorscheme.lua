@@ -1,13 +1,8 @@
 return {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    version = "v4.11.0",
     {
-        "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "nvim-lua/popup.nvim",
-            "nvim-lua/plenary.nvim",
-        },
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
     },
     {
         "catppuccin/nvim",

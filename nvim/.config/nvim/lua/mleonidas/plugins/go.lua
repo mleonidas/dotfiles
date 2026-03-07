@@ -6,11 +6,12 @@ return {
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		tag = "v0.10.4",
 		opts = {
 			lsp_inlay_hints = {
 				enable = true,
 			},
+			-- Disable textobjects as it uses deprecated nvim-treesitter.configs API
+			textobjects = false,
 
 			-- lsp_keymaps = false,
 			-- other options

@@ -1,14 +1,15 @@
-if not pcall(require, "nvim-treesitter") then
+local ok, ts = pcall(require, "nvim-treesitter")
+if not ok then
     print("Warning: treesitter not available, skipping configuration.")
     return
 end
 
-local ts_configs = require("nvim-treesitter.configs")
--- local ts_parsers = require("nvim-treesitter.parsers")
-
 local parsers_to_install = {
+    "lua",
+    "vim",
+    "vimdoc",
     "python",
-    -- "go",
+    "go",
     "json",
     "http",
     "ruby",
@@ -47,38 +48,18 @@ if vim.fn.has("mac") > 0 then
     parsers_to_install = vim.tbl_filter(function(x)
         return x ~= "dockerfile"
     end, parsers_to_install)
-    pcall(function()
-        require("nvim-treesitter.install").uninstall("dockerfile")
-    end)
 end
 
-ts_configs.setup({
-    ensure_installed = parsers_to_install,
-    endwise = {
-        enable = true,
-    },
-    highlight = {
-        enable = true, -- false will disable the whole extension
-        disable = { "c" }, -- list of language that will be disabled
-    },
-    playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25,   -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-            toggle_query_editor = "o",
-            toggle_hl_groups = "i",
-            toggle_injected_languages = "t",
-            toggle_anonymous_nodes = "a",
-            toggle_language_display = "I",
-            focus_language = "f",
-            unfocus_language = "F",
-            update = "R",
-            goto_node = "<cr>",
-            show_help = "?",
-        },
-    },
+-- Install parsers using the new API (async to not block startup)
+vim.schedule(function()
+    require("nvim-treesitter").install(parsers_to_install)
+end)
+
+-- Configure highlight to be enabled for all buffers
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        pcall(vim.treesitter.start)
+    end,
 })
 -- require("nvim-treesitter.install").compilers = { "clang", "zig", "gcc" }
 
