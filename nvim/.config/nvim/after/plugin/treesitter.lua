@@ -4,6 +4,15 @@ if not ok then
     return
 end
 
+-- Tiltfile / .tilt filetype detection
+vim.filetype.add({
+    filename = { Tiltfile = "tiltfile" },
+    extension = { tilt = "tiltfile" },
+})
+
+-- Tilt uses Starlark (Python dialect) — reuse the python parser
+vim.treesitter.language.register("python", "tiltfile")
+
 local parsers_to_install = {
     "lua",
     "vim",

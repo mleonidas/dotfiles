@@ -7,12 +7,12 @@ require("conform").setup({
 		lua = { "stylua" },
 		python = { "black", "ruff" },
 		rust = { "rustfmt" },
-
+		terraform = { "terraform_fmt" }, -- Use
 		javascript = { "prettierd", "prettier", stop_after_first = true },
 		javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 		typescript = { "prettierd", "prettier", stop_after_first = true },
 		typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-
+		go = { "golangci-lint", "gci", "gofumpt" },
 		json = { "prettierd", "prettier", stop_after_first = true },
 		zig = { "zigfmt" },
 		proto = { "buf_format" },

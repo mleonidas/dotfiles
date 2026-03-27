@@ -127,6 +127,12 @@ return { -- LSP Configuration & Plugins
 			-- 		},
 			-- 	},
 			-- },
+			tilt_ls = {
+				cmd = { "tilt", "lsp", "start" },
+				filetypes = { "tiltfile" },
+				root_markers = { "Tiltfile" },
+				manual_install = true,
+			},
 			zls = {},
 			jsonnet_ls = {},
 			bashls = {},
