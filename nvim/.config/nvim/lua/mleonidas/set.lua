@@ -44,3 +44,11 @@ vim.opt.syntax = "enable"
 if not vim.fn.has("gui_running") then
 	vim.opt.t_Co = 256
 end
+
+-- Disable native virtual text and signs — tiny-inline-diagnostic handles this instead
+vim.diagnostic.config({ virtual_text = false, signs = false })
+
+-- Toggle inline diagnostics via tiny-inline-diagnostic
+vim.keymap.set("n", "<leader>td", function()
+	require("tiny-inline-diagnostic").toggle()
+end, { desc = "Toggle inline diagnostics" })
