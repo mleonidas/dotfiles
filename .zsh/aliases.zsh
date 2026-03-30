@@ -6,7 +6,7 @@ alias vim="/opt/homebrew/bin/nvim"
 alias dm=docker-machine
 alias grep='grep --color'
 
-alias make='just'
+# alias make='just'
 # alias tmux='tmux -2'
 #
 alias etc='cat .envrc.context'
@@ -22,6 +22,7 @@ alias sha="git log | head -1"
 alias dc='docker-compose'
 alias glo="git log --pretty=oneline --abbrev-commit"
 alias lg='lazygit'
+alias zd='/opt/homebrew/opt/zed/bin/zed'
 
 
 # ngrok color support
