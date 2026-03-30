@@ -2,6 +2,7 @@ add_newline = true
 format = """\
   $kubernetes\
   $aws\
+  $gcloud\
   $python\
   $terraform\
   $nodejs\
@@ -20,7 +21,7 @@ format = """\
 command_timeout = 1000
 
 [gcloud]
-format = "[$symbol$active]($style) "
+format = '[$account(@$domain)(\($project\))]($style) '
 style = "bold yellow"
 
 [aws]
@@ -37,7 +38,7 @@ us-west-1 = "ca"
 us-west-2 = "or"
 
 [nodejs]
-format = 'nvm [$version](bold green) '
+format = '[nvm](purple) [$version](bold green) '
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
 
