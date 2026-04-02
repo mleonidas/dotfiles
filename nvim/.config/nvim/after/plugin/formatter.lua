@@ -12,7 +12,7 @@ require("conform").setup({
 		javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 		typescript = { "prettierd", "prettier", stop_after_first = true },
 		typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-		go = { "golangci-lint", "gci", "gofumpt" },
+		go = { "gofumpt", "gci" },
 		jsonnet = { "jsonnetfmt" },
 		json = { "prettierd", "prettier", stop_after_first = true },
 		zig = { "zigfmt" },
