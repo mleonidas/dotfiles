@@ -5,10 +5,8 @@ return { -- LSP Configuration & Plugins
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-		"hrsh7th/nvim-cmp", -- Required
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-nvim-lsp", -- Required
+		"Saghen/blink.cmp",
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
@@ -19,16 +17,6 @@ return { -- LSP Configuration & Plugins
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				},
 			},
-		},
-		{ -- optional cmp completion source for require statements and module annotations
-			"hrsh7th/nvim-cmp",
-			opts = function(_, opts)
-				opts.sources = opts.sources or {}
-				table.insert(opts.sources, {
-					name = "lazydev",
-					group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-				})
-			end,
 		},
 
 		-- Useful status updates for LSP.
@@ -51,10 +39,7 @@ return { -- LSP Configuration & Plugins
 		},
 	},
 	config = function()
-		local capabilities = nil
-		if pcall(require, "cmp_nvim_lsp") then
-			capabilities = require("cmp_nvim_lsp").default_capabilities()
-		end
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- Enable the following language servers
 		local servers = {
@@ -133,6 +118,7 @@ return { -- LSP Configuration & Plugins
 				root_markers = { "Tiltfile" },
 				manual_install = true,
 			},
+			eslint = {},
 			zls = {},
 			jsonnet_ls = {},
 			bashls = {},
