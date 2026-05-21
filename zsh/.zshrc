@@ -2,8 +2,6 @@
 # # load prompt
 #
 autoload -U promptinit; promptinit
-autoload -Uz compinit
-compinit
 
 export GOPATH="$HOME/go"
 # User configuration
@@ -11,23 +9,37 @@ export PATH="$GOPATH/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$HOME/.local/bin:/o
 export EDITOR="nvim"
 # export CLICOLOR=1
 export GREP_COLOR=33
+export BAT_THEME="tokyonight_night"
 # export TERM='xterm-256color'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 export XDG_CONFIG_HOME="$HOME/.config"
-export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+# export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 export ANSIBLE_CONFIG="$HOME/.ansible/ansible.cfg"
 export LS_COLORS=$(vivid generate tokyonight-storm)
-export PATH="$HOME/.bin:$PATH"
 
 # load sensitive data
 source ~/.private_env
-source <(fx --comp zsh)
 export DOTFILES_PATH="$HOME/.dotfiles"
 source $DOTFILES_PATH/.zsh/history.zsh
 source $DOTFILES_PATH/.zsh/functions.zsh
 source $DOTFILES_PATH/.zsh/aliases.zsh
 export _ZO_DATA_DIR="$HOME/.local/share/zoxide"
+export MISE_CEILING_PATHS="$HOME/Documents/repos/work/core"
+export MEMORY_STORE="/Users/mleone/.local/share/wandb-memory/memory-store"
+
+BREW_PREFIX="$(brew --prefix)"
+fpath=(~/.zsh/completion "$BREW_PREFIX/share/zsh/site-functions" $fpath)
+
+autoload -Uz compinit
+if [[ ! -f ~/.zcompdump || ~/.zcompdump -ot ~/.zshrc ]]; then
+  compinit
+else
+  compinit -C
+fi
+autoload -Uz bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
+command -v fx >/dev/null 2>&1 && source <(fx --comp zsh)
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
@@ -64,17 +76,12 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
 eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-
-fpath=(~/.zsh/completion $(brew --prefix)/share/zsh/site-functions $fpath)
 
 listening() {
     if [ $# -eq 0 ]; then
@@ -126,21 +133,28 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[globbing]='none'
 
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
+
 zi cdreplay -q
 
 if [ -f "${HOME}/.g/env" ]; then
     . "${HOME}/.g/env"
 fi
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+node() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; node "$@"; }
+npm()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; npm "$@"; }
+npx()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; npx "$@"; }
 
 [[ -s "/Users/mleone/.gvm/scripts/gvm" ]] && source "/Users/mleone/.gvm/scripts/gvm"
 
+source /Users/mleone/Documents/repos/work/core/dev-setup/zshrc.zsh
+
 [ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
+eval "$(direnv hook zsh)"
+export GPG_TTY=$(tty)
+export FLOX_SET_PROMPT=false

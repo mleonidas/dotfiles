@@ -102,6 +102,7 @@ return { -- LSP Configuration & Plugins
 			jsonls = {},
 			sqlls = {},
 			terraformls = {},
+			helm_ls = {},
 			ts_ls = {},
 			-- tsgo = {},
 			yamlls = {},

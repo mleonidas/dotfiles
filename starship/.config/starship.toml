@@ -1,5 +1,7 @@
 add_newline = true
 format = """\
+  ${env_var.flox}\
+  $line_break\
   $kubernetes\
   $aws\
   $gcloud\
@@ -110,3 +112,8 @@ style = "cyan"
 
 [time]
 disabled = true
+
+[env_var.flox]
+variable = "FLOX_PROMPT_ENVIRONMENTS"
+format = "[flox](bold purple)[ \\($env_value\\)](bold cyan) "
+disabled = false
