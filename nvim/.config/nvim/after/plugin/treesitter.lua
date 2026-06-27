@@ -13,6 +13,9 @@ vim.filetype.add({
 -- Tilt uses Starlark (Python dialect) — reuse the python parser
 vim.treesitter.language.register("python", "tiltfile")
 
+-- Go templates: .tmpl detected as gotexttmpl, .gohtml as gohtmltmpl — point both at gotmpl parser
+vim.treesitter.language.register("gotmpl", { "gotexttmpl", "gohtmltmpl" })
+
 local parsers_to_install = {
     "lua",
     "vim",
