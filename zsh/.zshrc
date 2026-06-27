@@ -5,7 +5,10 @@ autoload -U promptinit; promptinit
 
 export GOPATH="$HOME/go"
 # User configuration
-export PATH="$GOPATH/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$HOME/.local/bin:/opt/homebrew/bin:$PATH"
+# NOTE: /opt/homebrew/bin is added by `brew shellenv` in ~/.zprofile (login shell).
+# Do NOT re-prepend it here — .zshrc is re-sourced inside `flox activate`, and
+# re-prepending brew would clobber flox's bin and break per-project tool precedence.
+export PATH="$GOPATH/bin:$HOME/bin:/usr/local/bin:$HOME/.bin:$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 # export CLICOLOR=1
 export GREP_COLOR=33
@@ -38,8 +41,13 @@ else
   compinit -C
 fi
 autoload -Uz bashcompinit && bashcompinit
-complete -C '/usr/local/bin/aws_completer' aws
+command -v aws_completer >/dev/null 2>&1 && complete -C "$(command -v aws_completer)" aws
 command -v fx >/dev/null 2>&1 && source <(fx --comp zsh)
+
+# gcloud completion (Homebrew SDK). Must run after compinit (above).
+if [ -f "$BREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc" ]; then
+  source "$BREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
@@ -158,3 +166,5 @@ source /Users/mleone/Documents/repos/work/core/dev-setup/zshrc.zsh
 eval "$(direnv hook zsh)"
 export GPG_TTY=$(tty)
 export FLOX_SET_PROMPT=false
+
+[ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
