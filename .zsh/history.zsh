@@ -1,7 +1,7 @@
-export HISTSIZE=999999999
 export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 export HISTTIMEFORMAT="[%F %T] "
-export SAVEHIST=$HISTSIZE
 
 
 ## History command configuration

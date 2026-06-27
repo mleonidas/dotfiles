@@ -1,0 +1,282 @@
+
+
+config-version = 2
+
+# In i3, all workspaces are phantom
+persistent-workspaces = [
+  '0.Scrtch',
+  '1.Brwsr',
+  '2.Chat',
+  '3.Trmnl',
+  '4.Docs',
+  '5.Call',
+  '6.AI',
+]
+
+start-at-login = false
+# i3 doesn't have "normalizations" feature that why we disable them here.
+# But the feature is very helpful.
+# Normalizations eliminate all sorts of weird tree configurations that don't make sense.
+# Give normalizations a chance and enable them back.
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 24
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = false
+exec-on-workspace-change = ['/bin/bash', '-c',
+  '~/.bin/reap-ghosts >/dev/null 2>&1 &'
+]
+
+
+after-startup-command = [
+  'exec-and-forget borders width=2 active_color="0xff79A2F7"',
+]
+
+# Durable monitor assignment — re-applies on monitor connect/disconnect
+# (after-startup-command runs once; this survives dock/undock)
+[workspace-to-monitor-force-assignment]
+'0.Scrtch' = 1
+'1.Brwsr'  = 1
+'2.Chat'   = 1
+'6.AI'     = 1
+'3.Trmnl'  = 2
+'4.Docs'   = 2
+'5.Call'   = 2
+
+[key-mapping]
+preset = 'qwerty'
+
+[gaps]
+inner.vertical =   4
+inner.horizontal = 4
+outer.left =       4
+outer.bottom =     4
+outer.top =        4
+outer.right =      4
+
+
+
+
+
+
+[mode.main.binding]
+
+alt-enter = [
+    # 'exec-and-forget open -n /Applications/WezTerm.app'
+    'exec-and-forget open -n /Applications/Ghostty.app'
+]
+# Primary workspace
+cmd-ctrl-backtick = 'workspace 0.Scrtch'
+cmd-ctrl-1 = 'workspace 1.Brwsr'
+cmd-ctrl-2 = 'workspace 2.Chat'
+cmd-ctrl-3 = 'workspace 3.Trmnl'
+cmd-ctrl-4 = 'workspace 4.Docs'
+cmd-ctrl-5 = 'workspace 5.Call'
+cmd-ctrl-6 = 'workspace 6.AI'
+
+# i3 wraps focus by default
+
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-shift-h= 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Consider using 'join-with' command as a 'split' replacement if you want to enable
+# normalizations
+
+alt-f = 'fullscreen'
+
+alt-s = 'layout v_accordion' # 'layout stacking' in i3
+alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+# Not supported, because this command is redundant in AeroSpace mental model.
+# See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
+#alt-space = 'focus toggle_tiling_floating'
+
+# `focus parent`/`focus child` are not yet supported, and it's not clear whether they
+# should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
+# alt-a = 'focus parent'
+
+alt-1 = 'workspace 1.Brwsr'
+alt-2 = [
+ 'workspace 2.Chat',
+ 'layout v_accordion'
+]
+alt-3 = 'workspace 3.Trmnl'
+alt-4 = 'workspace 4.Docs'
+alt-5 = 'workspace 5.Call'
+alt-6 = 'workspace 6.AI'
+alt-shift-1 = 'move-node-to-workspace 1.Brwsr'
+alt-shift-2 = 'move-node-to-workspace 2.Chat'
+alt-shift-3 = 'move-node-to-workspace 3.Trmnl'
+alt-shift-4 = 'move-node-to-workspace 4.Docs'
+alt-shift-5 = 'move-node-to-workspace 5.Call'
+alt-shift-6 = 'move-node-to-workspace 6.AI'
+
+
+
+alt-shift-c = 'reload-config'
+
+alt-r = 'mode resize'
+alt-shift-semicolon = 'mode service'
+
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+# Quick Look preview windows tile/jump otherwise
+[[on-window-detected]]
+if.app-id = 'com.apple.quicklook.qlmanage'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.QuickLookUIService'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Photos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AddressBook'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FontBook'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.window-title-regex-substring = 'STREAM DECK'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.DiskUtility'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'ChatGPT'
+run = 'move-node-to-workspace 6.AI'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Claude'
+run = 'move-node-to-workspace 6.AI'
+
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+if.window-title-regex-substring = '[Hh]uddle'
+run = [
+  'layout floating',
+  'move-node-to-workspace 5.Call'
+]
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace 2.Chat'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 2.Chat'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace 2.Chat'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = 'move-node-to-workspace 2.Chat'
+
+[[on-window-detected]]
+if.app-id = 'com.webcatalog.juli.gmail'
+run = 'move-node-to-workspace 2.Chat'
+
+[[on-window-detected]]
+if.app-id = 'ch.protonmail.desktop'
+run = 'move-node-to-workspace 2.Chat'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 1.Brwsr'
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace 3.Trmnl'
+
+# Auto-float password prompts and popups
+[[on-window-detected]]
+if.window-title-regex-substring = 'Open File'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Notion'
+run = 'move-node-to-workspace 4.Docs'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = [
+  'layout floating',
+  'move-node-to-workspace 5.Call'
+]
+
+
+
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
